@@ -5,9 +5,14 @@ theme = "purehugo"
 Paginate = 10
 
 [permalinks]
-post = "/entry/:year/:month/:day/:filename"
+#entry = "/entry/:year/:month/:day/:filename"
 
 [params]
 profileSite = "https://mosuke.tech"
 hideShareOptions = true
-description = "mosuke5's tech blog"
+description = "mosuke5's blog"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+archive = "archive"
