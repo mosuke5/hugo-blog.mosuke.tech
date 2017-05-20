@@ -1,5 +1,20 @@
 body {
     font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+    font-size: 105%;
+}
+
+.keyword {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px dotted #ddd;
+}
+
+.keyword:hover {
+    text-decoration: none;
+}
+
+.post-description {
+    line-height: 1.5em !important;
 }
 
 .brand-title, .content-subhead {
