@@ -17,14 +17,6 @@
                     <a class="pure-button" href="https://github.com/{{ . }} "><i class="fa fa-github-alt"></i> github</a>
                 </li>
                 {{ end }}
-                {{ with .Site.Params.profileSite }}
-                <li class="nav-item">
-                    <a class="pure-button" href="{{ . }} ">Profile Site</a>
-                </li>
-                {{ end }}
-                <li class="nav-item">
-                    <a class="pure-button" href="{{ .Site.BaseURL }}/index.xml"><i class="fa fa-rss"></i> rss</a>
-                </li>
             </ul>
         </nav>
     </div>
