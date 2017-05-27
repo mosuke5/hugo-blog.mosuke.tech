@@ -143,7 +143,37 @@ function redirect(){
 ```
 
 ### Google Search Console
+一般的にブログのドメイン変更を行った場合は、
+変更元のサイトで301リダイレクトを行ってGoogleに恒久的にサイトが移動したことを伝える。
+しかし、はてなブログを利用しているとWebサーバレベルでの変更はできず、301リダイレクトができない。
+Canonicalを変更したりしたが、うまくGoogle Search Consoleに変更を読み取らせることができなかった。
+（いい方法あったら教えてください…）
 
-## デプロイ関連
+なので以下手順で移行を進めた。
+
+1. 新サイト(blog.mosuke.tech)を公開
+1. はてなブログにJavaScriptによるリダイレクト処理追加
+1. はてなブログへのクローリングを拒否
+
+## CloudFlareのキャッシュ削除
+フロントにCloudFlareを利用していると書いた。  
+Hugoは静的ブログサイトなので、基本的にCloudFlare側で全てキャッシュする。
+そのため、ブログ記事の更新やデザインの本番への反映が時間かかる。
+
+CloudFlareは便利なものでapiを用意している。
+簡単だが、以下のようなキャッシュ全削除スクリプトを用意した。
+
+```shell
+#!/bin/sh
+curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$1/purge_cache" \
+     -H "X-Auth-Email: $2" \
+     -H "X-Auth-Key: $3" \
+     -H "Content-Type: application/json" \
+     --data '{"purge_everything":true}'
+```
 
 # 今後の課題
+まずは新しいHugoの環境でブログを書いて、課題点など洗いだしていく必要がある。  
+あとは、はてなブログからの移行でだいぶSEOあたり下がったと思う。  
+そのあたりの挽回をどうするかはこれからの検討課題。  
+あとは、デプロイからCloudFlareのキャッシュ削除の流れはぜひ自動化していきたい。
