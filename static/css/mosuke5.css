@@ -13,6 +13,10 @@ body {
     border: 1px solid #ddd;
 }
 
+.post-description pre {
+    padding: 15px;
+}
+
 .sidebar {
     background-image: url("/image/ep_naturalblack.png")
 }
