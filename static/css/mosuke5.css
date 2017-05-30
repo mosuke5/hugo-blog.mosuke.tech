@@ -13,6 +13,19 @@ body {
     border: 1px solid #ddd;
 }
 
+.post-description pre {
+    padding: 15px;
+}
+
+.post-description h1 {
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 10px;
+}
+
+.post-description img {
+    max-width: 100%;
+}
+
 .sidebar {
     background-image: url("/image/ep_naturalblack.png")
 }
