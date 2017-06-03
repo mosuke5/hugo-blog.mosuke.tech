@@ -1,7 +1,7 @@
 +++
 Categories = ["Hugo", "ブログ"]
 Description = "はじめてのブログ"
-Tags = ["Hugo"]
+Tags = ["Hugo", "ブログ"]
 date = "2017-05-07T20:58:01+09:00"
 title = "新ブログ検討。テスト投稿"
 author = "mosuke5"
