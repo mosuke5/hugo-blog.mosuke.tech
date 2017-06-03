@@ -20,3 +20,8 @@ deploy:
         token: $GIT_TOKEN
         basedir: public 
         repo: mosuke5-lab/test
+  after-steps:
+    - script:
+      name: delete cloudflare cache
+      code: |
+        sh ./script/delete_cache_all.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
