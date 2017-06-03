@@ -24,4 +24,4 @@ deploy:
     - script:
       name: delete cloudflare cache
       code: |
-        sh ./script/delete_cache_all.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+        sh ./scripts/delete_cache_all.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
