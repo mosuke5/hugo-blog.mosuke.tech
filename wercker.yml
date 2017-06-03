@@ -20,6 +20,7 @@ deploy:
         token: $GIT_TOKEN
         basedir: public 
         repo: mosuke5-lab/mosuke5-lab.github.io
+        branch: master
         domain: blog.mosuke.tech
   after-steps:
     - script:
