@@ -15,12 +15,8 @@ build:
 deploy:
   steps:
     - install-packages:
-        packages: git
-    - script:
-        name: download theme
-        code: |
-            $(git clone https://github.com/mosuke5-lab/mosuke5-lab.github.io ./mosuke5-lab.github.io)
-    - script:
-        name: copy public files
-        code: |
-          cp ./public/* ./mosuke5-lab.github.io/ 
+        packages: git ssh-client
+    - lukevivier/gh-pages@0.2.1:
+        token: $GIT_TOKEN
+        domain: blog.mosuke.tech
+        basedir: public 
