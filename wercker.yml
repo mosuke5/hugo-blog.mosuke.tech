@@ -18,6 +18,5 @@ deploy:
         packages: git ssh-client
     - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN
-        domain: blog.mosuke.tech
         basedir: public 
         repo: mosuke5-lab/test
