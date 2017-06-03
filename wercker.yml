@@ -19,7 +19,7 @@ deploy:
     - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN
         basedir: public 
-        repo: mosuke5-lab/test
+        repo: mosuke5-lab/mosuke5-lab.github.io
   after-steps:
     - script:
       name: delete cloudflare cache
