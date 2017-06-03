@@ -1,0 +1,13 @@
+box: debian
+build:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: download theme
+        code: |
+            $(git clone https://github.com/dplesca/purehugo ./themes/purehugo)
+    - arjen/hugo-build:
+        version: "0.14"
+        theme: purehufo
+        flags: --buildDrafts=false
