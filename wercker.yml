@@ -11,3 +11,16 @@ build:
         version: "0.14"
         theme: purehufo
         flags: --buildDrafts=false
+
+deploy:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: download theme
+        code: |
+            $(git clone https://github.com/mosuke5-lab/mosuke5-lab.github.io ./production/mosuke5-lab.github.io)
+    - script:
+        name: copy public files
+        code: |
+          cp ./public/* ./production/mosuke5-lab.github.ip/ 
