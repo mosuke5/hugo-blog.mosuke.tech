@@ -20,6 +20,7 @@ deploy:
         token: $GIT_TOKEN
         basedir: public 
         repo: mosuke5-lab/mosuke5-lab.github.io
+        domain: blog.mosuke.tech
   after-steps:
     - script:
       name: delete cloudflare cache
