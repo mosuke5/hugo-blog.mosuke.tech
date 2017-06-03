@@ -19,8 +19,8 @@ deploy:
     - script:
         name: download theme
         code: |
-            $(git clone https://github.com/mosuke5-lab/mosuke5-lab.github.io ./production/mosuke5-lab.github.io)
+            $(git clone https://github.com/mosuke5-lab/mosuke5-lab.github.io ./mosuke5-lab.github.io)
     - script:
         name: copy public files
         code: |
-          cp ./public/* ./production/mosuke5-lab.github.ip/ 
+          cp ./public/* ./mosuke5-lab.github.io/ 
