@@ -15,7 +15,7 @@ build:
 deploy:
   steps:
     - install-packages:
-        packages: git ssh-client
+        packages: git ssh-client curl
     - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN
         basedir: public 
