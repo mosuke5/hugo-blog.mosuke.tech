@@ -16,7 +16,7 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client curl
-		- leipert/git-push:
+    - leipert/git-push:
         gh_oauth: $GIT_TOKEN
         repo: mosuke5-lab/test
         branch: master
