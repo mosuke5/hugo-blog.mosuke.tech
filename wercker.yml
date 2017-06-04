@@ -16,9 +16,9 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client curl
-    - lukevivier/gh-pages:
-        token: $GIT_TOKEN
-        basedir: public 
-        repo: mosuke5-lab/mosuke5-lab.github.io
+		- leipert/git-push:
+        gh_oauth: $GIT_TOKEN
+        repo: mosuke5-lab/test
         branch: master
-        domain: blog.mosuke.tech
+        basedir: public
+        gh_pages_domain: blog.mosuke.tech
