@@ -16,14 +16,9 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client curl
-    - lvivier/step-gh-pages:
+    - lukevivier/gh-pages@0.2.1:
         token: $GIT_TOKEN
         basedir: public 
-        repo: mosuke5-lab/mosuke5-lab.github.io
+        repo: mosuke5-lab/test
         branch: master
         domain: blog.mosuke.tech
-  after-steps:
-    - script:
-      name: delete cloudflare cache
-      code: |
-        sh ./scripts/delete_cache_all.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
