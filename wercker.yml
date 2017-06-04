@@ -11,6 +11,11 @@ build:
         version: "0.14"
         theme: purehugo
         flags: --buildDrafts=false
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
 
 deploy:
   steps:
@@ -27,3 +32,7 @@ deploy:
       name: delete cloudflare cache
       code: |
         sh ./scripts/delete_cache_all.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
