@@ -6,6 +6,7 @@
     <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
 
     <meta name="description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
 
     {{.Hugo.Generator}}
     <meta name="twitter:card" content="summary">
