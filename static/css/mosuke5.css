@@ -3,6 +3,10 @@ body {
     font-size: 105%;
 }
 
+.post-description {
+    margin-top: 20px;
+}
+
 .post-description table th {
     background: #f5f5f5;
     font-weight: bold;
@@ -24,6 +28,10 @@ body {
 
 .post-description img {
     max-width: 100%;
+}
+
+.read-more-link {
+    margin-top: 10px;
 }
 
 .sidebar {

@@ -27,7 +27,10 @@
                     </header>
 
                     <div class="post-description">
-                        {{ .Summary }}
+                        {{ substr .Summary 0 300 }}...
+                    </div>
+                    <div class="read-more-link">
+                        <a href="{{ .Permalink }}">全文を読む</a>
                     </div>
                 </section>
                 {{ end }}
