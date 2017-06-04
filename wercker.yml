@@ -22,7 +22,7 @@ deploy:
         branch: master
         basedir: public
         gh_pages_domain: blog.mosuke.tech
-	after-steps:
+  after-steps:
     - script:
       name: delete cloudflare cache
       code: |
