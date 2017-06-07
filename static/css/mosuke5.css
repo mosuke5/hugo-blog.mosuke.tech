@@ -24,10 +24,15 @@ body {
 .post-description h1 {
     border-bottom: solid 1px #ddd;
     padding-bottom: 10px;
+    line-height: 1em;
 }
 
 .post-description img {
     max-width: 100%;
+}
+
+.post-meta {
+    line-height: 1.6em;
 }
 
 .read-more-link {
