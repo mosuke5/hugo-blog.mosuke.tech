@@ -111,21 +111,30 @@ archive = ["2017"]
 これですべてのページのタイトル下に「ブログ移転しました。5秒後にリダイレクトします。（リンク先URL）」が表示し、5秒後にリダイレクトするようにした。
 
 ```javascript
-<p><span style="font-size: 150%; color: blue;">ブログ移転しました。5秒後にリダイレクトします。</span><br />
+<p style="max-width: 1024px; margin: 0 auto;"><span style="font-size: 150%; color: white;">ブログ移転しました。5秒後にリダイレクトします。</span><br />
 <script type="text/javascript" language="javascript">
-// 新urlの作成
-var domain = "https://blog.mosuke.tech";
-var path = location.pathname; // パスの整形
-var url = domain + path; 
+    // 新urlの作成
+    var domain = "https://blog.mosuke.tech";
+    var path = location.pathname;
+    if(path !== '/'){
+    	var url = domain + path; 
+    }else{
+    	var url = domain;
+    }
 
-// リンクhtmlの出力
-document.write("<a href=\"" + url + "\">" + url + "</a></p>");
+     // リンクhtmlの書き出し
+    document.write("<a href=\"" + url + "\">" + url + "</a></p>");
 
-// リダイレクト
-setTimeout("redirect()", 5000);  // 5 sec
-function redirect(){
-   location.href = url; 
-}
+    var doc = document;
+    var link = doc.getElementsByTagName("link")[0];
+    link.href = url;
+
+    // リダイレクト
+    var head = doc.getElementsByTagName("head")[0];
+    var meta = doc.createElement("meta");
+    meta.setAttribute("http-equiv","refresh");
+    meta.setAttribute("content","0; URL="+url);
+    head.appendChild(meta);
 </script>
 ```
 
@@ -150,8 +159,7 @@ Canonicalを変更したりしたが、うまくGoogle Search Consoleに変更�
 なので結局、移行時の手順は以下で進めた。
 
 1. 新サイト(blog.mosuke.tech)を公開
-1. はてなブログにJavaScriptによるリダイレクト処理追加
-1. はてなブログへのクローリングを拒否
+1. はてなブログに`http-equiv="refresh"`を追加してリダイレクト
 
 ## 3-4.CloudFlareのキャッシュ削除
 フロントにCloudFlareを利用していると書いた。  
