@@ -2,7 +2,7 @@ box: debian
 build:
   steps:
     - install-packages:
-        packages: git optipng
+        packages: git optipng libjpeg-progs
     - script:
         name: download theme
         code: |
@@ -14,7 +14,7 @@ build:
     - script:
       name: optimize image size
       code: |
-        sh ./scripts/optimize_png_image.sh
+        sh ./scripts/optimize_image.sh
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
