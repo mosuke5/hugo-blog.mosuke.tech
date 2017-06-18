@@ -40,7 +40,30 @@ title = "脱MacしてThinkPadに乗り換えた。"
 |ディスプレイタイプ|14.0型 WQHD液晶 (2560x1440 IPS 光沢なし) カメラ、マイクロフォン|
 
 # デュアルブート環境
+メインはWindowsなのだがデュアルブートでUbuntuも入れている。
+
 
 # Windows環境
+## エディタ
+
+## SSHクライアント
+いろいろ試したが最終的にrloginに落ち着いた。
+
+### rlogin
+
+### teraterm
+http://moto383.hatenablog.jp/entry/2016/07/03/102400
+
+### putty
+
+### poderosa
+
+## ローカルターミナル
 
 # Ubuntu環境
+## ターミナル
+guake
+
+## 1password
+
+## 
