@@ -2,7 +2,7 @@ baseURL = "https://blog.mosuke.tech"
 languageCode = "ja"
 title = "Goldstine研究所"
 theme = "purehugo"
-Paginate = 10
+Paginate = 5
 
 [permalinks]
 #entry = "/entry/:year/:month/:day/:filename"
