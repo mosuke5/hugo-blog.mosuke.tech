@@ -14,7 +14,7 @@ build:
     - script:
       name: minify css
       code: |
-        yui-compressor --type css -o mosuke5.css mosuke5.css
+        yui-compressor --type css -o ./static/css/mosuke5.css ./static/css/mosuke5.css
     - script:
       name: optimize image size
       code: |
