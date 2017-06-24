@@ -2,7 +2,7 @@ box: debian
 build:
   steps:
     - install-packages:
-        packages: git optipng libjpeg-progs
+        packages: git optipng libjpeg-progs yui-compressor
     - script:
         name: download theme
         code: |
@@ -11,6 +11,10 @@ build:
         version: "0.20"
         theme: purehugo
         flags: --buildDrafts=false
+    - script:
+      name: minify css
+      code: |
+        yui-compressor --type css -o mosuke5.css mosuke5.css
     - script:
       name: optimize image size
       code: |
