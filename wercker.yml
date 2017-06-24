@@ -16,10 +16,6 @@ build:
       code: |
         yui-compressor --type css -o ./static/css/mosuke5.css ./static/css/mosuke5.css
     - script:
-      name: minify css tmp
-      code: |
-        cat ./static/css/mosuke5.css
-    - script:
       name: optimize image size
       code: |
         sh ./scripts/optimize_image.sh
