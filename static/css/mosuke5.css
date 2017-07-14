@@ -62,6 +62,10 @@ body {
     text-transform: none;
 }
 
+.brand-title, h1 {
+    font-size: 1.8em;
+}
+
 .sidebar {
     background-color: #002A38;
 }
