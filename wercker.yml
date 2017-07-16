@@ -34,7 +34,7 @@ deploy:
         repo: mosuke5-lab/mosuke5-lab.github.io
         branch: master
         basedir: public
-        gh_pages_domain: blog.mosuke.tech
+        gh_pages_domain: mosuke.tech
   after-steps:
     - script:
       name: delete cloudflare cache
