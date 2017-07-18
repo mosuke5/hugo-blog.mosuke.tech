@@ -21,6 +21,10 @@ title = "Terraform×Rancherでマルチクラウドを一歩すすめる、を�
 
 <script async class="speakerdeck-embed" data-id="1e0a3455986748d2bad51872254f8d03" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
+##### 2017/7/18 追記  
+動画がでてました。  
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vMBP0Wgyw08" frameborder="0" allowfullscreen></iframe>
+
 ## 内容解説
 ### はじめに
 私は、AlibabaCloudの日本リージョンの担当などを普段しています。  
