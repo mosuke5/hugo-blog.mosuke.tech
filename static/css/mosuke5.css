@@ -114,6 +114,14 @@ body {
     padding: 0;
 }
 
+.latest-posts {
+    margin-bottom: 15px;
+}
+
+.latest-posts h5 {
+    margin-bottom: 3px;
+}
+
 /* hatena blog amazon product css */
 .hatena-asin-detail {
     padding: .8em .6em;

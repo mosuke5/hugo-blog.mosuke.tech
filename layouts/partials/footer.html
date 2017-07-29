@@ -1,5 +1,11 @@
 <hr class="footer-hr" />
-<div class="">
+<div class="latest-posts">
+    <h5>Latest Posts</h5>
+    {{ range first 5 .Site.Pages }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+</div>
+<div class="search">
     <div class="google-search-engine">
         <script>
           (function() {
