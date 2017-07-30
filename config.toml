@@ -8,7 +8,7 @@ Paginate = 5
 #entry = "/entry/:year/:month/:day/:filename"
 
 [params]
-profileSite = "https://about.mosuke.tech"
+profileSite = "https://mosuke.tech"
 hideShareOptions = true
 description = "mosuke5's blog"
 google_analytics = "UA-99596316-1"
