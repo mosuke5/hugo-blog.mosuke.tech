@@ -95,7 +95,7 @@ Description = " 1.はじめに  Amazon S3をはじめとして、オブジェク
 Tags = ["オブジェクトストレージ", "ObjectStorage", "クラウド", "S3"]
 date = "2017-03-18T18:22:00+9:00"
 title = "万能じゃない。オブジェクトストレージの仕組みと利用を正しく理解する"
-author = "m通知osuke5"
+author = "mosuke5"
 archive = ["2017"]
 +++
 
@@ -183,3 +183,9 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$1/purge_cache" \
 あとは、はてなブログからの移行でだいぶSEOあたり下がったと思う。  
 そのあたりの挽回をどうするかはこれからの検討課題。  
 あとは、デプロイからCloudFlareのキャッシュ削除の流れはぜひ自動化していきたい。
+
+# 追記
+その後の取り組みを追記しておきます。
+
+- [Werckerを使ってHugo+Github PagesのCI/CD環境を整備する](https://blog.mosuke.tech/entry/2017/06/04/hugo_deployment_with_wercker/)
+- [Hugo、PageSpeed対策で自動で画像を圧縮する](https://blog.mosuke.tech/entry/2017/06/12/hugo_optimize_image/)
