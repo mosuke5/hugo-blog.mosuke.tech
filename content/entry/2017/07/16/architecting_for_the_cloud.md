@@ -7,7 +7,7 @@ description = "本記事は、AWSソリューションアーキテクト認定�
 draft = false
 image = ""
 tags = ["Tech",""]
-title = "【更新中】Architecting for the Cloud -AWS Best Pravtices-を解読する"
+title = "【更新中】Architecting for the Cloud -AWS Best Practices-を解読する"
 
 +++
 # 本記事について
