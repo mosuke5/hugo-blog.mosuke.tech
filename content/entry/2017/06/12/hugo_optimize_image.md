@@ -10,7 +10,6 @@ tags = ["Tech"]
 title = "Hugo、PageSpeed対策で自動で画像を圧縮する"
 +++
 
-# はじめに
 最近Hugoを使ったブログに移転した。  
 「[はてなブログからHugoに移行。その際に行ったあれこれ。](https://blog.mosuke.tech/entry/2017/05/28/blog_migration/)」
 
@@ -18,6 +17,8 @@ title = "Hugo、PageSpeed対策で自動で画像を圧縮する"
 PageSpeedで画像を最適化できるよっていわれたので、画像を圧縮させようと思った。  
 しかし、気がつくと忘れてしまったりするので、  
 Werckerを使って自動で最適化させることにした。
+
+<!--more-->
 
 # WerckerでのCI/CD環境
 まず、Werckerを使ったCI/CD環境だが、こちらを参考にしてほしい。  

@@ -28,7 +28,8 @@
                     </header>
 
                     <div class="post-description">
-                        {{ .Content }}
+                        {{ .Summary }}
+                        <a href="{{ .Permalink }}">続きを読む</a>
                     </div>
                 </section>
                 {{ end }}

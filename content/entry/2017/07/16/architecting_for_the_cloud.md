@@ -10,8 +10,9 @@ tags = ["Tech",""]
 title = "【更新中】Architecting for the Cloud -AWS Best Practices-を解読する"
 
 +++
-# 本記事について
 本記事は、AWSソリューションアーキテクト認定試験の試験勉強として、「[Architecting for the Cloud](https://d0.awsstatic.com/whitepapers/AWS_Cloud_Best_Practices.pdf)」を読んでいて、そのまとめです。完全な翻訳ではありません。私の勝手な解釈もいくぶんか含んでいます。その点、理解した上でご自身の学習の参考にしてください。
+
+<!--more-->
 
 ---
 

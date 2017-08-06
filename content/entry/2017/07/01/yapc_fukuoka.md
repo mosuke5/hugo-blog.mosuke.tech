@@ -15,6 +15,8 @@ YAPC::Fukuokaに参加してきた。
 今回は前夜祭にも参加してLTもしてきたので報告する。  
 ***「本当に最適なインフラ選べてる？Rancherでマルチクラウドをやってみる（超入門編）」***
 
+<!--more-->
+
 <script async class="speakerdeck-embed" data-id="b0e9fbdf26e44b0ab2ca4a39207d33e9" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
 ## 登壇
