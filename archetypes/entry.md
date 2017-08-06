@@ -1,11 +1,11 @@
 +++
 categories = ["", ""]
-date = ""
+date = "{{ .Date }}"
 description = ""
 draft = true
 image = ""
-tags = ["", ""]
+tags = ["Tech"]
 title = ""
 author = "mosuke5"
-archive = ["", ""]
+archive = ["{{ now.Format "2006"}}"]
 +++
