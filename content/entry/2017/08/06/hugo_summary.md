@@ -2,7 +2,7 @@
 categories = ["Hugo", "ブログ"]
 date = "2017-08-06T15:38:05+09:00"
 description = "Hugoのサマリー機能(Summary)の理解と、日本語で使うときの注意点などをまとめました。また、なぜサマリー機能が重要化、ブログサイトのパフォーマンスの観点から実際に行った方法などを開設します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Hugoのサマリー機能を理解する。そしてブログのパフォーマンス改善へ。"
