@@ -41,6 +41,7 @@ body {
 
 .post-description pre {
     padding: 15px;
+    border: none;
 }
 
 .post-description h1 {
