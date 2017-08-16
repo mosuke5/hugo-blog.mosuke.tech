@@ -55,6 +55,15 @@ body {
     max-width: 100%;
 }
 
+.post-title {
+    font-size: 1.5em;
+}
+
+.post-category {
+    background: #b7b7b7;
+    border-radius: 10px;
+}
+
 .post-meta {
     line-height: 1.6em;
 }
