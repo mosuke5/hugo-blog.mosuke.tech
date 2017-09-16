@@ -1,8 +1,8 @@
 +++
 categories = ["クラウド", "Alibaba Cloud", "ログ"]
 date = "2017-09-14T12:59:25+09:00"
-description = ""
-draft = true
+description = "クラウド環境でのロギングとAlibaba CloudでのロギングソリューションについてMasterCloudというイベントで話してきました。スライド動画を公開します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "クラウド環境でのロギングとAlibaba Cloudでのロギングソリューション、についてMasterCloudで話してきた"
