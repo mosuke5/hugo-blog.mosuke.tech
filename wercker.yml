@@ -31,11 +31,11 @@ deploy:
         branch: master
         basedir: public
         gh_pages_domain: blog.mosuke.tech
-  after-steps:
     - script:
       name: delete cloudflare cache in top page
       code: |
         sh ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+  after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
