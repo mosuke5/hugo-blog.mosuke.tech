@@ -33,9 +33,9 @@ deploy:
         gh_pages_domain: blog.mosuke.tech
   after-steps:
     - script:
-      name: delete cloudflare cache
+      name: delete cloudflare cache in top page
       code: |
-        sh ./scripts/delete_cache_all.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+        sh ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
     - slack-notifier:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
