@@ -6,20 +6,33 @@
     {{ end }}
 </div>
 <div class="search">
-    <div class="google-search-engine">
-        <script>
-          (function() {
-            var cx = '012458736543810277235:x4juxtghjhg';
-            var gcse = document.createElement('script');
-            gcse.type = 'text/javascript';
-            gcse.async = true;
-            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(gcse, s);
-          })();
-        </script>
-		    <gcse:search></gcse:search>
+    <h5>Search(Beta)</h5>
+    <p>この機能は、ElasticSearchを用いた全文検索エンジンです。Beta版。</p>
+    <div class="gill-search-engine">
+        <input type="text" id="search-textbox" placeholder="Search">
+        <button id="search-btn">Search</button>
     </div>
+    <div id="search-result"></div>
+</div>
+<div class="search">
+        <h5>Search(Google)</h5>
+        <div class="google-search-engine">
+            <script>
+                  (function() {
+                    var cx = '012458736543810277235:x4juxtghjhg';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </div>
+<div class="links">
+    <h5>Links</h5>
     <a class="pure-button" href="{{ .Site.Params.profileSite }}"><i class="fa fa-user"></i> mosuke5</a>
     <a class="pure-button" href="/about/"><i class="fa fa-info-circle"></i> About this site</a>
     <a class="pure-button" href="/archive/"><i class="fa fa-archive"></i> Arvhive</a>
@@ -33,3 +46,29 @@
     </div>
 </div>
 <script src="{{ .Site.BaseURL }}/js/all.min.js"></script>
+<script>
+        $(function() {
+            $('#search-btn').click(function(e) {
+                $('#search-result').empty();
+                search($('#search-textbox').val())
+                    .done(function(result){
+                        $.each(result.hits.hits, function(){
+                            $("#search-result").append("<li><a href=" + this._source.uri +">"+ this._source.title +"</a>("+this._score+")</li>");
+                        })
+                    }).fail(function(){
+                        $('#search-result').append("<p>error</p>");
+                    })
+            });
+        });
+        function search(query){
+            return $.ajax({
+                type: "GET",
+                url: "https://gill-search.mosuke.tech/search",
+                data: "q=" + query,
+                dataType: "json",
+                success: function(res){
+                    console.log(res);
+                }
+            })
+        }
+        </script>
