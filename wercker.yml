@@ -11,10 +11,10 @@ build:
         version: "0.27.1"
         theme: purehugo
         flags: --buildDrafts=false
-    - script:
-      name: optimize image size
-      code: |
-        sh ./scripts/optimize_image.sh
+    #- script:
+    #  name: optimize image size
+    #  code: |
+    #    sh ./scripts/optimize_image.sh
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
@@ -54,7 +54,7 @@ update-gillsearch:
         git clone https://github.com/mosuke5/hugo-entry-to-elasticsearch-json.git
     - script:
       code: |
-        cd hugo-entry-to-elasticsearch-json & bundle install
+        cd hugo-entry-to-elasticsearch-json && bundle install
     - script:
       code: |
         sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
