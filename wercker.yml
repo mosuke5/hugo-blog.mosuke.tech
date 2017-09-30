@@ -11,7 +11,7 @@ build:
         version: "0.27.1"
         theme: purehugo
         flags: --buildDrafts=false
-    #- script:
+    ##- script:
     #  name: optimize image size
     #  code: |
     #    sh ./scripts/optimize_image.sh
