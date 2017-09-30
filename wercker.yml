@@ -40,3 +40,21 @@ deploy:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+update-gillsearch:
+  steps:
+    - install-packages:
+        packages: ruby git ssh-client curl
+    - script:
+      name: install bundler
+      code: |
+        gem install bundler
+    - script:
+      name: clone repository
+      code: |
+        git clone https://github.com/mosuke5/hugo-entry-to-elasticsearch-json.git
+    - script:
+      code: |
+        cd hugo-entry-to-elasticsearch-json & bundle install
+    - script:
+      code: |
+        sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
