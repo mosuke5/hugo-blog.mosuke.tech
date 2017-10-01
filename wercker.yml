@@ -3,23 +3,23 @@ build:
   steps:
     - install-packages:
         packages: git optipng libjpeg-progs yui-compressor
-  #  - script:
-  #      name: download theme
-  #      code: |
-  #          $(git clone https://github.com/dplesca/purehugo ./themes/purehugo)
-  #  - arjen/hugo-build:
-  #      version: "0.27.1"
-  #      theme: purehugo
-  #      flags: --buildDrafts=false
-  #  - script:
-  #    name: optimize image size
-  #    code: |
-  #      sh ./scripts/optimize_image.sh
-  #after-steps:
-  #  - slack-notifier:
-  #    channel: $SLACK_CHANNEL
-  #    url: $SLACK_URL
-  #    username: wercker_bot
+    - script:
+        name: download theme
+        code: |
+            $(git clone https://github.com/dplesca/purehugo ./themes/purehugo)
+    - arjen/hugo-build:
+        version: "0.27.1"
+        theme: purehugo
+        flags: --buildDrafts=false
+    - script:
+      name: optimize image size
+      code: |
+        sh ./scripts/optimize_image.sh
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
 
 deploy:
   steps:
