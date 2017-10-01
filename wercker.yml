@@ -59,4 +59,4 @@ update-gillsearch:
     - script:
       name: create entries file
       code: |
-        cd hugo-entry-to-elasticsearch-json && sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
+        LANG=C.UTF-8 && cd hugo-entry-to-elasticsearch-json && sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
