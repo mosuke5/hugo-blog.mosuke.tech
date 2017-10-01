@@ -60,3 +60,7 @@ update-gillsearch:
       name: create entries file
       code: |
         cd hugo-entry-to-elasticsearch-json && RUBYOPT=-EUTF-8 sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
+    - script:
+      name: update entries data
+      code: |
+        cd hugo-entry-to-elasticsearch-json && curl -u ${API_BASIC_USER}:${API_BASIC_PASSWORD} -XPOST 'https://gill-search.mosuke.tech/update' -F "file=@entries.json"
