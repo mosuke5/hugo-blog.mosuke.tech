@@ -43,7 +43,7 @@ deploy:
 update-gillsearch:
   steps:
     - install-packages:
-        packages: git ssh-client curl make
+        packages: git ssh-client curl cmake
     - script:
       name: install bundler
       code: |
