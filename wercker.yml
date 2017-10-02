@@ -1,4 +1,4 @@
-box: debian
+box: ruby:2.3
 build:
   steps:
     - install-packages:
@@ -43,7 +43,7 @@ deploy:
 update-gillsearch:
   steps:
     - install-packages:
-        packages: ruby git ssh-client curl
+        packages: git cmake
     - script:
       name: install bundler
       code: |
@@ -53,8 +53,14 @@ update-gillsearch:
       code: |
         git clone https://github.com/mosuke5/hugo-entry-to-elasticsearch-json.git
     - script:
+      name: bundle install
       code: |
-        cd hugo-entry-to-elasticsearch-json & bundle install
+        cd hugo-entry-to-elasticsearch-json && bundle install
     - script:
+      name: create entries file
       code: |
-        sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
+        cd hugo-entry-to-elasticsearch-json && RUBYOPT=-EUTF-8 sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
+    - script:
+      name: update entries data
+      code: |
+        cd hugo-entry-to-elasticsearch-json && curl -u ${API_BASIC_USER}:${API_BASIC_PASSWORD} -XPOST 'https://gill-search.mosuke.tech/update' -F "file=@entries.json"
