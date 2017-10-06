@@ -1,8 +1,8 @@
 +++
 categories = ["Alibaba Cloud", "nobolycloud", "ポッドキャスト"]
-date = "2017-09-30T18:31:43+09:00"
+date = "2017-10-06T09:10:43+09:00"
 description = "nobolycloudのポッドキャストでAlibaba Cloudについて話してきました。Alibaba Cloudの「今」を素直にお伝えしました。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "nobolycloudのポッドキャストでAlibaba Cloudについて話してきた"
@@ -17,7 +17,8 @@ archive = ["2017"]
 <!--more-->
 
 ## 配信
-ポッドキャストはこちらから聞くことができます。
+ポッドキャストはこちらから聞くことができます。  
+[『Track 19 SBCloud森さんにAlibaba Cloudの紹介を聞こう』のメモ](https://cloudinfra.audio/track19-74e652f5afcb)
 
 ## 内容
 主に下記のようなことについて話しました。
