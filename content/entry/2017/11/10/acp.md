@@ -17,7 +17,7 @@ Alibaba Cloudにも認定試験あるの知っていますか？
 <!--more-->
 
 記事はこちらになります。そもそもAlibaba Cloudの認定試験についてや合格するための対策や心構えなどかきました。  
-https://techblog.sbcloud.co.jp/2017/11/06/acp/
+[SBCloud Engineers' Blog「Alibaba Cloudの認定試験、ACPを受けてきた」](https://techblog.sbcloud.co.jp/2017/11/06/acp/)
 
 ## おまけ
 これでAWSとAlibaba Cloudの認定資格ゲットです。  
