@@ -7,7 +7,7 @@
     <meta name="msvalidate.01" content="9220008783970B337CA4AE8362168354" />
     <meta name="description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
-    <link rel="alternate" hreflang="ja" href="{{ .baseURL }}" />
+    <link rel="alternate" hreflang="ja" href="{{ .Site.BaseURL }}" />
     {{.Hugo.Generator}}
     <meta name="twitter:card" content="summary">
     {{ with .Site.Params.twitter }}<meta name="twitter:site" content="{{ . }}" />{{ end }}
