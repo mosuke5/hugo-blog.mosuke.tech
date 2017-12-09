@@ -2,7 +2,7 @@
 categories = ["AWS", "Cloud9", "ブログ", "Hugo"]
 date = "2017-12-05T14:53:46Z"
 description = "AWS Cloud9でブログを書くことについて、AWS Cloud9で書いてみました。最高です。Hugoで管理しているブログをCloud9で書いてデプロイします。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "AWS Cloud9でブログを書くことについて、AWS Cloud9で書いてみた"
