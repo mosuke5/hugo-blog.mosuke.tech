@@ -1,0 +1,71 @@
++++
+categories = ["振り返り"]
+date = "2017-12-17T06:44:07Z"
+description = "2017年を振り返ってみます。Alibaba Cloudの日本展開のはじめの１年。そしてエンジニアコミュニティへの貢献。なかなか楽しい１年でした。"
+draft = true
+image = ""
+tags = ["Tech"]
+title = "「進」2017年振り返り。"
+author = "mosuke5"
+archive = ["2017"]
++++
+
+もうはやいもので2017年も終わりです。  
+毎年恒例の振り返りブログを書いていきたいと思います。
+
+今年を一言で表すなら「進」とかそんな感じでしょうか。  
+新しい事業のサービスを開始し推し進めたことや、積極的にイベントなどで表に出ていったことからです。  
+１年前には想像していなかった動き方ができて、なかなか楽しい１年だったかなと思います。
+
+<!--more-->
+
+## 過去の振り返りブログ
+気になる過去の振り返りはこちらです。
+
+- 2014年: 「[2014年を思い返して](https://blog.mosuke.tech/entry/2015/01/01/161826/)」
+- 2015年: 「[2015年振り返り](https://blog.mosuke.tech/entry/2015/12/28/150042/)」
+- 2016年: 「[「嵐」2016年振り返り](https://blog.mosuke.tech/entry/2016/12/25/142744/)」
+
+## 社外との「コミュニティ」
+まず仕事的なところからみていきます。ぼくはAlibaba Cloud日本展開の仕事をしていますが、
+2016年12月15日にサービスを開始し2017年はまさに「はじめの１年」ということで活動してきました。
+簡単にソリューションアーキテクトの仕事をご紹介すると、Alibaba Cloudを利用、導入、活用していただくためのあらゆる活動をするのが我々のソリューションアーキテクトです。
+主なところだと、法人のお客さんへのビジネス課題をヒアリングしてクラウドでの解決策の提案だったり、導入フェーズの支援などといったエンタープライズITの層へのアプローチがあります。更には、もっとエンジニア、デベロッパー層へのアプローチとしてテックイベントに自分自身がいちエンジニアとして登壇してアピールしたりしてきました。
+
+ビジネスパートナーをはじめ、エンジニアコミュニティなど様々なリレーションシップを築けたのは今年の大きな成果だと思っています。そのなかでも一番大きなつながりをもてたのがMasterCloudだったかなと思ってます。MasterCloudはモビンギという会社がリードスポンサーを行っている、クラウドテクノロジーに関するコミュニティ（イベント、勉強会）です。そこで、はじめはいち参加者として出席したり登壇していたのですが、気がついたらオーガナイザーのひとりになっていて、12月12日にはAlibaba Cloud特集のMasterCloudを開催したりと、コミュニティ運営活動にも関われました。Alibaba Cloudうんぬんではなく、純粋にクラウド技術の発展にコミュニティという側面で関われたことはとても刺激でした。なんといって、このイベントには業界の著名人もよく来てくださり、いろんなコミュニケーションがとれたことはとても感謝しています。
+
+
+## 技術的なところ
+当たり前ではあるが、クラウドプロバイダーで働いているので、クラウドに関する知見は多く得たし、よく勉強したかなと思います。自社のAlibaba CloudはもちろんAWSの研修や資格もとれたことはとても自信になっています。詳しくはしたのブログを読んでほしいが、Alibaba Cloudの認定試験はまだ英語のため、びびってAWSの模擬試験を英語で受けて必死に練習したりしていたのは今でもいい思い出ですね。
+
+- [Alibaba Cloud Professionalの認定取ってきた！](https://blog.mosuke.tech/entry/2017/11/10/acp/)
+- [英語でAWSソリューションアーキテクト認定の模擬試験を受けてみた](https://blog.mosuke.tech/entry/2017/08/04/aws_certificate_practice_exam/)
+- [【合格】AWSソリューションアーキテクト Associate認定試験](https://blog.mosuke.tech/entry/2017/09/18/aws_solution_architect/)
+
+オープンな技術なところだと、Terraform, Rancherあたりはよく触って、Infrastructures as CodeそしてDockerまわりは引き続き興味ある分野として追いかけていました。特にTerraformについては、手に馴染むほど書きました。ServerlessConfにいって、今後のサーバレスな開発でよりTerraformは重要性が増してくるなと考えています。この分野は引き続き注目していきたい。
+
+このブログ関連も進捗がありました。去年の振り返りブログのときはまだはてなブログを使っていたが、Hugoを使ったStatic Webに切り替えました。ブログを書くだけでなくブログの仕組み作りも楽しめてなかなかおもしろいです。いまや、Cloud9で記事を書いて、GithubへPushすれば、Werckerが動作して自動的にデプロイされるようになっています。  
+検索エンジン部分はElasticSearchで自作しています。インフラはTerraformで管理して、アプリはDockerベースで動かしていて完全に勉強として利用しています。
+
+最後に、テクニカル技術じゃないけど、スキルとしての英語。ここは今年はまずまず頑張ったんじゃないかなと思っています。
+上で書いた認定試験が英語だったからというのもあるが、英会話も含め全体的に英語の基礎力向上は意識していました。
+語学は使わないとのびないし、時間がかかるので、辛抱強く勉強して機会あればどんどんしゃべりにいきます。
+
+## その他
+その他プライベート的なことを雑にまとめておくと、たくさんゲームを買った年だったと思う。
+任天堂Switchではゼルダ、Splatoon、マリオオデッセイ、3DSではポケモンサンムーン、ウルトラさんムーンとたくさんゲームを楽しみました。中でもゼルダでの久々のゲームでの感動、そしてポケモン対戦のおもしろさ、ここにどっぷりハマってしまってしまいました。
+料理もある程度しました。ベスト料理を貼っておきます。写真的な意味でもパエリアがベストかな。
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink=https://www.instagram.com/p/BTjIGtsBQ2G/ data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BTjIGtsBQ2G/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">もう一度#パエリア #おいしい #アサリより鶏肉 #男の手料理</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="&lt;Macro &#39;profile_link&#39;&gt;" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> もーすけ</a>さん(@mosuke5)がシェアした投稿 - <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-05-01T11:56:58+00:00">2017 5月 1 4:56午前 PDT</time></p></div></blockquote> <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+## 2018年について
+来年の豊富とか、やりたいことについて。  
+まず１つ目が、「副業」です。会社的に副業が認められるようになったのもあり、副業を本格的に検討しています。
+もうすでに、とある仕事のめどがあっていま条件を調整中なので、来年早々には現実的になると思うが楽しみにしています。
+今の時代、１つの会社、１つの仕事、１つの働き方に縛られる必要はないと思っているので、「新しい働き方」としてここは積極的に実績をだしていきたいと思っています。
+
+２つ目は「もっと技術に触れる」です。  
+今年は技術に触れる時間はすこし少なかったかなと思います。
+だから悪いとかそういうことではなくて、ソリューションアーキテクトという仕事、お客さんに技術を伝えたり、イベントスピーカをやることも多いのですが、エンジニアの肌感覚がなくなってくると話のおもしろみも説得力も減ってくるのを感じているのもあります。
+また、クラウドベンダーのサービスじゃなくて、純粋にオープンな技術に対してもっと触れていきたいと思っています。
+
+では、来年もよろしくお願いします。
