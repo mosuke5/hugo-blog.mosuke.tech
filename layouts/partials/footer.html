@@ -10,7 +10,6 @@
     <p>この機能は、ElasticSearchを用いた全文検索エンジンです。Beta版。</p>
     <div class="gill-search-engine">
         <input type="text" id="search-textbox" placeholder="Search">
-        <button id="search-btn">Search</button>
     </div>
     <div id="search-result"></div>
 </div>
@@ -30,28 +29,30 @@
 </div>
 <script src="{{ .Site.BaseURL }}/js/all.min.js"></script>
 <script>
-        $(function() {
-            $('#search-btn').click(function(e) {
-                $('#search-result').empty();
-                search($('#search-textbox').val())
-                    .done(function(result){
-                        $.each(result.hits.hits, function(){
-                            $("#search-result").append("<li><a href=" + this._source.uri +">"+ this._source.title +"</a>("+this._score+")</li>");
-                        })
-                    }).fail(function(){
-                        $('#search-result').append("<p>error</p>");
-                    })
-            });
-        });
-        function search(query){
-            return $.ajax({
-                type: "GET",
-                url: "https://gill-search.mosuke.tech/search",
-                data: "q=" + query,
-                dataType: "json",
-                success: function(res){
-                    console.log(res);
-                }
+$(function() {
+    $('#search-textbox').keypress(function(e) {
+        if(e.which == 13){
+            $('#search-result').empty();
+            search($('#search-textbox').val())
+                .done(function(result){
+                $.each(result.hits.hits, function(){
+                    $("#search-result").append("<div class=\"search-result-list\"><div class=\"search-result-title\"><a href=" + this._source.uri +">"+ this._source.title +"</a><span class=\"search-result-score\"> ("+this._score+")</span></div><div class=\"search-result-description\">" + this._source.description + "</div></div>");
+                })
+            }).fail(function(){
+                $('#search-result').append("<p>error</p>");
             })
         }
-        </script>
+    });
+});
+function search(query){
+    return $.ajax({
+        type: "GET",
+        url: "https://gill-search.mosuke.tech/search",
+        data: "q=" + query,
+        dataType: "json",
+        success: function(res){
+            console.log(res);
+        }
+    })
+}
+</script>
