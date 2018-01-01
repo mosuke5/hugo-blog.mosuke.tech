@@ -9,3 +9,9 @@ Following are ci/cd steps.
 1. Build: execute `hugo` and check if build succeed or not.
 2. Deploy: deploy to 'mosuke5-lab/mosuke5-lab.github.io' by using 'lvivier/step-gh-pages'.
 3. After Deploy: clear cache in cloudflare.
+
+# how to use
+```
+// resize image
+$ mogrify -resize 600 ./static/image/xxxxx.png
+```
