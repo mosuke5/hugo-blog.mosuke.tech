@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud", "MVP"]
 date = "2018-01-05T11:18:51Z"
 description = "Alibaba CloudのMVPに選ばれました。日本ではもちろん初です。ノミネートの特典やノミネートされるまで、そしてこれからについてご紹介します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Alibaba Cloud MVPを獲得してきた話"
