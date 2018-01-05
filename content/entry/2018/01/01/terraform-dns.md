@@ -5,7 +5,7 @@ description = "TerraformでCloudFlareのDNSの設定を行います。AWSのEIP�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "TerraformでDNS設定を操る"
+title = "TerraformでCloudFlareのDNS設定を操る"
 author = "mosuke5"
 archive = ["2018"]
 +++
