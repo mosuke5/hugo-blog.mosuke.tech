@@ -1,9 +1,15 @@
 <hr class="footer-hr" />
-<div class="latest-posts">
+<div class="footer-posts">
     <h5>Latest Posts</h5>
     {{ range first 5 .Site.Pages }}
         <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
     {{ end }}
+</div>
+<div class="footer-posts">
+    <h5>Featured Posts</h5>
+    <li><a href="https://blog.mosuke.tech/entry/2016/06/04/180122/">Nginxの仕組みについて入門</a></li>
+    <li><a href="https://blog.mosuke.tech/entry/2017/03/18/182252/">万能じゃない。オブジェクトストレージの仕組みと利用を正しく理解する</a></li>
+    <li><a href="https://blog.mosuke.tech/entry/2015/07/19/135844/">DockerとWebSocketを使って、vimの設定をブラウザで即体感できるサービスを作った</a></li>
 </div>
 <div class="search">
     <h5>Search(Beta)</h5>
