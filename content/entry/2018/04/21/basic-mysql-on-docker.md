@@ -2,7 +2,7 @@
 categories = ["docker", "mysql"]
 date = "2018-04-21T18:25:49+09:00"
 description = "Dockerを使ってMySQLをセットアップする際の知見について。ユーザやデータベスの作成、テストデータのインポートなどの方法。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Docker上でMySQLを利用する際のセットアップについて"
