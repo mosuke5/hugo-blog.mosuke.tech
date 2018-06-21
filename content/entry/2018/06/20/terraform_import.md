@@ -2,7 +2,7 @@
 categories = ["Terraform", "import"]
 date = "2018-06-20T11:08:12+09:00"
 description = "Terraformのimport機能の使い方と使う際の注意ポイントについてです。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Terraformのimportの使い方と注意ポイント"
@@ -34,12 +34,33 @@ resource "alicloud_vpc" "vpc" {
 つぎにリソースをimportしていきます。リソースをimportするには、対象のリソースを特定する必要があるため、リソースのIDが必要になります。既存でリソースを作っている場合には、コンソールやAPIなどを使って確認する必要があります。
 
 ```
-terraform import alicloud_vpc.vpc vpc-xxxxxxxxxxxxxx
+$ terraform import alicloud_vpc.vpc vpc-6webta8bkuhm33t4aax0j
+alicloud_vpc.vpc: Import complete!
+  Imported alicloud_vpc (ID: vpc-6webta8bkuhm33t4aax0j)
+alicloud_vpc.vpc: Refreshing state... (ID: vpc-6webta8bkuhm33t4aax0j)
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
 ```
 
-そうすると、Terraformにおいて一番重要とも言えるstateファイルに、importしたリソースが書き込まれていることが確認できます。
+そうすると、Terraformにおいて一番重要とも言えるstateファイルに、  
+importしたリソースが書き込まれていることが確認できます。
 
-しかし、importを利用後に注意があります。  
+```
+$ terraform state show
+terraform state show
+id              = vpc-6webta8bkuhm33t4aax0j
+cidr_block      = 192.168.0.0/16
+description     = This is test_vpc.
+name            = test_vpc
+route_table_id  = vtb-6wehepczi546xvuboemxx
+router_id       = vrt-6we56st0wcuucpiglodk4
+router_table_id = vtb-6wehepczi546xvuboemxx
+```
+
+しかし、importを利用には注意点があります。  
 現状(version 0.11.7 現在)では、importしたリソースについて、stateファイルにそのリソースを書き込んでくれるのみとなっています。  
 つまりどういうことかというと、現状terraformの定義ファイルにはVPCは空の定義のため、Stateファイルとの差がでてしまっています。現状とコードに差分がある状態です。
 この状態で、実行しても必須項目の定義もされていないためエラーになってしまいます。
@@ -50,7 +71,10 @@ importしたあと、実際に取り込んだリソースと定義を合わせ�
 ```
 # terraform.tf
 resource "alicloud_vpc" "vpc" {
+  name        = "test_vpc"
+  description = "This is test_vpc."
+  cidr_block  = "192.168.0.0/16"
 }
 ```
 
-## まとめ
+以上、注意点含めてぜひ活用していってください。
