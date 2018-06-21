@@ -1,5 +1,5 @@
 +++
-categories = ["Terraform", "import", "AWS"]
+categories = ["Terraform", "import"]
 date = "2018-06-20T11:08:12+09:00"
 description = "Terraformのimport機能の使い方と使う際の注意ポイントについてです。"
 draft = true
@@ -44,10 +44,13 @@ terraform import alicloud_vpc.vpc vpc-xxxxxxxxxxxxxx
 つまりどういうことかというと、現状terraformの定義ファイルにはVPCは空の定義のため、Stateファイルとの差がでてしまっています。現状とコードに差分がある状態です。
 この状態で、実行しても必須項目の定義もされていないためエラーになってしまいます。
 
-importしたあと、実際に取り込んだリソースと定義を合わせていく必要があります。
+importしたあと、実際に取り込んだリソースと定義を合わせていく必要があります。  
 以下のように設定を足していく必要があります。
 
 ```
+# terraform.tf
+resource "alicloud_vpc" "vpc" {
+}
 ```
 
 ## まとめ
