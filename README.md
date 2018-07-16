@@ -12,6 +12,12 @@ Following are ci/cd steps.
 
 # how to use
 ```
+// set up
+$ git clone https://github.com/dplesca/purehugo themes/purehugo
+$ hugo server
+```
+
+```
 // resize image
 $ mogrify -resize 600 ./static/image/xxxxx.png
 ```
