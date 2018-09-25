@@ -79,7 +79,7 @@ Alibaba Cloudを調べていて一番勘違いしやすいものが、ECSイン�
 Alibaba Cloudの仮想サーバサービスElastic Compute Service(通称 ECS)では、インスタンスのタイプファミリーが、大きく「Enterprise-level Instance」と「Entry-level Instance」の２つに分かれています。  
 このEnterprise-level Instanceの説明では「Dedicated Resource」と書かれています。この意味合いがよく勘違いされがちです。
 
-Enterpsise-levl Instanceでは、「排他的で安定したコンピューティング、ストレージ、およびネットワークリソースで設計」しているため、パフォーマンスを安定的（Stable）にできるといっています。この意味を英語「Dedicated Resource」と記載されていることがあります。  
+Enterpsise-level Instanceでは、「排他的で安定したコンピューティング、ストレージ、およびネットワークリソースで設計」しているため、パフォーマンスを安定的（Stable）にできるといっています。この意味を英語「Dedicated Resource」と記載されていることがあります。  
 物理ホストを専有しているわけでも、ベアメタルインスタンスというわけでもなく、仮想サーバで物理ホストはほかのユーザと共有ですが、利用できるリソースが「専有（Dedicated）」ということを意味しているようです。
 
 「Enterprise-level Instance」と「Entry-level Instance」の違いについては以下参照しましょう。  
