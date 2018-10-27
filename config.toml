@@ -4,6 +4,7 @@ title = "Goldstine研究所"
 theme = "purehugo"
 Paginate = 5
 hasCJKLanguage = true
+disqusShortname = "mosuke5-techblog"
 
 [permalinks]
 #entry = "/entry/:year/:month/:day/:filename"
