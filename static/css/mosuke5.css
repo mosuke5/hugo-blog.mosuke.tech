@@ -3,6 +3,10 @@ body {
     font-size: 105%;
 }
 
+.post-title {
+    font-size: 1.5em;
+}
+
 .post-description {
     margin-top: 20px;
 }
@@ -30,6 +34,11 @@ body {
 
 .post-description img {
     max-width: 100%;
+}
+
+.post-category {
+    background: #b7b7b7;
+    border-radius: 10px;
 }
 
 .post-meta {
