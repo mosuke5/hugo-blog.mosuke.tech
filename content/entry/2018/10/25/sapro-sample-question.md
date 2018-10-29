@@ -41,9 +41,9 @@ ReadReplica機能では非同期レプリケーション。
 <a target="_blank" href="https://acloud.guru/forums/aws-certified-solutions-architect-professional/discussion/-KKgMglgtNynF-JbG0CG/let's_check_our_capability">問題はこちら</a>
 
 オンプレを拡張する形でAWSを使い始めたが、マネジメントコンソールへのアクセスをさせるためにIAMユーザを発行したくない場合、どのように対応するのがよいか。
-以下のスライドがわかりやすいが、オンプレ側の認証機能を使ってマネジメントコンソールへログインするとよさそう。
+以下のスライドのP40がわかりやすいが、オンプレ側の認証機能を使ってマネジメントコンソールへログインするとよさそう。
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/ckHfXdhUdzH50H?startSlide=40" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/AmazonWebServicesJapan/aws-black-belt-online-seminar-2016-awsactive-directory" title="AWS Black Belt Online Seminar 2016 AWS上でのActive Directory構築" target="_blank">AWS Black Belt Online Seminar 2016 AWS上でのActive Directory構築</a> </strong> from <strong><a href="//www.slideshare.net/AmazonWebServicesJapan" target="_blank">Amazon Web Services Japan</a></strong> </div>
+<a href="//www.slideshare.net/AmazonWebServicesJapan/aws-black-belt-online-seminar-2016-awsactive-directory" title="AWS Black Belt Online Seminar 2016 AWS上でのActive Directory構築" target="_blank">AWS Black Belt Online Seminar 2016 AWS上でのActive Directory構築</a>
 
 ## 4.Kinesisを使ったアプリケーションのデータロスト防止に関する問題
 <a target="_blank" href="https://acloud.guru/forums/aws-certified-solutions-architect-professional/discussion/-KF8BENp0vSmhLllUuCG/practice-exam-question-3?answer=-KHvjUhFhJE_TJHpc7wD">問題はこちら</a>
@@ -159,14 +159,10 @@ ELB経由かEIP付与で接続できるよっていうはなし。
 <a target="_blank" href="https://acloud.guru/forums/aws-certified-solutions-architect-professional/discussion/-KWq7PkmfXXSphQWxyAO/aws-prof-practice-q-a-research-scientist-is-planning-for-the-one-time-launch">問題はこちら</a>
 
 まずはEMRのアーキテクチャを覚えておくとよさそう。  
-Master Node, Core Node, Task Nodeの3種類で構成されており、それぞれの役割を抑えよう。
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/nnw6oUq3lOv5m5?startSlide=10" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/AmazonWebServicesJapan/aws-black-belt-online-seminar-2017-amazon-emr" title="AWS Black Belt Online Seminar 2017 Amazon EMR " target="_blank">AWS Black Belt Online Seminar 2017 Amazon EMR </a> </strong> from <strong><a href="//www.slideshare.net/AmazonWebServicesJapan" target="_blank">Amazon Web Services Japan</a></strong> </div>
-
+Master Node, Core Node, Task Nodeの3種類で構成されており、それぞれの役割を抑えよう。  
 そのうえで、どのノードでオンデマンドインスタンスやスポットインスタンスが利用できるか考えるとよい。
 下記にずばりまとまっている。
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/nnw6oUq3lOv5m5?startSlide=16" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/AmazonWebServicesJapan/aws-black-belt-online-seminar-2017-amazon-emr" title="AWS Black Belt Online Seminar 2017 Amazon EMR " target="_blank">AWS Black Belt Online Seminar 2017 Amazon EMR </a> </strong> from <strong><a href="//www.slideshare.net/AmazonWebServicesJapan" target="_blank">Amazon Web Services Japan</a></strong> </div>
+<a href="https://www.slideshare.net/AmazonWebServicesJapan/aws-black-belt-online-seminar-2017-amazon-emr" target="_blank">AWS Black Belt Online Seminar 2017 Amazon EMR</a>
 
 ## 19.ストレージアプリケーションの設計に関する問題
 <a target="_blank" href="https://acloud.guru/forums/aws-certified-solutions-architect-professional/discussion/-K9xEKH_5mVuK6oX11RD/another-practice-question-need-your-feedback-18">問題はこちら</a>
