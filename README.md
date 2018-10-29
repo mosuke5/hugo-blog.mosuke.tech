@@ -10,10 +10,10 @@ Following are ci/cd steps.
 2. Deploy: deploy to 'mosuke5-lab/mosuke5-lab.github.io' by using 'lvivier/step-gh-pages'.
 3. After Deploy: clear cache in cloudflare.
 
-# how to use
+# How to use
 ```
 // set up
-$ git clone https://github.com/dplesca/purehugo themes/purehugo
+$ git clone https://github.com/mosuke5/purehugo themes/purehugo
 $ hugo server
 ```
 
@@ -21,3 +21,7 @@ $ hugo server
 // resize image
 $ mogrify -resize 600 ./static/image/xxxxx.png
 ```
+
+# How to modify design
+This blog site uses customized purehugo(mosuke5/purehugo).
+If modifying or changing design, commit to mosuke5/purehugo repo.
