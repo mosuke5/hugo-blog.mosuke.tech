@@ -168,7 +168,8 @@ Hugoは静的ブログサイトなので、基本的にCloudFlare側で全てキ
 そのため、ブログ記事の更新やデザインの本番への反映が時間かかる。
 
 CloudFlareは便利なものでapiを用意している。  
-簡単だが、以下のようなキャッシュ全削除スクリプトを用意した。
+簡単だが、以下のようなキャッシュ全削除スクリプトを用意した。  
+参考: [「CloudFlare APIを使ってキャッシュを削除する」](https://blog.mosuke.tech/entry/2017/05/29/how_to_use_cloudflare_api/)
 
 ```shell
 #!/bin/sh
@@ -178,6 +179,9 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$1/purge_cache" \
      -H "Content-Type: application/json" \
      --data '{"purge_everything":true}'
 ```
+
+### 後日談
+上記のようなシェルを用意し、最終的にはCI/CDのパイプラインの中で実行するようにした。
 
 ## 4.今後の課題
 まずは新しいHugoの環境でブログを書いて、課題点など洗いだしていく必要がある。  
