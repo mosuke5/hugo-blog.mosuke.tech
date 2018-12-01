@@ -12,7 +12,7 @@ Following are ci/cd steps.
 
 # How to use
 ```
-// set up
+// set up. This site uses customized purehugo theme.
 $ git clone https://github.com/mosuke5/purehugo themes/purehugo
 $ hugo server
 ```
