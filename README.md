@@ -23,5 +23,5 @@ $ mogrify -resize 600 ./static/image/xxxxx.png
 ```
 
 # How to modify design
-This blog site uses customized purehugo(mosuke5/purehugo).
+This blog site uses customized [purehugo(mosuke5/purehugo)](https://github.com/mosuke5/purehugo).
 If modifying or changing design, commit to mosuke5/purehugo repo.
