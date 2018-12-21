@@ -1,5 +1,5 @@
 +++
-categories = ["SlideShare", "GoogleAppsScript"]
+categories = ["SlideShare", "GoogleAppsScript", "GAS"]
 date = "2018-12-20T21:46:14+09:00"
 description = "GoogleAppsScript(GAS)からSlideShare APIを使ってスライド情報をスプレッドシートに書き込むことをやってみました。SlideShare APIの使い方含め説明します。"
 draft = false
@@ -12,6 +12,7 @@ archive = ["2018"]
 
 どうも、SlideShareの記事の管理をスプレッドシートでやりたいというちょっとした自分のニーズがあって、
 SlideShare APIってあるのか？そしてGoogleAppsScriptもほとんどやったことがない、自分でしたが試してみたのでメモっておきます。
+<!--more-->
 
 ## SlideShare API
 結論から言うと[SlideShare API](https://www.slideshare.net/developers)ありました。
