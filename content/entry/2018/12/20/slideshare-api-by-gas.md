@@ -1,8 +1,8 @@
 +++
 categories = ["SlideShare", "GoogleAppsScript"]
 date = "2018-12-20T21:46:14+09:00"
-description = ""
-draft = true
+description = "GoogleAppsScript(GAS)からSlideShare APIを使ってスライド情報をスプレッドシートに書き込むことをやってみました。SlideShare APIの使い方含め説明します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "SlideShare APIをGoogleAppsScriptから利用する"
