@@ -39,7 +39,7 @@ deploy:
     - script:
       name: delete cloudflare cache in top page
       code: |
-        sh ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+        sh ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY} ${WERCKER_GIT_COMMIT}
 
 update-gillsearch:
   steps:
