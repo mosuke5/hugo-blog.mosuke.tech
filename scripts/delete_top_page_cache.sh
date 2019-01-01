@@ -5,7 +5,7 @@
 # Params $4: git commit id
 
 # Add array to uris to purge contents uri
-uris=("/" "sitemap.xml" "index.xml")
+uris=("/" "/sitemap.xml" "/index.xml")
 files=`git diff --name-only $4`
 for i in $files
 do
