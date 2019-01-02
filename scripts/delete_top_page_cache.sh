@@ -6,7 +6,7 @@
 
 # Add array to uris to purge contents uri
 uris=("/" "/sitemap.xml" "/index.xml")
-files=`git diff --name-only $4`
+files=`git diff --name-only HEAD^`
 for i in $files
 do
     if [[ ${i} =~ ^(content/).*(.md) ]]; then
