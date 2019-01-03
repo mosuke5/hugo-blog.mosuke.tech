@@ -15,6 +15,10 @@ build:
       name: optimize image size
       code: |
         sh ./scripts/optimize_image.sh
+    - leipert/git-push:
+        gh_oauth: $GIT_TOKEN
+        repo: mosuke5/hugo-blog.mosuke.tech
+        branch: ${WERCKER_GIT_BRANCH}
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
