@@ -37,8 +37,7 @@ archive = ["2018"]
 AWSではEC2の起動方法に「Dedicated Hosts」と「Dedicated Instances（ハードウェア専有インスタンス）」という２つがあります。
 この２つの比較については今更自分がまとめるほどもなく下記がわかりやすいので掲載しておきます。
 
-AWS | Amazon EC2 Dedicated Hosts  
-https://aws.amazon.com/jp/ec2/dedicated-hosts/
+[AWS | Amazon EC2 Dedicated Hosts](https://aws.amazon.com/jp/ec2/dedicated-hosts/)
 
 自分の理解のためにも少し情報を加えてまとめると下記のとおりです。
 
