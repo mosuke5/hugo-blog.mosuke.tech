@@ -15,6 +15,11 @@ build:
       name: optimize image size
       code: |
         sh ./scripts/optimize_image.sh
+    # Push optimized image files to hugo repository
+    - leipert/git-push:
+        gh_oauth: $GIT_TOKEN
+        repo: mosuke5/hugo-blog.mosuke.tech
+        branch: ${WERCKER_GIT_BRANCH}
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
@@ -36,10 +41,18 @@ deploy:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+
+purge-cache:
+  steps:
     - script:
       name: delete cloudflare cache in top page
       code: |
         bash -x ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
 
 update-gillsearch:
   steps:
