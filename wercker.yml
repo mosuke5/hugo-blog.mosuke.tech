@@ -11,20 +11,23 @@ build:
         version: "0.49"
         theme: purehugo
         flags: --buildDrafts=false
-#    - script:
-#      name: optimize image size
-#      code: |
-#        sh ./scripts/optimize_image.sh
-    # Push optimized image files to hugo repository
-    - leipert/git-push:
-        gh_oauth: $GIT_TOKEN
-        repo: mosuke5/hugo-blog.mosuke.tech
-        branch: ${WERCKER_GIT_BRANCH}
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+
+validation:
+  steps:
+    - script:
+      name: optimize image size
+      code: |
+        sh ./scripts/optimize_image.sh
+    # Push optimized image files to hugo repository
+    - leipert/git-push:
+        gh_oauth: $GIT_TOKEN
+        repo: mosuke5/hugo-blog.mosuke.tech
+        branch: ${WERCKER_GIT_BRANCH}
 
 deploy:
   steps:
