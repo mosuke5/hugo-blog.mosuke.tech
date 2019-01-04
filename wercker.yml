@@ -2,7 +2,7 @@ box: ruby:2.3
 build:
   steps:
     - install-packages:
-        packages: git optipng libjpeg-progs
+        packages: git
     - script:
         name: download theme
         code: |
@@ -19,6 +19,9 @@ build:
 
 validation:
   steps:
+  steps:
+    - install-packages:
+        packages: git optipng libjpeg-progs
     - script:
       name: optimize image size
       code: |
