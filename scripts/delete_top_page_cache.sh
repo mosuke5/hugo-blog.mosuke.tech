@@ -7,6 +7,8 @@
 # for debug
 dir=`pwd`
 echo $dir
+ls=`ls -al`
+echo $ls
 
 # Add array to uris to purge contents uri
 uris=("/" "/sitemap.xml" "/index.xml")

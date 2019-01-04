@@ -11,10 +11,10 @@ build:
         version: "0.49"
         theme: purehugo
         flags: --buildDrafts=false
-    - script:
-      name: optimize image size
-      code: |
-        sh ./scripts/optimize_image.sh
+#    - script:
+#      name: optimize image size
+#      code: |
+#        sh ./scripts/optimize_image.sh
     # Push optimized image files to hugo repository
     - leipert/git-push:
         gh_oauth: $GIT_TOKEN
