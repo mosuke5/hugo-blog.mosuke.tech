@@ -8,7 +8,7 @@ author = "mosuke5"
 +++
 
 ## 運営者
-もーすけ(@mosuke5)が本ブログを運営しています。
+もーすけ([@mosuke5](https://twitter.com/mosuke5))が本ブログを運営しています。
 現在クラウドプロバイダーで働くエンジニアです。  
 詳しくはこちらを見るといいと思います。  
 [mosuke.tech](https://mosuke.tech)
@@ -29,8 +29,7 @@ author = "mosuke5"
 ### 運用環境について
 以前はブログサイトを使って運用していましたが、2017年5月にHugo+Github Pagesを使った運用に変更しました。（[変更に関するブログ記事](/entry/2017/05/28/blog_migration/)）
 
-本サイトの動作環境についてはこちらで公開、随時更新しています。  
-https://docs.google.com/presentation/d/1MJ8c7QkdYl5BIp9eS3Li2viq-V-CgdpnJKWylYa_dW0/edit#slide=id.g24396a60f1_1_0
+本サイトの動作環境については[こちら](https://docs.google.com/presentation/d/1MJ8c7QkdYl5BIp9eS3Li2viq-V-CgdpnJKWylYa_dW0/edit#slide=id.g24396a60f1_1_0)で公開、随時更新しています。  
 
 ## アクセス解析ツールについて
 本サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
