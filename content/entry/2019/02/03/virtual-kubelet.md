@@ -1,8 +1,8 @@
 +++
 categories = ["kubernetes", "virtual-kubelet"]
 date = "2019-02-03T15:49:10+09:00"
-description = ""
-draft = true
+description = "virtual-kubeletとはなにか、調査しました。実際にAlibaba Cloud上で動作させることも行いました。virtual-kubeletの理解を深めるのにご活用ください。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "virtual-kubeletは何か。Alibaba Cloud上で実際に動かして検証する"
