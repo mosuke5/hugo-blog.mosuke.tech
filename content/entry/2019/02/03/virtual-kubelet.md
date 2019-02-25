@@ -1,24 +1,24 @@
 +++
-categories = ["kubernetes", "virtual-kubelet"]
+categories = ["kubernetes", "Virtual Kubelet"]
 date = "2019-02-03T15:49:10+09:00"
-description = "virtual-kubeletとはなにか、調査しました。実際にAlibaba Cloud上で動作させることも行いました。virtual-kubeletの理解を深めるのにご活用ください。"
+description = "Virtual Kubeletとはなにか、調査しました。実際にAlibaba Cloud上で動作させることも行いました。Virtual Kubeletの理解を深めるのにご活用ください。"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "virtual-kubeletは何か。Alibaba Cloud上で実際に動かして検証する"
+title = "Virtual Kubeletは何か。Alibaba Cloud上で実際に動かして検証する"
 author = "mosuke5"
 archive = ["2019"]
 +++
 
 はい、@mosuke5です。  
 ここ最近、会社でも少しずつKubernetesに関するはなしなどもでてきており、自分の興味ある分野だったこともあり本腰いれて遊んでおります。
-そのなかで、Alibaba CloudもProviderを出しているという、[virtual-kubelet](https://github.com/virtual-kubelet/virtual-kubelet)について気になったので、実際に動かして概念の整理と使いどころについて考えてみました。
+そのなかで、Alibaba CloudもProviderを出しているという、[Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet)について気になったので、実際に動かして概念の整理と使いどころについて考えてみました。
 
-例ではAlibaba CloudのKubernetesとECIを使っていますが、基本的な考え方は同じですので、virtual-kubeletについて勉強したい人はぜひ読んでみてください。
+例ではAlibaba CloudのKubernetesとECIを使っていますが、基本的な考え方は同じですので、Virtual Kubeletについて勉強したい人はぜひ読んでみてください。
 <!--more-->
 
 ## 各クラウドプロバイダーのサービスと分類
-まずvirtual-kubeletの話をする前に、最近のクラウドプロバイダーのコンテナ関連サービスの動向の話をします。
+まずVirtual Kubeletの話をする前に、最近のクラウドプロバイダーのコンテナ関連サービスの動向の話をします。
 コンテナ、およびkubertenesが流行り始め、クラウドプロバイダー各社が様々なタイプのサービスを提供している現状です。
 
 |プロバイダー|非マネージド|マネージド|ノードレス|
@@ -38,14 +38,14 @@ archive = ["2019"]
 
 一方、Kubernetesのマネージドサービスとはいえ、ワーカーノードは仮想マシンで実装されることが多く運用が面倒な面もたくさんあります。
 仮想マシンを管理しなくてよいタイプのコンテナサービスもFargateをはじめ各社リリースするようになりました。
-それぞれのメリットデメリットがあるため、Kubernetesの拡張としてノードレスのコンテナサービスを利用できるようにしているのが、virtual-kubeletです。
+それぞれのメリットデメリットがあるため、Kubernetesの拡張としてノードレスのコンテナサービスを利用できるようにしているのが、Virtual Kubeletです。
 
 あとは、見る限りエッジコンピューティングも生まれた背景と関連すると見受けられます。
 エッジコンピューティングでの実行アプリケーションとして、Kubernetesの拡張としてデプロイできないか、というのも大きく関係していそうです。
 
 ## kubeletとは
-virtual-kubeletの話の前にもう一つ。
-virtual-kubeletのkubeletってなんなのか、みていきます。  
+Virtual Kubeletの話の前にもう一つ。
+Virtual Kubeletのkubeletってなんなのか、みていきます。  
 kubeletはkubernetesを構成するコンポーネントの１つです。
 公式ドキュメントに下記のように書いてあります。
 
@@ -61,8 +61,8 @@ kubeletはkubernetesを構成するコンポーネントの１つです。
 
 つまり、kubeletは、Kubernetesクラスターのワーカーノード内で動作しているエージェントで、"実際のコンテナの起動などを担うコンポーネント"である、ということです。
 
-## virtual-kubeletとは
-それではいよいよvirtual-kubeletとは何かについて触れていきます。
+## Virtual Kubeletとは
+それではいよいよVirtual Kubeletとは何かについて触れていきます。
 まずは、[公式ドキュメント](https://github.com/virtual-kubelet/virtual-kubelet)から見ていきましょう。
 
 > Virtual Kubelet is an open source Kubernetes kubelet implementation that masquerades as a kubelet for the purposes of connecting Kubernetes to other APIs. This allows the nodes to be backed by other services like ACI, AWS Fargate, Hyper.sh, IoT Edge etc. The primary scenario for VK is enabling the extension of the Kubernetes API into serverless container platforms like ACI, Fargate, and Hyper.sh, though we are open to others.
@@ -71,15 +71,15 @@ kubeletはkubernetesを構成するコンポーネントの１つです。
 
 > Virtual KubeletはオープンソースのKubernetes kubelet実装の１つで、他のAPIと接続することを目的にしたKubeletである。これは、ノードがACI, AWS Fargate, Hyper.sh, IoT Edgeなどのほかのサービスに支えられることを実現します。VKの主なシナリオはKubernetes APIをACI, Fargate, and Hyper.shなどのサーバレスコンテナプラットフォームへの拡張を可能にすることです。
 
-公式ドキュメントにある図を参考に、より具体的にvirtual-kubeletの概念を図で表してみました。
-virtual-kubeletを動作させると、仮想のWorkerノードを登録します。
-Kubernetesからvirtual-kubeletのノードにPodの配置を行うと、virtual-kubeletのプロセスは、プロセス起動時に指定した拡張リソース（右上のAliaba ECIやFargate）へPodを配置します。
+公式ドキュメントにある図を参考に、より具体的にVirtual Kubeletの概念を図で表してみました。
+Virtual Kubeletを動作させると、仮想のWorkerノードを登録します。
+KubernetesからVirtual KubeletのノードにPodの配置を行うと、Virtual Kubeletのプロセスは、プロセス起動時に指定した拡張リソース（右上のAliaba ECIやFargate）へPodを配置します。
 つまり、普段はKubernetesの通常のクラスターを扱いながら、特定のワークロードだけKuernetesの拡張として、ノードレスのサービス側で実行することができるということです。
 
 ![virtual-kubelet-overview](/image/virtual-kubelet-overview.png)
 
 ## ECIとは
-実際にvirtual-kubeletが拡張先として利用するノードレスのコンテナサービスとはどんなサービスなのか見てみましょう。
+実際にVirtual Kubeletが拡張先として利用するノードレスのコンテナサービスとはどんなサービスなのか見てみましょう。
 ここではAlibaba Cloudの新サービスである[Elastic Container Instance](https://www.alibabacloud.com/products/elastic-container-instance)(略称ECI)をターゲットにして説明します。
 
 ECIは非常にシンプルなサービスです。
@@ -110,12 +110,12 @@ ECIは、実際のコンテナを実行するためのノードを持たなく�
 - Container Groupの設定
     - DockerイメージやCPU、メモリーなどリソースの設定
 
-## virtual-kubeletをインストール
-では、実際にvirtual-kubeletを動作させてみます。
+## Virtual Kubeletをインストール
+では、実際にVirtual Kubeletを動作させてみます。
 [公式ドキュメント](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/alibabacloud/README.md)に起動方法がかいてあるのですが、少し説明不十分なところがあるので補っていきます。
 
 まず、初心者の自分が勘違いしていたのは、このレポジトリをビルドしてできるバイナリーは、常駐プロセスになっており、手元のローカルで動かしてもいいのですが、Kubernetesクラスター上で動かすほうが合理的です。
-virtual-kubeletをKubernetes上で動かすためのサンプルのYAMLは中国語ですが[こちら](https://help.aliyun.com/document_detail/97527.html)にありました。
+Virtual KubeletをKubernetes上で動かすためのサンプルのYAMLは中国語ですが[こちら](https://help.aliyun.com/document_detail/97527.html)にありました。
 自分は最終的に以下で動かしました。
 
 ```yaml
@@ -206,10 +206,10 @@ NAME                                        READY     STATUS           RESTARTS 
 alicloud-virtual-kubelet-55d7c8b89d-khjsh   1/1       Running          0          3d
 ```
 
-## virtual-kubeletでECIを操作する
+## Virtual KubeletでECIを操作する
 それでは、次にさっそく、KubernetesからこのECIに対してPodを配置してみたいと思います。
-virtual-kubeletのノードに対してnginxを実行させる簡単なマニュフェストを用意して実行します。  
-nodeSelectorでvirtual-kubeletのノードを指定し、そこに配置するようにマニュフェストを書きます。
+Virtual Kubeletのノードに対してnginxを実行させる簡単なマニュフェストを用意して実行します。  
+nodeSelectorでVirtual Kubeletのノードを指定し、そこに配置するようにマニュフェストを書きます。
 
 ```yaml
 # vk_pod.yaml
@@ -244,11 +244,11 @@ mypod                                       1/1       Running          0        
 ![virtual-kubelet-ec-console](/image/virtual-kubelet-eci-console.png)
 
 ### ECIのネットワーク
-virtual-kubeletのプロセスを起動させるときに、もしKubernetesクラスターと同じネットワークを指定すれば、KubernetesのPodとECIで動作するコンテナは同一のネットワークにすることができます。。
+Virtual Kubeletのプロセスを起動させるときに、もしKubernetesクラスターと同じネットワークを指定すれば、KubernetesのPodとECIで動作するコンテナは同一のネットワークにすることができます。。
 これは幾分か使い勝手がいいと思います。例えばバッチ処理のようなものをECIで実行したとしても、データベースなどにアクセスしやすいですね。利用しているKubernetesクラスターと拡張先が同じネットワークだとできることがいろいろと広がると考えています。
 
 ![virtual-kubelet-eci](/image/virtual-kubelet-eci.png)
 
 ## さいごに
-長くなりましたが、virtual-kubeletの概要と実際にAlibaba Cloudで動作させてみた例でした。
+長くなりましたが、Virtual Kubeletの概要と実際にAlibaba Cloudで動作させてみた例でした。
 本ブログではAlibaba Cloudを例にしましたが、基本概念は他の場合でもほぼ同じでしょう。理解を深めるのに利用してもらえればと思います。
