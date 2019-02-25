@@ -5,7 +5,7 @@ description = "Virtual Kubeletとはなにか、調査しました。実際にAl
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Virtual Kubeletとは何か。Alibaba Cloud上で実際に動かして検証する"
+title = "Virtual Kubeletは何か。Alibaba Cloud上で実際に動かして検証する"
 author = "mosuke5"
 archive = ["2019"]
 +++
