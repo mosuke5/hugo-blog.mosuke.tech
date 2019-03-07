@@ -8,7 +8,7 @@ build:
         code: |
             $(git clone https://github.com/mosuke5/purehugo ./themes/purehugo)
     - arjen/hugo-build:
-        version: "0.49"
+        version: "0.54"
         theme: purehugo
         flags: --buildDrafts=false
   after-steps:
