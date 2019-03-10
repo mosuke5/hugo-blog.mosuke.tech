@@ -15,6 +15,9 @@ archive = ["2019"]
 そのなかで、Alibaba CloudもProviderを出しているという、[Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet)について気になったので、実際に動かして概念の整理と使いどころについて考えてみました。
 
 例ではAlibaba CloudのKubernetesとECIを使っていますが、基本的な考え方は同じですので、Virtual Kubeletについて勉強したい人はぜひ読んでみてください。
+
+##### 2019/3/10 追記
+こちらの記事の内容についてはSlideShareにしていくつかのイベントで発表しています。[こちらもご参照](https://www.slideshare.net/mosuke5/virtualkubeletalibaba-cloud-133164822)ください。
 <!--more-->
 
 ## 各クラウドプロバイダーのサービスと分類
