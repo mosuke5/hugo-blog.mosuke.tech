@@ -84,3 +84,15 @@ update-gillsearch:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+
+test-blog-site:
+  steps:
+    - script:
+      name: test blog site url
+      code: |
+        bash ./scripts/test_page_url.sh
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
