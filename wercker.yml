@@ -19,7 +19,6 @@ build:
 
 validation:
   steps:
-  steps:
     - install-packages:
         packages: git optipng libjpeg-progs
     - script:
