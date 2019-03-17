@@ -24,7 +24,7 @@ validation:
     - script:
       name: optimize image size
       code: |
-        bash -x ./scripts/optimize_image.sh
+        bash ./scripts/optimize_image.sh
     # Push optimized image files to hugo repository
     - leipert/git-push:
         gh_oauth: $GIT_TOKEN
