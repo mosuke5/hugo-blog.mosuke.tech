@@ -3,6 +3,7 @@
 # hugo file of blog.mosuke.tech
 This is the blog.mosuke.tech's hugo repository.
 When pushing this repository, execute wercker ci/cd processes and deploy to 'mosuke5-lab/mosuke5-lab.github.io'.
+aaaa
 
 Following are ci/cd steps.
 
