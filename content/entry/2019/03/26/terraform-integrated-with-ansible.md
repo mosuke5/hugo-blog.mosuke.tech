@@ -1,8 +1,8 @@
 +++
 categories = ["Ansible", "Terraform"]
 date = "2019-03-25T15:22:11+09:00"
-description = ""
-draft = true
+description = "AnsibleからTerraformを実行するmoduleを触ってみました。こちらを使う上で考慮必要なことなどについてまとめました。またTerraformとAnsibleを連携する上での考え方もご紹介します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "AnsibleのTerraform moduleを考察してみる"
@@ -14,7 +14,11 @@ archive = ["2019"]
 はい。[@mosuke5](https://twitter.com/mosuke5)です。
 
 Ansibleのmodule(モジュール)でTerraformが知らぬ間にできていたので、
-さっそく触ってみたのと、その有用性や使いみちについて考えてみました。
+さっそく触ってみたのと、その有用性や使いみちについて考えてみました。  
+[terraform – Manages a Terraform deployment (and plans)](https://docs.ansible.com/ansible/latest/modules/terraform_module.html)
+
+Terraformでクラウド環境のセットアップをして、その後にそのクラウド環境のサーバに対してプロビジョニングすることが一気通貫でできるようになります。素晴らしいことですね。
+一方、こちらのツールを使ってみると、実現にあたっていろいろと工夫しなければ行けない点が出てきたのでご紹介していきます。
 <!--more-->
 
 ## AnsibleのTerraform module
