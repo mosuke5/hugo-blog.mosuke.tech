@@ -19,13 +19,12 @@ build:
 
 validation:
   steps:
-  steps:
     - install-packages:
         packages: git optipng libjpeg-progs
     - script:
       name: optimize image size
       code: |
-        sh ./scripts/optimize_image.sh
+        bash ./scripts/optimize_image.sh
     # Push optimized image files to hugo repository
     - leipert/git-push:
         gh_oauth: $GIT_TOKEN
@@ -53,7 +52,7 @@ purge-cache:
     - script:
       name: delete cloudflare cache in top page
       code: |
-        bash -x ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+        bash ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
@@ -80,6 +79,18 @@ update-gillsearch:
       cwd: hugo-entry-to-elasticsearch-json
       code: |
         curl -u ${API_BASIC_USER}:${API_BASIC_PASSWORD} -XPOST 'https://gill-search.mosuke.tech/update' -F "file=@entries.json"
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+
+test-blog-site:
+  steps:
+    - script:
+      name: test blog site url
+      code: |
+        bash ./scripts/test_page_url.sh
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL

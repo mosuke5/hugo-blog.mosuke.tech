@@ -4,12 +4,6 @@
 # Params $3: cloud_flare api key
 # Params $4: git commit id
 
-# for debug
-dir=`pwd`
-echo $dir
-ls=`ls -al`
-echo $ls
-
 # Add array to uris to purge contents uri
 uris=("/" "/sitemap.xml" "/index.xml")
 files=`git diff --name-only HEAD^`
