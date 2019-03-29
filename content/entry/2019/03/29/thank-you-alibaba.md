@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud", "退職"]
 date = "2019-03-07T15:58:24+09:00"
 description = "Alibaba Cloudの日本リージョンの立ち上げ時から携わっていましたが、この度卒業することになりました。やってきたこと、感じてきたこと、これからやることなど書き記します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Alibaba Cloudの中の人を卒業。Alibabaと僕の物語"
