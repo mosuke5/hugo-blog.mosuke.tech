@@ -8,7 +8,7 @@
     <meta name="description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="alternate" hreflang="ja" href="{{ .Permalink }}" />
-    {{.Hugo.Generator}}
+    {{ hugo.Generator }}
     <meta name="twitter:card" content="summary">
     {{ with .Site.Params.twitter }}<meta name="twitter:site" content="{{ . }}" />{{ end }}
     <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}">
