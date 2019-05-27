@@ -24,6 +24,7 @@ archive = ["2019"]
 1. GET '/'  => 'Hello'を返す
 1. GET '/search' => GETパラメータ'q'のキーワードで検索した結果をjsonで返す
 1. POST '/update' => 所定のjsonファイルをPOSTするとbulkでinsertされ、その結果をjsonで返す
+<!--more-->
 
 ## ElasticSearchを使うテスト
 これらのメソッドに対してテストを書こうと考えたときに、そもそもElasticSearch自体の扱いをどうするかでまず最初の考慮ポイントがありました。
