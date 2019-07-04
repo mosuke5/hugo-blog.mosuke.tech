@@ -64,6 +64,21 @@ $ sudo systemctl status td-agent
            └─2171 /opt/td-agent/embedded/bin/ruby /usr/sbin/td-agent --log /var/log/td-agent/td-agent.log --daemon /var/run/td-agent/td-agent.pid
 ```
 
+デフォルトだとポート8888にてHTTP経由でログをPostできるようになっています。
+確認を兼ねて見てみます。
+
+```
+$ sudo lsof -i:8888
+COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+fluentd 3503 td-agent   15u  IPv4  27930      0t0  TCP *:ddi-tcp-1 (LISTEN)
+ruby    3508 td-agent   15u  IPv4  27930      0t0  TCP *:ddi-tcp-1 (LISTEN)
+
+$ curl -X POST -d 'json={"json":"message"}' http://localhost:8888/debug.test
+$ tail /var/log/td-agent/td-agent.log
+(略)
+2019-07-04 02:08:51.077729521 +0000 debug.test: {"json":"message"}
+```
+
 ### Hello Fluentd
 まずはFluetndがどういうものか理解するために、一番単純な例を試してみます。  
 NignxのログをFluetndを使って別のファイルに書き出してみます。
