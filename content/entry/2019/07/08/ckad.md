@@ -5,7 +5,7 @@ description = "CKAD(Certified Kubernetes Application Developer)を受験して�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "CKADを取得するまでの対策や試験当日の対応"
+title = "CKADを取得の対策や試験当日の対応について"
 author = "mosuke5"
 archive = ["2019"]
 +++
