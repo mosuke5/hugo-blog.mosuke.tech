@@ -10,7 +10,7 @@ author = "mosuke5"
 archive = ["2019"]
 +++
 
-[@mosuke5](https://twitter.com/mosuke5)です。<a href="https://www.cncf.io/certification/ckad/" target="_blank">CKAD(Certified Kubernetes Application Developer)</a>を受けてきました。
+[@mosuke5](https://twitter.com/mosuke5)です。<a href="https://www.cncf.io/certification/ckad/" target="_blank">CKAD(Certified Kubernetes Application Developer)</a>を受けてきました。  
 すでに多くのCKA/CKADの合格レポートや体験記がでておりますが、
 それでも自分が実際に受けてみるまで不安な要素も多くあったので、
 そのあたりを払拭するべくこの記事を書きたいと思います。
