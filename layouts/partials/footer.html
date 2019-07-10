@@ -2,14 +2,14 @@
 <div class="footer-posts">
     <h5>Latest Posts</h5>
     {{ range first 5 .Site.RegularPages }}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        <li><a href="{{ .Permalink }}" onClick="ga('send','event','link','click','latest-posts');">{{ .Title }}</a></li>
     {{ end }}
 </div>
 <div class="footer-posts">
     <h5>Featured Posts</h5>
-    <li><a href="https://blog.mosuke.tech/entry/2016/06/04/180122/">Nginxの仕組みについて入門</a></li>
-    <li><a href="https://blog.mosuke.tech/entry/2017/03/18/182252/">万能じゃない。オブジェクトストレージの仕組みと利用を正しく理解する</a></li>
-    <li><a href="https://blog.mosuke.tech/entry/2015/07/19/135844/">DockerとWebSocketを使って、vimの設定をブラウザで即体感できるサービスを作った</a></li>
+    <li><a href="https://blog.mosuke.tech/entry/2016/06/04/180122/" onClick="ga('send','event','link','click','featured-posts');">Nginxの仕組みについて入門</a></li>
+    <li><a href="https://blog.mosuke.tech/entry/2017/03/18/182252/" onClick="ga('send','event','link','click','featured-posts');">万能じゃない。オブジェクトストレージの仕組みと利用を正しく理解する</a></li>
+    <li><a href="https://blog.mosuke.tech/entry/2015/07/19/135844/" onClick="ga('send','event','link','click','featured-posts');">DockerとWebSocketを使って、vimの設定をブラウザで即体感できるサービスを作った</a></li>
 </div>
 <div class="search">
     <h5>Search(Beta)</h5>
@@ -21,10 +21,10 @@
 </div>
 <div class="links">
     <h5>Links</h5>
-    <a class="pure-button" href="/about/"><i class="fa fa-info-circle"></i> About this site</a>
-    <a class="pure-button" href="/archive/"><i class="fa fa-archive"></i> Arvhive</a>
-    <a class="pure-button" href="/categories/"><i class="fa fa-tag"></i> Categories</a>
-    <a class="pure-button" href="{{ .Site.BaseURL }}/index.xml"><i class="fa fa-rss"></i> rss</a>
+    <a class="pure-button" href="/about/" onClick="ga('send','event','link','click','about-this-site');"><i class="fa fa-info-circle"></i> About this site</a>
+    <a class="pure-button" href="/archive/" onClick="ga('send','event','link','click','archive');"><i class="fa fa-archive"></i> Arvhive</a>
+    <a class="pure-button" href="/categories/" onClick="ga('send','event','link','click','categories');"><i class="fa fa-tag"></i> Categories</a>
+    <a class="pure-button" href="{{ .Site.BaseURL }}/index.xml" onClick="ga('send','event','link','click','rss');"><i class="fa fa-rss"></i> rss</a>
 </div>
 <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
