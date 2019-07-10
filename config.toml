@@ -2,7 +2,7 @@ baseURL = "https://blog.mosuke.tech"
 languageCode = "ja"
 title = "Goldstine研究所"
 theme = "purehugo"
-Paginate = 5
+Paginate = 10
 hasCJKLanguage = true
 disqusShortname = "mosuke5-techblog"
 
