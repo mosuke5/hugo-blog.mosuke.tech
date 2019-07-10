@@ -17,6 +17,7 @@ description = "@mosuke5のブログサイト。クラウド技術やアプリ開
 google_analytics = "UA-99596316-1"
 
 [taxonomies]
-tag = "tags"
 category = "categories"
 archive = "archive"
+
+disableKinds = ["tags"]

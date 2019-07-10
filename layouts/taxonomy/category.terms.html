@@ -14,9 +14,9 @@
                         <a href="{{ .Permalink }}" class="post-title">{{ .Title }}</a>
                     </header>
                     <div class="post-description">
-                        {{ range $key, $value := .Site.Taxonomies.archive }}
+                        {{ range $key, $value := .Site.Taxonomies.categories.ByCount }}
                         <li>
-                          <a href="/archive/{{ $key }}">{{ $key }}年 Archive ({{$value.Count}})</a>
+                          <a href="/categories/{{ $value.Term }}">{{ $value.Term }} ({{$value.Count}})</a>
                         </li>
                         {{ end }}
                     </div>
