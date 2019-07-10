@@ -1,5 +1,5 @@
 +++
-categories = ["AWS", "Solution Architect Professional", "認定試験"]
+categories = ["AWS", "Solution Architect Professional", "資格試験"]
 date = "2018-10-25T16:15:10+09:00"
 description = "AWS Solution Architect Professionalサンプル問題38選。取得に向けて勉強している方はぜひトライしてみるといいです。"
 draft = false

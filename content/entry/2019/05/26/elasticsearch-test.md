@@ -1,5 +1,5 @@
 +++
-categories = ["ElasticSearch", "Rails", "Ruby", "テスト", "gitlab-ci"]
+categories = ["ElasticSearch", "Ruby on Rails", "Ruby", "テスト", "gitlab-ci"]
 date = "2019-05-26T17:30:51+09:00"
 description = "ElasticSearchなどの外部コンポーネントが存在するときのRailsアプリでのテストで考慮ポイントを記載。Gitlab-CIでCIを回すことにも触れていく。"
 draft = false

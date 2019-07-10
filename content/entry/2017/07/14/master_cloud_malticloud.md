@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["Terraform","Rancher","マルチクラウド","MasterCloud","AlibabaCloud", "AWS"]
+categories = ["Terraform","Rancher","マルチクラウド","MasterCloud","Alibaba Cloud", "AWS"]
 date = "2017-07-14T15:33:38+09:00"
 description = "TerraformとRancherを使って、マルチクラウドを環境の考え方についてはなしてきました。マルチクラウドのメリットや他のサービスとどう組み合わせていくか話しました。"
 draft = false

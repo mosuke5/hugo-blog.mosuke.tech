@@ -1,5 +1,5 @@
 +++
-categories = ["GAIT", "IT試験"]
+categories = ["GAIT", "資格試験"]
 date = "2018-01-16T22:21:33+09:00"
 description = "GAIT試験受けてきたので簡単に所感などまとめておく。自分のスコアと弱み。試験の所感。"
 draft = false
