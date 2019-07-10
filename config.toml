@@ -20,4 +20,4 @@ google_analytics = "UA-99596316-1"
 category = "categories"
 archive = "archive"
 
-disableKinds = ["tags"]
+#disableKinds = ["tags"]
