@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "fluentd", "AWS"]
 date = "2019-07-12T12:57:59+09:00"
 description = "Sidecar方式のFluentdでCloudWatch logsへログを集約することについての検討をしてみました。試すことで向き不向きや、役立つワークロードが見えてきました。選択肢の1つとして検討するといいです。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Sidecar方式のFluentdでCloudWatch logsへログを集約することについての検討"
