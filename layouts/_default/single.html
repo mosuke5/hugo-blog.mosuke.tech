@@ -27,6 +27,15 @@
                     <div class="post-description">
                         {{ .Content }}
                     </div>
+                    {{ $related := .Site.RegularPages.Related . | first 5 }}
+                    {{ with $related }}
+                    <div class="related-post">
+                        <h5>関連する記事はこちら</h5>
+                    	{{ range . }}
+                        <li><a href="{{ .Permalink }}" onClick="ga('send','event','link','click','related-posts');">{{ .Title }}</a> ({{ .Date.Format "2006/01/02" }})</li>
+                    	{{ end }}
+                    </div>
+                    {{ end }}
                     {{ template "_internal/disqus.html" . }}
                     <div class="post-share">
                         <div class="post-share-links">

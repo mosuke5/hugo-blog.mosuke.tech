@@ -6,6 +6,15 @@ Paginate = 10
 hasCJKLanguage = true
 disqusShortname = "mosuke5-techblog"
 
+[related]
+threshold = 80
+includeNewer = true
+toLower = false
+
+[[related.indices]]
+name = "categories"
+weight = 100
+
 [permalinks]
 #entry = "/entry/:year/:month/:day/:filename"
 
