@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud", "DNS"]
 date = "2019-07-19T18:24:08+09:00"
 description = "Alibaba CloudのPrivateZoneというVPC内での名前解決の機能について確認してみました。CENとの組み合わせで日中間での名前解決ができるようになることは非常にいい進化と感じています。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Alibaba CloudでのPrivate DNS(PrivateZone)を確認する"
