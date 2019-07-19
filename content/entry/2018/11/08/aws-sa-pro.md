@@ -94,7 +94,7 @@ CloudAcademyである程度の知識と自信をつけたところで、AWSが�
 A Cloud Guruというクラウドなどの勉強コンテンツを提供しているサービスのフォーラムで、サンプル問題とその答えをディスカッションする投稿がたくさんありました。（おそらく模擬試験問題がでているのですが、その良し悪しはどうなのかと思うのですが…）
 
 そのディスカッションを漁って、38のサンプル問題をまとめましたので、ご活用ください。  
-[AWS Solution Architect Professionalサンプル問題38選](/entry/2018/10/25/sapro-sample-question/)
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2018/10/25/sapro-sample-question/" data-iframely-url="//cdn.iframe.ly/Q4yX5fA"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 こちらのディスカッションを見るとわかるのですが、人によって答えが割れることも多く、正しい答えにたどり着けるものではありません.
 しかし、ほかの人の考えなどもしることができ、非常に有益なコンテンツであることは間違いないと思います。

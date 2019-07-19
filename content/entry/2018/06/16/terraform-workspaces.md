@@ -1,11 +1,11 @@
 +++
 categories = ["Terraform", "workspace", "AWS"]
 date = "2018-06-16T18:27:35+09:00"
-description = "Terraformのworkspace機能の入門から、実践的な利用方法までご紹介します。条件分岐(IF)などを使ったリソース名のコントロールなど。"
+description = "Terraformのworkspace機能の入門から、実践的な利用方法までご紹介します。条件分岐(IF)などを使ったリソース名のコントロールなどを行いました。"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Terraform workspaceを利用する。環境ごとのリソース名の分岐など"
+title = "Terraform workspaceを利用して環境毎のリソース名の変更を行う"
 author = "mosuke5"
 archive = ["2018"]
 +++
@@ -63,7 +63,7 @@ $ ls -l terraform.tfstate.d
 drwxr-xr-x 1 mosuke5 197609 0 Jun 16 19:24 development/
 ```
 
-## もう少し実践的に利用する
+## 実践的な利用を考える
 入門部分をご紹介しましたが、これを実践でどのように利用していくのか、自分が趣味プロダクトを例にとって紹介します。
 
 開発環境と本番環境で分離するためにworkspaceを利用しています。  

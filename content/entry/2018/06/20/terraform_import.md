@@ -1,7 +1,7 @@
 +++
 categories = ["Terraform", "import"]
 date = "2018-06-20T11:08:12+09:00"
-description = "Terraformのimport機能の使い方と使う際の注意ポイントについてです。"
+description = "Terraformのimport機能の使い方と使う際の注意ポイントについてまとめました。import機能を利用したあとの運用を見据えた対応などについてです。"
 draft = false
 image = ""
 tags = ["Tech"]

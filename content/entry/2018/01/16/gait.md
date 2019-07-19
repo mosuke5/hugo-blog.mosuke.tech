@@ -1,11 +1,11 @@
 +++
 categories = ["GAIT", "資格試験"]
 date = "2018-01-16T22:21:33+09:00"
-description = "GAIT試験受けてきたので簡単に所感などまとめておく。自分のスコアと弱み。試験の所感。"
+description = "GAIT試験してきました。受験する上で知っておくべきポイントや高得点をとるための対策について書きました。"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "GAITを受験してきたので所感や対策についてまとめておく。"
+title = "GAITを受験する上で知っておきたいポイントと対策について"
 author = "mosuke5"
 archive = ["2018"]
 +++

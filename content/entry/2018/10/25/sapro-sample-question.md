@@ -21,9 +21,8 @@ archive = ["2018"]
 また、ディスカッションでは答えが割れているものも多いです。  
 ぜひ、ディスカッションの内容も読んでみると良い勉強になると考えています。
 
-そういえば、余談ですが、ソリューションアーキテクト プロフェッショナルの試験は新しくなるようですね？
-いまならBeta版テストが半額で受けられるようでした。
-https://aws.amazon.com/jp/certification/beta-exam/
+その後の合格勉強法の記事はこちらです。
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2018/11/08/aws-sa-pro/" data-iframely-url="//cdn.iframe.ly/7sHKb2q"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 <!--more-->
 
 ## 1.CloudFormationでリソースを保持する方法に関する問題
