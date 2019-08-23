@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "Ansible"]
 date = "2019-08-21T19:36:45+09:00"
 description = "Ansibleを使ったKubernetes上のリソース管理について試してみました。manifestファイルの適応の選択肢として考えるきっかけになればと思います。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetes上のリソースをAnsibleで管理する"
