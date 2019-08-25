@@ -7,7 +7,7 @@ description = "はてなブログからHugoに移行した。移行した理由�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "はてなブログからHugoに移行。その際に行ったあれこれ。"
+title = "はてなブログからHugoに移行。移行の際に行ったことまとめ。"
 
 +++
 
