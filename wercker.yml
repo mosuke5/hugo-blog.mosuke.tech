@@ -59,32 +59,6 @@ purge-cache:
       url: $SLACK_URL
       username: wercker_bot
 
-update-gillsearch:
-  steps:
-    - install-packages:
-        packages: git cmake
-    - script:
-      name: clone repository
-      code: |
-        git clone https://github.com/mosuke5/hugo-entry-to-elasticsearch-json.git
-    - bundle-install:
-        cwd: hugo-entry-to-elasticsearch-json
-    - script:
-      name: create entries file
-      cwd: hugo-entry-to-elasticsearch-json
-      code: |
-        RUBYOPT=-EUTF-8 sh build.sh https://github.com/mosuke5/hugo-blog.mosuke.tech.git
-    - script:
-      name: update entries data
-      cwd: hugo-entry-to-elasticsearch-json
-      code: |
-        curl -u ${API_BASIC_USER}:${API_BASIC_PASSWORD} -XPOST 'https://gill-search.mosuke.tech/update' -F "file=@entries.json"
-  after-steps:
-    - slack-notifier:
-      channel: $SLACK_CHANNEL
-      url: $SLACK_URL
-      username: wercker_bot
-
 test-blog-site:
   steps:
     - script:
