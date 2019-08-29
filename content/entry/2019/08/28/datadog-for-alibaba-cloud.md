@@ -15,6 +15,7 @@ archive = ["2019"]
 この連携は2019年の3月くらいに開始したものです。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.datadoghq.com/blog/monitor-alibaba-cloud-datadog/" data-iframely-url="//cdn.iframe.ly/bkZv6KL?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<!--more-->
 
 ## Datadogでの監視の仕組み
 Alibaba Cloudに限らずではあるのですが、Datadogにはクラウドとの連携の機能があります。  
