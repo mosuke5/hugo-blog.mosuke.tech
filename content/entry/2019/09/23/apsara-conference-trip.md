@@ -2,10 +2,10 @@
 categories = ["Alibaba Cloud"]
 date = "2019-09-23T15:33:08+09:00"
 description = "2019年もApsara Conferenceに行ってきました。会場までの行き方や電車の乗り方など解説していきます。イベント内容は別途お伝えします。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
-title = "Apsara Conferenceで上海経由で杭州にいく"
+title = "Apsara Conference 杭州に上海経由でいくために必要なこと"
 author = "mosuke5"
 archive = ["2019"]
 +++
