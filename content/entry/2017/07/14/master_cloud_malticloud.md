@@ -7,7 +7,7 @@ description = "TerraformとRancherを使って、マルチクラウドを環境�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Terraform×Rancherでマルチクラウドを一歩すすめる、を話してきた"
+title = "Terraform×Rancherでマルチクラウドを一歩すすめる"
 
 +++
 

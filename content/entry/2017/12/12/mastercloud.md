@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud", "MasterCloud"]
 date = "2017-12-17T05:55:23Z"
 description = "MasterCloudでAlibaba Cloud特集イベント開催してきました。"
-draft = false
+draft = true
 image = ""
 tags = ["Tech"]
 title = "MasterCloudでAlibaba Cloud特集イベント開催してきました"
