@@ -41,6 +41,7 @@ deploy:
         branch: master
         basedir: public
         gh_pages_domain: blog.mosuke.tech
+        clean_removed_files: ture
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
