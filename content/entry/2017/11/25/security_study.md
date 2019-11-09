@@ -2,7 +2,7 @@
 categories = ["パブリッククラウド", "セキュリティ", "Policy as Code"]
 date = "2017-11-25T15:44:26+09:00"
 description = "サイバーセキュリティクラウドが開催するSecurityStudyでクラウドのセキュリティについて話してきた。セキュリティからInfrastructure as code、そしてPolicy as Codeあたり。"
-draft = false
+draft = true
 image = ""
 tags = ["Tech"]
 title = "SecurityStudy#2でパブリッククラウドのセキュリティについて話してきた"

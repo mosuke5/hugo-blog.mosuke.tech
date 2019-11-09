@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud", "資格試験"]
 date = "2017-11-10T19:18:24+09:00"
 description = "Alibaba Cloud Professionalの認定取ってきました。Alibaba Cloudにも認定試験あるのしっていましたか？"
-draft = false
+draft = true
 image = ""
 tags = ["Tech"]
 title = "Alibaba Cloud Professionalの認定取ってきた！"
