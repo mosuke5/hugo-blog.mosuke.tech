@@ -15,7 +15,7 @@ archive = ["2019"]
 
 最近[Datadog](https://www.datadoghq.com/)を触る機会が多いのですが、Datadogはobservabilityの3本柱ということで、メトリックとトレース(APM)とログ、この3つを統合した監視サービスであることを強くおしだしています。
 3つの分野のそれぞれに対応したOSSやサービスは多いですが、統合されてシームレスに連携できる点はDatadogの非常に強いポイントと感じます。
-さて、そんななかでDatadog APM (Application Perfomance Monitoring) が強力だったので紹介したいのと、その仕組みについて調べてみたので共有します。
+さて、そんななかでDatadog APM (Application Perfomance Monitoring) が強力だったので紹介したいのと、その仕組みを探っていきましょう。
 <!--more-->
 
 ## APMとはなにか、なぜ必要か
