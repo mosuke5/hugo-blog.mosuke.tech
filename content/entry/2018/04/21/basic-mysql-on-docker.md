@@ -1,5 +1,5 @@
 +++
-categories = ["docker", "mysql"]
+categories = ["コンテナ", "インフラ構築"]
 date = "2018-04-21T18:25:49+09:00"
 description = "Dockerを使ってMySQLをセットアップする際の知見について。ユーザやデータベスの作成、テストデータのインポートなどの方法。"
 draft = false

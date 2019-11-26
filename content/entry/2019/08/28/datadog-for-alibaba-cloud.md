@@ -1,5 +1,5 @@
 +++
-categories = ["Alibaba Cloud", "Datadog"]
+categories = ["Alibaba Cloud", "クラウド技術", "DevOps"]
 date = "2019-08-28T00:11:44+09:00"
 description = "DatadogのAlibaba Cloud integrationを試してみました。できることできないこと、注意点などまとめました。待望のDatadog連携なので期待です。"
 draft = false

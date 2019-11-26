@@ -1,5 +1,5 @@
 +++
-categories = ["Alibaba Cloud", "オープンソース", "YAPC", "沖縄"]
+categories = ["Alibaba Cloud", "イベント"]
 date = "2018-03-04T10:16:22+09:00"
 description = "YAPC::OkinawaのリジェクトコンでAlibaba Cloudを支えるオープンソースについて話してきました。TengineやRocketMQ、AliSQLなどクラウドサービスの裏側で活用されています。"
 draft = false

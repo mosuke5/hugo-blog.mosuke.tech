@@ -1,5 +1,5 @@
 +++
-categories = ["Alibaba Cloud"]
+categories = ["Alibaba Cloud", "イベント"]
 date = "2019-09-23T15:33:08+09:00"
 description = "2019年もApsara Conferenceに行ってきました。会場までの行き方や電車の乗り方など解説していきます。イベント内容は別途お伝えします。"
 draft = false

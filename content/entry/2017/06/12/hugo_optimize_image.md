@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["Hugo","PageSpeed", "最適化", "wercker"]
+categories = ["ブログ運用"]
 date = "2017-06-12T23:33:12+09:00"
 description = "Hugoを利用したブログ運用環境で、GoogleのPageSpeed対策で画像を自動で圧縮する環境を整えた。optipngとjpegtranを利用。"
 draft = false

@@ -1,5 +1,5 @@
 +++
-categories = ["振り返り"]
+categories = ["キャリア"]
 date = "2017-12-29T06:44:07Z"
 description = "2017年を振り返ってみます。Alibaba Cloudの日本展開のはじめの１年。そしてエンジニアコミュニティへの貢献。なかなか楽しい１年でした。"
 draft = false

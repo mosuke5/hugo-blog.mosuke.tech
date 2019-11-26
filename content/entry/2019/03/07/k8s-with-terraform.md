@@ -1,5 +1,5 @@
 +++
-categories = ["Kubernetes", "Terraform"]
+categories = ["Kubernetes", "DevOps"]
 date = "2019-03-07T01:06:27+09:00"
 description = "TerraformでKubernetes上のリソースを管理する方法およびそのメリット・デメリットをみてみます。こちらをふまえ、最近のOperatorの動きなどを考察してみたいと思います。"
 draft = false

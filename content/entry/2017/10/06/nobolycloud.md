@@ -1,5 +1,5 @@
 +++
-categories = ["Alibaba Cloud", "nobolycloud", "ポッドキャスト"]
+categories = ["Alibaba Cloud", "イベント"]
 date = "2017-10-06T09:10:43+09:00"
 description = "nobolycloudのポッドキャストでAlibaba Cloudについて話してきました。Alibaba Cloudの「今」を素直にお伝えしました。"
 draft = false

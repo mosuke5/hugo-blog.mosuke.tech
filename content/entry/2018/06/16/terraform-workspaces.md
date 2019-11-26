@@ -1,5 +1,5 @@
 +++
-categories = ["Terraform", "workspace", "AWS"]
+categories = ["DevOps", "クラウド技術"]
 date = "2018-06-16T18:27:35+09:00"
 description = "Terraformのworkspace機能の入門から、実践的な利用方法までご紹介します。条件分岐(IF)などを使ったリソース名のコントロールなどを行いました。"
 draft = false

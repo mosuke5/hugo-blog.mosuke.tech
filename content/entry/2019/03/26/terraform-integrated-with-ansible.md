@@ -1,5 +1,5 @@
 +++
-categories = ["Ansible", "Terraform"]
+categories = ["DevOps"]
 date = "2019-03-25T15:22:11+09:00"
 description = "AnsibleからTerraformを実行するmoduleを触ってみました。こちらを使う上で考慮必要なことなどについてまとめました。またTerraformとAnsibleを連携する上での考え方もご紹介します。"
 draft = false

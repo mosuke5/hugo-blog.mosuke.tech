@@ -1,5 +1,5 @@
 +++
-categories = ["SlideShare", "GoogleAppsScript", "GAS"]
+categories = ["アプリケーション開発"]
 date = "2018-12-20T21:46:14+09:00"
 description = "GoogleAppsScript(GAS)からSlideShare APIを使ってスライド情報をスプレッドシートに書き込むことをやってみました。SlideShare APIの使い方含め説明します。"
 draft = false

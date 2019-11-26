@@ -1,5 +1,5 @@
 +++
-categories = ["ElasticSearch", "API"]
+categories = ["インフラ構築"]
 date = "2018-01-14T14:00:39+09:00"
 description = "ElasticSearch APIでよくつかうものをまとめました。基本的なAPIをいつもググっている方これみて活用してください。"
 draft = false

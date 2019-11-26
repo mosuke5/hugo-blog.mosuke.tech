@@ -1,5 +1,5 @@
 +++
-categories = ["Datadog", "APM"]
+categories = ["クラウド技術", "DevOps", "アプリケーション開発"]
 date = "2019-11-21T11:32:38+09:00"
 description = "Datadog APMを体験しました。非常に強力で、いままでアプリケーションをいかに把握していなかった痛感しました。本ブログではAPMとはなにか、なぜ必要か、どんな情報が取得されているのかなど紹介します。"
 draft = false

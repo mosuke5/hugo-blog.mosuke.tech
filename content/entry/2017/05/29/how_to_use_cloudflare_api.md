@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["CloudFlare","Hugo", "API", "キャッシュ"]
+categories = ["ブログ運用", "クラウド技術"]
 date = "2017-05-29T20:06:31+09:00"
 description = "CloudFlareのAPIを利用してキャッシュを削除する方法を紹介。ブログをHugoに移行し、フロントにCloudFlareを利用している。"
 draft = false

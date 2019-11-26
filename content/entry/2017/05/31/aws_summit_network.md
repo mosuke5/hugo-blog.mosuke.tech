@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["クラウド", "AWS", "AWS Summit", "ネットワーク"]
+categories = ["クラウド技術", "AWS", "イベント"]
 date = "2017-05-31T19:25:20+09:00"
 description = "AWS Summit2017に行ってみた。雰囲気などの簡単感想とAWSのネットワーク設計入門セッションのメモ"
 draft = false

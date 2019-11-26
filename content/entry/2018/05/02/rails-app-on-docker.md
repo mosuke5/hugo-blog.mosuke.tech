@@ -1,5 +1,5 @@
 +++
-categories = ["Docker", "docker-compose", "Ruby", "Ruby on Rails", "デプロイ"]
+categories = ["アプリケーション開発", "コンテナ", "DevOps"]
 date = "2018-05-02T23:14:44+09:00"
 description = "RailsをDocker Composeを使って開発・運用したときの（自分的）ベストプラクティス。Dockerを使う上で発生する課題に対するアプローチ。"
 draft = false

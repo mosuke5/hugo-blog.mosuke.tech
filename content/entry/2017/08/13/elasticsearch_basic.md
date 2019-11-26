@@ -1,5 +1,5 @@
 +++
-categories = ["ElasticSearch", "AWS", "Kibana", "全文検索"]
+categories = ["インフラ構築"]
 date = "2017-08-13T16:28:48+09:00"
 description = "ブログ記事の全文検索などをやりたくて、ElasticSearchはどんなもんじゃろか？と触ってみました。AWS上でElasticSearchのインストールと入門的な検索やデータのインポート方法、そしてKibanaについて解説します。"
 draft = false

@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["AWS","AWSソリューションアーキテクト","クラウド","ベストプラクティス"]
+categories = ["AWS","資格試験"]
 date = "2017-07-16T13:45:59+09:00"
 description = "本記事は、AWSソリューションアーキテクト認定試験の試験勉強として、「Architecting for the Cloud」を読んでそのまとめです。"
 draft = false

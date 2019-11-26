@@ -1,5 +1,5 @@
 +++
-categories = ["サーバレス", "イベント", "クラウド"]
+categories = ["イベント", "クラウド技術"]
 date = "2017-11-03T11:01:52+09:00"
 description = "Serverlessconf Tokyo2017に参加してきたのでレポート。2016年との違いを多く感じたし、Terraformのようなツールの重要性増しそうなど個人的な見解も広がった素晴らしいイベントでした。"
 draft = false

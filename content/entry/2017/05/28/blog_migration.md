@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["Hugo","はてなブログ", "常時SSL", "HTTP2", "CloudFlare", "移行"]
+categories = ["ブログ運用", "クラウド技術"]
 date = "2017-05-28T13:02:14+09:00"
 description = "はてなブログからHugoに移行した。移行した理由は移行に際して行ったことをご紹介します。例えば、Hugoを運用するアーキテクチャや移行時に利用したスクリプトや注意事項など。"
 draft = false

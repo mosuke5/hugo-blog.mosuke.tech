@@ -1,5 +1,5 @@
 +++
-categories = ["Teeraform", "CloudFlare", "DNS", "AWS"]
+categories = ["AWS", "DevOps"]
 date = "2018-01-01T07:34:20Z"
 description = "TerraformでCloudFlareのDNSの設定を行います。AWSのEIPを使ってCloudFlareのDNSを設定します。その際の設定のポイントなどを解説します。"
 draft = false

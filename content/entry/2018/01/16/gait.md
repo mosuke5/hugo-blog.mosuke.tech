@@ -1,5 +1,5 @@
 +++
-categories = ["GAIT", "資格試験"]
+categories = ["資格試験"]
 date = "2018-01-16T22:21:33+09:00"
 description = "GAIT試験してきました。受験する上で知っておくべきポイントや高得点をとるための対策について書きました。"
 draft = false

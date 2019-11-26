@@ -1,5 +1,5 @@
 +++
-categories = ["AWS", "ECS", "Fargate", "Firecracker", "Gitlab", "ecs-deploy"]
+categories = ["AWS", "クラウド技術"]
 date = "2019-04-14T13:40:27+09:00"
 description = "はじめてAmaozn ECSを触って、Fargateの正体を突き止めたり、デプロイの方法などを確かめたりしました。Firecrackerすげーというのが一番の感想。"
 draft = false

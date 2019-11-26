@@ -1,5 +1,5 @@
 +++
-categories = ["Kubernetes", "CKAD", "資格試験"]
+categories = ["Kubernetes", "資格試験"]
 date = "2019-07-08T09:12:22+09:00"
 description = "CKAD(Certified Kubernetes Application Developer)を受験してきて無事に合格しました。合格のために準備すべきことと、試験受験に関して不安だったことなどをまとめました。"
 draft = false

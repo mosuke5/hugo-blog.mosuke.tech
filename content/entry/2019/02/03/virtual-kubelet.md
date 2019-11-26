@@ -1,5 +1,5 @@
 +++
-categories = ["kubernetes", "Virtual Kubelet"]
+categories = ["kubernetes", "コンテナ", "クラウド技術"]
 date = "2019-02-03T15:49:10+09:00"
 description = "Virtual Kubeletとはなにか、調査しました。実際にAlibaba Cloud上で動作させることも行いました。Virtual Kubeletの理解を深めるのにご活用ください。"
 draft = false

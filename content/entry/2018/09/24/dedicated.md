@@ -1,5 +1,5 @@
 +++
-categories = ["AWS", "Alibaba Cloud", "Dedicated Host", "Dedicated Instance"]
+categories = ["AWS", "Alibaba Cloud", "クラウド技術"]
 date = "2018-09-24T16:49:32+09:00"
 description = "AWSとAlibaba Cloudででてくる「Dedicated」「専有」の意味を整理します。Dedicated Hostsやハードウェア専有インスタンスなどいろんな意味合いで使われるので混同しがちです。"
 draft = false

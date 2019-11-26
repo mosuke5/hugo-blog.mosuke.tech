@@ -1,5 +1,5 @@
 +++
-categories = ["Kubernetes", "Kustomize"]
+categories = ["Kubernetes", "コンテナ"]
 date = "2019-06-21T10:57:12+09:00"
 description = "Kubernetesのマニフェストファイルを自動生成できるツールであるKustomizeを紹介します。使おうと思った動機や使う上での注意点など書きました。"
 draft = false

@@ -1,5 +1,5 @@
 +++
-categories = ["Terraform", "Alibaba Cloud", "マルチリージョン"]
+categories = ["Alibaba Cloud", "DevOps", "クラウド技術"]
 date = "2018-06-08T15:03:10+09:00"
 description = "Terraformを使って複数リージョン（マルチリージョン）をまたいだリソースを管理する方法を紹介します。Moduleなどうまく活用して冗長なコードをなくすことができます。"
 draft = false

@@ -1,5 +1,5 @@
 +++
-categories = ["Terraform", "backend"]
+categories = ["DevOps", "クラウド技術"]
 date = "2018-06-17T15:39:29+09:00"
 description = "Terraformのbackend機能の必要性から使い方まで説明します。backend機能は複数人でTerraformを利用する際の必須機能です。"
 draft = false

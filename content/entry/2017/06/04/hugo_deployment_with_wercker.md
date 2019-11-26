@@ -1,7 +1,7 @@
 +++
 archive = ["2017"]
 author = "mosuke5"
-categories = ["Hugo","Wercker", "ブログ", "CI/CD", "Github Pages", "デプロイ"]
+categories = ["ブログ運用", "クラウド技術"]
 date = "2017-06-04T14:47:15+09:00"
 description = "Werckerを使ったHugo+Github Pages運用のサイトのCICDを紹介する。デプロイだけでなく、CloudFlareやSlack通知など周辺処理も紹介。"
 draft = false

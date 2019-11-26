@@ -1,5 +1,5 @@
 +++
-categories = ["Alibaba Cloud", "退職"]
+categories = ["Alibaba Cloud", "キャリア"]
 date = "2019-03-29T17:45:24+09:00"
 description = "Alibaba Cloudの日本リージョンの立ち上げ時から携わっていましたが、この度卒業することになりました。やってきたこと、感じてきたこと、これからやることなど書き記します。"
 draft = false

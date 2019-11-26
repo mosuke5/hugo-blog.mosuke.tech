@@ -1,5 +1,5 @@
 +++
-categories = ["Hugo", "CloudFlare", "Wercker"]
+categories = ["ブログ運用"]
 date = "2019-01-04T17:37:35+09:00"
 description = "HugoのようなスタティックWebをCDNで配信している場合、過去記事の更新時のキャッシュの削除などが必要です。CIの過程で動的に更新したファイルのキャッシュを削除するようにしました。"
 draft = false

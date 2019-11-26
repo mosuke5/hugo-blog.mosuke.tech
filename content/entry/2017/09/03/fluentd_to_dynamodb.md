@@ -1,5 +1,5 @@
 +++
-categories = ["AWS", "dynamoDB", "Fluentd", "ログ", "Nginx"]
+categories = ["AWS"]
 date = "2017-09-03T15:48:40+09:00"
 description = "NginxのログをFluentdを使ってAWSのDynamoDBへの送信を行ってみました。Fluetndの基本的な使い方から、AWS DynamoDBへ送信するまで、設定のハマリポイントなどを紹介します。"
 draft = false
