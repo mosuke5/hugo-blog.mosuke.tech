@@ -2,7 +2,7 @@
 categories = ["DevOps"]
 date = "2019-12-26T11:29:20+09:00"
 description = "「LeanとDevOpsの科学」という本を読みました。DevOpsの本質や重要なことが理解できる素晴らしい本です。なんとなく重要と感じるDevOpsを科学的になぜ重要か示してくれています。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "「LeanとDevOpsの科学」を読んで。DevOpsの本質を科学的に理解する"
