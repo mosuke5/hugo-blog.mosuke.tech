@@ -10,7 +10,8 @@ author = "mosuke5"
 archive = ["2018"]
 +++
 
-本日、総合的なITスキルの可視化する世界共通のアセスメントツールとうたう「GAIT」という試験を受験してきたので簡単にレポートする。うちの会社で今年から導入されて受験することになったからです。
+こんにちは、[もーすけ](https://twitter.com/mosuke5)です。本日、総合的なITスキルの可視化する世界共通のアセスメントツールとうたう「GAIT」という試験を受験してきたので簡単にレポートします。うちの会社で今年から導入されて受験することになったからです。インターネット上には対策などについて書かれた記事も少なく参考になればと思います。
+
 GAITの試験概要についてこちらを参照ください。  
 https://www.gait.org/about-gait/
 
@@ -19,6 +20,7 @@ https://www.gait.org/about-gait/
 ## 結果
 結果は以下の通りでした。  
 初受験で点数の基準がよくわかっていないのですが、6割ちょいというかんじでした。
+次のような項目で試験が組まれています。
 
 |分野|項目|得点率|
 |:--:|:--:|:--:|
@@ -45,7 +47,9 @@ https://www.gait.org/about-gait/
 |仮想化|リテラシ|57%|
 |仮想化|サーバ＆ストレージ|80%|
 
-個人的に、ストレージとネットワークのリテラシが弱いのはさすがにどうかなと思うので、このあたりは復習していきたいと思います。もし次受ける機会があるとすればそのあたりしっかりクリアして70%超え狙っていきたいと思います。とはいえ、かなりベンダーサービスの問題も多いので取れる点数には限界があるかなって思います。最後に所感など簡単にまとめます。
+個人的に、ストレージとネットワークのリテラシが弱いのはさすがにどうかなと思うので、このあたりは復習していきたいと思います。
+もし次受ける機会があるとすればそのあたりしっかりクリアして70%超え狙っていきたいと思います。
+とはいえ、かなりベンダーサービスの問題も多いので取れる点数には限界があるかなって思います。最後に所感など簡単にまとめます。
 
 ## 所感などについて
 - 試験は、アンケートと本試験の2つセット。
@@ -75,10 +79,16 @@ https://www.gait.org/about-gait/
 きっと読者は対策についてきになっているとも思うので、対策について思っていることを書きます。
 
 残念ながら、GAIT専用の学習教材はないです。過去に書籍があったのですがすでに廃版になっています。
-なので、基本情報技術者試験（あるいは応用情報技術者試験）の勉強をしておくとまんべんなく知識を網羅できるので良いと思います。もうすでに基本情報技術者試験を持っているよという人は、「復習」しておくといいでしょう。このタイプの試験の特有の用語がでてきたりして戸惑うので、少し復習しておくと良いです。例えば、データベースの「選択」「射影」がどっちがどっちだったかなど。
+なので、基本情報技術者試験（あるいは応用情報技術者試験）の勉強をしておくとまんべんなく知識を網羅できるので良いと思います。
+もうすでに基本情報技術者試験を持っているよという人は、「復習」しておくといいでしょう。このタイプの試験の特有の用語がでてきたりして戸惑うので、少し復習しておくと良いです。例えば、データベースの「選択」「射影」がどっちがどっちだったかなど。  
+下記の参考書などが非常に対策に有効です。
 
-上にも書いたが、WindowsやActiveDirectory、Oracleなどベンダー依存の知識も問われます。
-このあたりはあえて勉強して点数を取りに行くのもナンセンスだと思いますので、自分の得意分野をしっかり抑えに行くと良いと思います。もし、LinuxもWindowsもActiveDirectoryもOracleもMySQLもVMwareもどれも自分の分野外だというのであれば、今一度自分の進む方向性を見直してもいいかもしれません。
+<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="https://amzn.to/2SID8bx" ="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51a0KH6GKiL._SL160_.jpg" alt="情報処理教科書 出るとこだけ！基本情報技術者 テキスト＆問題集 2020年版" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-" style="margin-bottom:10px;line-height:120%"><a href="https://amzn.to/2SID8bx" ="amazletlink" target="_blank">情報処理教科書 出るとこだけ！基本情報技術者 テキスト＆問題集 2020年版</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with amazlet at 19.12.28</div></div><div class="amazlet-detail">矢沢 久雄 <br />翔泳社 <br />売り上げランキング: 11,773<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="https://amzn.to/2SID8bx" ="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
+
+
+上にもすこし書いたのですが、WindowsやActiveDirectory、Oracleなどベンダー依存の知識も問われます。
+このあたりはあえて勉強して点数を取りに行くのもナンセンスだと思いますので、自分の得意分野をしっかり抑えに行くと良いと思います。
+もし、LinuxもWindowsもActiveDirectoryもOracleもMySQLもVMwareもどれも自分の分野外だというのであれば、今一度自分の進む方向性を見直してもいいかもしれません。
 
 その他、なんだかんだ自作PCやオンプレミスサーバを構築したことがある経験は支えになると思います。
 ディスクのストレージの設定やネットワークの設定を１から設定することになるのでもし興味ある人は自作PCでも作って見るといいかもしれません。
