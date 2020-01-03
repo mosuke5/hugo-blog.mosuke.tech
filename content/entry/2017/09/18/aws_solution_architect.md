@@ -1,11 +1,11 @@
 +++
 categories = ["AWS", "資格試験"]
 date = "2017-09-18T19:34:21+09:00"
-description = "AWSソリューションアーキテクト認定試験（アソシエイト）に合格したので記録しておきます。前回、「英語でAWSソリューションアーキテクト認定の模擬試験を受けてみた」の報告の続きです。"
+description = "AWSソリューションアーキテクト認定試験（アソシエイト）に合格したので記録しておきます。また、この資格を取得してどのようにやくだっているのか現場の目線から価値について考えてみたいと思います。"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "【合格】AWSソリューションアーキテクト Associate認定試験"
+title = "AWSソリューションアーキテクト アソシエイトの資格価値と勉強法について"
 author = "mosuke5"
 archive = ["2017"]
 +++
@@ -58,9 +58,9 @@ Wordpressを題材に、AWSでどう設計すれば良いのか、AWSとして�
 まずは、これを熟読して試せる部分は自分で試していくことが非常に重要です。
 
 ### 基礎知識の習得
-基本的な知識とポイントは下記の書籍で学ぶことができます。重要なところがきちんとまとまっているので薄い本ですがおすすめです。
+基本的な知識とポイントは下記の書籍で学ぶことができます。重要なところがきちんとまとまっているのでおすすめです。
 
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479739739X" ="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51DY%2BM37OIL._SL160_.jpg" alt="AWS認定資格試験テキスト AWS認定 ソリューションアーキテクト-アソシエイト" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-" style="margin-bottom:10px;line-height:120%"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479739739X" ="amazletlink" target="_blank">AWS認定資格試験テキスト AWS認定 ソリューションアーキテクト-アソシエイト</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with amazlet at 20.01.03</div></div><div class="amazlet-detail">NRIネットコム株式会社 佐々木 拓郎 林 晋一郎 金澤 圭 <br />SBクリエイティブ <br />売り上げランキング: 6,772<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479739739X" ="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
+<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="https://amzn.to/2QBsdxi" ="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51DY%2BM37OIL._SL160_.jpg" alt="AWS認定資格試験テキスト AWS認定 ソリューションアーキテクト-アソシエイト" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-" style="margin-bottom:10px;line-height:120%"><a href="https://amzn.to/2QBsdxi" ="amazletlink" target="_blank">AWS認定資格試験テキスト AWS認定 ソリューションアーキテクト-アソシエイト</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with amazlet at 20.01.03</div></div><div class="amazlet-detail">NRIネットコム株式会社 佐々木 拓郎 林 晋一郎 金澤 圭 <br />SBクリエイティブ <br />売り上げランキング: 6,772<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="https://amzn.to/2QBsdxi" ="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
 
 
 ## 本番試験について
