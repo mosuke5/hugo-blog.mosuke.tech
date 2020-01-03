@@ -5,7 +5,7 @@ description = "「スクラム」を読んだので、簡単ですが感想を�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "「スクラム」（ジェフ・サザーランド）を読んだ"
+title = "「スクラム」(ジェフ・サザーランド): 新しい仕事の仕方を学ぶ最良の本"
 author = "mosuke5"
 archive = ["2019"]
 +++
@@ -15,7 +15,7 @@ archive = ["2019"]
 
 今回読んだのはこちらの「スクラム」という本です。
 
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="https://www.amazon.co.jp/exec/obidos/ASIN/4152095423" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/31YRID0DRaL._SL160_.jpg" alt="スクラム　仕事が４倍速くなる“世界標準”のチーム戦術" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="https://www.amazon.co.jp/exec/obidos/ASIN/4152095423" name="amazletlink" target="_blank">スクラム　仕事が４倍速くなる“世界標準”のチーム戦術</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with <a href="https://www.amazlet.com/" title="amazlet" target="_blank">amazlet</a> at 19.06.30</div></div><div class="amazlet-detail">ジェフ・サザーランド <br />早川書房 <br />売り上げランキング: 15,652<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="https://www.amazon.co.jp/exec/obidos/ASIN/4152095423" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
+<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="https://amzn.to/39EoJCX" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/31YRID0DRaL._SL160_.jpg" alt="スクラム　仕事が４倍速くなる“世界標準”のチーム戦術" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="https://amzn.to/39EoJCX" name="amazletlink" target="_blank">スクラム　仕事が４倍速くなる“世界標準”のチーム戦術</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with amazlet at 19.06.30</div></div><div class="amazlet-detail">ジェフ・サザーランド <br />早川書房 <br />売り上げランキング: 15,652<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="https://amzn.to/39EoJCX" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
 
 <!--more-->
 
