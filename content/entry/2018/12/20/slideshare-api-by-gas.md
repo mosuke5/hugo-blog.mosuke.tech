@@ -5,7 +5,7 @@ description = "GoogleAppsScript(GAS)からSlideShare APIを使ってスライド
 draft = false
 image = ""
 tags = ["Tech"]
-title = "SlideShare APIをGoogleAppsScriptから利用する"
+title = "SlideShare APIをGoogleAppsScriptから利用する方法"
 author = "mosuke5"
 archive = ["2018"]
 +++
