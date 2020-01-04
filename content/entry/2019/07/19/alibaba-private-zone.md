@@ -5,14 +5,13 @@ description = "Alibaba CloudのPrivateZoneというVPC内での名前解決の�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Alibaba CloudでのPrivate DNS(PrivateZone)を確認する"
+title = "Alibaba CloudでのPrivate DNS(PrivateZone)の仕様と用途の解説"
 author = "mosuke5"
 archive = ["2019"]
 +++
 
 お疲れ様です。mosuke5です。  
-仕事でAWS上でのVPC内の名前解決について調査していて、
-そういえば最近Alibaba Cloudにも<a href="https://www.alibabacloud.com/products/private-zone" target="_bkank">PrivateZone</a>という機能がついたなと思ったので、軽く確認しました。
+Alibaba Cloudのプライベートの名前解決機能である、<a href="https://www.alibabacloud.com/products/private-zone" target="_bkank">PrivateZone</a>の仕様とその用途について解説していきます。
 
 ## PrivateZoneとは
 Alibaba CloudにはDNSのサービスがあり、インターネットからのアクセスに対しては昔から名前解決をすることができました。
@@ -21,7 +20,7 @@ PrivateZoneは、VPC内部だけで使えるDNSです。
 この機能により、VPC内部でのシステム間の連携やサーバ管理などが楽になります。
 <!--more-->
 
-## 使ってみる
+## 名前解決のパターン検証
 使い方は簡単なので、本ブログでは使い方の説明はしません。
 確認したことをベースに書き残していきます。
 
