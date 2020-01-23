@@ -2,7 +2,7 @@
 categories = ["アプリケーション開発", "Kubernetes"]
 date = "2020-01-22T14:44:04+09:00"
 description = "Sock Shopを使ってマイクロサービスの体験をしていきます。マイクロサービスの特徴や課題を体験できるようにシナリオを作りました。ただ起動して終わりではなく、Sock Shopからより多くのことを学ぶきっかけとなればと思います。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Sock Shopを使ったマイクロサービス体験のハンズオン"
