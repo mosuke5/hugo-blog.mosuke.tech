@@ -30,3 +30,8 @@ category = "categories"
 archive = "archive"
 
 #disableKinds = ["tags"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
