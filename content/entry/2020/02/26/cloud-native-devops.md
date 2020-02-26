@@ -2,7 +2,7 @@
 categories = ["DevOps", "Kubernetes"]
 date = "2020-02-26T23:42:24+09:00"
 description = "Kubernetesで実践するクラウドネイティブDevOps、という書籍が発売しました。Kubernetes上でのアプリケーションの開発・運用について網羅的に知見が展開されている良い本です。デプロイやSecret管理、モニタリングなど様々な視点で書かれています。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetesで実践するクラウドネイティブDevOps、運用課題の指南書"
