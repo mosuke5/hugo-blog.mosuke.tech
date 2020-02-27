@@ -5,7 +5,7 @@ description = "Kubernetesで実践するクラウドネイティブDevOps、と�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Kubernetesで実践するクラウドネイティブDevOps、運用課題の指南書"
+title = "運用課題の指南書、Kubernetesで実践するクラウドネイティブDevOps"
 author = "mosuke5"
 archive = ["2020"]
 +++
