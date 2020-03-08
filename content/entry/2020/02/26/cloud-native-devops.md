@@ -11,7 +11,7 @@ archive = ["2020"]
 +++
 
 こんにちは、もーすけです。  
-先日、O'REILLY Japanから <a href="https://amzn.to/2PraGZ8" target="_blank">Kubernetesで実践するクラウドネイティブDevOps</a> という本が出版されました。
+先日、O'REILLY Japanから <a href="https://amzn.to/2PraGZ8" target="_blank" onClick="ga('send','event','link','click','to-amz-cloudnativedevops');">Kubernetesで実践するクラウドネイティブDevOps</a> という本が出版されました。
 最近仕事でKubernetes上のアプリケーションに関するDevOpsやCI/CDによく携わっているのもあり、発売日に手にとりにいきました。
 せっかくなので、こちらの本の紹介をしていきたいと思います。
 

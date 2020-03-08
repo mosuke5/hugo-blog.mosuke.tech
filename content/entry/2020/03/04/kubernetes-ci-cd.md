@@ -11,7 +11,7 @@ archive = ["2020"]
 +++
 
 こんにちは、<a href="https://twitter.com/mosuke5" target="_blank">もーすけ</a>です。  
-前回のブログで「<a href="https://amzn.to/2PraGZ8" target="_blank">Kubernetesで実践するクラウドネイティブDevOps</a>」の書籍を紹介しました。
+前回のブログで「<a href="https://amzn.to/2PraGZ8" target="_blank" onClick="ga('send','event','link','click','to-amz-cloudnativedevops');">Kubernetesで実践するクラウドネイティブDevOps</a>」の書籍を紹介しました。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/02/26/cloud-native-devops/" data-iframely-url="//cdn.iframe.ly/0pYInqQ"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
@@ -189,7 +189,7 @@ SOPSは、ファイル全体を暗号化するのではなく、JsonやYAMLのva
 ## さいごに
 KubernetesにおけるCI/CDで重要になるポイントを紹介してきました。  
 ほかにも紹介したいことがいくつかあるので、別記事ないしは内容の更新を随時おこなっていこうと思います。
-またこの手の内容については「<a href="https://amzn.to/2PraGZ8" target="_blank">Kubernetesで実践するクラウドネイティブDevOps</a>」という書籍でより広範囲で紹介されています。
+またこの手の内容については「<a href="https://amzn.to/2PraGZ8" target="_blank" onClick="ga('send','event','link','click','to-amz-cloudnativedevops');">Kubernetesで実践するクラウドネイティブDevOps</a>」という書籍でより広範囲で紹介されています。
 是非手にとって学んでみてください。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/02/26/cloud-native-devops/" data-iframely-url="//cdn.iframe.ly/0pYInqQ"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
