@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "DevOps"]
 date = "2020-03-04T18:14:26+09:00"
 description = "KubernetesにおけるCI/CDの実践の重要なポイントをまとめました。ブランチ戦略からマニフェストの管理、デプロイの考え方などご紹介します。Kubernetesでの運用をしている人、これから考えてい人の参考になればと思います。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "KubernetesにおけるCI/CD実践の勘所まとめ"
