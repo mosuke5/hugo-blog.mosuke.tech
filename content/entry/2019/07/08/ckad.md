@@ -30,7 +30,7 @@ archive = ["2019"]
 
 ## 準備したこと
 なにを勉強すればいいかについては、すでにでているブログなどを多く参考にしました。
-その中で、下記3つが一番役に立ったものでしたので紹介します。
+その中で、下記が一番役に立ったものでしたので紹介します。
 
 ### CKAD-exercises
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/dgkanatsios/CKAD-exercises" data-iframely-url="//cdn.iframe.ly/MAoLizS"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
@@ -62,6 +62,12 @@ Linux AcademyとCloud Academyは実践問題だけではなく、1から学ぶ�
 すべて受講したわけではないのですが、以前にAWSの資格試験を取得する際にこちらのサイトはお世話になり、それなりに内容は充実していました。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://cloudacademy.com/learning-paths/certified-kubernetes-application-developer-ckad-exam-preparation-451/" data-iframely-url="//cdn.iframe.ly/iq3FYij?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
+### Kubernetes完全ガイド
+CKADの資格取得対策、という意味で役立つわけではないですが、Kubernetesを理解する上で圧倒的に役に立ったのがKubernetes完全ガイドです。これなくして、CKADは受からなかったと思います。みなさんはCKADを取得することが目的ではないはずです。
+ぜひ完全ガイドで基礎を身につけましょう。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/Kubernetes%25E5%25AE%258C%25E5%2585%25A8%25E3%2582%25AC%25E3%2582%25A4%25E3%2583%2589-impress-top-gear-%25E9%259D%2592%25E5%25B1%25B1/dp/4295004804" data-iframely-url="//cdn.iframe.ly/uH10ejv?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 ## 受験開始まで
 ### 申し込み、環境チェック
@@ -118,5 +124,5 @@ Linux AcademyとCloud Academyは実践問題だけではなく、1から学ぶ�
 自分がとくにきになったところを中心にCKAD受験について書きました。  
 他の人の体験記なども多く参考にしながら、ぜひKubernetesライフを楽しんでください。
 
-次はCKAを取るのかとも聞かれるのですが、個人的にはしばらくKubernetesの構築サイドよりは、それを使ったアプリケーション開発や運用に焦点をあてる予定なので、いまのところCKAの予定はありません。
+次はCKAを取るのかとも聞かれるのですが、個人的にはしばらくKubernetesの構築サイドよりは、それを使ったアプリケーション開発や運用に焦点をあてる予定なので、いまのところCKAの予定はありません。
 アプリケーション開発・運用の観点で今後も情報発信できればと思います。
