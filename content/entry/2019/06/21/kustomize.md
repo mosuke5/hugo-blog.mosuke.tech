@@ -29,6 +29,10 @@ kubernetes初心者として、マニフェストもかけてきたし、`kubect
 こうなってきたときに、「あっ。やっぱりマニフェストのテンプレートエンジンが必要だ。。」と強く感じました。
 マニフェストの生成にはいくつか方法があるようなのですが、kubernetes v1.14からkubectlに統合された[Kustomize](https://github.com/kubernetes-sigs/kustomize)が便利そうだったので、そちらでまずは使い勝手を試してみようと思い立ったわけです。
 
+KubernetesにおけるCI/CD重要なポイントを下記にまとめました。その1つとしてKustomize（マニフェストのテンプレート化）の重要性を書いています。参考にどうぞ。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/03/04/kubernetes-ci-cd/" data-iframely-url="//cdn.iframe.ly/AWtNlfG"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
 ## Kustomizeとは
 名前から少し推察できるかもしれませんが、CustomizeのCをKubernetesのKにもじったのが、Kustomizeであり、configuration(manifest) managementのツールです。([公式Github](https://github.com/kubernetes-sigs/kustomize))
 
