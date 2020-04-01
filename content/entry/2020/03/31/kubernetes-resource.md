@@ -2,10 +2,10 @@
 categories = ["Kubernetes"]
 date = "2020-03-31T09:56:21+09:00"
 description = "Kubernetesのリソース関連(Requests,Limits,QoS class,LimitRange)の基本についてまとめました。曖昧に設定していたリソース設定について理解するとデバッグにも役立ちます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
-title = "Kubernetesのリソースの基本を理解する"
+title = "Kubernetesのリソースの基本を今度こそ理解する"
 author = "mosuke5"
 archive = ["2020"]
 +++
@@ -209,6 +209,6 @@ Kubernetesにおけるリソースの基本となる３つの項目について�
 なんとなくで設定していた方は今日で卒業してもらえればと思います。
 
 Kubernetesのリソースは、今日紹介したことの他にもNamespaceごとのリソースのクオータ制限をするResourceQuotaや、Podのオートスケーリング、スケジューリングなどなど非常に奥が深いです。
-より体系的に深く学びたい方は、ぜひともKubernetes完全ガイドをおすすめします。我がバイブルです。
+より体系的に深く学びたい方は、ぜひともKubernetes完全ガイドをおすすめします。我らのバイブルです。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/Kubernetes%25E5%25AE%258C%25E5%2585%25A8%25E3%2582%25AC%25E3%2582%25A4%25E3%2583%2589-impress-top-gear-%25E9%259D%2592%25E5%25B1%25B1/dp/4295004804" data-iframely-url="//cdn.iframe.ly/UdUbVWh?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
