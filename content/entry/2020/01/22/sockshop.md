@@ -11,7 +11,10 @@ archive = ["2020"]
 +++
 
 あけましておめでとうございます。<a href="https://twitter.com/mosuke5" target="_blank">@mosuke5</a>です。  
-マイクロサービスのデモアプリケーションとして<a href='https://microservices-demo.github.io/' target='_blank'>Sock Shop</a>は有名ですよね。
+マイクロサービスの実際の体験や研修を探したことがありますでしょうか。
+残念ながら、実際に手を動かしなら学ぶトレーニングや研修は多く存在しませんが、
+マイクロサービスのデモアプリケーションとして<a href='https://microservices-demo.github.io/' target='_blank'>Sock Shop</a>が有名で、これはトレーニングに最適です。
+
 日本語でもたくさんのSock Shopの紹介やインストール記事がでています。しかし、自分もそうだったのですが、なんとなく起動して動かして、終わりとなっているものがおおく、どんな観点でこのSock Shopをいじっていけばいいかの情報が足りないと感じました。
 機会があり、Sock Shopをさわるタイミングがあったので、実際にどんなデータ構造になっているのか、マイクロサービスゆえの課題など、Sock Shopから少しでも多くの学びが得られるようにこの記事を書きます。
 <!--more-->
@@ -454,3 +457,9 @@ paymentサービスに障害が起きたと仮定し、paymentサービスを落
 Sock Shopを使ったマイクロサービスの体験を紹介してきました。  
 もっと〇〇なことも体験できるよ、とかシナリオとして入れたほうがいい、というものがあればリクエストください。
 みなさんでマイクロサービスを理解するいいきっかけを作れればと思っています。
+
+## 参考文献
+マイクロサービスを学習していく中でかなりお世話になった書籍があります。
+デモアプリケーションで試すと同時にこちらの書籍での学習も進めてみてください。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2593%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3-Sam-Newman/dp/4873117607" data-iframely-url="//cdn.iframe.ly/bLsItzw?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
