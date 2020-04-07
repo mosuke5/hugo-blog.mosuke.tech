@@ -2,10 +2,10 @@
 categories = ["Kubernetes", "コンテナ"]
 date = "2020-04-05T17:35:48+09:00"
 description = "コンテナイメージの別レジストリへのコピーについてSkopeoを例に紹介します。dockerで行う際の課題や簡単な使い方などお伝えしていきます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
-title = "Skopeoを利用したコンテナイメージのレジストリ間のコピー"
+title = "Skopeoを利用したコンテナイメージのレジストリ間コピー"
 author = "mosuke5"
 archive = ["2020"]
 +++
@@ -25,7 +25,7 @@ archive = ["2020"]
 
 ## Dockerではだめなのか
 まず真っ先にレジストリ間のコピーを考えるとDockerでやろうと思いつくかもしれません。  
-`docker pull docker.o/xxx/xxx:tag`でローカルにダウンロードしたイメージを、`docker push myrepository/xxx/xxx:tag`でアップロードすることでレジストリ間のコピーすることは実際に可能です。
+`docker pull docker.io/xxx/xxx:tag`でローカルにダウンロードしたイメージを、`docker push myrepository/xxx/xxx:tag`でアップロードすることでレジストリ間のコピーすることは実際に可能です。
 
 しかしDockerで行うには、Docker特有の問題に立ち向かわなければいけません。  
 Docker daemonの起動が必要であるということです。
