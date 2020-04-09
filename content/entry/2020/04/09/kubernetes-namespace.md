@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2020-04-09T17:59:23+09:00"
 description = "Kubernetesのnamespaceの切り方について迷ったときの考えるポイントを紹介します。リソースの観点、組織・チームの観点、ネットワークセキュリティの観点などから考えることができます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetesのnamespace分け方に迷った場合に考えること"
