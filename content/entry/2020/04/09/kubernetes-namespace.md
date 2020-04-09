@@ -5,7 +5,7 @@ description = "Kubernetesのnamespaceの切り方について迷ったときの�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Kubernetesのnamespace分け方に迷った場合に考えること"
+title = "Kubernetes、namespaceの分け方に迷った場合に考えること"
 author = "mosuke5"
 archive = ["2020"]
 +++
