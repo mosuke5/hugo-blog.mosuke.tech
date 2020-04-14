@@ -20,6 +20,7 @@ Jenkins pipelineで複数クラスタ（マルチクラスタ）を扱いたい�
 やることは単純で、複数のクラスタの認証情報を用意して操作することになるわけですが、JenkinsのOpenShift Client Pluginを用いた方法についてメモしていきます。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/04/05/skopeo/" data-iframely-url="//cdn.iframe.ly/SsqYHwS"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<!--more-->
 
 本ブログでは下記状況を想定します。  
 
