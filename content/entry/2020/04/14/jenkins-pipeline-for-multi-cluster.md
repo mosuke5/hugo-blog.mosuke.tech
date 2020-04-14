@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "DevOps"]
 date = "2020-04-14T17:05:07+09:00"
 description = "Jenkins pipelineで複数のOpenShiftクラスタを扱う方法について共有します。OpenShift Jenkins Pipeline Pluginを使ったマルチクラスタの扱いを紹介します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Jenkins pipelineで複数のOpenShiftクラスタを扱う"
