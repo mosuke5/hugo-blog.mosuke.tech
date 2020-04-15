@@ -16,7 +16,7 @@ Jenkins pipelineで複数クラスタ（マルチクラスタ）を扱いたい�
 ## 背景
 以前にskopeoを用いたコンテナイメージの別レジストリへのコピーする方法について書きました。
 イメージを別レジストリへコピーする目的は、イメージをビルドしたクラスタと本番環境が別クラスタの場合などがあります。
-必然的に、Jenkins pipelineで複数のOpenShiftのクラスタに対して操作したいということになります。
+複数のクラスタを利用する環境では、１つのJenkins pipelineから複数のOpenShiftのクラスタに対して操作するケースがでてきます。
 やることは単純で、複数のクラスタの認証情報を用意して操作することになるわけですが、JenkinsのOpenShift Client Pluginを用いた方法についてメモしていきます。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/04/05/skopeo/" data-iframely-url="//cdn.iframe.ly/SsqYHwS"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
@@ -152,5 +152,7 @@ pipeline {
 ## さいごに
 特に難しいこともなく、GithubのREADMEをきちんと読めばできることだったのですが、
 いくつか設定してハマったところもあったので書き残しました。
-Jenkinsはもう古いと思いつつも、JenkinsXやJenkins Opratorもでてきているので、まだまだお世話になりそうです。
-OpenShift x OpenShiftをガンガン使いこなしておきましょう。
+組織で実現する場合には、認証方法をどうするか、ServifeAccountの権限をどうするか、ここがおそらく一番重要になるポイントになります。くれぐれも重大なトラブルの起こさないように権限設定は検討してください。
+
+Jenkinsは少し古いと思いつつも、JenkinsXやJenkins Opratorもでてきているので、まだまだお世話になりそうです。
+OpenShift x Jenkinsをガンガン使いこなしていきましょう。
