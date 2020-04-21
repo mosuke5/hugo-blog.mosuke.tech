@@ -41,7 +41,7 @@ ServiceAccountはもともとは、Podで実行されるプロセスに割り当
 ServiceAccountを削除すれば認証のTokenも削除できるので比較的便利です。
 
 環境B側にServiceAccountを作成しましょう（ここでは`jenkins-deploy`というServiceAccountを作ります）。  
-ServiceAccountは作成されると、Secret(Tokenなど)が自動的に作成されます。
+ServiceAccountは作成されると、Secret(Tokenなど)が自動的に作成されます。（生成されるトークンに関する<a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.3/html/authentication/understanding-and-creating-service-accounts" target="_blank">公式ドキュメント</a>）
 そのTokenを使って認証することができます。
 
 ```
@@ -147,6 +147,65 @@ pipeline {
     }
   }
 }
+```
+
+## ServiceAccountを使ったレジストリへのアクセス
+(2020/04/21追記)  
+本筋とは少しずれるのですが、複数クラスタを運用している場合、レジストリ間でのイメージのコピーが必要になります。
+イメージレジストリへの認証もServifeAccountを用いて行うことが実はできるのでお伝えします。
+上で、ServiceAccountを作成後にSecretが自動生成されると書きましたが、その中に`jenkins-deploy-dockercfg-pjwrj`という名前のSecretがありました。このSecretにはイメージレジストリの認証に利用できる情報が入っています。
+
+```
+$ oc get secret
+NAME                             TYPE                                  DATA   AGE
+...
+jenkins-deploy-dockercfg-pjwrj   kubernetes.io/dockercfg               1      3m35s
+jenkins-deploy-token-bvf8p       kubernetes.io/service-account-token   4      3m35s
+jenkins-deploy-token-c5fhl       kubernetes.io/service-account-token   4      3m35s
+```
+
+中身はこんな具合です。
+
+```
+{
+  "172.30.203.233:5000": {
+    "username": "serviceaccount",
+    "password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "email": "serviceaccount@example.org",
+    "auth": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  ...
+}
+```
+
+試しに、このServiceAccountの認証情報を使ってDocker CLIでクラスタ外部からログインしてみます。
+`~/.docker/config.json`を下記のように書いてログインができることを確認できます。
+下はDockerでのログインをしましたが、skopeoや`oc image mirror`コマンドで同様に認証が利用できます。
+
+```
+$ cat ~/.docker/config.json
+{
+	"auths": {
+		"your-openshift-registry-endpoint": {
+			"auth": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+		}
+	}
+}
+
+$ docker login your-openshift-registry-endpoint
+Authenticating with existing credentials...
+WARNING! Your password will be stored unencrypted in /Users/shinyamori/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+$ docker pull your-openshift-registry-endpoint/mosuke5/example:latest
+latest: Pulling from mosuke5/example
+26df34a7cd86: Pull complete
+f840832afa6e: Pull complete
+1827265676ce: Pull complete
+...
 ```
 
 ## さいごに
