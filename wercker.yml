@@ -1,4 +1,4 @@
-box: ruby:2.3
+box: debian:10.3-slim
 build:
   steps:
     - install-packages:
