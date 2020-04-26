@@ -1,4 +1,4 @@
-box: alpine:3.11.6
+box: debian:10.3-slim
 build:
   steps:
     - install-packages:
