@@ -50,6 +50,8 @@ deploy:
 
 purge-cache:
   steps:
+    - install-packages:
+        packages: curl
     - script:
       name: delete cloudflare cache in top page
       code: |
@@ -62,6 +64,8 @@ purge-cache:
 
 test-blog-site:
   steps:
+    - install-packages:
+        packages: curl
     - script:
       name: test blog site url
       code: |
