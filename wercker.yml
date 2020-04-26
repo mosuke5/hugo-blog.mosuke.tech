@@ -1,4 +1,4 @@
-box: ruby:2.3
+box: alpine:3.11.6
 build:
   steps:
     - install-packages:
