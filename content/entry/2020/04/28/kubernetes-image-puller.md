@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "DevOps"]
 date = "2020-04-28T17:17:54+09:00"
 description = "Kubernetes利用時のコンテナイメージのプルに関する効率化について考えてみます。kubernetes-image-pullerを使ったイメージの事前プルする方法などについてご紹介します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "イメージのプルの効率化を考える。kubernetes-image-puller の紹介"
