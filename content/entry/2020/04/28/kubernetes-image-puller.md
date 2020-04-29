@@ -14,6 +14,7 @@ FF7リメイク、クリアしました。いまSwitchで原作のFF7をやり�
 今日は<a href="https://github.com/che-incubator/kubernetes-image-puller" target="_blank">kubernetes-image-puller</a>というツールを発見し試してみたので、背景や課題感含めてご紹介していきます。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/che-incubator/kubernetes-image-puller" data-iframely-url="//cdn.iframe.ly/VbiFtNx"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<!--more-->
 
 ## 課題感
 Kubernetesを利用していて、イメージのプル（ダウンロード）を効率化したいと考えたことはないでしょうか。
