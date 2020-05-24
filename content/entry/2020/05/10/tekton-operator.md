@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "DevOps"]
 date = "2020-05-10T15:15:21+09:00"
 description = "Tekton Operatorを用いて、Tektonのインストールをしていきます。OperatorとTekton本体、パイプラインタスクの関係性などを整理しながら説明します。最後に簡単なタスク実行も行っていきます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "TektonのOperatorによるインストールとHello World"
