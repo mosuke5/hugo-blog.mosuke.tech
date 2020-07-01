@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2020-07-01T23:00:53+09:00"
 description = "Sock Shopを使ったマイクロサービス体験ハンズオンにサービスメッシュを追加しました。サービスメッシュがどのような価値を生むのか自分の身体で体験するのにご活用ください。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Sock Shopを使ったサービスメッシュ体験のハンズオン"
