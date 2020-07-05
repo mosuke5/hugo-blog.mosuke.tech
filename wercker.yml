@@ -51,7 +51,7 @@ deploy:
 purge-cache:
   steps:
     - install-packages:
-        packages: curl
+        packages: git curl
     - script:
       name: delete cloudflare cache in top page
       code: |
