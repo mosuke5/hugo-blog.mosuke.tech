@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "DevOps"]
 date = "2020-07-05T23:00:50+09:00"
 description = "OpenShift上でJenkinsを利用する際のプラグインの管理方法やカスタマイズの方法などをご紹介します。プラグインが消えてしまうなどの問題にどう対応したらよいかなどまとめています。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "カスタマイズしたJenkinsを作成する方法 on OpenShift"
