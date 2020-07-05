@@ -16,8 +16,8 @@ archive = ["2020"]
 イヤホンなどで流すよりも部屋全体に流れるようにテレビなどでやるとおすすめです。ぜひトライしてみてください。
 
 今日は、Kubernetesのリソースの基本についてまとめました。  
-自分自身が理解が不足していたこともありましたし、なんとなくでマニフェストのリソースを書いてハマってしまうことも多くあるなあと思ったからです。
-今回書いたリソースは主に３点（コンテナのへのリソース割り当て, QoS Class, LimitRange）ですが、この他にも様々なトピックがあります。機会あれば別にご紹介したいともいます。
+なんとなくでマニフェストのリソースを設定してアプリケーションがエラーになってしまってトラブルシュートに困ったことのある方もおそらくおおいのではないでしょうか。
+今回は最低限ここだけは抑えておいたほうがいいだろう、と個人的に感じているリソースの４点（コンテナのへのリソース割り当て, QoS Class, LimitRange、ResourceQuota）についてまとめました。機会あれば別の観点もご紹介したいともいます。
 <!--more-->
 
 ## コンテナへのリソース割り当て
@@ -203,12 +203,32 @@ Events:
 limit is 2147483648, maximum memory usage per Container is 1Gi, but limit is 2Gi, memory max limit to request ratio per Container is 2, but provided ratio is 4.096000]
 ```
 
+## ResourceQuota
+ResourceQuotaとよばれる、Namespaceレベルに対して設定できるリソースです。  
+Namespace全体で、どのくらいのCPUやメモリ使用を許可するのかといった設定が可能です。
+その他、Podの`PriorityClass`に応じて、使用できるリソース量を調整することなどが可能です。
+
+使いみちとしては、例えばアプリケーション毎にNamespaceを分けていて、とあるアプリケーションの過多なリソース消費によって、クラスター全体に影響（あるいは別アプリケーションへ影響）を与えないようにするなどのために利用できます。
+各チーム・各アプリケーションのマルチテナント性がある場合には、特に重要な機能になります。
+
+詳しくはぜひ公式ドキュメントを参考にし、試してみましょう。  
+<a href="https://kubernetes.io/ja/docs/concepts/policy/resource-quotas/" target="_blank">リソースクォータ | Kubernetes</a>
+
+### ClusterResourceQuota
+もし、OpenShiftをお使いの方は、もう一つ知っておくと便利なリソースがあります。  
+それはClusterResourceQuotaです。ResourceQuotaは１つのNamespaceレベルでの設定でしたが、ClusterResourceQuotaは複数のNamsをまたいだリソースの使用量を設定できるものです。  
+具体的な利用ユースケースでは、ユーザ毎に使用できるリソース量を調整するなどです。
+ユーザは任意に複数のNamespaceを作成できる権限をもつが、その作成した複数のNamespaceをトータルして、そのユーザが利用できるリソース使用量を決めることができるというものです。  
+社内の開発環境などで、ユーザごとにマルチテナント性が必要な場合などに検討するといいです。
+
+<a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.4/html/applications/setting-quotas-across-multiple-projects" target="_blank">5.2. 複数のプロジェクト間のリソースクォータ | Red Hat Customer Portal</a>
+
 ## まとめ
-Kubernetesにおけるリソースの基本となる３つの項目について見てきました。  
+Kubernetesにおけるリソースの基本となる４つの項目について見てきました。  
 最低限このくらいのことがわかっているとデバッグ作業に非常に役立つと感じています。
 なんとなくで設定していた方は今日で卒業してもらえればと思います。
 
-Kubernetesのリソースは、今日紹介したことの他にもNamespaceごとのリソースのクオータ制限をするResourceQuotaや、Podのオートスケーリング、スケジューリングなどなど非常に奥が深いです。
+Kubernetesのリソースは、今日紹介したことの他にもPodのオートスケーリング、スケジューリングなどなど非常に奥が深い内容です。
 より体系的に深く学びたい方は、ぜひともKubernetes完全ガイドをおすすめします。我らのバイブルです。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/Kubernetes%25E5%25AE%258C%25E5%2585%25A8%25E3%2582%25AC%25E3%2582%25A4%25E3%2583%2589-impress-top-gear-%25E9%259D%2592%25E5%25B1%25B1/dp/4295004804" data-iframely-url="//cdn.iframe.ly/UdUbVWh?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
