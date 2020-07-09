@@ -5,7 +5,7 @@ description = "コンテナイメージのセキュリティに対する考え�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "コンテナイメージのセキュリティに関する考え方"
+title = "コンテナイメージの脆弱性のリスクと対策についてNIST SP 800-190に沿って考える"
 author = "mosuke5"
 archive = ["2020"]
 +++
