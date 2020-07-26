@@ -7,6 +7,10 @@ build:
         name: download theme
         code: |
             $(git clone https://github.com/mosuke5/purehugo ./themes/purehugo)
+    - script:
+        name: checkout theme
+        code: |
+            $(cd ./themes/purehugo && git checkout e7eba1152631455a76805d8441329bc6df1ec531)
     - arjen/hugo-build:
         version: "0.71.1"
         theme: purehugo
