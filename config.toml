@@ -24,6 +24,7 @@ hideShareOptions = true
 subTitle = "@mosuke5's Blog"
 description = "@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。"
 google_analytics = "UA-99596316-1"
+contactUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd6N53H7zfF8EBrvyezRizU1mQx-CP3vc_jG-WvxfRmCjHTpg/viewform"
 
 [taxonomies]
 category = "categories"
