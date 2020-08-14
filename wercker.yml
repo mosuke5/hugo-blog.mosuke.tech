@@ -6,14 +6,14 @@ build:
     - script:
         name: download theme
         code: |
-            $(git clone https://github.com/mosuke5/purehugo ./themes/purehugo)
+            $(git clone https://github.com/mosuke5/mosuke-tech-hugo-theme ./themes/mosuke-tech-hugo-theme)
     - script:
         name: checkout theme
         code: |
-            $(cd ./themes/purehugo && git checkout e7eba1152631455a76805d8441329bc6df1ec531)
+            $(cd ./themes/mosuke-tech-hugo-theme && git checkout 4b7b843de9f0d059e53c8966726f974bbd20f2fd)
     - arjen/hugo-build:
         version: "0.71.1"
-        theme: purehugo
+        theme: mosuke-tech-hugo-theme
         flags: --buildDrafts=false
   after-steps:
     - slack-notifier:
