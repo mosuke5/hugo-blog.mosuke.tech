@@ -1,5 +1,5 @@
 +++
-categories = ["kubernetes"]
+categories = ["Kubernetes"]
 date = "2020-08-13T18:40:35+09:00"
 description = "Zabbixは使い慣れた監視ツールのひとつかと思います。Kuberntes環境でZabbixは活用できるのか？Prometheusとどうつかいわけていけばいいのか？そのヒントを探るために検証しました。"
 draft = false
