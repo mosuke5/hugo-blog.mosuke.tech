@@ -1,11 +1,11 @@
 +++
-categories = ["", ""]
+categories = ["kubernetes"]
 date = "2020-08-13T18:40:35+09:00"
-description = ""
-draft = true
+description = "Zabbixは使い慣れた監視ツールのひとつかと思います。Kuberntes環境でZabbixは活用できるのか？Prometheusとどうつかいわけていけばいいのか？そのヒントを探るために検証しました。"
+draft = false
 image = ""
 tags = ["Tech"]
-title = "ZabbixでKubernetesの監視を検討する（Prometheus exporter, API）"
+title = "ZabbixでKubernetesの監視を検討する（Prometheus exporter, Kubernetes API）"
 author = "mosuke5"
 archive = ["2020"]
 +++
