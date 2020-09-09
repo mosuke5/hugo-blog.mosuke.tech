@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2020-09-09T17:45:05+09:00"
 description = "KubernetesのPod内でどのように名前解決されるのか検証して確かめてみました。tcpdumpなどを活用しながら確認していくことでより実践的なトラブルシューティングに役立てる知見を得ることができました。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "KubernetesのPod内からの名前解決を検証する"
