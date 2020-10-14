@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes"]
 date = "2020-10-10T14:06:03+09:00"
-description = ""
-draft = true
+description = "OperatorSDKを用いてAnsible Operatorを開発する際のTipsをまとめまています。チュートリアルのあとにやったほうがいいことを中心に紹介します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OperatorSDK for Ansible の開発。チュートリアルの次の一歩（未完）"
