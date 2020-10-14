@@ -5,14 +5,30 @@ description = ""
 draft = true
 image = ""
 tags = ["Tech"]
-title = "OperatorSDK for Ansible を使って自作Operatorを作る"
+title = "OperatorSDK for Ansible の開発。チュートリアルの次の一歩（未完）"
 author = "mosuke5"
 archive = ["2020"]
 +++
 
+こんにちは、もーすけです。  
+本日は、Kubernetes Operatorの開発に関する情報提供をしたいと思います。
+Operatorってなに？ってかたやより内部実装を学びたい方はぜひこちらの書籍（[実践入門 Kubernetesカスタムコントローラーへの道](https://amzn.to/34SwsvS)）を参考にしてください。
+
+Operator開発にはOperatorSDKを利用するのが非常に便利です。Go, Ansible, Helmなどを用いて開発できるのですが、今回はAnsibleを使ったOperatorについて書きます。
+OperatorSDKは便利ですが、まだまだ情報が少なく、ドキュメントのチュートリアルを実施したあとに何をすればいいのか？とっつきにくいさもあります。
+というわけで、このブログでは、チュートリアル後に何をすればいいか？どんなことを確認していけばいいのか？という観点でまとめてみましたので、ぜひ参考にしてOperator開発を楽しんでください。
+
+まだチュートリアルをやっていないよ、というかたはこちらから済ましてみましょう。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://sdk.operatorframework.io/docs/building-operators/ansible/tutorial/" data-iframely-url="//cdn.iframe.ly/2QAR3qE"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
 ## 環境
-- OpenShift
-- macbook pro
+まず環境について書いておきます。
+チュートリアルを終えられている想定のため細かいことは不要かと思いますが、記載しておきます。
+
+- 作業環境: MacBook Pro (13-inch, 2017), macOS Catalina 10.15.7
+- Kubernetes環境: OpenShift 4.4.8
+  - minikubeなででも当然大丈夫です
 
 ### OperatorSDK
 macOSの環境だったため、`brew` でインストールしました。
@@ -31,7 +47,7 @@ Operator開発に必ずしもAnsibleは必要ありません。
 開発端末にAnsibleをインストールしておくことを推奨します。自分は `pip` でインストールしました。
 
 ```
-$ pip install --user ansible
+$ pip3 install --user ansible
 ...
 $ ansible --version
 ansible 2.10.2
@@ -43,7 +59,7 @@ ansible 2.10.2
 ```
 
 ### その他のツール
-その他、ローカルで実行したり開発をするには下記が必要になります。
+その他、ローカルでの実行・開発をするには下記が必要になります。
 - ansible-runner
 - ansible-runner-http
 - docker
@@ -100,24 +116,20 @@ Operator開発時にはMakefileを用いた操作を多用します。`make` の
 ```
 $ make --version
 GNU Make 3.81
-Copyright (C) 2006  Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.
-There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-
-This program built for i386-apple-darwin11.3.0
+...
 ```
 
-## Hello world
-https://sdk.operatorframework.io/docs/building-operators/ansible/tutorial/
+## チュートリアルの次の一歩
+それでは本題に入っていきます。  
+チュートリアルを終えたあとにどんなことを確認しておけばいいか？という観点でいくつかまとめました。
+最終的なサンプルコードとしては追って公開する予定です。
 
-## Memcached Operatorに手を入れる 
-### Operatorのコンテナイメージって？
+### Operatorのコンテナイメージの実体を知りたい
 開発したOperatorは `make docker-build docker-push xxxx` にてコンテナイメージを作成後、`make deploy` でKubernetesクラスタ上にデプロイすることが可能です。
-このときに作成したコンテナイメージとは何なのかきになったので、どこを見ればいいか確認しておきます。
+このときに作成したコンテナイメージとは何なのか気になったので、どこを確認すればいいかみておきます。
 
-まず、`make docker-build` で作成するイメージは、プロジェクト内にあるDockerfileから確認できます。
-やっていることは非常に簡単で、`quay.io/operator-framework/ansible-operator:v1.0.1` に開発したplaybookやrole, watches.yamlをコピーしているのみのようです。
+まず、`make docker-build` で作成するイメージは、プロジェクト内にあるDockerfileを用いてビルドされます。
+やっていることは非常に簡単で、`quay.io/operator-framework/ansible-operator:v1.0.1` に開発したplaybookやrole, watches.yamlをコピーしているのみです。
 
 ```
 $ cat Dockerfile
@@ -132,26 +144,28 @@ COPY roles/ ${HOME}/roles/
 COPY playbooks/ ${HOME}/playbooks/
 ```
 
-このベースイメージの実体はどこにあるのかを探ってみます。  
+では、このベースイメージとなっている `quay.io/operator-framework/ansible-operator:v1.0.1` の実体はどこにあるのかを探ってみます。  
 operator-framework/operator-sdk 内の `hack/image/ansible/Dockerfile` が実体です。
 https://github.com/operator-framework/operator-sdk/blob/master/hack/image/ansible/Dockerfile
 
-### makeでできることを確認する
+ベースイメージも非常にシンプルで、Ansibleなど必要なライブラリを基本的にインストールしているのみです。動かしている実体はGoで実装された `ansible-operator` というコマンドです。
+こちらの動作を追うにはGitHubで [operator-sdk/internal/ansible](https://github.com/operator-framework/operator-sdk/tree/master/internal/ansible) をのぞくといいでしょう。
+
+### makeでできることを確認したい
 ドキュメントをいろいろ読んでいくと `make` でいろいろな作業を行います。  
 操作については、`Makefile`の中身を必ず見ておきましょう。`Makefile`に慣れていない人は一度こちらのサイトを見ておくと良いです。慣れればただのシェルの実行なので難しくないです。
 
 [Makefileの解説](http://omilab.naist.jp/~mukaigawa/misc/Makefile.html)
 
-- make install
-- make deploy
-- make undeploy
-- make run
-- make docker-build
-
-### make deployで行われること
-operator deploy
-- operator本体
-- kube-rbac-proxy
+|  コマンド  |  内容  |
+| ---- | ---- |
+|  make install  |  CRDのみをクラスタにインストールする。ローカル開発時に利用する。  |
+|  make uninstall  |  CRDをクラスタから削除する。 |
+|  make deploy  |  CRDやOperatorのDeployment、RoleなどOperatorを動作させるために必要な一式をクラスタにデプロイする。  |
+|  make undeploy  |  Operatorを動作させるために必要な一式をクラスタから削除する。  |
+|  make docker-build  |  Operatorのコンテナイメージをビルドする。  |
+|  make docker-push  |  OperatorのコンテナイメージをレジストリにPushする。  |
+|  make run  |  ローカル上でOperatorを実行する。  |
 
 ### CRDの定義をカスタマイズしたい
 サンプルで作成されるCRDは実は未完成です。  
@@ -163,7 +177,7 @@ Ansible OperatorではこのCRDは自動生成されることなく自分で記�
 `size`がPodの数で、`imagetag`が利用するイメージのタグ名です。
 `size`については入力が必須であり、`imagetag`は未指定の場合のデフォルト値を設定したいという状態です。
 
-```
+```yaml
 apiVersion: cache.example.com/v1
 kind: Memcached
 metadata:
@@ -218,7 +232,7 @@ spec:
             ...
 ```
 
-この様にCRDを定義することで、CRを作成した際のバリデーションを実現できたり、`kubectl expain` で定義を確認することなどができるようになる。
+このようにCRDを定義することで、CRを作成する際のバリデーションを実現できたり、`kubectl expain` で定義を確認することなどができるようになります。
 
 ```
 $ kubectl explain memcached.spec
@@ -240,21 +254,16 @@ FIELDS:
 
 ### ローカルで実行したい
 OperatorをいちいちKubernetesクラスタにデプロイして検証するには結構手間がかかりたいへんです。Operatorもローカル（開発端末上）で検証できるに越したことはありません。
-ローカルでの実行方法を覚えておくと非常に便利です。
-Operator自身は、ローカルで実行可能ですが、Kubernetesクラスタはないと動作確認ができないので、リモート上のKubernetesかDocker Desktopなどでローカル上のKubernetesが必要にはなります。
-下記、イメージ図を図にしました。
+ローカルでの実行方法を覚えておくと非常に便利です。上で紹介しましたが、`make run` でansible-operatorをローカル環境で実行が可能です。
+Operator自身はローカルで実行可能ですが、Kubernetesクラスタはないと動作確認ができないので、リモート上のKubernetesかDocker Desktopなどでローカル上のKubernetesが必要にはなります。
+下記、イメージを図にしました。
 
-<図が入る>
-
-```
-$ make install
-$ make run
-```
+![ansible-operator-on-laptop](/image/ansible-operator-on-laptop.png)
 
 ### playbookを実行したい
-チュートリアルのサンプルでは、AnsibleのRoleのみを書いた例だった。
-よりAnsibleらしくplaybookを書いて実行したいと思うはずです。
-Ansible Operatorでは、`watches.yaml` に
+チュートリアルのサンプルでは、AnsibleのRoleのみを書いた例でした。
+より凝った処理を行おうと思うと、Ansibleらしくplaybookを調整ループ（reconciliation loop）の中で実行したいと思うはずです。
+Ansible Operatorでは、`watches.yaml` に、playbookのファイルのパスを指定することでansible playbookを実行できます。
 
 ```yaml
 ---
@@ -271,13 +280,80 @@ Ansible Operatorでは、`watches.yaml` に
 ```
 
 ### 外部リソースを監視したい
-Kubernetes内のリソースではなく、外部のリソースを監視した結果で
+Kubernetes内のリソースではなく、外部のリソースを監視した結果でKubernetesリソースを変更したいこともあるでしょう。
+実際にこの例では、あるWebサーバの返すレスポンスの値に応じてPod数を変更したいと考えていたとします。
+こういう場合は、`reconcilePeriod` を設定するといいです。以下の場合、10秒ごとに調整ループを実行することになり、Kubernetes外のイベントへの調整が可能になります。
+
+```yaml
+---
+- version: v1
+  group: cache.example.com
+  kind: MyExternalDeployment
+  playbook: playbooks/myexternaldeployment.yml
+  reconcilePeriod: 10s
+  watchDependentResources: False
+```
+
+### APIバージョンを追加したい
+Operatorを開発し運用していくと、途中のバージョンからCRDのスキーマレベルで変更したいなどの大きな変更をしたいということは訪れるはずです。
+APIバージョンを新しく追加したい場合はどうすればいいか調べてみました。
+
+本来であれば、同じリソース名でapiVersionのみを変更し対応したいところですが、現状のansible-operaotorでは複数APIバージョンには対応していません。
+今後のバージョンアップに期待です。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/operator-framework/operator-sdk/issues/2950" data-iframely-url="//cdn.iframe.ly/Su69ApK"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
+### 利用できる変数を確認したい
+playbookを書いていると、KubernetesのCRで定義した情報を変数として利用したいことがでてきます。その変数をどの様にとりだしたらいいかわからなくなることがあるので、変数をダンプするすべを覚えておくといいです。
+APIのグループとkind名で一定の命名規則で変数が格納されます。下の例だと `group = cache.example.com` で `kind = MyExternalDeployment` の場合、`_cache_example_com_myexternaldeployment` という名前で生成されます。
 
 ```
+- name: "dump variables vars"
+  debug: var=vars
+
+TASK [dump variables vars] ********************************
+ok: [localhost] => {
+    "vars": {
+        "_cache_example_com_myexternaldeployment": {
+            "apiVersion": "cache.example.com/v1",
+            "kind": "MyExternalDeployment",
+            "metadata": {
+                "annotations": {
+                    "ansible.sdk.operatorframework.io/verbosity": "5",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cache.example.com/v1\",\"kind\":\"MyExternalDeployment\",\"metadata\":{\"annota
+tions\":{\"ansible.sdk.operatorframework.io/verbosity\":\"5\"},\"name\":\"myexternaldeployment-sample\",\"namespace\":\"default\"},\"spec\":{\"imagetag\":\"latest\",\"mon
+itoringUrl\":\"https://raw.githubusercontent.com/mosuke5/ansible-operator-practice/master/config/testdata/sample.json\"}}\n"
+                },
+                "creationTimestamp": "2020-10-14T04:30:15Z",
+                "generation": 1,
+                "name": "myexternaldeployment-sample",
+                "namespace": "default",
+                "resourceVersion": "591896",
+                "selfLink": "/apis/cache.example.com/v1/namespaces/default/myexternaldeployments/myexternaldeployment-sample/status",
+                "uid": "cae902e5-05d9-40ea-93b5-1896c53eab59"
+            },
+            "spec": {
+                "imagetag": "latest",
+                "monitoringUrl": "https://raw.githubusercontent.com/mosuke5/ansible-operator-practice/master/config/testdata/sample.json"
+            },
 ```
-
-### APIバージョンが変わるとき
-
-### molecureでテストしたい
 
 ### Operatorを監視したい
+OperatorSDKで実行されるプロセスには、Prometheus形式のメトリクスを出力するエンドポイントが内包されています。
+OperatorSDKを用いて起動したOperatorのメトリクスをPrometheusで取得することは非常に容易です。
+一番簡単に確認する方法としては、`make run` で起動したあとに、`localhost:8888/metrics` にブラウザから接続することです。下記のようなメトリクスが出力されていることが確認できるはずです。
+
+```
+# HELP aggregator_openapi_v2_regeneration_count [ALPHA] Counter of OpenAPI v2 spec regeneration count broken down by causing APIService name and reason.
+# TYPE aggregator_openapi_v2_regeneration_count counter
+aggregator_openapi_v2_regeneration_count{apiservice="*",reason="startup"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="k8s_internal_local_delegation_chain_0000000002",reason="update"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.apps.openshift.io",reason="add"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.apps.openshift.io",reason="update"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.authorization.openshift.io",reason="add"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.authorization.openshift.io",reason="update"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.build.openshift.io",reason="add"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.build.openshift.io",reason="update"} 0
+aggregator_openapi_v2_regeneration_count{apiservice="v1.image.openshift.io",reason="add"} 0
+...
+```
