@@ -5,7 +5,7 @@ description = "OperatorSDKを用いてAnsible Operatorを開発する際のTips�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "OperatorSDK for Ansible の開発。チュートリアルの次の一歩（未完）"
+title = "OperatorSDK for Ansible の開発。チュートリアルの次の一歩"
 author = "mosuke5"
 archive = ["2020"]
 +++
@@ -21,6 +21,7 @@ OperatorSDKは便利ですが、まだまだ情報が少なく、ドキュメン
 まだチュートリアルをやっていないよ、というかたはこちらから済ましてみましょう。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://sdk.operatorframework.io/docs/building-operators/ansible/tutorial/" data-iframely-url="//cdn.iframe.ly/2QAR3qE"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<!--more-->
 
 ## 環境
 まず環境について書いておきます。
@@ -338,6 +339,42 @@ itoringUrl\":\"https://raw.githubusercontent.com/mosuke5/ansible-operator-practi
             },
 ```
 
+### Operatorの挙動をテストしたい
+ソフトウェア開発でテストコードを書くのと同じ様に、Operator開発でも（しかもAnsibleを使った開発でも）テストが書けます。
+Ansibleのテストツールで有名な[molecule](https://molecule.readthedocs.io/en/latest/)を用いることができます。
+
+最新版のOperatorSDKでは、[kind](https://github.com/kubernetes-sigs/kind)(kubernetes in docker)を用いて、ローカル内でテストができるように設計されています。
+ローカル環境でテストしたい場合は、Dockerとmoleculeのインストールを忘れず行いましょう。
+`molecule/verify.yml`内に`molecule/default/tasks/*_test.yml`のテストが実行されるように定義されています。
+独自のテストシナリオは、`molecule/default/tasks/*_test.yml`に書いていけば問題ありません。
+
+```
+molecule
+├── default
+│   ├── converge.yml
+│   ├── create.yml
+│   ├── destroy.yml
+│   ├── kustomize.yml
+│   ├── molecule.yml
+│   ├── prepare.yml
+│   ├── tasks
+│   │   ├── memcached_test.yml
+│   │   ├── mydeployment_test.yml
+│   │   └── myexternaldeployment_test.yml
+│   └── verify.yml
+└── kind
+    ├── converge.yml
+    ├── create.yml
+    ├── destroy.yml
+    └── molecule.yml
+```
+
+Operator開発でのテストは、基本的に`アクションする`→`Kubernetes APIを実行する`→`結果を確認する`の3ステップで実施できます。
+たとえば、`CRのreplicasを変更する`→`Kubernetes APIで特定のPodの情報を取る`→`期待する数に変動したか確認する`などです。
+下記にサンプルを書いてみましたので参照ください。（随時ブラッシュアップ中）
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/mosuke5/ansible-operator-practice/blob/master/molecule/default/tasks/memcached_test.yml" data-iframely-url="//cdn.iframe.ly/6t2BdTo"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
 ### Operatorを監視したい
 OperatorSDKで実行されるプロセスには、Prometheus形式のメトリクスを出力するエンドポイントが内包されています。
 OperatorSDKを用いて起動したOperatorのメトリクスをPrometheusで取得することは非常に容易です。
@@ -357,3 +394,7 @@ aggregator_openapi_v2_regeneration_count{apiservice="v1.build.openshift.io",reas
 aggregator_openapi_v2_regeneration_count{apiservice="v1.image.openshift.io",reason="add"} 0
 ...
 ```
+
+## さいごに
+Operatorの自作はまだまだ情報もすくなく難しく感じるかもしれません。
+しかし、OperatorSDKはかなり優秀で、Operatorのロジック部分に集中できるフレームワークです。ちょっとした仕組みとなにをすればいいかわかればおそらくみなさんもOperator開発をガンガン進められるのではないかと思います。
