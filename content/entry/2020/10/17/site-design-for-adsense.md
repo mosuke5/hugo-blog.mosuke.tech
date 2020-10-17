@@ -1,8 +1,8 @@
 +++
 categories = ["ブログ運用"]
 date = "2020-10-17T16:52:30+09:00"
-description = ""
-draft = true
+description = "Googleアドセンスの合格に必要なサイトのレイアウトについて紹介しました。なんども合格しなかったアドセンスにレイアウト変更で合格できたのでなにをどう変更したのか紹介します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Googleアドセンス合格に必要なサイトのレイアウトについて"
