@@ -10,6 +10,16 @@ author = "mosuke5"
 本ページは、Kubernetesを学びたい人向けにコンテンツを整備していくことを目的にしたものです。
 随時更新しますので、ぜひご活用ください。
 
+## なぜコンテナを使いたいかを考える
+まずはなぜ自分たちがコンテナやKubernetesに興味を持っているのか、使いたいのかを改めて考えるきっかけをつくるといいです。
+もちろん触ってみないとわからないことも多いので、勉強という意味では意義を無視してどんどんすすめてみてください。
+なぜコンテナを使いたいかを考える材料として、「{{< external_link url="https://amzn.to/2HRo47K" title="LeanとDevOpsの科学 テクノロジーの戦略的活用が組織変革を加速する" >}}」がとてもオススメです。[書評ブログ](https://blog.mosuke.tech/entry/2019/12/26/the-science-of-lean-software-and-devops/)も過去に書いているのであわせてご覧ください。
+
+## Kubernetesの前に単体コンテナの扱いを学ぶ
+Kubernetesは、コンテナオーケストレーションツールです。
+Kubernetesを学びたいと思っていて、まだDockerなどのコンテナをきちんと勉強したことない方は、先にコンテナを単体として扱う練習をしておくといいです。一番手軽な方法として、Dockerを手元の端末にインストールし、操作感や概念を理解しておくことです。
+Kubernetesは、アプリケーションをコンテナで運用する際に、コンテナ単体だけでは足りなかった部分を補ってくれる存在となります。いきなりKubernetesから入ると学習効率は下がる可能性がありますので注意してください。
+
 ## コンテナ謎解き for アプリ開発者
 友人から、書籍を読めばトピック毎のことはわかるが、膨大にあるKubernetesのことをなにからどの様に学んでいけばいいかわからないという相談をうけました。
 そこで、わたしの経験からアプリ開発を主に行う人がKubernetesの何をどのように学んでいけばいいかをクイズ形式でまとめたところ、好評だったため本サイトでも公開してみました。
@@ -39,6 +49,7 @@ author = "mosuke5"
 1. ここまで完了したらそろそろ、minikubeを卒業してクラウドサービスのKubernetesで上をデプロイしてみよう。
     - より分散環境で動作することを意識していこう
 1. GKE上でIngressリソースを使って、デプロイしたアプリケーションをインターネットに公開せよ
+    - GKEでなくても、Kubernetesサービスならなんでもいいですが、手軽で安価に使えるクラウド上のKubernetesとしてGKEとしました。
 1. Ingressがどのような仕組みで動き、どんな働きをするのか考察せよ
     - その際には、Sevice Type:loadbalancerやNodePort Serviceとの違いに着目せよ
 1. アプリケーションで利用しているMySQLのボリュームをGCP上のPersistent Volume（ブロックストレージ）に置き換えよ（すでに対応済みならスキップ）
@@ -53,7 +64,7 @@ author = "mosuke5"
 Kubernetesを学ぶのに非常に参考になっている書籍などを紹介します。
 
 ### 基礎知識
-なんども紹介しているが、Kubernetesの基礎知識や仕様の辞書として使いたいのであればKubernetes完全ガイドがまずいちばんの良書と考えています。
+本ブログ内ではよく紹介していますが、Kubernetesの基礎知識や仕様の辞書として使いたいのであればKubernetes完全ガイドがまずいちばんの良書と考えています。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/Kubernetes%25E5%25AE%258C%25E5%2585%25A8%25E3%2582%25AC%25E3%2582%25A4%25E3%2583%2589-%25E7%25AC%25AC2%25E7%2589%2588-impress-top-gear%25E3%2582%25B7%25E3%2583%25AA%25E3%2583%25BC%25E3%2582%25BA-ebook/dp/B08FZX8PYW" data-iframely-url="//cdn.iframe.ly/xzXY0oj?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
