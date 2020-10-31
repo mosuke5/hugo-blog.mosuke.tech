@@ -83,6 +83,11 @@ Kubernetesをより使いこなすために、自作のコントローラ（Oper
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/%25E5%25AE%259F%25E8%25B7%25B5%25E5%2585%25A5%25E9%2596%2580-Kubernetes%25E3%2582%25AB%25E3%2582%25B9%25E3%2582%25BF%25E3%2583%25A0%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2588%25E3%2583%25AD%25E3%2583%25BC%25E3%2583%25A9%25E3%2583%25BC%25E3%2581%25B8%25E3%2581%25AE%25E9%2581%2593-%25E6%258A%2580%25E8%25A1%2593%25E3%2581%25AE%25E6%25B3%2589%25E3%2582%25B7%25E3%2583%25AA%25E3%2583%25BC%25E3%2582%25BA%25EF%25BC%2588NextPublishing%25EF%25BC%2589-%25E7%25A3%25AF-%25E8%25B3%25A2%25E5%25A4%25A7-ebook/dp/B0851QCR81" data-iframely-url="//cdn.iframe.ly/r2pMc79?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
+### 認定試験
+Linux FoundationとCloud Native Computing Foundation（CNCF）によって、Kubernetesの認定試験を提供しています。
+Certified Kubernetes Administrator(CKA)とCertified Kubernetes Application Developer(CKAD)の2種類です。
+試験はコマンド操作による実技試験のため、非常に実践的なスキルが学べます。こちらの認定資格をはじめの目標にしてみるのもよいかとおもいます。わたしも過去にCKADを受けたことがあります。（ブログ: [CKADを取得の対策や試験当日の対応について](https://blog.mosuke.tech/entry/2019/07/08/ckad/)）
+
 ## Kubernetesに関するブログ記事
 本サイトのKubernetesに関するブログ記事は下記からたどれます。
 
