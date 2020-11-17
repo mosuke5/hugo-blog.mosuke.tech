@@ -1,4 +1,4 @@
-box: debian:10.3-slim
+box: debian:buster-slim
 build:
   steps:
     - install-packages:
