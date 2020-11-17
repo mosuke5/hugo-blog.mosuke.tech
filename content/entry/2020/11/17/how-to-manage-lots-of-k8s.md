@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes", "Alibaba Cloud"]
 date = "2020-11-17T17:24:47+09:00"
-description = ""
-draft = true
+description = "Alibaba CloudのKubernetesサービスは10000を超える大量のクラスタを管理しています。どうやってこれほどの数のKubernetesクラスタを管理しているのでしょうか？その謎を解き明かします。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "【翻訳】Kubernetes as a serviceの謎を解く。Alibaba Cloudが1万個のKubernetesクラスタを管理する方法"
@@ -26,7 +26,7 @@ Kubernetesを管理することは、インフラエンジニアにとって常�
 ![Kubenetes ecosystem in Alibaba Cloud](https://www.cncf.io/wp-content/uploads/2019/12/image9-2-700x377-1.jpg)  
 図1: Kubenetes ecosystem in Alibaba Cloud
 
-私たちは、多くのACKユーザーとクラスターのスケールについて話をしてきました。ほとんどのユーザーは、ブラスト半径の制御、異なるチームのためのクラスタの分離、テストのための一時的にクラスターを作成・削除するなどの正当な理由から、数百ではないにしても数十個の小規模または中規模のKubernetesクラスタを実行することを好んでいます。おそらく、ACKがこのような使用用途で顧客をグローバルにサポートすることを目指していた場合、20以上のリージョンにまたがる多数のクラスタを確実かつ効率的に管理する必要があるでしょう。
+私たちは、多くのACKユーザーとクラスターのスケールについて話をしてきました。ほとんどのユーザーは、障害の拡大の対策（blast radiusへの対応）、異なるチームのためのクラスタの分離、テストのための一時的にクラスターを作成・削除するなどの正当な理由から、数百ではないにしても数十個の小規模または中規模のKubernetesクラスタを実行することを好んでいます。おそらく、ACKがこのような使用用途で顧客をグローバルにサポートすることを目指していた場合、20以上のリージョンにまたがる多数のクラスタを確実かつ効率的に管理する必要があるでしょう。
 （解説：つまりひとつの巨大なクラスタではなく、小さなクラスタを大量に管理することになるということ。）
 
 ![The challenges of managing massive number of Kubernete clusters](https://www.cncf.io/wp-content/uploads/2019/12/image4-1-4-700x393-1.jpg)  
