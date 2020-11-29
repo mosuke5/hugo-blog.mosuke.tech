@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud", "Kubernetes"]
 date = "2020-11-29T20:46:17+09:00"
 description = "Alibaba CloudのKubernetesサービスであるACKに、新しくサービスレベルの高いモードが追加されました。このクラスタの特徴やポイントを解説します。より成熟していくACKを理解するのに使ってください。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "[Alibaba Cloud] KubernetesのProfessional managed clustersは何が違うのか？"
