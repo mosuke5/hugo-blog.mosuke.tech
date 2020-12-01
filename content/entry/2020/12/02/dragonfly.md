@@ -1,8 +1,8 @@
 +++
 categories = ["Alibaba Cloud", "Kubernetes"]
-date = "2020-12-01T00:00:00+09:00"
+date = "2020-12-02T00:00:00+09:00"
 description = "超大規模環境でのコンテナイメージの配布に役立つといわれている、P2Pでのファイル配布ソフトウェアのDragonflyをさわってみました。Alibaba Cloudとの関係性などがみえてきます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "P2Pでコンテナイメージを配信できるDragonflyとAlibaba Cloudのなぞ"
