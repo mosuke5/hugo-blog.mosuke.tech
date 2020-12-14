@@ -10,7 +10,9 @@ author = "mosuke5"
 archive = ["2020"]
 +++
 
-※本記事は、著者であるZhimin Tangの許可をとって翻訳した記事となります。([原文](https://www.cncf.io/blog/2019/12/12/demystifying-kubernetes-as-a-service-how-does-alibaba-cloud-manage-10000s-of-kubernetes-clusters/))
+※本記事は、著者であるZhimin Tangの許可をとって翻訳した記事となります。([原文](https://www.cncf.io/blog/2019/12/12/demystifying-kubernetes-as-a-service-how-does-alibaba-cloud-manage-10000s-of-kubernetes-clusters/))  
+また本記事の内容は、2020/12/11のAliEaters Tokyo #16にて発表しており、スライドは以下です。
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/ajzBW1pq1pgkpj" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mosuke5/alibaba-cloud1kubernetes" title="Alibaba Cloudが1万個のKubernetesクラスタを管理する方法" target="_blank">Alibaba Cloudが1万個のKubernetesクラスタを管理する方法</a> </strong> from <strong><a href="https://www.slideshare.net/mosuke5" target="_blank">Shinya Mori (@mosuke5)</a></strong> </div>
 
 ## 概要
 2015年以来、Alibaba Cloud Container Service for Kubernetes（ACK）は、Alibaba Cloud上でもっとも急速に成長しているクラウドサービスの1つです。今日では、ACKは多数のAlibaba Cloudの顧客にサービスを提供しているだけでなく、Alibabaの社内インフラストラクチャやその他多くのAlibaba Cloudサービスをサポートしています。
