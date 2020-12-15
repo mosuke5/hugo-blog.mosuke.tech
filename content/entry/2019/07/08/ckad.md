@@ -46,6 +46,7 @@ archive = ["2019"]
 まずはアプリケーション寄りでCKADを取りたいというかたはパブリッククラウドのKubernetesサービスか、Katacodaなどをおすすめします。
 Katacoda自身も基本操作を学べるサイトですが、ここでは一時的にクラスタを借りれるのでその上でCKAD-exercisesに練習をすることも一部可能かなと思います。
 
+
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.katacoda.com/" data-iframely-url="//cdn.iframe.ly/rhYCdmg?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 ### Linux Academy
@@ -55,7 +56,11 @@ CKAD-exercisesで基本的な操作は体得できるとして、とはいえ実
 Linux AcademyとCloud Academyは実践問題だけではなく、1から学ぶコースも用意しています。基礎の部分からやっていきたいというかたはどちらかを選んでやってみてもいいと思います。  
 こちらの練習問題ですが、かなり本番のテストとにていますが、問題数が3つと多くないので、あくまで「こういう形式のテストね」と納得するものとして活用するといいです。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://linuxacademy.com//training/course/name/certified-kubernetes-application-developer-ckad" data-iframely-url="//cdn.iframe.ly/ANIUa8y?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+[Course: Cloud Native Certified Kubernetes Administrator (CKA)](https://linuxacademy.com/cp/modules/view/id/327)
+
+##### 2020/12/15追記
+気がついたら、A Cloud GuruがLinux Academyを買収していいて少しコンテンツ体系などかわっているようでした。
+[A Cloud Guru Acquires The Linux Academy and Claims 1.5 M Learners](https://iblnews.org/a-cloud-guru-acquires-the-linux-academy-and-claims-1-5-m-learners/)
 
 ### Cloud Academy
 こちらも上のLinux Academyとほぼ同様です。基礎の部分から学ぶことができ、最後に練習問題があるという形式です。
