@@ -48,10 +48,12 @@ spec:
 ```
 
 
+{{< table class="table" >}}
 |  項目  |  説明  |
 | ---- | ---- |
 |  requests |  使用するリソースの「下限値」です  |
 |  limits   |  使用するリソースの「上限値」です  |
+{{</ table >}}
 
 ### リソースとPodのスケジューリング
 KubernetesがPodをノードにスケジュールするときは、`requests`の値を見ます。
@@ -92,7 +94,7 @@ QoS Classは以下の条件によって決定します。
 |  BestEffort |  requests, limitsともに未指定のとき  | 3 |
 |  Burstable  |  1つ以上のrequestsかlimitsが設定されているとき(Guaranteedではない)  | 2 |
 |  Guaranteed |  requestsとlimitsが同じ値でCPU・メモリーともに設定されている  | 1 |
-{{</ table>}}
+{{</ table >}}
 
 例えば、ノードのメモリー上限に達すると（コンテナのlimitsの上限ではなく）、KubernetesはPodを強制的に退去(Evict)しリソースを確保します。その際に、QoS Classを参照します。BestEffortから順にPodを停止する動きを取ります。  
 実際に設定されているQoS Classを確認するには稼働しているPodをdescribeで見てみるとわかります。
