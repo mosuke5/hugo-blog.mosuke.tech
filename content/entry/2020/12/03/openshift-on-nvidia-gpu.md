@@ -11,10 +11,31 @@ archive = ["2020"]
 +++
 
 こんにちは、もーすけです。  
-本日はOpenShiftにNVIDIA GPUのノードを追加して利用する方法を紹介したいと思います。
-あまりまだ日本語で情報がないので、挑戦したいと考えている人の参考になればと思います。
-また、非常に進化が速く、情報が古くなる可能性もありますがなるべく更新していきたいと思っています。
-OpenShiftではなく、他のKubernetesディストリビューションをお使いの方も参考になるところはあると思います。
+本日はOpenShiftにNVIDIA GPUのノードを追加して利用する方法2つのブログ（概要編と導入編）に分けて紹介したいと思います。
+あまりまだ日本語での情報がないので、挑戦したいと考えている人の参考になればと思います。
+また、非常に進化が速く、情報が古くなる可能性もあります。なるべく更新していきたいと思っていますが、最新情報は公式情報をみてください。。
+導入編では、OpenShiftを取り扱いますが、他のKubernetesディストリビューションをお使いの方も参考になるところはあると思います。
+
+- 概要編：
+- 導入編：
+<!--more-->
+
+## NVIDIA GPU Operator
+Kubernetes上でGPUを利用するには、次の3つを最低限準備する必要があります。
+Workerノードは当然ですよね。NVIDIAのGPUを利用するために必要なDriver、そしてKubernetesからNVIDIA GPUをリソースとして制御できるようにするための[Device Plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)がさらに必要です。
+
+1. GPU搭載のWorkerノード
+1. NVIDIA Driver
+1. [NVIDIA k8s device plugin](https://github.com/NVIDIA/k8s-device-plugin)
+
+NVIDIA DriverとNVIDIA k8s device pluginを個別にインストールしてKubernetes上でGPUを利用することはできます。
+しかし、それらの管理やその他の追加コンポーネントもあったりします。自前でやろうと思うとそれなりに大変かと思います。
+そこででてくるのが、NVIDIA GPU Operatorです。
+このOperatorは、KubernetesでNVIDIAのGPUを動かして運用するのに必要なコンポーネントをセットにして提供してくれるソフトウェアです。
+
+https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/overview.html
+
+opeshift 4.5 -> 1.3.1
 
 ## Node Feature Discovery
 ### 概要
@@ -104,8 +125,9 @@ $ oc get node xxxxxxx -o yaml
 ...
 ```
 
-## gpu operator
-
+## NVIDIA GPU Driverとnfdの関係性
+いままでNVIDIA GPU OperatorとNode Feature Discoveryについて説明してきました。
+そこで、あらためてこれらがどのような関係性にあるか図示しました。
 
 ![nfd-and-gpu-operator](/image/nfd-and-gpu-operator.png)
 
