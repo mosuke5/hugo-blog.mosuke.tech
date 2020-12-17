@@ -18,7 +18,6 @@ title = "Terraform×Rancherでマルチクラウドを一歩すすめる"
 ## スライド
 まずは当日のスライドについて公開します。  
 内容としてはYAPC::Fukuokaの前夜祭で話してきた内容の続きです。  
-[YAPC::Fukuoka前夜祭でLTしてきた。「Rancherでマルチクラウドをやってみる」](https://blog.mosuke.tech/entry/2017/07/01/yapc_fukuoka/)
 
 <script async class="speakerdeck-embed" data-id="1e0a3455986748d2bad51872254f8d03" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 

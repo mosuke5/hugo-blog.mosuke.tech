@@ -159,7 +159,7 @@ skipping: no hosts matched
 1. TerraformからAnsibleを実行する方法
 1. AnsibleからTerraformを実行する方法
 
-また、前者の方については少しアプローチが違いますが、過去に「[Terraform+ユーザデータ+Ansibleでのサーバプロビジョニングを活用する](invoking_terraform_from_ansible)」書いたことがありますので、合わせて読んでみてください。
+また、前者の方については少しアプローチが違いますが、過去に「[Terraform+ユーザデータ+Ansibleでのサーバプロビジョニングを活用する](https://qiita.com/mosuke5/items/bf1d486d633e3b106087)」書いたことがありますので、合わせて読んでみてください。
 
 ## おまけ
 こんなのも見つけました。  
