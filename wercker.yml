@@ -76,6 +76,10 @@ test-blog-site:
     - script:
       name: install linkchecker
       code: |
+        pip3 install git+https://github.com/linkchecker/linkchecker.git
+    - script:
+      name: exec linkchecker
+      code: |
         linkchecker https://blog.mosuke.tech
     - script:
       name: test blog site url
