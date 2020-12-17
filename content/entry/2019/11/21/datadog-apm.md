@@ -166,6 +166,7 @@ Tags: [
 Metrics: [ ],
 ```
 
+{{<table class="table">}}
 |項目名  |意味  |
 |---|---|
 |Name  |処理の名前  |
@@ -176,14 +177,18 @@ Metrics: [ ],
 |Start |開始した時間  |
 |End |終了した時間  |
 |Duration |処理にかかった時間  |
-
+{{</table>}}
 
 #### 分散トレーシングの場合
 分散トレーシングまでは実施していないのですが、考え方は基本的に同じです。
 他の異なるサービスにたとえばHTTP経由でアクセスする場合には、HTTPヘッダーに`x-datadog-trace-id`や`x-datadog-parent-id`を追加することで、他のシステムの処理であっても紐づけすることができます。
-そのため、下記のService Mapと呼ばれる分散システム間でのマッピングがかけるわけです。 
+そのため、下記の[Service Map](https://docs.datadoghq.com/ja/tracing/visualization/services_map/)と呼ばれる分散システム間でのマッピングがかけるわけです。 
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://docs.datadoghq.com/ja/tracing/visualization/services_map/" data-iframely-url="//cdn.iframe.ly/aaMeTjE"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+また、分散トレーシングが本当に必要になるのはマイクロサービスの世界でのことでしょう。
+マイクロサービスも非常に誤解の多い言葉であり概念です。SockShopというマイクロサービスの練習をするためのアプリケーションでハンズオンしてみるとよいでしょう。
+以下のブログの中では、JaegerというOSSの分散トレーシングのツールを利用する場面もでてきます。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/01/22/sockshop/" data-iframely-url="//cdn.iframe.ly/YDI2rVR"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 ## まとめ
 APMの魅力や仕組みについて理解できましたでしょうか。  
