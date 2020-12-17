@@ -1,11 +1,11 @@
 +++
 categories = ["Kubernetes"]
 date = "2020-12-03T19:21:02+09:00"
-description = ""
+description = "NVIDIA GPUを搭載したサーバをOpenShift上で利用するための基礎知識を紹介します。OpenShiftに限らずKubernetesをお使いの方の参考にもなると思います。"
 draft = true
 image = ""
 tags = ["Tech"]
-title = "OpenShift on NVIDIA GPU"
+title = "OpenShift on NVIDIA GPU（概要編）"
 author = "mosuke5"
 archive = ["2020"]
 +++
@@ -16,13 +16,12 @@ archive = ["2020"]
 また、非常に進化が速く、情報が古くなる可能性もあります。なるべく更新していきたいと思っていますが、最新情報は公式情報をみてください。。
 導入編では、OpenShiftを取り扱いますが、他のKubernetesディストリビューションをお使いの方も参考になるところはあると思います。
 
-- 概要編：
-- 導入編：
+導入編： Comming soon
 <!--more-->
 
 ## NVIDIA GPU Operator
 Kubernetes上でGPUを利用するには、次の3つを最低限準備する必要があります。
-Workerノードは当然ですよね。NVIDIAのGPUを利用するために必要なDriver、そしてKubernetesからNVIDIA GPUをリソースとして制御できるようにするための[Device Plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)がさらに必要です。
+Workerノードは当然ですよね。NVIDIAのGPUを利用するためのDriver、そしてKubernetesからNVIDIA GPUをリソースとして制御できるようにするための[Device Plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)がさらに必要です。
 
 1. GPU搭載のWorkerノード
 1. NVIDIA Driver
@@ -30,47 +29,39 @@ Workerノードは当然ですよね。NVIDIAのGPUを利用するために必�
 
 NVIDIA DriverとNVIDIA k8s device pluginを個別にインストールしてKubernetes上でGPUを利用することはできます。
 しかし、それらの管理やその他の追加コンポーネントもあったりします。自前でやろうと思うとそれなりに大変かと思います。
-そこででてくるのが、NVIDIA GPU Operatorです。
+
+そこででてくるのが、[NVIDIA GPU Operator](https://github.com/NVIDIA/gpu-operator)です。  
 このOperatorは、KubernetesでNVIDIAのGPUを動かして運用するのに必要なコンポーネントをセットにして提供してくれるソフトウェアです。
+NVIDIA GPU Operatorには、下記のコンポーネントが含まれています。（以下はv1.4.0の例です。詳しくは[公式ドキュメント](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/overview.html)を参照してください。）
 
-https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/overview.html
+{{< table class="table" >}}
+|Component  |Version  |Memo  |
+|---|---|---|
+|NVIDIA Driver  |450.80.02  |  |
+|NVIDIA Container Toolkit  |1.4.0  |  |
+|NVIDIA K8s Device Plugin  |0.7.1  |  |
+|NVIDIA DCGM-Exporter  |2.1.2  |GPUメトリックを出力するPrometheus exporter  |
+|Node Feature Discovery  |0.6.0  |Helmを利用する場合のみインストール可能。詳細は後述  |
+|GPU Feature Discovery  |0.2.2  |v1.3.0から追加。まだβ  |
+{{</ table >}}
 
-opeshift 4.5 -> 1.3.1
+NVIDIAのGPUを利用するために必要なコンポーネントのみならず、運用などを見越したツールセットを管理してくれます。
+実際にインストールする場合にはこちらを利用したほうが楽ではないかと思います。
 
 ## Node Feature Discovery
 ### 概要
-GPUの話に入る前に、Node Feature Discoveryというソフトウェアについて説明します。なぜこの説明が必要かは後述します。  
+次に、Node Feature Discoveryというソフトウェアについて説明します。なぜこの説明が必要かは後述します。
 Node Feature Discovery（以下、nfd）は、Kubernetesクラスタ内のノードのハードウェア情報を調べ、ラベルとしてノードに情報を付与するソフトウェアです。Kubernetes SIGの中で開発がされています。（Github [kubernetes-sig/node-feature-discovery](https://github.com/kubernetes-sigs/node-feature-discovery)）
 
-nfdは `nfd-master` と `nfd-worker` の2つのコンポーネントから構成されます。  
-`nfd-master` は、`nfd-worker` からの通信をListenしていて、`nfd-worker` から通知されたラベル情報をKubernetes APIへ更新する役割をになっています。  
-`nfd-worker` は、DaemonSetとして各ノードで起動し、そのノードのハードウェア情報を確認し `nfd-master` へと通知します。
+nfdは **nfd-master** と **nfd-worker** の2つのコンポーネントから構成されます。  
+nfd-masterは、0.6.0以降のバージョンではdeploymentとして起動します。nfd-workerからの通信をListenして、nfd-workerから通知されたラベル情報をKubernetes APIへ更新する役割をになっています。  
+nfd-workerは、DaemonSetとして各ノードで起動します。そのノードのハードウェア情報を確認しnfd-masterへと通知します。
 
-`nfd-master` は、v0.4.0の頃はDaemonSetとしてMasterノード上で起動していましたが、v0.6.0でDaemonSetからDeploymentで動作するように変更が加わりました（該当の[Pull Request](https://github.com/kubernetes-sigs/node-feature-discovery/pull/294)）。
-nfdのバージョンによる、構成の違いに着目したのは、OpenShiftのバージョンとそれにバンドルされるnfd Operatorのバージョンに差があるからです。以下の通りの対応付けとなっています。
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>OpenShift Version</th>
-      <th>Node Feature Discovery</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>OpenShift 4.6</td>
-      <td><a href="https://github.com/kubernetes-sigs/node-feature-discovery/tree/release-0.6">0.6.0</a></td>
-    </tr>
-    <tr>
-      <td>OpenShift 4.5</td>
-      <td><a href="https://github.com/kubernetes-sigs/node-feature-discovery/tree/5ae4574180a1dc400b6ee4e050dafec122c4d949">0.4.0</a></td>
-    </tr>
-  </tbody>
-</table>
+nfd-masterは、v0.4.0まではDaemonSetとしてMasterノード上で起動していましたが、v0.6.0でDaemonSetからDeploymentで動作するように変更が加わりました（該当の[Pull Request](https://github.com/kubernetes-sigs/node-feature-discovery/pull/294)）。理由は、マネージドのKubernetesなどではmasterノードにPodの配置ができないからです。
 
 ### nfdによって付与されるラベル
 nfdが実際に動作すると以下のようなハードウェア情報がノードのラベルとして付与されます。
-上の役割で説明しましたが、ハードウェア情報を検出しラベルを付与するように通知するのは`nfd-worker`です。
+上の役割で説明しましたが、ハードウェア情報を検出しラベルを付与するように通知するのはnfd-workerです。
 Masterノードにはラベルは付与されません。
 
 - CPU
@@ -128,21 +119,12 @@ $ oc get node xxxxxxx -o yaml
 ## NVIDIA GPU Driverとnfdの関係性
 いままでNVIDIA GPU OperatorとNode Feature Discoveryについて説明してきました。
 そこで、あらためてこれらがどのような関係性にあるか図示しました。
+まず、NVIDIA GPU Operatorに先立ってnfdを展開し、各ノードにハードウェア情報のラベルを付与します。
+NVIDIA GPU Operatorが展開するコンポーネントのひとつのNVIDIA Driverは、nfdが付与したラベルからGPUが搭載されているノードだけに展開されるようになっています。それでようやくNVIDIA DriverとGPUノードが対応付けされるわけです。なぜ、nfdがこの記事ででてきたかわかってきたかと思います。
 
 ![nfd-and-gpu-operator](/image/nfd-and-gpu-operator.png)
 
-## セットアップ
-### cluster wide entitlement
-
-### gpu worker nodeの追加
-
-### nfd のインストール
-
-### gpu operatorのインストール
-
-## 運用
-### スケジューリング
-
-### リソース設定
-
-### 監視
+## 次に向けて
+さて、次は導入編です。  
+この基礎的な知識をもとにGPUを使える状態にしてみましょう。
+次のブログは現在執筆中なので少々お待ちくださいさい。
