@@ -42,7 +42,7 @@ NVIDIA GPU Operatorには、下記のコンポーネントが含まれていま�
 |NVIDIA K8s Device Plugin  |0.7.1  |  |
 |NVIDIA DCGM-Exporter  |2.1.2  |GPUメトリックを出力するPrometheus exporter  |
 |Node Feature Discovery  |0.6.0  |Helmを利用する場合のみインストール可能。詳細は後述  |
-|GPU Feature Discovery  |0.2.2  |v1.3.0から追加。まだβ  |
+|[GPU Feature Discovery](https://github.com/NVIDIA/gpu-feature-discovery)  |0.2.2  |v1.3.0からbetaとして追加。GPUの詳細情報をノードのラベルに付与。  |
 {{</ table >}}
 
 NVIDIAのGPUを利用するために必要なコンポーネントのみならず、運用などを見越したツールセットを管理してくれます。
@@ -120,9 +120,11 @@ $ oc get node xxxxxxx -o yaml
 いままでNVIDIA GPU OperatorとNode Feature Discoveryについて説明してきました。
 そこで、あらためてこれらがどのような関係性にあるか図示しました。
 まず、NVIDIA GPU Operatorに先立ってnfdを展開し、各ノードにハードウェア情報のラベルを付与します。
-NVIDIA GPU Operatorが展開するコンポーネントのひとつのNVIDIA Driverは、nfdが付与したラベルからGPUが搭載されているノードだけに展開されるようになっています。それでようやくNVIDIA DriverとGPUノードが対応付けされるわけです。なぜ、nfdがこの記事ででてきたかわかってきたかと思います。
+NVIDIA GPU Operatorが展開するコンポーネントのひとつのNVIDIA Driverは、nfdが付与したラベルからGPUが搭載されているノードだけに展開されるようになっています。それでようやくNVIDIA DriverとGPUノードが対応付けされるわけです。
+厳密な実装でいうと、nfdが付与したGPUを搭載するノードのラベル（たとえば`feature.node.kubernetes.io/pci-10de.present: 'true'`）をNVIDIA GPU Operatorが探し出し、`nvidia.com/gpu.present: 'true'`のラベルを追加で付与します（[該当ソースコード](https://github.com/NVIDIA/gpu-operator/blob/d16c90ba8d0d6dcba079ee6a5d7f22140674dedb/pkg/controller/clusterpolicy/state_manager.go#L110)）。nvidia-driverのnodeSelectorではこのラベルが指定されています。
 
 ![nfd-and-gpu-operator](/image/nfd-and-gpu-operator.png)
+
 
 ## 次に向けて
 さて、次は導入編です。  
