@@ -70,13 +70,17 @@ purge-cache:
       username: wercker_bot
 
 test-blog-site:
+  box:
+    id: linkchecker/linkchecker:latest
+    username: $DOCKER_HUB_USERNAME
+    password: $DOCKER_HUB_PASSWORD
   steps:
     - install-packages:
         packages: git curl python3 python3-pip
-    - script:
-      name: install linkchecker
-      code: |
-        pip3 install git+https://github.com/linkchecker/linkchecker.git
+    #- script:
+    #  name: install linkchecker
+    #  code: |
+    #    pip3 install git+https://github.com/linkchecker/linkchecker.git
     - script:
       name: exec linkchecker
       code: |
