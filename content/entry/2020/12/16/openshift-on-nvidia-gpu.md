@@ -16,7 +16,7 @@ archive = ["2020"]
 また、非常に進化が速く、情報が古くなる可能性もあります。なるべく更新していきたいと思っていますが、最新情報は公式情報をみてください。。
 導入編では、OpenShiftを取り扱いますが、他のKubernetesディストリビューションをお使いの方も参考になるところはあると思います。
 
-導入編： Comming soon
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/12/17/openshift-on-nvidia-gpu-2/" data-iframely-url="//cdn.iframe.ly/ELaxDLL"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 <!--more-->
 
 ## NVIDIA GPU Operator
@@ -129,4 +129,5 @@ NVIDIA GPU Operatorが展開するコンポーネントのひとつのNVIDIA Dri
 ## 次に向けて
 さて、次は導入編です。  
 この基礎的な知識をもとにGPUを使える状態にしてみましょう。
-次のブログは現在執筆中なので少々お待ちくださいさい。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/12/17/openshift-on-nvidia-gpu-2/" data-iframely-url="//cdn.iframe.ly/ELaxDLL"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
