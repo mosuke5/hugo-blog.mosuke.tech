@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2020-12-17T22:01:20+09:00"
 description = "OpenShiftにGPUのノードを追加して利用する方法（導入編）です。インストールして運用する上での知っておくと良いポイントなどを解説します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShift on NVIDIA GPU（導入編）"
