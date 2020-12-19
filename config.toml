@@ -37,6 +37,8 @@ archive = "archive"
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.extentions]
+      linkify = false
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
