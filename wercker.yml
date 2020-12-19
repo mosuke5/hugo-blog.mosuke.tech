@@ -42,6 +42,10 @@ validation:
     - script: 
       name: install linkchecker
       code: |
+        export LANG=C.UTF-8
+    - script: 
+      name: install linkchecker
+      code: |
         pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/master.zip
     - script:
       name: exec linkchecker
