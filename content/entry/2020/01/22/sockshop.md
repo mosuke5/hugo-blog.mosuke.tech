@@ -28,7 +28,7 @@ Sock Shopはdocker-composeを始め、Kubernetesなど多様な環境で動か�
 
 ## Sock Shopのアーキテクチャ
 Sock Shopのデザインは下記の通りで、Java, NodeJS, Goなどとマイクロサービスの特徴であるポリグロットを体現しています。
-ポリグロットな構成に「できる」、というだけで戦略なしに「やっていい」というわけではないので、この点は誤解ないように理解していきましょう。詳細は[こちら](front-end-rh-mori-sock-shop.3d6a.kepcodevops.openshiftapps.com)。
+ポリグロットな構成に「できる」、というだけで戦略なしに「やっていい」というわけではないので、この点は誤解ないように理解していきましょう。
 
 ![application-design](/image/sockshop-architecture.png)
 
@@ -259,7 +259,7 @@ customerOrder
 
 では、どのように取得しているか見ていきます。  
 下記のように、orderサービスに問い合わせたあと、注文した商品を別でcatalogueサービスに問い合わせにいっています。
-いわゆるN+1問題が発生しています(<a href-"https://github.com/microservices-demo/front-end/blob/5e21067c2011a1f220322a704c9984fa206c4d12/public/customer-order.html#L205" target="_blank">該当のコード</a>)。
+いわゆるN+1問題が発生しています(<a href="https://github.com/microservices-demo/front-end/blob/5e21067c2011a1f220322a704c9984fa206c4d12/public/customer-order.html#L205" target="_blank">該当のコード</a>)。
 これは、マイクロサービスではよく発生します。
 
 ![sockshop-order](/image/sockshop-order.png)
