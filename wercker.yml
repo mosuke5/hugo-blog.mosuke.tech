@@ -30,9 +30,8 @@ validation:
     - install-packages:
         packages: git optipng libjpeg-progs
     - script:
-      name: optimize image size
-      code: |
-        bash ./scripts/optimize_image.sh
+        name: optimize image size
+        code: bash ./scripts/optimize_image.sh
     # Push optimized image files to hugo repository
     - leipert/git-push:
         gh_oauth: $GIT_TOKEN
@@ -68,9 +67,9 @@ purge-cache:
     - install-packages:
         packages: git curl
     - script:
-      name: delete cloudflare cache in top page
-      code: |
-        bash ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+        name: delete cloudflare cache in top page
+        code: |
+          bash ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
@@ -81,23 +80,20 @@ purge-cache:
 test-blog-site:
   steps:
     - script: 
-      name: set lang
-      code: |
-        export LANG=C.UTF-8
+        name: set lang
+        code: export LANG=C.UTF-8
     - install-packages:
-        packages: curl python python-pip
+        packages: curl python python3 python-pip
     - script: 
-      name: install linkchecker
-      code: |
-        pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/master.zip
+        name: install linkchecker
+        code: |
+          pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/master.zip
     - script:
-      name: exec linkchecker
-      code: |
-        linkchecker https://blog.mosuke.tech
+        name: exec linkchecker
+        code: linkchecker https://blog.mosuke.tech
     - script:
-      name: test blog site url
-      code: |
-        bash ./scripts/test_page_url.sh
+        name: test blog site url
+        code: bash ./scripts/test_page_url.sh
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
