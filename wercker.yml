@@ -37,20 +37,6 @@ validation:
         gh_oauth: $GIT_TOKEN
         repo: mosuke5/hugo-blog.mosuke.tech
         branch: ${WERCKER_GIT_BRANCH}
-    - install-packages:
-        packages: curl python python-pip
-    - script: 
-      name: install linkchecker
-      code: |
-        export LANG=C.UTF-8
-    - script: 
-      name: install linkchecker
-      code: |
-        pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/master.zip
-    - script:
-      name: exec linkchecker
-      code: |
-        linkchecker https://blog.mosuke.tech
 
 deploy:
   steps:
@@ -85,6 +71,10 @@ purge-cache:
 
 test-blog-site:
   steps:
+    - script: 
+      name: set lang
+      code: |
+        export LANG=C.UTF-8
     - install-packages:
         packages: curl python python-pip
     - script: 
