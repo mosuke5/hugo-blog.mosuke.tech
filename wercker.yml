@@ -83,11 +83,11 @@ test-blog-site:
         name: set lang
         code: export LANG=C.UTF-8
     - install-packages:
-        packages: curl python python3 python-pip
+        packages: curl python python-pip
     - script: 
         name: install linkchecker
         code: |
-          pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/master.zip
+          pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/v9.4.0.zip
     - script:
         name: exec linkchecker
         code: linkchecker https://blog.mosuke.tech
