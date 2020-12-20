@@ -23,6 +23,7 @@ build:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+      notify_on: "failed"
 
 validation:
   steps:
@@ -37,6 +38,12 @@ validation:
         gh_oauth: $GIT_TOKEN
         repo: mosuke5/hugo-blog.mosuke.tech
         branch: ${WERCKER_GIT_BRANCH}
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+      notify_on: "failed"
 
 deploy:
   steps:
@@ -54,6 +61,7 @@ deploy:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+      notify_on: "failed"
 
 purge-cache:
   steps:
@@ -68,6 +76,7 @@ purge-cache:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+      notify_on: "failed"
 
 test-blog-site:
   steps:
@@ -94,3 +103,4 @@ test-blog-site:
       channel: $SLACK_CHANNEL
       url: $SLACK_URL
       username: wercker_bot
+      notify_on: "failed"
