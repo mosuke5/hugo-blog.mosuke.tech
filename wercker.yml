@@ -1,5 +1,5 @@
 box:
-  id: debian:10.3-slim
+  id: debian:10.7-slim
   username: $DOCKER_HUB_USERNAME
   password: $DOCKER_HUB_PASSWORD
 build:
