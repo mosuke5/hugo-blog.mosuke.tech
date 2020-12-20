@@ -1,5 +1,5 @@
 box:
-  id: debian:10.3-slim
+  id: debian:10.7-slim
   username: $DOCKER_HUB_USERNAME
   password: $DOCKER_HUB_PASSWORD
 build:
@@ -71,8 +71,20 @@ purge-cache:
 
 test-blog-site:
   steps:
+    - script: 
+      name: set lang
+      code: |
+        export LANG=C.UTF-8
     - install-packages:
-        packages: curl
+        packages: curl python python-pip
+    - script: 
+      name: install linkchecker
+      code: |
+        pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/master.zip
+    - script:
+      name: exec linkchecker
+      code: |
+        linkchecker https://blog.mosuke.tech
     - script:
       name: test blog site url
       code: |
