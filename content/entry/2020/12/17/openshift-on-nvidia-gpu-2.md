@@ -34,18 +34,18 @@ archive = ["2020"]
 
 ### GPUノードの追加
 まずはじめにGPUノードをOpenShiftクラスタへ追加する必要があります。
-ノードの追加時点ではとくに通常のノードの手順とかわりがありません。お使いの環境のインストール方法に合わせてGPUノードを追加してください。
+ノードの追加時点ではとくに通常のノードの手順と変わりがありません。お使いの環境のインストール方法に合わせてGPUノードを追加してください。
 筆者環境はOpenShift on AWSのため、GPUノード用の[MachineSetを用意してノードの追加](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.6/html/machine_management/creating-machinesets#creating-machineset-aws)をしました。
 
 ### cluster-wide entitlement
 概要編でご紹介した、Node Feature DiscoveryやNVIDIA GPU Operatorをインストールする前にやっておくことがあります。
 OpenShiftクラスタにcluster-wide entitlementの設定をしておくことです。
-本手順は、Helmでのインストール時には書いてあるのですが、**OperatorHubからインストールする手順には書かれていませんが、同様に必要な作業**です。改善のリクエストをNVIDIAにお送りはしたのですが、2020/12/17現在は修正されていませんので注意してください。
+本手順は、公式ドキュメントのHelmでのインストール時には書いてあるのですが、**OperatorHubからインストールする手順には書かれていませんが、同様に必要な作業**です。改善のリクエストをNVIDIAにお送りはしたのですが、2020/12/17現在は修正されていませんので注意してください。
 "[4.3. Installing GPU Operator via Helm](https://docs.nvidia.com/datacenter/kubernetes/openshift-on-gpu-install-guide/index.html#openshift-gpu-install-gpu-operator-via-helmv3)" の1,2の手順をこなしてください。
 
 なぜcluster-wide entitlementの設定作業が必要か説明します。  
 nvidia-driverは、起動時にelfutils-libelfなどのパッケージをインストールしてビルドを行います。（コンテナ起動時にビルドするのがいいかどうかは。。？）ベースイメージにUBI(Universal Base Image)を利用しており、Red Hatのレポジトリを参照しにいきます。そのため、コンテナが対象のレポジトリを参照できるように、エンタイトルメントの設定が必要になります。
-この設定がないとnvidia-driver podの起動時にのエラーが発生します。  
+この設定がないとnvidia-driver podの起動時にエラーが発生し起動に失敗します。  
 OpenShiftをご利用であればサブスクリプションをお持ちかと思いますが、
 検証用で個人のサブスクリプションを使いたい場合には、1年間無料で利用できる [Red Hat Developer Subscription](https://developers.redhat.com/articles/getting-red-hat-developer-subscription-what-rhel-users-need-know#)の利用でも可能です。
 
