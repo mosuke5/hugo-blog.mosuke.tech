@@ -13,7 +13,7 @@ build:
     - script:
         name: checkout theme
         code: |
-            $(cd ./themes/mosuke-tech-hugo-theme && git checkout da18dc942367da809111084d1da747b5205c904c)
+            $(cd ./themes/mosuke-tech-hugo-theme && git checkout ed23cbbe2f9d55e0dd8a5ae9ff07e0f943bbd3f0)
     - arjen/hugo-build:
         version: "0.79.0"
         theme: mosuke-tech-hugo-theme
