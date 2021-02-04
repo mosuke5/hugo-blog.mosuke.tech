@@ -2,7 +2,7 @@
 categories = ["kubernetes"]
 date = "2021-01-31T12:10:51+09:00"
 description = "Kubernetes上で運用しているアプリケーションのデバッグでtcpdumpなどネットワーク関連コマンドを打ちたいときがあります。イメージを小さく保つことをするとデバッグツールが入っておらず慌てることがあるのでその対処法について紹介します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetes上のアプリケーションをtcpdumpでデバッグする"
