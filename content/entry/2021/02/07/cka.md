@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes", "資格試験"]
 date = "2021-02-07T11:57:42+09:00"
-description = ""
-draft = true
+description = "新形式のCKAを受験してきました。受験に際して学習したことや、受験時の失敗談などを中心にまとめました。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "新形式のCKAを受験し合格しました。受験の教訓紹介。"
