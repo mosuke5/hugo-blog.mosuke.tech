@@ -131,3 +131,7 @@ CKADの資格取得対策、という意味で役立つわけではないです�
 
 次はCKAを取るのかとも聞かれるのですが、個人的にはしばらくKubernetesの構築サイドよりは、それを使ったアプリケーション開発や運用に焦点をあてる予定なので、いまのところCKAの予定はありません。
 アプリケーション開発・運用の観点で今後も情報発信できればと思います。
+
+### 2021年2月追記 CKAD受験
+この記事を書いた当初は、CKAの受験予定はありませんでしたが、1年半後ではありますが受験しました。
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2021/02/07/cka/" data-iframely-url="//cdn.iframe.ly/4BV8i7A"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
