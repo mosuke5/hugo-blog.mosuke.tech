@@ -1,11 +1,11 @@
 +++
-categories = ["Kubernetes"]
+categories = ["Kubernetes", "アプリケーション開発"]
 date = "2021-02-08T17:04:05+09:00"
-description = ""
+description = "jaegerを使った分散トレーシングをKubernetes上で検証していきます。Jaeger Operatorの利用、本番環境を見据えた設定、サイドカーでのagent注入あたりやります。"
 draft = true
 image = ""
 tags = ["Tech"]
-title = "jaeger testing"
+title = "Jaegerを使った分散トレーシングの検証 on Kubernetes (1)"
 author = "mosuke5"
 archive = ["2021"]
 +++
@@ -83,12 +83,15 @@ Jaegerでは、DBにCassandraかElasticSearchをサポートしています。Op
 Production用のデプロイをするために、はじめに[ElasticSearch Operator](https://operatorhub.io/operator/elastic-cloud-eck)をインストールします。
 バックエンドのデータストアにElasticSearchを利用しますが、Jaeger OperatorがJaegerを構築する際にElasticSearch Operatorを利用するためです。
 
+この検証では以下のJaeger CRを使ってみました。
+ElasticSearchは3台でクラスタリング、各ElasticSearchに50GBのボリュームをつけて構築です。
+その他、ElasticSearchのデータ削除の設定などを付与。
+
 ```yaml
 apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
   name: jaeger-production
-  namespace:
 spec:
   strategy: production
   ingress:
@@ -109,6 +112,9 @@ spec:
       schedule: '*/30 * * * *'
 ```
 
+Podをみてみると、AllInOneのときと違ってコンポーネント毎にPodがあることを確認できます。
+また、上にもすこし書きましたがJager agentは含まれていません。Jaeger agentの準備は別で書きます。
+
 ```
 % oc get pod
 NAME                                                              READY   STATUS    RESTARTS   AGE
@@ -118,6 +124,17 @@ elasticsearch-cdm-jaegerproductionjaegerproduction-3-5fb4dr9k4l   2/2     Runnin
 jaeger-production-collector-cff65bd5d-j4mfh                       1/1     Running   0          7m36s
 jaeger-production-query-5dcbb9b79f-kzqkb                          3/3     Running   0          7m36s
 ```
+
+参考程度ですが、PVもできていると。
+```
+% oc get pvc
+NAME                                                                 STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+elasticsearch-elasticsearch-cdm-jaegerproductionjaegerproduction-1   Bound    pvc-b2e0b560-3b29-42a3-93a4-59adc6dca872   50Gi       RWO            gp2            15m
+elasticsearch-elasticsearch-cdm-jaegerproductionjaegerproduction-2   Bound    pvc-5b59197d-59b7-469a-800c-ecf7e9f70097   50Gi       RWO            gp2            15m
+elasticsearch-elasticsearch-cdm-jaegerproductionjaegerproduction-3   Bound    pvc-a59e50fb-4eb4-4c34-9320-4fbe37c034a9   50Gi       RWO            gp2            15m
+```
+
+Serviceも同様です。jaeger agentのserviceは同様にありません。
 
 ```
 % oc get service
@@ -130,12 +147,175 @@ jaeger-production-collector-headless   ClusterIP   None             <none>      
 jaeger-production-query                ClusterIP   172.30.209.29    <none>        443/TCP                                  8m2s
 ```
 
-## sidecar inject
+## Jaeger agentのサイドカーとしての起動
+Production deploymentで、Jaeger agentが含まれていないことを書きました。
+実運用では、スケーリングなどの観点からアプリケーションPodのサイドカーとしてJaeger agentを起動することが望ましいです。Jaeger Operatorには、サイドカーでJager agentを埋め込む仕組み（[Auto-injecting Jaeger Agent Sidecars](https://www.jaegertracing.io/docs/1.21/operator/#auto-injecting-jaeger-agent-sidecars)）を持ちます。
 
-## hotrod
+試しにやってみましょう。NginxのDeploymentに特定のannotationを追加します。
+Jaager Operatorは、このannotationを検知して、サイドカーを注入します。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  annotations:
+    sidecar.jaegertracing.io/inject: "jaeger-production" # このannotationを追加。値はJagerの名前
+  labels:
+    app: nginx
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginxinc/nginx-unprivileged
+        name: nginx-unprivileged
+        resources: {}
+```
+
+Nginx podを確認するとコンテナがふたつ起動していることがわかります。
+また、Deploymentも書き換わっています。
+あとは、アプリケーション側で、Jaeger angetに向けてデータを出力すればJaeger本体に記録されるわけです。
+
+```
+% oc get pod | grep nginx
+nginx-557fc655c-zhprq      2/2     Running   0      28m
+
+% oc get deploy nginx -o yaml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "4"
+    prometheus.io/port: "14271"
+    prometheus.io/scrape: "true"
+    sidecar.jaegertracing.io/inject: jaeger-production
+  creationTimestamp: "2021-02-08T08:38:21Z"
+  generation: 6
+  labels:
+    app: nginx
+    sidecar.jaegertracing.io/injected: jaeger-production
+  name: nginx
+  namespace: jaeger-production
+  resourceVersion: "207651"
+  selfLink: /apis/apps/v1/namespaces/jaeger-production/deployments/nginx
+  uid: 75c63e00-0396-4d63-a5db-183084e826a7
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - env:
+        - name: JAEGER_SERVICE_NAME
+          value: nginx.jaeger-production
+        - name: JAEGER_PROPAGATION
+          value: jaeger,b3
+        image: nginxinc/nginx-unprivileged
+        imagePullPolicy: Always
+        name: nginx-unprivileged
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - args:
+        - --jaeger.tags=cluster=undefined,deployment.name=nginx,pod.namespace=jaeger-production,pod.name=${POD_NAME:},host.ip=${HOST_IP:},container.name=nginx-unprivileged
+        - --reporter.grpc.host-port=dns:///jaeger-production-collector-headless.jaeger-production.svc:14250
+        - --reporter.grpc.tls.ca=/etc/pki/ca-trust/source/service-ca/service-ca.crt
+        - --reporter.grpc.tls.enabled=true
+        - --reporter.type=grpc
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        image: registry.redhat.io/distributed-tracing/jaeger-agent-rhel8@sha256:ff3f61601ca4f799958f26be0525383339c1fa6ac29e16eec9d2c32dbe59407e
+        imagePullPolicy: IfNotPresent
+        name: jaeger-agent
+        ports:
+        - containerPort: 5775
+          name: zk-compact-trft
+          protocol: UDP
+        - containerPort: 5778
+          name: config-rest
+          protocol: TCP
+        - containerPort: 6831
+          name: jg-compact-trft
+          protocol: UDP
+        - containerPort: 6832
+          name: jg-binary-trft
+          protocol: UDP
+        - containerPort: 14271
+          name: admin-http
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/pki/ca-trust/extracted/pem
+          name: jaeger-production-trusted-ca
+          readOnly: true
+        - mountPath: /etc/pki/ca-trust/source/service-ca
+          name: jaeger-production-service-ca
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: ca-bundle.crt
+            path: tls-ca-bundle.pem
+          name: jaeger-production-trusted-ca
+        name: jaeger-production-trusted-ca
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: service-ca.crt
+            path: service-ca.crt
+          name: jaeger-production-service-ca
+        name: jaeger-production-service-ca
+...
+```
+
+## サンプルアプリでトレーシング体験
 JaegerのインストールはAllInOneを用いてテスト用であれば、正直なにも考える必要なくできます。
 トレーシングがどのようなものか理解するには、なにはともあれ確認してみないとですよね。
-HotRodというちょうどいいサンプルがあるので取っ掛かりとしてはオススメです。
+[Hot R.O.D. - Rides on Demand](https://github.com/jaegertracing/jaeger/tree/master/examples/hotrod)というちょうどいいサンプルがあるので取っ掛かりとしてはオススメです。
+
+こちらのREADMEには、Kubernetesへのデプロイは書かれていませんがコンテナイメージが用意されているので簡単にデプロイできます。以下サンプルです。
+せっかくなので、`sidecar.jaegertracing.io/inject: "jaeger-production"`のannotationをつかってJaeger agentを起動します。
+`env`の`JAEGER_AGENT_HOST`はこの場合、サイドカーで起動しているコンテナになるので`localhost`でOKです。
 
 ```yaml
 apiVersion: apps/v1
@@ -145,6 +325,8 @@ metadata:
   labels:
     app: hotrod
   name: hotrod
+  annotations:
+    sidecar.jaegertracing.io/inject: "jaeger-production"
 spec:
   replicas: 1
   selector:
@@ -162,11 +344,20 @@ spec:
         name: example-hotrod
         env:
           - name: JAEGER_AGENT_HOST
-            value: "jaeger-all-in-one-inmemory-agent"
+            value: "localhost"
           - name: JAEGER_AGENT_PORT
             value: "6831"
         ports:
           - containerPort: 8080
         resources: {}
 ```
+
+起動した、Podに対して接続し、アプリケーションを操作すれば、Jaegerにトレーシング情報が保存されていることを確認できました。今回はここまでとして、次回もう少し細かいところを見ていこうと思います。
+
+![jaeger-hotrod](/image/jaeger-hotrod.png)
+
+## 関連情報
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2019/11/21/datadog-apm/" data-iframely-url="//cdn.iframe.ly/SQYbsuz"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/01/22/sockshop/" data-iframely-url="//cdn.iframe.ly/YDI2rVR"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
