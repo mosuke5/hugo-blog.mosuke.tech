@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "アプリケーション開発"]
 date = "2021-02-08T17:04:05+09:00"
 description = "jaegerを使った分散トレーシングをKubernetes上で検証していきます。Jaeger Operatorの利用、本番環境を見据えた設定、サイドカーでのagent注入あたりやります。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Jaegerを使った分散トレーシングの検証 on Kubernetes (1)"
