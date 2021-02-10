@@ -76,7 +76,7 @@ OpenShiftのcluster-wide entitlementとして導入する前に、手元のPCの
 
 ### Node Feature Discovery
 Node Feature Discovery(以下、nfd)は、OpertorHubからインストールが可能です。
-Red HatがOpenShift向けに管理している[nfdのレポジトリ](https://chouseisan.com/s?h=68ca005319dc4bd0a26c5afcdcdf7ff1)はこちらから確認できます。
+Red HatがOpenShift向けに管理している[nfdのレポジトリ](https://catalog.redhat.com/software/containers/openshift4/ose-cluster-nfd-operator/5d9e23f1bed8bd2245d9378c)はこちらから確認できます。
 
 OpenShift 4.6でインストールできるnfdは、まだnfd-master, nfd-workerともにDaemonSetで動作します。
 実際にWorkerノードのラベルを見てみるとたくさんのハードウェア情報が付与されていることが確認できます。
