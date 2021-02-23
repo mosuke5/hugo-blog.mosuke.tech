@@ -51,6 +51,7 @@ GAITの試験概要についてこちらを参照ください。
 もし次受ける機会があるとすればそのあたりしっかりクリアして70%超え狙っていきたいと思います。
 とはいえ、かなりベンダーサービスの問題も多いので取れる点数には限界があるかなって思います。最後に所感など簡単にまとめます。
 
+
 ## 所感
 - 試験は、アンケートと本試験の2つセット。
 - どの分野のどんな人がどのくらいの点数か集計するためにアンケートがある。
@@ -74,6 +75,8 @@ GAITの試験概要についてこちらを参照ください。
 - スコアがその場で出て苦手な分野など把握できるのは良いと思う
 - 個人的な意見としては、IT用語試験になっているのでもう少し本質的な基礎力を問うものになっていくほうがいいのではとか素人的な考え。
 
+{{< horizontal_ad >}}
+
 ## 対策について
 こういう試験に対策というのはなんか違うかもしれませんが、
 きっと読者は対策についてきになっているとも思うので、対策について思っていることを書きます。
@@ -83,8 +86,7 @@ GAITの試験概要についてこちらを参照ください。
 もうすでに基本情報技術者試験を持っているよという人は、「復習」しておくといいでしょう。このタイプの試験の特有の用語がでてきたりして戸惑うので、少し復習しておくと良いです。例えば、データベースの「選択」「射影」がどっちがどっちだったかなど。  
 下記の参考書などが非常に対策に有効です。
 
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="https://amzn.to/2SID8bx" ="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51a0KH6GKiL._SL160_.jpg" alt="情報処理教科書 出るとこだけ！基本情報技術者 テキスト＆問題集 2020年版" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-" style="margin-bottom:10px;line-height:120%"><a href="https://amzn.to/2SID8bx" ="amazletlink" target="_blank">情報処理教科書 出るとこだけ！基本情報技術者 テキスト＆問題集 2020年版</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with amazlet at 19.12.28</div></div><div class="amazlet-detail">矢沢 久雄 <br />翔泳社 <br />売り上げランキング: 11,773<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="https://amzn.to/2SID8bx" ="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
-
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/%25E6%2583%2585%25E5%25A0%25B1%25E5%2587%25A6%25E7%2590%2586%25E6%2595%2599%25E7%25A7%2591%25E6%259B%25B8-%25E5%2587%25BA%25E3%2582%258B%25E3%2581%25A8%25E3%2581%2593%25E3%2581%25A0%25E3%2581%2591%25EF%25BC%2581%25E5%259F%25BA%25E6%259C%25AC%25E6%2583%2585%25E5%25A0%25B1%25E6%258A%2580%25E8%25A1%2593%25E8%2580%2585-%25E3%2583%2586%25E3%2582%25AD%25E3%2582%25B9%25E3%2583%2588%25EF%25BC%2586%25E5%2595%258F%25E9%25A1%258C%25E9%259B%2586-2020%25E5%25B9%25B4%25E7%2589%2588-%25E7%259F%25A2%25E6%25B2%25A2/dp/4798163813?pd_rd_w=CYdeF&amp;pf_rd_p=1821eedd-9050-44ff-9f94-4ca9c8c19ec5&amp;pf_rd_r=DFKB98BA1NYM9FAR9NHZ&amp;pd_rd_r=a734949f-080e-4647-9fdb-470d17a8eb14&amp;pd_rd_wg=0n9gD&amp;pd_rd_i=4798163813&amp;psc=1&amp;linkCode=sl1&amp;tag=mosuke5-22&amp;linkId=4cccfedfecbc399b53c428c847f4ef12&amp;language=ja_JP&amp;ref_=as_li_ss_tl" data-iframely-url="//cdn.iframe.ly/a6w7CCE?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 上にもすこし書いたのですが、WindowsやActiveDirectory、Oracleなどベンダー依存の知識も問われます。
 このあたりはあえて勉強して点数を取りに行くのもナンセンスだと思いますので、自分の得意分野をしっかり抑えに行くと良いと思います。
