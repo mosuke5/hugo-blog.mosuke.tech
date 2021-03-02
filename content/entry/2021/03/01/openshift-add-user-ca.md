@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "OpenShift"]
 date = "2021-03-01T18:47:31+09:00"
 description = "OpenShiftに独自のCA証明書を追加する方法や、追加時に行われることについて検証したことをまとめました。インターネットにでるのにプロキシを利用する場合などにご活用ください。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShiftでCA証明書を追加することについての検証"
