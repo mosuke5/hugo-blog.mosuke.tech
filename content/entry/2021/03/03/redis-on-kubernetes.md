@@ -58,7 +58,7 @@ archive = ["2021"]
 - シャーディングを活用してマルチPrimary構成を実現する方式。マルチPrimary構成のため、ReplicationおよびSentinelの方式と異なり書き込みの分散が可能。唯一の書き込みの分散ができる構成。
 - 格納するデータのキーのハッシュによって、書き込まれるパーティションが決定する。
 - データの永続性を持たせるために、シャーディングとレプリケーションとを併用する方式をとることがある。その場合、最低6台から構成されることになる。
-- Kubernetesで構成する場合、RedisLabsが提供する、Redis Enterprise Operatorの採用が検討できる。
+- Kubernetesで構成する場合、RedisLabsが提供する、[Redis Enterprise Operator](https://docs.redislabs.com/latest/platforms/kubernetes/concepts/operator/)の採用が検討できる。
 
 ![redis-cluster](/image/redis-cluster.png)
 
