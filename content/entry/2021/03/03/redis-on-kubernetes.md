@@ -1,11 +1,11 @@
 +++
 categories = ["Kubernetes"]
 date = "2021-03-03T11:40:54+09:00"
-description = ""
-draft = true
+description = "RedisをKubernetesで利用する際のポイントをまとめました。またReidisをHAとして利用する場合に有力候補となるHelm chartについて解説します。"
+draft = false
 image = ""
 tags = ["Tech"]
-title = "Redis on Kubernetesの検討ポイントのまとめ"
+title = "Redis on Kubernetesの検討ポイントとredis-ha Helm chart"
 author = "mosuke5"
 archive = ["2021"]
 +++
