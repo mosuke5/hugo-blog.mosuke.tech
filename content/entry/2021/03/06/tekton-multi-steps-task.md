@@ -1,8 +1,8 @@
 +++
-categories = ["", ""]
+categories = ["Kubernetes"]
 date = "2021-03-06T16:34:41+09:00"
-description = ""
-draft = true
+description = "TektonのTaskは複数のStepからなりたちます。複数Stepにした際の実行順序やその実現方法などについて確認しました。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Tekton、TaskのStepの実行順序について確認してみる"
