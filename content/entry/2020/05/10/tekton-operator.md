@@ -18,8 +18,10 @@ GWはみなさんいかがお過ごしでしたか？
 さて、今日はCloud NativeなCI/CDツールと言われているTektonについて。  
 何回かに分けて書こうと思いますが、Operatorによるインストール編です（随時更新します）。
 
-- 第1回: [TektonのOperatorによるインストールとHello World](https://blog.mosuke.tech/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認してみる](https://blog.mosuke.tech/entry/2021/03/06/tekton-multi-steps-task/)
+Tekton学習シリーズ
+- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
+- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
+- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params)
 
 <!--more-->
 
@@ -285,5 +287,7 @@ hello-world-task-run-w82p6   True        Succeeded   62s         58s
 Kubernetes-nativeなCI/CDツールのTektonのOperatorによるインストールとHello Worldを見てきました。  
 Tektonの実践的な情報はあまり本記事には出せなかったので、続記事を出し次第、本記事にリンクを貼っていきたいと思います。もうしばらくお待ちいただければと思います。
 
-- 第1回: [TektonのOperatorによるインストールとHello World](https://blog.mosuke.tech/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認してみる](https://blog.mosuke.tech/entry/2021/03/06/tekton-multi-steps-task/)
+Tekton学習シリーズ
+- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
+- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
+- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params)

@@ -5,13 +5,15 @@ description = "TektonのTaskは複数のStepからなりたちます。複数Ste
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Tekton、TaskのStepの実行順序について確認してみる"
+title = "Tekton、TaskのStepの実行順序について確認する"
 author = "mosuke5"
 archive = ["2021"]
 +++
 
-- 第1回: [TektonのOperatorによるインストールとHello World](https://blog.mosuke.tech/entry/2020/05/10/tekton-operator/)
-- 第2回: Tekton、TaskのStepの実行順序について確認してみる
+Tekton学習シリーズ
+- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
+- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
+- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params)
 
 前回、TektonのOperatorを使ったインストールについて解説しました。
 今回は、もうすこしTaskの動きを確認してみます。具体的には、Task内のStepの役割や、複数のStepがある場合の実行順序の制御方法などについて確認してみます。
@@ -185,3 +187,8 @@ spec:
 
 ## さいごに
 前回から間が空いてしまいましたが、Tektonについて学んだこと、確認したことを継続してポストしますので次回もお楽しみにしてください。
+
+Tekton学習シリーズ
+- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
+- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
+- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params)
