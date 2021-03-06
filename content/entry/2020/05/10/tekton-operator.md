@@ -16,7 +16,10 @@ GWはみなさんいかがお過ごしでしたか？
 このあたりの話は別で書きたいと思いますが、Kubernetesのよさについてさらに理解を深めた気がします。
 
 さて、今日はCloud NativeなCI/CDツールと言われているTektonについて。  
-何回かに分けて書こうと思いますが、Operatorによるインストール編です。
+何回かに分けて書こうと思いますが、Operatorによるインストール編です（随時更新します）。
+
+- 第1回: [TektonのOperatorによるインストールとHello World](https://blog.mosuke.tech/entry/2020/05/10/tekton-operator/)
+- 第2回: [Tekton、TaskのStepの実行順序について確認してみる](https://blog.mosuke.tech/entry/2021/03/06/tekton-multi-steps-task/)
 
 <!--more-->
 
@@ -281,3 +284,6 @@ hello-world-task-run-w82p6   True        Succeeded   62s         58s
 ## まとめ
 Kubernetes-nativeなCI/CDツールのTektonのOperatorによるインストールとHello Worldを見てきました。  
 Tektonの実践的な情報はあまり本記事には出せなかったので、続記事を出し次第、本記事にリンクを貼っていきたいと思います。もうしばらくお待ちいただければと思います。
+
+- 第1回: [TektonのOperatorによるインストールとHello World](https://blog.mosuke.tech/entry/2020/05/10/tekton-operator/)
+- 第2回: [Tekton、TaskのStepの実行順序について確認してみる](https://blog.mosuke.tech/entry/2021/03/06/tekton-multi-steps-task/)
