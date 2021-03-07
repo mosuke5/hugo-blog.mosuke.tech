@@ -21,7 +21,8 @@ GWはみなさんいかがお過ごしでしたか？
 Tekton学習シリーズ
 - 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
 - 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params)
+- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
+- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
 
 <!--more-->
 
@@ -290,4 +291,5 @@ Tektonの実践的な情報はあまり本記事には出せなかったので�
 Tekton学習シリーズ
 - 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
 - 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params)
+- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
+- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
