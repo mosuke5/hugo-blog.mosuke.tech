@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes"]
 date = "2021-03-11T00:13:19+09:00"
-description = ""
-draft = true
+description = "Kubernetesのノードに障害が起きたときのPodの動きについて理解していますか？別のノードにPodがスケジュールされるよね、と思いたいところですがそれほど単純な話でもありません。事象となぜそれが起こるのかを解説します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetesのノード障害時のPodの動きについての検証"
