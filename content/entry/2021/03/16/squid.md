@@ -9,9 +9,7 @@ title = "squidを使ってプロキシ環境の再現検証に活用する"
 author = "mosuke5"
 archive = ["2021"]
 +++
-
-こんにちは、もーすけです。  
-squidを使った検証は年に1回くらいは出てくるのですが、やるたびに忘れるのでメモします。
+こんにちは、もーすけです。  squidを使った検証は年に1回くらいは出てくるのですが、やるたびに忘れるのでメモします。
 ちなみに、squidを使う理由としてはいろいろなのですが、だいたい以下のような理由です。
 
 1. 顧客のシステムを使う際にIPアドレス制限がかかっており、特定のサーバからアクセスさせたい
@@ -113,6 +111,24 @@ X-Cache: MISS from ip-192-168-1-54.ap-northeast-1.compute.internal
 X-Cache-Lookup: NONE from ip-192-168-1-54.ap-northeast-1.compute.internal:3128
 Via: 1.1 ip-192-168-1-54.ap-northeast-1.compute.internal (squid/4.11)
 Connection: keep-alive
+
+// あるいはこういうの
+local-pc $ curl https://blog.mosuke/tech -x http://<squid-global-ip>:3128
+...
+<div id="titles">
+<h1>ERROR</h1>
+<h2>The requested URL could not be retrieved</h2>
+</div>
+<hr>
+
+<div id="content">
+<p>The following error was encountered while trying to retrieve the URL: <a href="https://blog.mosuke.tech/">https://blog.mosuke.tech/</a></p>
+
+<blockquote id="error">
+<p><b>Access Denied.</b></p>
+</blockquote>
+
+<p>Access control configuration prevents your request from being allowed at this time. Please contact your service provider if you feel this is incorrect.</p>
 ```
 
 これは、squidのデフォルトの設定が、プライベートネットワークなど一部のIPからのみプロキシするように設定されているからです。
