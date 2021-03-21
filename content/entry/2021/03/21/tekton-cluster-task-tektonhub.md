@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes"]
 date = "2021-03-21T17:24:57+09:00"
-description = "Tekton学習シリーズ第8回では、ClusterTaskとTekton Hubについて理解します。"
-draft = true
+description = "Tekton学習シリーズ第8回では、ClusterTaskとTekton Hubについて理解します。汎用的なTaskはチームを超えて共有して使っていくことができます。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Tekton、ClusterTaskとTekton Hubを理解する"
