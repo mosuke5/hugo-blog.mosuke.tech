@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes"]
 date = "2021-03-20T00:36:10+09:00"
-description = ""
-draft = true
+description = "Tekton学習シリーズ第7回では、カタログを利用してパイプラインを作ることをやります。GitHubからソースコードをダウンロードして、コンテナイメージをビルドした結果をレジストリにPushします。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Tekton、カタログをうまく活用してパイプラインを作る（イメージビルド）"
@@ -215,8 +215,14 @@ spec:
               storage: 1Gi
 ```
 
+#### PipelineResourceはどこにいった？
+第4回 [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/) では、Gitレポジトリ上にあるソースコードをPipelineResourceという機能を利用してTaskと連携しました。今回はPipelineResourceを使わずにカタログの `git-clone task` を利用したわけですが、どちらを利用したほうがいいのでしょうか？と疑問がわくと思います。
+今回やってみてわかったのですが、PipelineResourceは忘れていただいて、Taskで操作したほうが使い勝手がいいと考えました。理由として、`buildah task` もworkspaceでソースコードが引き渡されることが前提となっておりPipelineResourceを使う場合、Task自身を修正しなければなりませんでした。
+また、余計なKubernetesリソースを作成することなくPipeline内で完結できるので、PipelineResourceは不要かな。。？と現時点では思っています。
+
 ### パイプラインの実行
-パイプラインを実行して、実行結果を見てみます。
+パイプラインを実行して、実行結果を見てみます。  
+確認ポイントとしては、各Taskの実行結果や最終的なアウトプットとしてのコンテナレジストリです。
 
 ```
 $ kubectl apply -f build-image-pipeline.yaml
