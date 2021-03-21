@@ -10,6 +10,8 @@ author = "mosuke5"
 archive = ["2020"]
 +++
 
+{{< tekton-series >}}
+
 <a href="https://twitter.com/mosuke5" target="_blank">もーすけ</a>です。
 GWはみなさんいかがお過ごしでしたか？  
 外に出れないGWという一生でもそんなことが2度あるかわかりませんが非常に大変な日々を過ごされたのではないかと思います。自分は、GWを使ってKubernetes Operatorの開発などに挑戦してみていました。
@@ -17,14 +19,6 @@ GWはみなさんいかがお過ごしでしたか？
 
 さて、今日はCloud NativeなCI/CDツールと言われているTektonについて。  
 何回かに分けて書こうと思いますが、Operatorによるインストール編です（随時更新します）。
-
-Tekton学習シリーズ
-- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
-- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
-- 第5回: [Tekton、TaskをまとめてPipelineとして実行する](/entry/2021/03/07/tekton-pipeline/)
-- 第6回: [Tekton、PipelineでWorkspaceを利用してTask間でデータを連携する](/entry/2021/03/17/tekton-pipeline-with-workspace/)
 
 <!--more-->
 
@@ -290,10 +284,4 @@ hello-world-task-run-w82p6   True        Succeeded   62s         58s
 Kubernetes-nativeなCI/CDツールのTektonのOperatorによるインストールとHello Worldを見てきました。  
 Tektonの実践的な情報はあまり本記事には出せなかったので、続記事を出し次第、本記事にリンクを貼っていきたいと思います。もうしばらくお待ちいただければと思います。
 
-Tekton学習シリーズ
-- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
-- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
-- 第5回: [Tekton、TaskをまとめてPipelineとして実行する](/entry/2021/03/07/tekton-pipeline/)
-- 第6回: [Tekton、PipelineでWorkspaceを利用してTask間でデータを連携する](/entry/2021/03/17/tekton-pipeline-with-workspace/)
+{{< tekton-series >}}

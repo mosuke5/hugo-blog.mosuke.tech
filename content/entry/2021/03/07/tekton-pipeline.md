@@ -10,13 +10,7 @@ author = "mosuke5"
 archive = ["2021"]
 +++
 
-Tekton学習シリーズ
-- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
-- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
-- 第5回: [Tekton、TaskをまとめてPipelineとして実行する](/entry/2021/03/07/tekton-pipeline/)
-- 第6回: [Tekton、PipelineでWorkspaceを利用してTask間でデータを連携する](/entry/2021/03/17/tekton-pipeline-with-workspace/)
+{{< tekton-series >}}
 
 はい、もーすけです。  
 Tekton学習シリーズ第5回をやっていきます。
@@ -263,10 +257,4 @@ my-second-pipeline-run-hello-my-friends-tfp44-pod-m5xjr   0/1     Completed     
 Pipelineも前回の第4回で行ったPipelineResourceをもちろん組み合わせて利用できます。
 次回は、出力結果の扱いやPipelineのより実践的な使い方などを見ていこうと思います。
 
-Tekton学習シリーズ
-- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
-- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
-- 第5回: [Tekton、TaskをまとめてPipelineとして実行する](/entry/2021/03/07/tekton-pipeline/)
-- 第6回: [Tekton、PipelineでWorkspaceを利用してTask間でデータを連携する](/entry/2021/03/17/tekton-pipeline-with-workspace/)
+{{< tekton-series >}}
