@@ -15,7 +15,7 @@ build:
         code: |
             $(cd ./themes/mosuke-tech-hugo-theme && git checkout ea7f78da918f982e3b174d46baa28607fad813ab)
     - arjen/hugo-build:
-        version: "0.79.0"
+        version: "0.80.0"
         theme: mosuke-tech-hugo-theme
         flags: --buildDrafts=false
   after-steps:
