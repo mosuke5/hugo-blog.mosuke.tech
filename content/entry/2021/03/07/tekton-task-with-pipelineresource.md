@@ -10,13 +10,7 @@ author = "mosuke5"
 archive = ["2021"]
 +++
 
-Tekton学習シリーズ
-- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
-- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
-- 第5回: [Tekton、TaskをまとめてPipelineとして実行する](/entry/2021/03/07/tekton-pipeline/)
-- 第6回: [Tekton、PipelineでWorkspaceを利用してTask間でデータを連携する](/entry/2021/03/17/tekton-pipeline-with-workspace/)
+{{< tekton-series >}}
 
 こんにちは、もーすけです。  
 本日もTekton学習シリーズやっていきます。第4回は、TaskにPipelineResourceを追加してみます。
@@ -176,10 +170,4 @@ drwxr-xr-x 2 root root 4096 Mar  7 06:47 themes
 本日は簡単なネタでしたが、CIパイプラインでは欠かせないGitレポジトリを扱う方法についてみていきました。
 これから、いよいよPipelineやPipelineRunに移っていく予定です。
 
-Tekton学習シリーズ
-- 第1回: [TektonのOperatorによるインストールとHello World](/entry/2020/05/10/tekton-operator/)
-- 第2回: [Tekton、TaskのStepの実行順序について確認する](/entry/2021/03/06/tekton-multi-steps-task/)
-- 第3回: [Tekton、Taskにパラメータを引き渡す](/entry/2021/03/06/tekton-task-with-params/)
-- 第4回: [Tekton、TaskでPipelineResouceを利用したときの挙動を確認する](/entry/2021/03/07/tekton-task-with-pipelineresource/)
-- 第5回: [Tekton、TaskをまとめてPipelineとして実行する](/entry/2021/03/07/tekton-pipeline/)
-- 第6回: [Tekton、PipelineでWorkspaceを利用してTask間でデータを連携する](/entry/2021/03/17/tekton-pipeline-with-workspace/)
+{{< tekton-series >}}
