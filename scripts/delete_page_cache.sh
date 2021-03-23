@@ -4,6 +4,23 @@
 # Params $3: cloud_flare api key
 # Params $4: git commit id
 
+# functions
+function purge_specific_cache () {
+    curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$1/purge_cache" \
+         -H "X-Auth-Email: $2" \
+         -H "X-Auth-Key: $3" \
+         -H "Content-Type: application/json" \
+         --data "{\"files\": [${files_param}]}"
+}
+
+function purge_every_cache () {
+    curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$1/purge_cache" \
+         -H "X-Auth-Email: $2" \
+         -H "X-Auth-Key: $3" \
+         -H "Content-Type: application/json" \
+         --data "{\"purge_everything\": true}"
+}
+
 # Add array to uris to purge contents uri
 uris=("/" "/sitemap.xml" "/index.xml")
 files=`git diff --name-only HEAD^`
@@ -15,6 +32,9 @@ do
     elif [[ ${i} =~ ^(static/) ]]; then
         # "static/image/aiueo.png" => "/image/aiueo.png"
         uris+=("${i:6}")
+    elif [[ ${i} =~ ^(layouts/ | wercker.yml) ]]; then
+        purge_every_cache
+        exit 0
     fi
 done
 
@@ -30,8 +50,4 @@ files_param="${files_param:0:-1}" #delete last comma
 
 # Exec CloudFlare API to purge cache
 sleep 10
-curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$1/purge_cache" \
-     -H "X-Auth-Email: $2" \
-     -H "X-Auth-Key: $3" \
-     -H "Content-Type: application/json" \
-     --data "{\"files\": [${files_param}]}"
+purge_specific_cache
