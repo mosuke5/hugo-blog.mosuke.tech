@@ -67,9 +67,9 @@ purge-cache:
     - install-packages:
         packages: git curl
     - script:
-        name: delete cloudflare cache in top page
+        name: delete cloudflare cache
         code: |
-          bash ./scripts/delete_top_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+          bash ./scripts/delete_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
