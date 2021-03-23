@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-03-22T21:38:02+09:00"
 description = "Tekton学習シリーズの第9回は、ついにコンテナイメージのビルドからデプロイまで実施します。TektonからKubernetesリソースを扱う方法を学んでいきます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Tekton、アプリケーションをKubernetesクラスタへデプロイする"
