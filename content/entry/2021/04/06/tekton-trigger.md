@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-04-06T17:20:40+09:00"
 description = "Tektonパイプラインを外部イベントのトリガーを用いて実行する方法とその概念を説明していきます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Tekton、トリガーを使って外部イベントでパイプラインを実行する"
