@@ -1,11 +1,11 @@
 +++
 categories = ["Kubernetes", "DevOps"]
 date = "2020-05-10T15:15:21+09:00"
-description = "Tekton Operatorを用いて、Tektonのインストールをしていきます。OperatorとTekton本体、パイプラインタスクの関係性などを整理しながら説明します。最後に簡単なタスク実行も行っていきます。"
+description = "Tekton学習シリーズの第1回目。Operatorを用いたTektonのインストール編です。OperatorとTekton本体、パイプラインタスクの関係性などを整理しながら説明します。最後に簡単なタスク実行も行っていきます。"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "TektonのOperatorによるインストールとHello World"
+title = "Tekton 徹底解説、Operatorによるインストールとはじめの一歩（学習シリーズ01）"
 author = "mosuke5"
 archive = ["2020"]
 +++
@@ -18,7 +18,7 @@ GWはみなさんいかがお過ごしでしたか？
 このあたりの話は別で書きたいと思いますが、Kubernetesのよさについてさらに理解を深めた気がします。
 
 さて、今日はCloud NativeなCI/CDツールと言われているTektonについて。  
-何回かに分けて書こうと思いますが、Operatorによるインストール編です（随時更新します）。
+Tekton学習シリーズということで入門者向けの連載企画をおこないました。第1回目は、Operatorによるインストール編です。
 
 <!--more-->
 
@@ -281,7 +281,7 @@ hello-world-task-run-w82p6   True        Succeeded   62s         58s
 ```
 
 ## まとめ
-Kubernetes-nativeなCI/CDツールのTektonのOperatorによるインストールとHello Worldを見てきました。  
-Tektonの実践的な情報はあまり本記事には出せなかったので、続記事を出し次第、本記事にリンクを貼っていきたいと思います。もうしばらくお待ちいただければと思います。
+Kubernetes-nativeなCI/CDツールのTektonのOperatorによるインストールとTektonの最小実行単位であるTaskについてみてきました。
+Tekton学習シリーズの目標は、Tektonパイプラインでアプリケーションをビルド・デプロイできるようになることですが、それに必要な各要素を順を追って解説します。
 
 {{< tekton-series >}}
