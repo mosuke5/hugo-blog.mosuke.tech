@@ -22,6 +22,7 @@ archive = ["2021"]
 本日利用するのは、[Tekton Triggers](https://github.com/tektoncd/triggers)です。別のソフトウェアになっており、Tekton Pipelinesと連携して利用できます。
 さっそくインストールします。
 インストール方法は、[公式ドキュメント](https://tekton.dev/docs/triggers/install/)どおりに行います。
+今回使用したバージョンは、Tekton Triggers v0.12.1　となります。
 
 ```
 $ kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
