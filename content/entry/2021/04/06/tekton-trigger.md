@@ -99,14 +99,14 @@ triggertemplates.triggers.tekton.dev             2021-03-24T08:13:28Z
 
 ポイントをいくつかしぼって解説します。
 
-1. EventListersリソースを生成すると、httpを受け付けるEventLister PodとそのServiceが生成される
-1. 端末やGitレポジトリなどから上記で生成されたEventLister Podへhttpリクエストを送れればよい。生成されるのはServiceなので、外部からアクセスする場合はIngressなどで外部公開する必要がある。
-1. EventLister Podはhttpリクエストを受け付けると、Trigger Templates, Trigger Bindingsの設定にしたがってPipelineRunを生成しパイプラインを実行する。PipelineRunが生成された以降は前回までの学習で行ったとおり、PipelineRunがPipelineを生成し、PipelineがTaskRunをTaskRunがTaskを生成する流れとなる。
-1. EventLister Podは、Trigger TemplatesやTrigger Bindingsの参照、PipelineRunの生成などいくつかのKubernetes内の操作が必要なため、Kubernetes APIを扱うための権限が必要。EventLister Podに利用するService Accountの指定が可能なため、事前にService Accountとそれに対する適切なRBAC権限付与が必要。
+1. EventListenersリソースを生成すると、httpを受け付けるEventListener PodとそのServiceが生成される
+1. 端末やGitレポジトリなどから上記で生成されたEventListener Podへhttpリクエストを送れればよい。生成されるのはServiceなので、外部からアクセスする場合はIngressなどで外部公開する必要がある。
+1. EventListener Podはhttpリクエストを受け付けると、Trigger Templates, Trigger Bindingsの設定にしたがってPipelineRunを生成しパイプラインを実行する。PipelineRunが生成された以降は前回までの学習で行ったとおり、PipelineRunがPipelineを生成し、PipelineがTaskRunをTaskRunがTaskを生成する流れとなる。
+1. EventListener Podは、Trigger TemplatesやTrigger Bindingsの参照、PipelineRunの生成などいくつかのKubernetes内の操作が必要なため、Kubernetes APIを扱うための権限が必要。EventListener Podに利用するService Accountの指定が可能なため、事前にService Accountとそれに対する適切なRBAC権限付与が必要。
 
 ## 実装
 それでは実際に実装していきましょう。  
-まずは下準備として、EventLister Podが利用するService Accountの作成と適切なRole付与を行います。
+まずは下準備として、EventListener Podが利用するService Accountの作成と適切なRole付与を行います。
 以下が利用したマニフェストです。
 それほど難しくないですね？こちらが難しい人はぜひ、KubernetesのService AccountとRole, RoleBindingを復習しましょう。
 
@@ -163,7 +163,7 @@ roleRef:
 ```
 
 続いて、今回の主題の部分に行きます。
-作成するのは3つで、`TriggerTemplate`, `TriggerBinding`, `EventLister`の3つです。
+作成するのは3つで、`TriggerTemplate`, `TriggerBinding`, `EventListener`の3つです。
 慣れるまで、関係性や設定項目が煩わしいです。上で紹介した概要図と照らし合わせながらゆっくり理解していきましょう。
 いくつかコメントアウトで補足解説を入れました。
 
@@ -228,7 +228,7 @@ kind: EventListener
 metadata:
   name: build-deploy-pipeline-listener
 spec:
-  serviceAccountName: trigger-sa  # EventLister Podが利用するService Account
+  serviceAccountName: trigger-sa  # EventListener Podが利用するService Account
   triggers:
     - bindings:
         - ref: build-deploy-pipeline-binding
@@ -236,7 +236,7 @@ spec:
         ref: build-deploy-pipeline-template
 ```
 
-マニフェストをapplyし、EventLister Podを確認しておきます。
+マニフェストをapplyし、EventListener Podを確認しておきます。
 
 ```
 $ kubectl apply -f trigger-sa.yaml
@@ -259,7 +259,7 @@ el-build-deploy-pipeline-listener   ClusterIP   10.7.250.67   <none>        8080
 ```
 
 実運用では、Webhookでやるところですが今回はcurlで行います。
-EventLister Podへのネットワークは外部公開していないので、port-fowardを活用します。
+EventListener Podへのネットワークは外部公開していないので、port-fowardを活用します。
 Trigger Bindingsは、curlの`-d`で送信しているJSONデータをTektonのパラメータに変換しているというわけです。
 Webhookを利用する場合はどのようなデータでWebhookを飛ばしているか確認できれば設定が容易です。
 

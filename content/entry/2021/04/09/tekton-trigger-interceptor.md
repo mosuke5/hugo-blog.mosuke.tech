@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-04-08T21:47:39+09:00"
 description = "Tekton Triggersのinterceptor機能を利用してみます。GitレポジトリからWebhook対応や認証の対応について説明します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Tekton、interceptorを使ってイベントトリガーを進化させる"
