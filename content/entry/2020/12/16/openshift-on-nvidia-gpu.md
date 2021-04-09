@@ -1,5 +1,5 @@
 +++
-categories = ["Kubernetes"]
+categories = ["Kubernetes", "OpenShift"]
 date = "2020-12-16T19:21:02+09:00"
 description = "NVIDIA GPUを搭載したサーバをOpenShift上で利用するための基礎知識を紹介します。OpenShiftに限らずKubernetesをお使いの方の参考にもなると思います。"
 draft = false

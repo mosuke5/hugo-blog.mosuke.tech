@@ -1,5 +1,5 @@
 +++
-categories = ["Kubernetes", "DevOps"]
+categories = ["Kubernetes", "DevOps", "OpenShift"]
 date = "2020-07-05T23:00:50+09:00"
 description = "OpenShift上でJenkinsを利用する際のプラグインの管理方法やカスタマイズの方法などをご紹介します。プラグインが消えてしまうなどの問題にどう対応したらよいかなどまとめています。"
 draft = false
