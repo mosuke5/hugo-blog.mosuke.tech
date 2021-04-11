@@ -26,12 +26,17 @@ archive = ["2021"]
 {{< table class="table" >}}
 |エンティティ  |説明  |
 |---|---|---|
-|Task  |Tektonで表現できる最小の実行単位。ひとつ以上のStepから成り立つ。  |
-|TaskRun  |定義したTaskを実行するために利用。実行する際はTaskにわたす、入力や出力、パラメータなどを指定できる。単体で利用することも、Pipelineを実行したときに呼び出されて利用もされる。  |
-|Pipeline  |定義したTaskの集合体。  |
-|PipelineRun  |定義したPipelineを実行するために利用。パイプラインを実行するために、入力や出力、パラメータを指定できる。  |
+|Task  |Tektonで表現できる最小の実行単位。ひとつ以上のStepから成り立つ。Taskが必要とするパラメータなどを定義できる。  |
+|TaskRun  |定義したTaskを実行するために利用。Taskの実行に必要な、入力や出力・パラメータなどを指定する。TaskRun単体として利用することもできるが、Pipelineを実行したときにTaskRunが作成される。  |
+|Pipeline  |パイプライン。定義したTaskの集合体。パイプラインを実行するのに必要なパラメータなども定義できる。  |
+|PipelineRun  |定義したPipelineを実行するために利用。パイプラインを実行するために、入力や出力、パラメータを指定する。  |
 |PipelineResource  |Task内のStepで利用する入力や出力の場所を定義する。PipelineRunやTaskRunを作成する際に指定される。  |
+|ClusterTask  |Taskは、特定のNamespace内に作成されるが、ClusterTaskはすべてのNamespaceで共有されるTask。汎用的なTaskを管理するのに向いている。（詳細は[第8回](/entry/2021/03/21/tekton-cluster-task-tektonhub/)を参照。）|
 {{</ table >}}
+
+Task, TaskRun, Pipeline, PipelineRunの関係性については、以下のとおりです。
+
+![tekton-crds-relation](/image/tekton-crds-relation.png)
 
 ## 複数StepをもつTaskの実行
 前回のブログでは、ひとつのStepのみをもつTaskを実行しました。複数のStepをもつ場合どうなるか確認してみます。ちなみに、Task内のStepは特定の順序で実行可能です。  
