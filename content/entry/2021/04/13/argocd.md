@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-04-13T10:21:39+09:00"
 description = "Argo CD学習シリーズをはじめます。第1回は、インストールと主要コンポーネントの解説やその仕組などについてみていきます。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Argo CD、Operatorでのインストールと主要コンポーネントの解説（学習シリーズ）"
