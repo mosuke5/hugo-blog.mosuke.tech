@@ -12,11 +12,12 @@ archive = ["2019"]
 
 [@mosuke5](https://twitter.com/mosuke5)です。  
 Kubernetes上でのアプリケーションのロギングについてFluentdを使ってどうできるか考えていきます。
-今回はサイドカー方式という方法を使ってFluentdでAWS CloudWatch logsへ集約することについてやってみました。
+今回はサイドカー方式という方法を使ってFluentdでAWS CloudWatch logsへ集約することについてやってみました。CloudWatch logsを例に取っていますが、それ以外でも考え方は応用できますので読んでみてください。
+また、サイドカー方式以外の方式については、こちらの「[Kubernetesのロギングパターンは結局どれを採用したらいいの？](/entry/2021/04/18/kubernetes-application-logging/)」を参照してください。
 
-FluentdとAWSの連携については、以前にそういえばこんなものもかきましたので、参考にしてください。自分も復習で見返しました。
+FluentdとAWSの連携については、以前に「[NginxのログをFluentdでDynamoDBへ送る](/entry/2017/09/03/fluentd_to_dynamodb/)」もかきましたので、参考にしてください。自分も復習で見返しました。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2017/09/03/fluentd_to_dynamodb/" data-iframely-url="//cdn.iframe.ly/fUX8Gqb"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2021/04/18/kubernetes-application-logging/" data-iframely-url="//cdn.iframe.ly/qKFqn1a"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 <!--more-->
 
 ## 実現すること
@@ -34,7 +35,7 @@ Kubernetesでのロギングについての考え方は英語ですが<a href="h
 理由は、サイドカーのデメリットはPod毎にサイドカーコンテナが必要だということです。Fluentdもまあまあメモリを食うので、ロギングというほぼどんなアプリケーションにも必要なものについてサイドカーで載せる必要はないと思っています。
 サイドカーではなくDaemonSetとしてFluentdを動かすのが一番よさそうです。
 
-Twitterで聞いてみたところ、標準出力以外に複数のファイルにログを吐く場合にサイドカーでのFluetndを使うという意見もありました。
+標準出力以外に複数のファイルにログを吐く場合にサイドカーでのFluetndを使うのが有力な使いかと考えます。ロギングのコントロールがアプリケーション側にあるため、たとえばログの種類ごとに転送先が異なる場合も柔軟に対応ができます。
 
 ## fluentdの設定について
 コンテナ化する場合はまずは通常のサーバなりローカルで設定や概念を理解することをおすすめします。自分もこちらを実施するに当たり、一度テスト用のEC2の上で動作など確認しました。
@@ -217,3 +218,6 @@ $ kubectl logs nginx-deployment-58b86c84bb-6mggw -c fluentd
 Kubernetes上のアプリケーションについて、Sidecar方式でのロギングをやってみました。
 冒頭の結果のところにも書きましたが、ロギングという観点でいうとSidecarではない方法でのアプローチのほうが便利そうでした。
 一方でこういったアプローチが必要な場面もあることがわかり、１つの選択肢として重要かなと考えています。
+
+また、Sidecar方式以外の方式との比較などについては、以下のブログにまとめています。あわせてご覧ください。
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2021/04/18/kubernetes-application-logging/" data-iframely-url="//cdn.iframe.ly/qKFqn1a"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
