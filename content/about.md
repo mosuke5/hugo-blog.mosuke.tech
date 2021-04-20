@@ -17,8 +17,11 @@ author = "mosuke5"
 1. 2016-2019 Alibaba Cloudの日本リージョンの立ち上げと運営、プリセールスエンジニア
 1. 2019-now  Red Hatにて、Kubernetes・DevOps関連の技術やプロセスの導入支援
 
-好きなことはテニス、プロのテニス観戦、ポケモン対戦、ハンドドリップ珈琲などです。
+好きなことはテニス、プロのテニス観戦、ポケモン対戦、ハンドドリップ珈琲、投資などです。
 中でも、プロのテニス観戦は2005年からずっと続けていてなかなか詳しくなってしまいました。ポケモン対戦も、厳選もしっかりやるレート対戦勢です。コロナ期間中、ハンドドリップ珈琲に目覚めました。
+
+また本ブログとは別にお金に関するブログ「もーすけのお金日記」もやっています。
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://money.mosuke.tech/" data-iframely-url="//cdn.iframe.ly/1M1bEjK"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 ## 想い
 2016年頃から、現場の開発・運用者ではなく、Kubernetesやクラウドの活用を支援する仕事をしています。
