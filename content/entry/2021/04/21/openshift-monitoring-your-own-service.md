@@ -1,7 +1,7 @@
 +++
 categories = ["OpenShift"]
 date = "2021-04-23T14:05:54+09:00"
-description = ""
+description = "OpenShift 4.6から正式に追加されたユーザ定義プロジェクトの監視機能について、どこまで使えるのか？実戦投入できそうかなどの観点で検証していきます。Prometheusを独自で構築することなく監視できる新機能を紹介します。"
 draft = true
 image = ""
 tags = ["Tech"]
@@ -12,10 +12,13 @@ archive = ["2021"]
 
 こんにちは、もーすけです。  
 本日は、OpenShift 4.6から新規に追加された「ユーザ定義プロジェクトの監視機能 (Monitoring for user-defined project)」ってなんなのか？どこまでできるのか？と気になってので検証してみます。正式な機能名があるわけではなさそうなので、本ブログでは「ユーザ定義プロジェクトの監視」ということにしておきます。
+
+ちなみに本ブログを読みすすめる上で、`$ コマンド` はクラスタ管理者の操作、`% コマンド` はユーザ（開発者）の操作として記述しているので注意してください。
+
 <!--more-->
 
 ## Cluster Monitoringとは
-OpenShiftは、インストール時点にデフォルトでCluster MonitoringというPrometheusやGrafanaで構成された機能が起動します。実態としては、[Cluster Monitoring Operator](https://github.com/openshift/cluster-monitoring-operator) というOperatorがインストールされることで、OpenShiftクラスタを監視するのに必要な、以下のようなソフトウェアを起動しています。
+OpenShiftは、インストール時点にデフォルトでCluster MonitoringというPrometheusやGrafanaで構成された機能が起動します。実態としては、[Cluster Monitoring Operator](https://github.com/openshift/cluster-monitoring-operator) というOperatorがインストールされており、OpenShiftクラスタを監視するのに必要な、以下のようなソフトウェアを起動しています。
 
 - Prometheus Operator
 - Prometheus
@@ -24,18 +27,18 @@ OpenShiftは、インストール時点にデフォルトでCluster Monitoring�
 - node_exporter
 - prometheus-adapter
 
-4.5以前では、このCluster Monitoringは名前の通り「クラスタのためのモニタリング」機能の提供であり、OpenShiftの上でアプリケーションを動かすユーザ側の監視はスコープ外となっていました。
-4.6にて、ユーザ定義プロジェクトの監視機能がついたことで、<u>ユーザ側の監視もいくぶんかできるようになった</u>というわけです。（[リリースノート](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.6/html/release_notes/ocp-4-6-new-features-and-enhancements#ocp-4-6-monitoring)はこちら）
+4.5以前では、このCluster Monitoringは名前の通り「クラスタのためのモニタリング」機能の提供であり、OpenShift上でアプリケーションを動かすユーザ側の監視はスコープ外でした。
+4.6にて、ユーザ定義プロジェクトの監視機能が追加されたことで、<u>ユーザ側の監視もできるようになった</u>というわけです。（[リリースノート](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.6/html/release_notes/ocp-4-6-new-features-and-enhancements#ocp-4-6-monitoring)はこちら）
 
-OpenShiftを触っている人は、Cluster Monitoringでもユーザ定義のプロジェクトの監視できるのでは！？と思う方もいるかなと思いますので現時点の状況を説明します。
+OpenShiftを触っている人は、「Cluster Monitoringでもユーザ定義プロジェクトの監視できるのでは！？」と思うはずなので、現時点の状況を説明します。
 従来のCluster Monitoringでも、たしかにユーザが作ったプロジェクト内のPodのメトリクスなどを確認することはできます。しかし、いくつかの課題がありました。
 
-ひとつめは、Cluster Monitoringに搭載のGrafanaには権限分離する機能がなく、Cluster MonitoringのGrafanaにアクセスできる人は、**すべてのNamespace**の状況が見えてしまいます。
+ひとつめは、Cluster Monitoringに搭載のPrometheus/Grafanaには権限分離する機能がなく、Cluster Monitoringにアクセスできる人は、**すべてのNamespace**の状況が見えてしまいます。
 ひとつのシステムのためだけにOpenShiftを利用していれば問題ないかもしれませんが、マルチテナントとして利用する場合は不適切です。
 
 ふたつめは、カスタマイズができないということです。OpenShiftのプリセットの設定が入っており、こちらを編集してカスタマイズすることができないということです。そのため、ユーザがデプロイしたアプリケーションの監視設定・アラート設定を追加することはできません。
 
-という背景があり、この新機能であるユーザ定義プロジェクトの監視に注目していたというわけです！
+という背景があり、この新機能の「ユーザ定義プロジェクトの監視」に注目していたというわけです！
 どのくらい現時点で使えるのか？制限事項は何なのか？そのあたりを確認していきたいと思います。
 
 ## 設定と検証
@@ -49,8 +52,9 @@ Kubernetes Version: v1.19.0+2f3101c
 ```
 
 ### ユーザー定義プロジェクトの監視の有効化
-デフォルトでは無効化されているため、有効化します。有効化の公式ドキュメントの手順は[こちら](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.7/html/monitoring/enabling-monitoring-for-user-defined-projects#enabling-monitoring-for-user-defined-projects_enabling-monitoring-for-user-defined-projects)です。
-ちなみに、こちらの有効化作業は**クラスタ管理者の作業**です。cluster-admin権限がないとできないそうさで、ユーザはこの作業について気にする必要はないです。
+デフォルトでは無効化されているため、有効化が必要です。  
+有効化の公式ドキュメントの手順は[こちら](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.7/html/monitoring/enabling-monitoring-for-user-defined-projects#enabling-monitoring-for-user-defined-projects_enabling-monitoring-for-user-defined-projects)です。
+ちなみに、この有効化作業は**クラスタ管理者の作業**です。cluster-admin権限がないとできない操作で、ユーザ（開発者側）はこの作業について気にする必要はないです。
 
 また、このユーザ定義プロジェクトの監視もCluster Monitoring Operatorの拡張機能として備わっているものになります。
 
@@ -64,7 +68,7 @@ Error from server (NotFound): configmaps "cluster-monitoring-config" not found
 気を取り直して設定を追加します。
 
 ```
-$  oc -n openshift-monitoring create configmap cluster-monitoring-config
+$ oc -n openshift-monitoring create configmap cluster-monitoring-config
 configmap/cluster-monitoring-config created
 
 $ oc -n openshift-monitoring edit configmap cluster-monitoring-config
@@ -92,7 +96,7 @@ user-workload   v2.20.0   2          2m22s
 
 ### ユーザへの権限付与
 この機能をユーザに利用してもらうためには、ユーザ側への権限付与が必要です。
-具体例でいうと、ユーザが監視設定を追加するためには `ServiceMonitor` といったリソースの作成が必要です。OpenShiftでは、いくつかのRoleを用意しているので、適切なものをユーザに付与しましょう。詳しくはこちらの[ドキュメント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.7/html/monitoring/granting-users-permission-to-monitor-user-defined-projects_enabling-monitoring-for-user-defined-projects#granting-user-permissions-using-the-cli_enabling-monitoring-for-user-defined-projects)を参照ください。
+具体例でいうと、ユーザが監視設定を追加するためには `ServiceMonitor` や `PromtheusRule` といったリソースの作成が必要です。OpenShiftでは、いくつかのRoleを用意しているので、適切なものをユーザに付与しましょう。詳しくはこちらの[ドキュメント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.7/html/monitoring/granting-users-permission-to-monitor-user-defined-projects_enabling-monitoring-for-user-defined-projects#granting-user-permissions-using-the-cli_enabling-monitoring-for-user-defined-projects)を参照ください。
 監視設定もユーザ側で操作することが多いかと思うので、`monitoring-edit`の利用頻度が高そうですね。
 
 本ブログでは`user1`をユーザ（開発サイド）とみなして権限付与をしてみます。
@@ -105,7 +109,7 @@ clusterrole.rbac.authorization.k8s.io/monitoring-edit added: "user1"
 
 ### Prometheus Operatorとの関係
 さきにお伝えしておくと、これからでてくる`ServiceMonitor`や`PrometheusRule`といったリソースは[Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)のカスタムリソースです。
-Prometheus Operatorであることをあまり意識させない作りにはなっていますが、ユーザ側はPrometheus Operatorを一度さわっておくといいでしょう。
+Prometheus Operatorであることをユーザ側にあまり意識させない作りにはなっていますが、ユーザ側はPrometheus Operatorを一度さわっておくといいでしょう。
 
 本記事では、Prometheus Operatorについては解説しませんが、別記事でまた紹介していきたいと思います。
 
@@ -119,6 +123,7 @@ Prometheus exporterとは、簡易なHTTPサーバで、HTTPのリクエスト�
 ![prometheus-exporter](/image/prometheus-exporter.png)
 
 本検証では、Nginx exporterを搭載したNginxを使って挙動を確認してみます。
+ドキュメント通りではつまらないので、ここは違うアプローチで解説していきたいと思います。
 つぎのマニフェスト（`nginx.yaml`）を用います。コメントをいれました。
 
 ```yaml
@@ -129,7 +134,7 @@ kind: Deployment
 metadata:
   name: test-nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: test-nginx
@@ -213,6 +218,9 @@ data:
     }
 ```
 
+Nginxを起動します。  
+ポイントとしては、Pod内に2つのコンテナが存在していること、そしてexporter用のService(`nginx-exporter-service`)をあわせて作成したことです。
+
 ```
 % oc apply -f nginx.yaml
 deployment.apps/test-nginx created
@@ -222,6 +230,8 @@ configmap/nginx-conf created
 
 % oc get pod,service,configmap
 NAME                              READY   STATUS    RESTARTS   AGE
+pod/test-nginx-6c46668b79-6d8b8   2/2     Running   0          8s
+pod/test-nginx-6c46668b79-fhc44   2/2     Running   0          8s
 pod/test-nginx-6c46668b79-r4wzn   2/2     Running   0          8s
 
 NAME                             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
@@ -232,10 +242,17 @@ NAME                   DATA   AGE
 configmap/nginx-conf   1      6s
 ```
 
+### メトリクスの収集
+これから、exporterが公開したメトリクスを収集しますが、その前に生のメトリクス情報を確認しておきましょう。
+`fedora:33`イメージでデバッグ用のコンテナを起動します。
+コンテナ内から、`service/nginx-exporter-service`に接続してメトリクス情報を肉眼でも確認しておきましょう。
+
 ```
+// デバッグ用コンテナの起動
 % oc run debug -it --image=fedora:33 -- /bin/bash
 If you don't see a command prompt, try pressing enter.
 bash-5.0$
+bash-5.0$ # まずはNginx本体へcurlしてレスポンスが返ってくることを確認
 bash-5.0$ curl http://nginx-service:8080
 <!DOCTYPE html>
 <html>
@@ -249,6 +266,7 @@ bash-5.0$ curl http://nginx-service:8080
     }
 ...
 
+bash-5.0$ # 次にexporter側へcurlしてメトリクスを確認
 bash-5.0$ curl http://nginx-exporter-service:9113/metrics
 # HELP nginx_connections_accepted Accepted client connections
 # TYPE nginx_connections_accepted counter
@@ -260,14 +278,139 @@ nginx_connections_active 1
 # TYPE nginx_connections_handled counter
 nginx_connections_handled 3
 ...
-
 ```
+
+いよいよ、メトリクス収集するために、Prometheusに対して監視設定を投入します。
+通常のPrometheusを利用している場合、Prometheusの監視設定は専用の設定ファイルに記述を行い読み込ませる必要があります（[公式ドキュメント](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)）。今回は、Prometheus Operatorを内部的に利用しているため、Prometheusの専用の設定ファイルを書く必要はなく、`ServiceMonitor`というKubernetesリソースを作成すると、Prometheus Operatorが設定をPrometheusに反映してくれます。
+
+非常にシンプルですが、指定した条件に合うServiceを検出し監視を開始してくれます。
+`ServiceMonitor`の設定内容について詳しく知りたい方は、[Prometheus OperatorのAPIドキュメント](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#servicemonitorspec)がオススメです。
+```yaml
+# servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nginx-monitor
+spec:
+  # メトリクスのエンドポイントの設定
+  # "exporter"という名前のService portを選択
+  endpoints:
+    - interval: 30s
+      port: exporter
+      scheme: http
+  # 検出するServiceの条件設定
+  # "app: test-nignx"のラベルを持つServiceを検出
+  selector:
+    matchLabels:
+      app: test-nginx
+```
+
+ServiceMonitorをデプロイ後に、OpenShiftのWebコンソールから、"Monitoring" -> "Metrics" -> "Custom Query"にて、`nginx`などと入力するとNginx exporterから取得したメトリクスを確認できます。
 
 ```
 % oc apply -f servicemonitor.yaml
 servicemonitor.monitoring.coreos.com/nginx-monitor created
 
-mosuke5@MacBook-Pro work % oc get servicemonitor
+% oc get servicemonitor
 NAME            AGE
 nginx-monitor   9s
 ```
+
+![openshift-user-defined-prometheus-metrics](/image/openshift-user-defined-prometheus-metrics.png)
+
+![openshift-user-defined-prometheus-metrics-zoom](/image/openshift-user-defined-prometheus-metrics-zoom.png)
+
+### アラート設定
+続いてアラート設定です。
+取得したメトリクスに対して条件を指定してアラートできます。
+アラート設定は`PrometheusRule`というリソースで設定できます。
+`PrometheusRule`の設定項目は[こちら](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusrulespec)を参照ください。
+
+試しに、次のマニフェストを使ってみます。
+`nginx_up`は、名前のとりNginxが起動しているかどうかのメトリクスです。
+今回、Nginxはレプリカを3で起動していますから、何もなければ`sum(nginx_up) = 3` となるはずです。
+ひとつ以上がダウンしていれば `NginxPartiallyDown` のアラートを、全部ダウンしていれば `NginxTotallyDown` のアラートを出すこととします。
+
+```yaml
+# alert.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: nginx-alert
+spec:
+  groups:
+    - name: nginx-down
+      rules:
+        - alert: NginxPartiallyDown
+          expr: sum(nginx_up) < 3
+          for: 0m
+          labels:
+            severity: warning
+        - alert: NginxTotallyDown
+          expr: sum(nginx_up) < 1
+          for: 0m
+          labels:
+            severity: critical
+```
+
+アラート設定をデプロイし、Webコンソールにアラートが反映したことを確認。
+
+```
+% oc apply -f alert.yaml
+prometheusrule.monitoring.coreos.com/nginx-alert created
+
+% oc get prometheusrole
+NAME          AGE
+nginx-alert   6h12m
+```
+
+![openshift-user-defined-prometheus-alert-normal](/image/openshift-user-defined-prometheus-alert-normal.png)
+
+Nginxのレプリカ数を2にして、わざとアラート発報させてみます。
+Webコンソール上でもアラートが`Firing`になっていることを確認しましょう。
+
+```
+% oc scale deploy test-nginx --replicas=2
+deployment.apps/test-nginx scaled
+```
+
+![openshift-user-defined-prometheus-alert-error](/image/openshift-user-defined-prometheus-alert-error.png)
+
+## 通知設定
+最後に通知設定についてみていきます。  
+ひとつまえの項目ではアラート設定を行いましたが、とくに通知の設定は行っていませんでした。
+Prometheusでは `Alertmanager` というコンポーネントがアラートを管理します。
+このユーザ定義プロジェクトの監視では、アラート設定はユーザ側に権限はなく**クラスタ管理者側**となります。
+理由は、利用しているAlertManagerは、クラスタ管理用のものと併用しているためです。
+
+OpenShiftのWebコンソールの"Administration" -> "Cluster Settings" -> "Global Configuration" -> "Alertmanager" -> "Create Receiver"から設定できます。公式ドキュメントの設定手順は[こちら](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.6/html/monitoring/sending-notifications-to-external-systems_managing-alerts#configuring-alert-receivers_managing-alerts)です。
+
+今回はSlackを通知先に選びました。  
+設定で重要になるのは、`Routing Labels`です。
+これは、発報したアラートと通知設定を紐付けるための設定です。いちばん簡易なのはNamespaceを指定することでしょう。
+以下のスクリーンショットのように `namespace = my-app` とすることで、my-app namespace内で作成された`PrometheusRule`と紐づきNamespace毎に通知先を選べます。複数のチームがOpenShiftを利用していても通知先をある程度固定できます。
+ただし、Namespaceごとではクラスタ管理者の管理も難しいので、チームごとに利用できるよう `team = <任意のID>` としてIDをチーム側に知らせることなど運用の工夫が考えられそうです。 
+
+![openshift-user-defined-prometheus-alertmanager](/image/openshift-user-defined-prometheus-alertmanager.png)
+
+## アーキテクチャ図
+ここまでいろいろ検証してきて、ドキュメントに記載してあったアーキテクチャ図が理解できるようになってきました。
+簡単ですが、ポイントを書き込んだので理解の深堀りに使ってください。
+
+![openshift-user-defined-prometheus-architecture](/image/openshift-user-defined-prometheus-architecture.png)
+
+## さいごに
+長いブログでしたがお疲れさまでした。  
+OpenShiftのCluster Monitoringの拡張機能を使ったユーザ定義プロジェクトの監視いかがでしたでしょうか。
+個人的には非常に良い仕組みだなと思っています。
+いままで、ユーザ側で監視のの仕組みを作るのにPrometheus Operator/Grafana Operatorを使って独自に立ててきました。
+Operator化されているので簡単ではあるのですが、それでもある程度の運用の大変さがあったのは事実です。
+もちろん、いくつかの制約はあるもののカスタムのメトリクスの収集とアラート・通知ができるので使える場面も多いのではないかなと思っています。
+
+以下の点が制約として考えられるので注意して使っていきましょう。
+
+1. ダッシュボードは作れない。Grafanaダッシュボードは含まない。OpenShiftのWebコンソール内で完結。
+1. アラートの通知先管理がクラスタ管理側権限となる。
+1. 大量のユーザで利用したときのスケーラビリティ（ここは未確認で解消の余地あり）
+
+では、これからもOpenShift Lifeを楽しんでください！
