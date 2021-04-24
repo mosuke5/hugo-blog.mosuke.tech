@@ -1,8 +1,8 @@
 +++
 categories = ["OpenShift"]
-date = "2021-04-23T14:05:54+09:00"
+date = "2021-04-24T14:05:54+09:00"
 description = "OpenShift 4.6から正式に追加されたユーザ定義プロジェクトの監視機能について、どこまで使えるのか？実戦投入できそうかなどの観点で検証していきます。Prometheusを独自で構築することなく監視できる新機能を紹介します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShiftの新機能、ユーザ定義プロジェクトの監視ってどこまでできる？"
