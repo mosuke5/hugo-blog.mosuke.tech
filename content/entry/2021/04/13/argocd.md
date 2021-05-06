@@ -5,7 +5,7 @@ description = "Argo CD学習シリーズをはじめます。第1回は、イン
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Argo CD、Operatorでのインストールと主要コンポーネントの解説（学習シリーズ）"
+title = "第1回: Argo CD、Operatorでのインストールと主要コンポーネントの解説"
 author = "mosuke5"
 archive = ["2021"]
 +++
