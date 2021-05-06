@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-05-06T13:11:40+09:00"
 description = "Argo CDのSyncの実行方法やそのタイミングについて検討します。CIツールからの実装が便利なケースもあるので考え方をまとめました。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "第3回: Argo CD、Syncの実行方法やタイミングについての検討"
