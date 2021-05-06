@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-05-06T09:46:40+09:00"
 description = "Argo CDにKustomizeアプリケーションを登録して複数環境へデプロイする方法を確認します。なぜHelmやKustomizeなどが必要なのかといった基本的な部分から解説します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "第2回: Argo CD、Kustomizeを使った複数環境へのデプロイ"
