@@ -1,8 +1,8 @@
 +++
-categories = ["", ""]
+categories = ["Kubernetes"]
 date = "2021-05-07T15:40:04+09:00"
-description = ""
-draft = true
+description = "TektonパイプラインからArgo CDの同期を実行する方法と、それが必要な場面などについて考えていきます。それぞれのツールの特徴を活かしてどのように使い分けていけばいいかまとめました。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "TektonからArgo CDの同期をトリガーする。それぞれの使い分けの検討"
