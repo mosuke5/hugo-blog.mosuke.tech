@@ -48,11 +48,13 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client curl
-    - lukevivier/gh-pages:
-        token: $GIT_TOKEN
-        domain: blog.mosuke.tech
-        basedir: public
+    - leipert/git-push:
+        gh_oauth: $GIT_TOKEN
         repo: mosuke5-lab/mosuke5-lab.github.io
+        branch: master
+        basedir: public
+        gh_pages_domain: blog.mosuke.tech
+        clean_removed_files: ture
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
