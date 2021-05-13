@@ -53,7 +53,6 @@ deploy:
         domain: blog.mosuke.tech
         basedir: public
         repo: mosuke5-lab/mosuke5-lab.github.io
-        branch: master
   after-steps:
     - slack-notifier:
       channel: $SLACK_CHANNEL
