@@ -48,7 +48,7 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client curl
-    - lukevivier/gh-pages@0.2.1:
+    - pahnev/gh-pages@0.3.1:
         token: $GIT_TOKEN
         domain: blog.mosuke.tech
         basedir: public
