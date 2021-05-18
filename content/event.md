@@ -13,6 +13,9 @@ author = "mosuke5"
 ## イベント発表
 イベントやミートアップで話した資料をまとめます。
 
+### 2020/12/11 AliEaters Tokyo #16
+<a href="https://www.slideshare.net/mosuke5/alibaba-cloud1kubernetes" target="_blank">Alibaba Cloudが1万個のKubernetesクラスタを管理する方法</a>
+
 ### 2019/10/09 AliEaters Tokyo #13
 <a href="https://www.slideshare.net/mosuke5/apsara-conference-2019" target="_blank">Apsara Conference 2019 コンテナ系サービスのアップデート情報</a>
 
