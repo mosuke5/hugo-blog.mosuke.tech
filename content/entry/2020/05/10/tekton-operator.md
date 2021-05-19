@@ -36,7 +36,7 @@ CIツールそのものの管理の複雑さを排除し、サーバレスでKub
 Tektonの入門記事やインストールについての記事はいくつかでていますが、やはり自分でTektonを運用しようと思ったときはOperatorを使ってインストール・管理したいです。
 Operatorについて知らない方に簡単にお伝えすると、別名カスタムコントローラとも呼ばれており、Tektonのインストール自体を、Kubernetesのリソースとして定義できるようにするものです。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/tektoncd/operator" data-iframely-url="//cdn.iframe.ly/IKARWIp"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/tektoncd/operator" data-iframely-url="//cdn.iframe.ly/IKARWIp?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 Tekton OperatorとTekton本体、およびパイプラインタスクの実態の関係性は下記のようになっています。  
 これからインストールしようとしているのは左のOperatorです。OperatorはTekton本体を管理・インストールします。
