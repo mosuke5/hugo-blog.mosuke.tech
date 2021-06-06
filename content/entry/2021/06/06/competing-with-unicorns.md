@@ -1,8 +1,8 @@
 +++
-categories = ["", ""]
+categories = ["DevOps"]
 date = "2021-06-06T18:40:35+09:00"
-description = ""
-draft = true
+description = "Spotifyのソフトウェアづくりと働き方を書いた「ユニコーン企業のひみつ」を読んでその内容や個人的な考えをまとめました。我々がなにをしなければならないのか、真剣に向き合うヒントとしましょう。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "「ユニコーン企業のひみつ」を読んで、我々はなにをすればいいのだろうか？"
