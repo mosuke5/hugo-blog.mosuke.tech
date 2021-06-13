@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-06-12T18:24:10+09:00"
 description = "Argo CDのResource Hooksについて解説します。単純なデプロイではなく、任意の処理をデプロイの前後に挟み込む非常に重要な機能です。Argo CDの実戦投入前に検証しておくべき項目のひとつでしょう。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Argo CD、Resource Hooksを使ってデプロイを高度化する"
