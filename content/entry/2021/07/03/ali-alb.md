@@ -15,6 +15,12 @@ archive = ["2021"]
 2021年1月頃にALB（Application Load Balancer）がリリースしました。本日は、ALBについて、そしてCLB（Classic　Load Balancer、従来のSLB）はかなり高機能だったのでどう違うのかなどみていきます。
 <!--more-->
 
+## スライド
+本内容はAliEaters#18でも発表しているためスライドもあります。
+合わせてご確認ください。
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/BcvBLyaHLlbnCt" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mosuke5/20210714-alibaba-cloudalbaws" title="20210714 なるほど、Alibaba CloudのALB。AWS脳の人はこう考えろ" target="_blank">20210714 なるほど、Alibaba CloudのALB。AWS脳の人はこう考えろ</a> </strong> from <strong><a href="https://www.slideshare.net/mosuke5" target="_blank">Shinya Mori (@mosuke5)</a></strong> </div>
+
 ## AWSにおけるALBとCLB
 「ALB」と聞くと、AWSのALBを思い浮かべるでしょう。というわけで、まずはAWSのALBとCLBをおさらいしておきます。
 
