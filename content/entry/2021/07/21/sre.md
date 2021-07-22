@@ -1,8 +1,8 @@
 +++
 categories = ["DevOps"]
 date = "2021-07-21T17:48:41+09:00"
-description = ""
-draft = true
+description = "GoogleのSREチームが書いた書籍「SRE サイトリライアビリティエンジニアリング」を読み、SREチームがなにを考え、何を目指せばいいかまとめてみました。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "SREは何を目指せばいいか？Google流から大事なことを学ぼう。"
