@@ -80,7 +80,7 @@ Nginxのaccess.logを対象としました。
 ### match
 転送先を設定します。今回はAWSのCloudWatch logsに送りたかったので、プラグインをインストールする必要があります。こちらのプラグインを利用しました。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/fluent-plugins-nursery/fluent-plugin-cloudwatch-logs" data-iframely-url="//cdn.iframe.ly/hePgjOd"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/fluent-plugins-nursery/fluent-plugin-cloudwatch-logs" data-iframely-url="//cdn.iframe.ly/hePgjOd?card=small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 利用するには、下記のようにgemでインストールします。
 DockerHubで公開されているfluentdのコンテナイメージには当然インストールされておらず、都度インストールするのはめんどくさいので、プラグインがインストールされた状態のコンテナイメージを作っておきました。
