@@ -115,4 +115,25 @@ archive = ["2020"]
 あくまでそれは、「強みを活かすため」です。
 その点をしっかり抑えておくと、ストレングスファインダーはきっといい武器になってくると思っています。
 
-ばいばい。
+## 追記事項 （2021年7月）
+### エニアグラム
+エニアグラムと呼ばれる性格診断もビジネスやキャリア戦略においても非常に有益な手法です。
+全然別観点ですが、エニアグラムについても別ブログで書いていますので参考にしてみてください。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://note.com/morisan_life/n/n4cc971904c7e" data-iframely-url="//cdn.iframe.ly/OpyOO4Q?card=small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
+### ストレングスファインダーとエニアグラムの違い
+あくまでやってみて感じる個人的な印象にはなるのですが、エニアグラムでわかることはストレングスファインダーよりももっとベースとなる人間の性質のようなものです。おそらくストレングスファインダーを数年後に実施すると、上位にくる資質は一部変化すると思います。
+一方で、エニアグラムで判定される性質は変わる可能性が低いと考えます。
+
+感覚的には、エニアグラムで判定された性質の上に、ストレングスファインダーでわかる資質が加わってくると理解すると良いかもしれません。
+
+### エニアグラムはチーム組織でも有効
+アジャイル組織やスクラム組織に限りませんが、クロスファンクショナルとで多様性のあるチームを尊重する考えはどんどん一般的になってきています。そういったビジネス上のチームにおいて「エニアグラムの実施とその結果の公開」は非常に有益と考えます。
+
+エニアグラムを以下の書籍を使って実施すればわかりますが、ただ単純に「〇〇なタイプでした」がわかるだけでなく、「〇〇なタイプにはどう接すれば良いのか？」「〇〇なタイプと自分のタイプとはどう影響を及ぼし合うのか？」も含めて分析できます。
+チームビルディングにはうってつけでしょう。
+
+実際、最近のHRテック製品（例えばカオナビ）ではエニアグラムを公開する機能がついているくらいです。（{{< external_link url="https://support.kaonavi.jp/scene-function/enneagram/001" title="参考リンク" >}}）
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/gp/product/B00799T42A?pf_rd_r=Y0TNE6PT5EVPXWY3MKH4&amp;pf_rd_p=7626af39-b716-47c8-84eb-9679f177dc53&amp;pd_rd_r=b6c3d14f-590c-401a-8d72-348416d7a21c&amp;pd_rd_w=Q9HwK&amp;pd_rd_wg=ygSXc&amp;linkCode=sl1&amp;tag=mosuke5-22&amp;linkId=66ff07f584a52b3eb833114063865e8f&amp;language=ja_JP&amp;ref_=as_li_ss_tl" data-iframely-url="//cdn.iframe.ly/MiGuXoU?card=small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
