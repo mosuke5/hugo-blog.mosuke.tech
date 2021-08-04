@@ -393,6 +393,27 @@ OpenShiftのWebコンソールの"Administration" -> "Cluster Settings" -> "Glob
 
 ![openshift-user-defined-prometheus-alertmanager](/image/openshift-user-defined-prometheus-alertmanager.png)
 
+`Routing Labels`に使用できるラベルは、`PrometheusRule`を記述したときに設定した`labels`と対応します。以下であれば、`severity=warning`, `type=hoge`, `foo=bar`のラベルと、`namespace=xxxx`が付きます。
+
+```yaml
+# alert.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: nginx-alert
+spec:
+  groups:
+    - name: nginx-down
+      rules:
+        - alert: NginxPartiallyDown
+          expr: sum(nginx_up) < 3
+          for: 0m
+          labels:
+            severity: warning
+            type: hoge
+            foo: bar
+```
+
 ## アーキテクチャ図
 ここまでいろいろ検証してきて、ドキュメントに記載してあったアーキテクチャ図が理解できるようになってきました。
 簡単ですが、ポイントを書き込んだので理解の深堀りに使ってください。
