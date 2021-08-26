@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2021-08-26T15:50:25+09:00"
 description = "KubernetesのExternalName Serviceについて検証しました。コンテナ内での名前解決の様子をtcpdumpを使いながら確認します。動作を追っていくと利用時の注意点などもわかってきました。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetes、ExternalName Serviceの検証と利用時の注意事項"
