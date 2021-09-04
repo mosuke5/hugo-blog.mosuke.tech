@@ -1,8 +1,8 @@
 +++
 categories = ["Alibaba Cloud", "Kubernetes"]
-date = "2021-09-01T16:11:27+09:00"
+date = "2021-09-04T16:11:27+09:00"
 description = "Alibaba CloudのServerless KubernetesのImageCache機能について、仕組みや課金などについて検証しました。ノードレスの環境ではぜひ利用したいところですが、費用との相談になりそうです。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Alibaba Cloud, Kubernetesのイメージキャッシュ機能を検証する"
