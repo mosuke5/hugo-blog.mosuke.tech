@@ -102,10 +102,14 @@ ALBでは、主にCU料金と帯域幅料金が追加されていることがわ
 
 このCU料金がなにものかというと、「新規コネクション数」「同時接続数」「処理トラフィック量」「ルール数」といった複数の指標をもとに計算されるものです。CLBでは、パフォーマンス確保型インスタンスと、ある程度トラフィック需要見込んだインスタンスの準備が必要でした。このあたりが、より現代のビジネスシナリオに対応してきたという感じです。
 
-### Kubernetes連携はこれから
+### Kubernetes連携
 ちなみに、Container Service for Kubernetesでは、SLB Ingress Controllerが用意されており、IngressにSLBを利用できます。しかし、現時点で国際版では、このIngress ControllerにはCLBが利用されます。前に述べたとおり、CLBはドメインやパスベースルーティングが可能であり、コンテナの世界でも十分使えてしまうということです。
 
-おそらく、今後Ingress ControllerはALBに移行していくとは思います。
+<strike>おそらく、今後Ingress ControllerはALBに移行していくとは思います。</strike>
+
+【2021/9/6追記】  
+2021年8月よりALB Ingress Controllerが追加されました（[ドキュメント](https://www.alibabacloud.com/help/doc-detail/283329.htm)）。
+Serverless Kubernetesを用いて検証しました。Serverless Kubernetesの所属するvswitchを自動で検出することはなく、Ingressリソースにvswitch idsを記載しなければならない点が少し使いづらくもありますが、期待通りにALB対応もしておきました。
 
 ## まとめ
 今回は、Alibaba CloudがリリースしたALBをAWSのものと比較しながら確認してきました。
