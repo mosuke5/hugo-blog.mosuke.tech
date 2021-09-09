@@ -2,10 +2,10 @@
 categories = ["Kubernetes"]
 date = "2021-09-08T10:36:00+09:00"
 description = "Kubeletのログ管理について、実験とソースコードから確認しました。containerLogMaxFilesやcontainerLogMaxSizeが何を指し示すのか？ソースコードからの細かな動きを確認しましょう。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
-title = "Kubeletのログ管理"
+title = "Kubeletのログ管理を追ってみる"
 author = "mosuke5"
 archive = ["2021"]
 +++
