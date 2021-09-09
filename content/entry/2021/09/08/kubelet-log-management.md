@@ -135,6 +135,7 @@ total 17M
 1. `0.log`にタイムスタンプを付けてログローテートする
 1. コンテナは`0.log`に書き込み続ける
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tlcVRMhMUw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Kubeletのソースコードを確認
 動作を見た目上確認してみましたが、いちおうKubeletのソースコードを簡単に追ってみようと思います。
