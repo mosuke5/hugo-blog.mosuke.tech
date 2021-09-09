@@ -77,3 +77,7 @@ archive = ["2021"]
 
 ## さいごに
 それぞれの方式で実際に試してみるまでは、体感が湧きづらいトピックですが、ロギング方式を決めるひとつの参考になればと思います。
+
+また、Kubeletがどのようにノード側でログを管理するかについては以下を参考にしてください。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/" data-iframely-url="//cdn.iframe.ly/GwbXWR0"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
