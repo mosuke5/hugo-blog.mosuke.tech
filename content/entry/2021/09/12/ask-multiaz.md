@@ -1,8 +1,8 @@
 +++
 categories = ["Alibaba Cloud", "Kubernetes"]
 date = "2021-09-12T17:27:08+09:00"
-description = ""
-draft = true
+description = "Alibaba CloudのServerless KubernetesのマルチAZ対応方法や注意点などについてまとめます。マルチAZで運用するならNAT Gatewayは確実に自前管理するべきです。その理由などについて解説します。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Alibaba Cloud、Serverless KubernetesのマルチAZ対応について"
