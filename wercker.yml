@@ -64,7 +64,7 @@ deploy:
 purge-cache:
   steps:
     - install-packages:
-        packages: git curl
+        packages: git curl jq
     - script:
         name: delete cloudflare cache
         code: |
