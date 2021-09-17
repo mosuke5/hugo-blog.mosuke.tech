@@ -2,7 +2,7 @@
 categories = ["Alibaba Cloud"]
 date = "2021-09-17T17:21:43+09:00"
 description = "Alibaba CloudのContainer Registryのビルド機能についてのナレッジです。中国国内で運用するアプリケーションのコンテナイメージはどこでビルドするべきでしょうか？その答えを実験します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Alibaba Cloud、Container Registryのビルドを中国外で行う意味"
