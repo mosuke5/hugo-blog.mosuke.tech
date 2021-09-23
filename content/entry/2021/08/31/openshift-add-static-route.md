@@ -16,7 +16,24 @@ OpenShiftのノードへスタティックルート（static route、ルーテ�
 
 解決方法だけいえば、以下のSolutionがそのまま活用できますが、それに伴ってなにがおこるのか？なにを確認したらよいのか？と関連付けたかったためにこのメモを残します。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://access.redhat.com/solutions/5876771" data-iframely-url="//cdn.iframe.ly/jgnYE23"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://access.redhat.com/solutions/5876771" target="_blank">
+      <img class="belg-site-image" src="https://access.redhat.com/webassets/avalon/g/shadowman-200.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+    <div class="belg-title">
+      <a href="https://access.redhat.com/solutions/5876771" target="_blank">Create static routes post cluster installation for a specific worker pool - Red Hat Customer Portal</a>
+    </div>
+    <div class="belg-description">How could a user include static route on the node running with two interfaces? The static route would be required for the machine to communicate with the machines in the private network, can this be added to the rhcos nodes post cluster installation?</div>
+    <div class="belg-site">
+      <img src="https://access.redhat.com/webassets/avalon/g/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Red Hat Customer Portal</span>
+    </div>
+  </div>
+</div>
+
 <!--more-->
 
 ## モチベーション

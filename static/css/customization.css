@@ -1,0 +1,34 @@
+.belg-link {
+  margin: 1em 1px;
+  padding: 0.5em 0;
+  color: #5a5a5a;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+  background: #fafafa;
+}
+.belg-left {
+  min-width: 100px;
+}
+.belg-site-icon {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}
+.belg-site-image {
+  width: 100%;
+}
+.belg-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.belg-title > a {
+  font-weight: bold;
+  color: #5a5a5a;
+}
+.belg-description {
+  font-size: 90%;
+}
+.belg-site-name {
+  font-size: 75%;
+}

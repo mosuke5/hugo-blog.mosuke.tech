@@ -37,7 +37,19 @@ Alibaba CloudがどのようにECIを実行しているかは定かではない�
 Serverless Kubernetesを利用するならば、個人的にはイメージキャッシュの機能を推奨したいですが、その理由を説明します。
 このブログで、「イメージキャッシュ」が指すのは、以下の機能のことです。
 
-[Use an image cache CRD to accelerate pod creation](https://www.alibabacloud.com/help/doc-detail/273116.htm)
+<div class="belg-link row">
+  <div class="belg-right col-md-10">
+    <div class="belg-title">
+      <a href="https://www.alibabacloud.com/help/doc-detail/273116.htm" target="_blank">
+    Use the image cache CRD to accelerate the pod creation process - User Guide for Serverless Kubernetes Clusters| Alibaba Cloud Documentation Center   </a>
+    </div>
+    <div class="belg-description">Alibaba Cloud provides the image cache feature as a custom resource definition (CRD) to accelerate the speed at which you can create pods in Kubernetes. This topic describes how to use the image cache...</div>
+    <div class="belg-site">
+      <img src="//img.alicdn.com/tfs/TB1ugg7M9zqK1RjSZPxXXc4tVXa-32-32.png" class="belg-site-icon">
+      <span class="belg-site-name">www.alibabacloud.com</span>
+    </div>
+  </div>
+</div>
 
 Serverless Kubernetesでは、前述したとおり、Podを起動するために専用のVMを起動します。
 通常のKubernetesでは、Workerノードがイメージをキャッシュするため、Podのレプリカ数を増やした場合や、Podが削除されて再作成される場合、アプリケーションのバージョンアップでイメージを差し替える場合、Workerノード上のキャッシュを有効活用できます。
