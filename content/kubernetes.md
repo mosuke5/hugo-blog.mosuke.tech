@@ -71,7 +71,23 @@ Kubernetesを学ぶのに非常に参考になっている書籍などを紹介�
 ### DevOps
 「Kubernetesで実践するクラウドネイティブDevOps」という本があります。こちらについては過去にレビュー記事を書いたのでこちらからご参照ください。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2020/02/26/cloud-native-devops/" data-iframely-url="//cdn.iframe.ly/0pYInqQ"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2020/02/26/cloud-native-devops/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2020/02/26/cloud-native-devops/" target="_blank">運用課題の指南書、Kubernetesで実践するクラウドネイティブDevOps · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">Kubernetesで実践するクラウドネイティブDevOps、という書籍が発売しました。Kubernetes上でのアプリケーションの開発・運用について網羅的に知見が展開されている良い本です。デプロイやSecret管理、モニタリングなど様々な視点で書かれています。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
 
 ### セキュリティ
 セキュリティに特化してここまで詳細に書かれた本はほかにありません。
@@ -91,4 +107,20 @@ Certified Kubernetes Administrator(CKA)とCertified Kubernetes Application Devel
 ## Kubernetesに関するブログ記事
 本サイトのKubernetesに関するブログ記事は下記からたどれます。
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/categories/kubernetes/" data-iframely-url="//cdn.iframe.ly/xXZggBO"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/categories/kubernetes/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/categories/kubernetes/" target="_blank">Kubernetes · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
