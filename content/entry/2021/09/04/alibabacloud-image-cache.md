@@ -38,7 +38,7 @@ Serverless Kubernetesを利用するならば、個人的にはイメージキ�
 このブログで、「イメージキャッシュ」が指すのは、以下の機能のことです。
 
 <div class="belg-link row">
-  <div class="belg-right col-md-10">
+  <div class="belg-right col-md-12">
     <div class="belg-title">
       <a href="https://www.alibabacloud.com/help/doc-detail/273116.htm" target="_blank">
     Use the image cache CRD to accelerate the pod creation process - User Guide for Serverless Kubernetes Clusters| Alibaba Cloud Documentation Center   </a>
