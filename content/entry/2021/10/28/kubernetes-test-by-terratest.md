@@ -281,7 +281,7 @@ func TestKubernetesHelloWorldExampleAssertion(t *testing.T) {
   t.Parallel()
 
   // Kubectlのオプション指定
-  options := k8s.NewKubectlOptions("", "", "mosuke5")
+  options := k8s.NewKubectlOptions("", "", "default")
 
   // Serviceリソースを取得
   service := k8s.GetService(t, options, "hello-world-service")
