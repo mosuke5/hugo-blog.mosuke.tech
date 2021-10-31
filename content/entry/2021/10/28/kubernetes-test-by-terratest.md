@@ -1,8 +1,8 @@
 +++
 categories = ["Kubernetes", "DevOps"]
 date = "2021-10-28T23:11:43+09:00"
-description = ""
-draft = true
+description = "Terratestを用いたKubernetesのテストについてのメモです。TDD的に使う方法やモジュール外のことをしようとしたときなど、実運用を想定してためしてみました。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Kubernetes環境についてTerratestでテストを書く"
