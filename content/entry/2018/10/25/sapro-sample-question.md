@@ -21,8 +21,25 @@ archive = ["2018"]
 また、ディスカッションでは答えが割れているものも多いです。  
 ぜひ、ディスカッションの内容も読んでみると良い勉強になると考えています。
 
-その後の合格勉強法の記事はこちらです。
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2018/11/08/aws-sa-pro/" data-iframely-url="//cdn.iframe.ly/7sHKb2q"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+もっとやり込みたい方はぜひこちらも役に立ちますのでどうぞ！
+
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://px.a8.net/svt/ejp?a8mat=3H3F8L+198YR6+3L4M+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Faws-4260%2F" target="_blank">
+      <img class="belg-site-image" src="https://img-c.udemycdn.com/course/480x270/2530502_a09d_19.jpg" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://px.a8.net/svt/ejp?a8mat=3H3F8L+198YR6+3L4M+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Faws-4260%2F" target="_blank">AWS 認定クラウドプラクティショナー 模擬試験問題集（7回分455問）</a>
+    </div>
+    <div class="belg-description">本番試験レベルと同レベルの基礎問題から出題頻度がまれな難易度が高い問題を中心に構成しており、この講座により多数の合格者を輩出しています！</div>
+    <div class="belg-site">
+      <img src="https://www.udemy.com/staticx/udemy/images/v8/favicon-16x16.png" class="belg-site-icon">
+      <span class="belg-site-name">Udemy</span>
+    </div>
+  </div>
+</div>
 <!--more-->
 
 ## 1.CloudFormationでリソースを保持する方法に関する問題
