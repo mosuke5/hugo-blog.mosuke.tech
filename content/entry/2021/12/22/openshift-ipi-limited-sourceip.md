@@ -2,7 +2,7 @@
 categories = ["OpenShift"]
 date = "2021-12-22T15:55:22+09:00"
 description = "送信元IPアドレスでAWSリソース操作に制限がかけられている環境での、OpenShiftのIPIインストールに関する注意事項です。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShift、送信元IPアドレスで制限がかかった環境でのIPIインストールの注意事項"
