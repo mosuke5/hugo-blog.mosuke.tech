@@ -2,7 +2,7 @@
 categories = ["OpenShift"]
 date = "2021-12-28T17:24:16+09:00"
 description = "OpenShiftのRouterシャーディングを使って用途ごとにアクセス経路を分ける方法を検証した際のメモを残します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShift、Routerシャーディングを使った用途ごとにアクセス経路を分ける"
