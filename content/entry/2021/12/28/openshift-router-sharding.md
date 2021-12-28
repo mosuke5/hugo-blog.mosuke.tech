@@ -5,7 +5,7 @@ description = "OpenShiftのRouterシャーディングを使って用途ごと�
 draft = false
 image = ""
 tags = ["Tech"]
-title = "OpenShift、Routerシャーディングを使った用途ごとにアクセス経路を分ける"
+title = "OpenShift、Routerシャーディングを使って用途ごとにアクセス経路を分ける"
 author = "mosuke5"
 archive = ["2021"]
 +++
