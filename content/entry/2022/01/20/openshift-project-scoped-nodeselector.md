@@ -1,8 +1,8 @@
 +++
-categories = ["", ""]
+categories = ["OpenShift"]
 date = "2022-01-20T15:07:28+09:00"
-description = ""
-draft = true
+description = "OpenShiftで、特定のプロジェクトのみで利用させたいノードがあるときに使えそうな機能「プロジェクトスコープのノードセレクター」について挙動確認をしました。"
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShift、プロジェクトスコープのノードセレクターの挙動確認"
