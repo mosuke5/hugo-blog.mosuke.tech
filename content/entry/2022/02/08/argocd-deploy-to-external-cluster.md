@@ -2,7 +2,7 @@
 categories = ["Kubernetes", "OpenShift"]
 date = "2022-02-08T14:16:45+09:00"
 description = "Argo CDを用いて外部クラスタへアプリケーションをデプロイするときの認証情報まわりについて確認しました。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Argo CD、外部クラスタへのデプロイと認証の仕組み"
