@@ -1,7 +1,7 @@
 +++
 categories = ["サーバ技術"]
 date = "2022-03-01T18:37:40+09:00"
-description = "「Goならわかるシステムプログラミング」を読みすすめる中で独自に実験したことなどをまとめています。今回は第2章の io.Writerです。"
+description = "「Goならわかるシステムプログラミング」を読みすすめる中で独自に実験したことなどをまとめています。今回は第2章の io.Writerです。問題にもチャレンジしているのでサンプル解答としても使ってください。"
 draft = false
 image = ""
 tags = ["Tech"]
@@ -26,6 +26,8 @@ archive = ["2022"]
     </div>
   </div>
 </div>
+
+{{< go-system-programming-series >}}
 <!--more-->
 
 ## io.WriterでHTTPリクエストする
