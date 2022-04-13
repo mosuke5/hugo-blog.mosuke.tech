@@ -123,3 +123,147 @@ $ strace -f -e write=all curl http://blog.mosuke.tech
 ## ログの全貌
 上で記載したログは、一部の抜粋です。全ログは以下Gistに記載しました。
 https://gist.github.com/mosuke5/8fbdfada7150f832a44248c16ed06a7a
+
+## 問題への挑戦
+### Q2.1 ファイルに対するフォーマット出力
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+	"time"
+)
+
+func main() {
+	file, err := os.Create("tmp.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	fmt.Fprintf(file, "write time %v\n", time.Now())
+	fmt.Fprintf(file, "write int %d\n", 1)
+	fmt.Fprintf(file, "write string %s\n", "hello")
+	fmt.Fprintf(file, "write floot %f\n", 1.234)
+}
+```
+
+### Q2.2 CSV出力
+`csv.Write` は、1レコードを書き込むことができますが、`csv.WriteAll`は複数レコードを同時に書き込めるとともにFlushも内部的に実行してくれるため、こちらを使って実装するのも良さそうです。({{< external_link url="https://pkg.go.dev/encoding/csv@go1.18.1#Writer.WriteAll" tittle="func (*Writer) WriteAll" >}})
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"os"
+)
+
+func main() {
+	file, err := os.Create("tmp.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	w := csv.NewWriter(file)
+	w.Write([]string{"foo", "bar", "hoge"})
+	w.Write([]string{"kuu", "kaa", "joe"})
+	w.Flush()
+}
+```
+
+### Q2.3 gzipされたJSON出力をしながら、標準出力にログを出力
+```go
+package main
+
+import (
+	"compress/gzip"
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Encoding", "gzip")
+	w.Header().Set("Content-Type", "application/json")
+	source := map[string]string{
+		"hello": "world",
+	}
+
+	jsonBytes, err := json.Marshal(source)
+	if err != nil {
+		fmt.Println("JSON marshal error: ", err)
+		return 1
+	}
+
+	gzipWriter := gzip.NewWriter(w)
+	multiWriter := io.MultiWriter(gzipWriter, os.Stdout)
+	io.WriteString(multiWriter, string(jsonBytes))
+	gzipWriter.Close()
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+動作を確認するにはcurlのいくつかのオプションを知っておくと便利です。  
+Request/Response headerを確認できるように `-v`オプションを、gzipで圧縮されたなかみを確認するために`--compressed`オプションを使います。
+
+```
+$ curl -v --compressed localhost:8080
+*   Trying 127.0.0.1:8080...
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+> GET / HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.79.1
+> Accept: */*
+> Accept-Encoding: deflate, gzip
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Content-Encoding: gzip
+< Content-Type: application/json
+< Date: Wed, 13 Apr 2022 08:01:26 GMT
+< Content-Length: 41
+<
+* Connection #0 to host localhost left intact
+{"hello":"world"}
+```
+
+圧縮されたデータを解凍して確認する。
+```
+$ curl -s -v --compressed --raw -o result.gz localhost:8080
+*   Trying 127.0.0.1:8080...
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+> GET / HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.79.1
+> Accept: */*
+> Accept-Encoding: deflate, gzip
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Content-Encoding: gzip
+< Content-Type: application/json
+< Date: Wed, 13 Apr 2022 08:03:29 GMT
+< Content-Length: 41
+<
+{ [41 bytes data]
+* Connection #0 to host localhost left intact
+
+$ ls result.gz
+result.gz
+
+$ cat result.gz
+��V�H���W�R*�/�IQ����A	�%
+
+$ gunzip -c result.gz
+{"hello":"world"}
+```
