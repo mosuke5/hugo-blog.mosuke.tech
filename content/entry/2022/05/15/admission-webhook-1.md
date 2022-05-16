@@ -1,6 +1,6 @@
 +++
 categories = ["Kubernetes"]
-date = "2022-05-15T18:37:40+09:00"
+date = "2022-05-15T18:38:40+09:00"
 description = "Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は説明編で、動作編にも続きます。"
 draft = false
 image = ""
