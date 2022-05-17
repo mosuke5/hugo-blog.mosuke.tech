@@ -2,7 +2,7 @@
 categories = ["Kubernetes"]
 date = "2022-05-16T18:37:40+09:00"
 description = "Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は実際に作って動かす動作編です。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "Admission Webhookを作って遊んで、その仕組みを理解しよう（動作編）"
@@ -290,7 +290,7 @@ validatingwebhookconfiguration.admissionregistration.k8s.io/sample-validating-we
 
 これで、Admission webhookの設定は終わりです。  
 期待通り動くのでしょうか？
-`mynamespace`と`admin-foo`というnamespaceに対してPodを作成して挙動を確認してみます。
+`user-foo`と`admin-bar`というnamespaceに対してPodを作成して挙動を確認してみます。
 
 ```
 $ kubectl create ns user-foo
@@ -304,6 +304,28 @@ $ kubectl run debug --rm -it --image busybox:latest -n admin-bar -- /bin/sh
 If you don't see a command prompt, try pressing enter.
 / # uname -a
 Linux debug 4.18.0-305.45.1.el8_4.x86_64 #1 SMP Wed Apr 6 13:48:37 EDT 2022 x86_64 GNU/Linux
+
+$ cat <<EOF | kubectl apply -n user-foo -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: debug
+  name: debug
+spec:
+  containers:
+    - image: busybox:latest
+      command:
+        - /bin/sh
+      args:
+        - -c
+        - 'sleep 3600'
+      name: debug
+      resources: {}
+  securityContext:
+    runAsUser: 1001
+EOF
+pod/debug created
 ```
 
 ## さいごに
