@@ -15,6 +15,25 @@ archive = ["2022"]
 いままで、ドキュメントや文献を読んで、Admission webhookというものの存在やなんとなくの仕組みは理解しているつもりでした。一方で、実際に作ってみると見えていなかった要素もわかってきました。
 
 Kubernetesを運用すると、業務に合わせた機能拡張はほぼ必須と言っても過言ではなく、一度自分の手で作っていくことはとても有益と思います。
+
+後編はこちら。
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-2/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-2/" target="_blank">Admission Webhookを作って遊んで、その仕組みを理解しよう（動作編） · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は実際に作って動かす動作編です。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
 <!--more-->
 
 ## Admission Controlとそのプラグイン
@@ -439,5 +458,22 @@ webhooks:
 ```
 
 ## さいごに
-本記事ではここまでにして、実際に作って動かすところは別記事でご紹介したいと思います。
+本記事ではここまでにして、実際に作って動かすところは以下を参照してください。
 
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-2/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-2/" target="_blank">Admission Webhookを作って遊んで、その仕組みを理解しよう（動作編） · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は実際に作って動かす動作編です。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
