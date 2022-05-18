@@ -40,4 +40,4 @@ jobs:
 
       - name: Purge cloudflare cache
         run: |
-          bash ./scripts/delete_page_cache.sh ${secreets.CF_ZONE_ID} ${secrets.CF_EMAIL} ${secrets.CF_KEY}
+          bash ./scripts/delete_page_cache.sh ${secrets.CF_ZONE_ID} ${secrets.CF_EMAIL} ${secrets.CF_KEY}
