@@ -39,4 +39,4 @@ jobs:
           external_repository: mosuke5-lab/mosuke5-lab.github.io
           publish_branch: main
           publish_dir: ./public
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
