@@ -11,7 +11,7 @@ archive = ["2022"]
 +++
 
 こんにちは、もーすけです。  
-今回はKubernetesの拡張する仕組みの一つであるAdmission Webhookをスクラッチで作ることで、その仕組や作り方を理解しようというものです。自分自身はじめて試みて詰まったところなど多数あったので、その整理も兼ねて書きます。
+今回はKubernetesの拡張する仕組みのひとつであるAdmission Webhookをスクラッチで作ることで、その仕組や作り方を理解しようというものです。自分自身はじめて試みて詰まったところなど多数あったので、その整理も兼ねて書きます。
 いままで、ドキュメントや文献を読んで、Admission webhookというものの存在やなんとなくの仕組みは理解しているつもりでした。一方で、実際に作ってみると見えていなかった要素もわかってきました。
 
 Kubernetesを運用すると、業務に合わせた機能拡張はほぼ必須と言っても過言ではなく、一度自分の手で作っていくことはとても有益と思います。
@@ -42,7 +42,7 @@ Kubernetes API Serverが、APIリクエストを発行するまでには次の3�
 
 ![kuberbetes-api-flow](/image/kubernetes-api-flow.png)
 
-図の「Admission control」に「Admission controllerによるリクエストの改変など」と書いてありますが、この部分をもう少し深ぼって理解していきます。
+図の「Admission control」に「Admission controllerによるリクエストの改変など」と書いてありますが、この部分をもう少し深ぼって理解します。
 Admission controllerは、プラグイン形式になっていて、次のような機能がKubernetesに備え付けで用意されています。
 以下は独断と偏見でいくつかをピックアップしたものです。プラグインのリストは {{< external_link url="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-does-each-admission-controller-do" title="こちらのドキュメント" >}} を確認するといいです。
 
@@ -53,9 +53,9 @@ Admission controllerは、プラグイン形式になっていて、次のよう
 - ServiceAccount
   - ServiceAccountが明示的に指定されていないPodに対して、default ServiceAccountを紐付ける。
 - **MutatingAdmissionWebhook**
-  - 独自のリソース変更を実装するためのWebhookwo呼び出す。
+  - 独自のリソース変更を実装するためのWebhookを呼び出す。
 - **ValidatingAdmissionWebhook**
-  - 独自のリソース検証を実装するためのWebhookwo呼び出す。
+  - 独自のリソース検証を実装するためのWebhookを呼び出す。
 
 これらのAdmission controllerのプラグインは、Kubernetes API Serverが起動するときのオプションとして指定できる。
 ServiceAccountプラグインはデフォルトで有効にされており、いままでKubernetesを使ってきた人は動きとして体感したことがあるはずです。毎回明示的にServiceAccount名を指定してなくても動作していたのはこのプラグインのおかげです。
@@ -75,7 +75,7 @@ AdmissionWebhookには「Mutating」と「Validating」の2つがあり、はじ
   - Kubernetesの中では、リクエストされたAPIのなんらかの値を書き換える、値を追加するものを指しています。
 - Validating
   - 英語) validateは動詞で「〜を法律的に有効にする、確証する、確認する」
-  - リクエストされあAPIの正しさを検証すると理解しておくといいでしょう。値は変えずに妥当性を判断するのみです。
+  - リクエストされたAPIの正しさを検証すると理解しておくといいでしょう。値は変えずに妥当性を判断するのみです。
 
 
 それぞれのAdmissionWebhookは、役割も異なりますが実行されるタイミングも異なります。
