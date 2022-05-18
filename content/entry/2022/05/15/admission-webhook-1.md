@@ -36,6 +36,12 @@ Kubernetesを運用すると、業務に合わせた機能拡張はほぼ必須�
 </div>
 <!--more-->
 
+## 解説動画
+はじめての試みで、ブログ記事をみながら雑に解説していく動画をとってみました。
+こういうの良かったと思えば評価ボタンとかコメントでフィードバックもらえると嬉しいです。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E0XCDpUTR0I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Admission Controlとそのプラグイン
 Kubernetes API Serverが、APIリクエストを発行するまでには次の3フェーズで実行されます。
 こういった図は、いたるところで語られているので見たこともある人も多いでしょう。

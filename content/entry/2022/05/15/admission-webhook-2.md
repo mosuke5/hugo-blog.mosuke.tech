@@ -32,6 +32,12 @@ archive = ["2022"]
 </div>
 <!--more-->
 
+## 解説動画
+はじめての試みで、ブログ記事をみながら雑に解説していく動画をとってみました。
+こういうの良かったと思えば評価ボタンとかコメントでフィードバックもらえると嬉しいです。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E0XCDpUTR0I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## サンプルで作ってみるもの
 というわけで、さっそくValidating Admission Webhookをスクラッチで作ってみましょう。今回は動きを理解するためにあえて {{< external_link title="kubewebhook" url="https://github.com/slok/kubewebhook" >}} や {{< external_link title="kubebuilder" url="https://github.com/kubernetes-sigs/kubebuilder" >}} といったフレームワークは使わずにやってみようと思います。
 
