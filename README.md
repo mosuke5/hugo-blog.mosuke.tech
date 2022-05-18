@@ -1,4 +1,4 @@
-[![wercker status](https://app.wercker.com/status/31dc441e8c206db6d149ddb22f0efa24/s/master "wercker status")](https://app.wercker.com/project/byKey/31dc441e8c206db6d149ddb22f0efa24)
+[![deploy](https://github.com/mosuke5/hugo-blog.mosuke.tech/actions/workflows/deploy.yaml/badge.svg)](https://github.com/mosuke5/hugo-blog.mosuke.tech/actions/workflows/deploy.yaml)
 
 # hugo file of blog.mosuke.tech
 This is the blog.mosuke.tech's hugo repository.
