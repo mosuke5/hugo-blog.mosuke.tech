@@ -37,6 +37,7 @@ jobs:
           publish_branch: main
           publish_dir: ./public
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          cname: blog.mosuke.tech
 
       - name: Purge cloudflare cache
         run: |
