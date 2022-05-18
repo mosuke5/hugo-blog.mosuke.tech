@@ -2,8 +2,7 @@ name: deploy
 on:
   push:
     branches:
-      - main
-      - github-actions
+      - master
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -31,7 +30,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/github-actions' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           external_repository: mosuke5-lab/mosuke5-lab.github.io
           publish_branch: main
