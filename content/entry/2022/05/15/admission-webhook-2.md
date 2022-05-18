@@ -255,6 +255,7 @@ spec:
         args:
           - -server-cert=/tmp/tls/tls.crt
           - -server-key=/tmp/tls/tls.key
+          - -body-dump
         imagePullPolicy: Always
         image: ghcr.io/mosuke5/sample-validating-admission-webhook:main
         ports:
