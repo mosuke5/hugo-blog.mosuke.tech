@@ -26,9 +26,6 @@ jobs:
         with:
           hugo-version: '0.96.0'
 
-      - name: debug
-        run: ls -l; ls -l themes
-
       - name: Build
         run: hugo
 
@@ -40,3 +37,7 @@ jobs:
           publish_branch: main
           publish_dir: ./public
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Purge cloudflare cache
+        run: |
+          bash ./scripts/delete_page_cache.sh ${secreets.CF_ZONE_ID} ${secrets.CF_EMAIL} ${secrets.CF_KEY}
