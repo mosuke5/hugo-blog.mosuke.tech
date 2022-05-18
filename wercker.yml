@@ -1,0 +1,101 @@
+box:
+  id: debian:10.7-slim
+  username: $DOCKER_HUB_USERNAME
+  password: $DOCKER_HUB_PASSWORD
+build:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: download theme
+        code: |
+            $(git clone https://github.com/mosuke5/mosuke-tech-hugo-theme ./themes/mosuke-tech-hugo-theme)
+    - script:
+        name: checkout theme
+        code: |
+            $(cd ./themes/mosuke-tech-hugo-theme && git checkout 92be2b0c9f111a187795c4aa329ba89187b4ed14)
+    - arjen/hugo-build:
+        version: "0.88.1"
+        theme: mosuke-tech-hugo-theme
+        flags: --buildDrafts=false
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+      notify_on: "failed"
+
+validation:
+  steps:
+    - install-packages:
+        packages: git optipng libjpeg-progs
+    - script:
+        name: optimize image size
+        code: bash ./scripts/optimize_image.sh
+    # Push optimized image files to hugo repository
+    - leipert/git-push:
+        gh_oauth: $GIT_TOKEN
+        repo: mosuke5/hugo-blog.mosuke.tech
+        branch: ${WERCKER_GIT_BRANCH}
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+      notify_on: "failed"
+
+deploy:
+  steps:
+    - install-packages:
+        packages: git ssh-client curl
+    - pahnev/gh-pages@0.3.1:
+        token: $GIT_TOKEN
+        domain: blog.mosuke.tech
+        basedir: public
+        repo: mosuke5-lab/mosuke5-lab.github.io
+        branch: master
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+      notify_on: "failed"
+
+purge-cache:
+  steps:
+    - install-packages:
+        packages: git curl jq
+    - script:
+        name: delete cloudflare cache
+        code: |
+          bash ./scripts/delete_page_cache.sh ${CF_ZONE_ID} ${CF_EMAIL} ${CF_KEY}
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+      notify_on: "failed"
+
+test-blog-site:
+  steps:
+    - script: 
+        name: set lang
+        code: export LANG=C.UTF-8
+    - install-packages:
+        packages: curl python python-pip
+    - script: 
+        name: install linkchecker
+        code: |
+          pip install --no-cache-dir https://github.com/linkchecker/linkchecker/archive/v9.4.0.zip
+    - script:
+        name: exec linkchecker
+        code: linkchecker https://blog.mosuke.tech
+    - script:
+        name: test blog site url
+        code: bash ./scripts/test_page_url.sh
+  after-steps:
+    - slack-notifier:
+      channel: $SLACK_CHANNEL
+      url: $SLACK_URL
+      username: wercker_bot
+      notify_on: "failed"
