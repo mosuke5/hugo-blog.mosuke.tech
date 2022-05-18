@@ -11,7 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Git clone blog contentes
+        uses: actions/checkout@v3
+      - name: Git clone blog theme
+        uses: actions/checkout@v3
+        with:
+          repository: https://github.com/mosuke5/mosuke-tech-hugo-theme
+          path: themes
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
