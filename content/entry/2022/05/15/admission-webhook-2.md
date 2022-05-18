@@ -284,7 +284,7 @@ Webhook Serverとしてはデプロイできましたので、AdmissionWebhook�
 今回は自己証明書をつかっているので、`caBundle`の記載を忘れずに行いましょう。
 
 ```
-$ sed  "s/BASE64_ENCODED_PEM_FILE/$(base64 server.crt)/g" manifests/validatingwebhookconfiguration.yaml.template | kubectl apply -f -n mynamespace -
+$ sed  "s/BASE64_ENCODED_PEM_FILE/$(base64 server.crt)/g" manifests/validatingwebhookconfiguration.yaml.template | kubectl apply -f -
 validatingwebhookconfiguration.admissionregistration.k8s.io/sample-validating-webhook created
 ```
 
