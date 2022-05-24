@@ -37,7 +37,7 @@ if [ test -n $GITHUB_ACTIONS]; then
     files=`git diff --name-only $GITHUB_SHA^`
 else
     files=`git diff --name-only HEAD^`
-if
+fi
 
 for i in $files
 do
