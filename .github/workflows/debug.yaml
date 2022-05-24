@@ -28,12 +28,6 @@ jobs:
       - name: Build
         run: hugo
 
-      - name: debug
-        run: git log
-      
-      - run: echo ${GITHUB_SHA}
-      - run: env
-
       - name: Purge cloudflare cache
         run: |
           bash ./scripts/delete_page_cache.sh ${{secrets.CF_ZONE_ID}} ${{secrets.CF_EMAIL}} ${{secrets.CF_KEY}}
