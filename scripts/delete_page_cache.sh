@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -xe
 
 # Params $1: cloud_flare zone id
 # Params $2: cloud_flare email
@@ -37,9 +37,10 @@ if [ test -z $GITHUB_ACTIONS]; then
     files=`git diff --name-only HEAD^`
 else
     # on github actions
-    files=`git diff --name-only $GITHUB_SHA^`
+    files=`git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --name-only`
 fi
 
+echo $file
 for i in $files
 do
     if [[ ${i} =~ ^(content/).*(.md) ]]; then
