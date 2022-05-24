@@ -37,7 +37,7 @@ if [ test -z $GITHUB_ACTIONS]; then
     files=`git diff --name-only HEAD^`
 else
     # on github actions
-    files=`git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --name-only`
+    files=`git diff ${{github.event.before}}..${{github.event.after}} --name-only`
 fi
 
 echo $file
