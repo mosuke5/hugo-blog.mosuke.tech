@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Git clone blog contentes
         uses: actions/checkout@v3
+        clean: false
 
       - name: Git clone blog theme
         uses: actions/checkout@v3
