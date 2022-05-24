@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Params $1: cloud_flare zone id
 # Params $2: cloud_flare email
 # Params $3: cloud_flare api key
