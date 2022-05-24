@@ -36,6 +36,4 @@ jobs:
           bash ./scripts/delete_page_cache.sh \
           ${{secrets.CF_ZONE_ID}} \
           ${{secrets.CF_EMAIL}} \
-          ${{secrets.CF_KEY}} \
-          ${{github.event.before}} \
-          ${{github.event.after}}
+          ${{secrets.CF_KEY}}

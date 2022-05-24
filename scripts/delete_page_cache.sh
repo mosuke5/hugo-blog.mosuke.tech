@@ -4,8 +4,6 @@ set -xe
 # Params $1: cloud_flare zone id
 # Params $2: cloud_flare email
 # Params $3: cloud_flare api key
-# Params $4: git hash before
-# Params $5: git hash after
 
 # functions
 function purge_specific_cache () {
@@ -35,14 +33,7 @@ function purge_every_cache () {
 uris=("/" "/sitemap.xml" "/index.xml")
 
 # changed files
-if test -z $GITHUB_ACTIONS; then
-    files=`git diff --name-only HEAD^`
-else
-    # on github actions
-    before=$4
-    after=$5
-    files=`git diff $before..$after --name-only`
-fi
+files=`git diff --name-only HEAD^`
 
 echo $file
 for i in $files
