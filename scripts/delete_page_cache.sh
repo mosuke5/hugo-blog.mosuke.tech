@@ -33,10 +33,11 @@ function purge_every_cache () {
 uris=("/" "/sitemap.xml" "/index.xml")
 
 # changed files
-if [ test -n $GITHUB_ACTIONS]; then
-    files=`git diff --name-only $GITHUB_SHA^`
-else
+if [ test -z $GITHUB_ACTIONS]; then
     files=`git diff --name-only HEAD^`
+else
+    # on github actions
+    files=`git diff --name-only $GITHUB_SHA^`
 fi
 
 for i in $files
