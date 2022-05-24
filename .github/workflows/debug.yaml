@@ -31,7 +31,7 @@ jobs:
       - name: debug
         run: git log
       
-      - run: echo ${{GITHUB_SHA}}
+      - run: echo ${GITHUB_SHA}
       - run: env
 
       - name: Purge cloudflare cache
