@@ -13,7 +13,7 @@ jobs:
       - name: Git clone blog contentes
         uses: actions/checkout@v3
         with:
-          depth: 0
+          fetch-depth: 0
 
       - name: Git clone blog theme
         uses: actions/checkout@v3
