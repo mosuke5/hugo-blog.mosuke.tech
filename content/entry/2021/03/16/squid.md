@@ -161,6 +161,84 @@ http_access allow myhome
 $ sudo systemctl restart squid
 ```
 
+## 特定のドメインのみ許可したい（ホワイトリスト）
+プロキシを構築する場合の多くは、コンテンツフィルタリングも行いたいことが多いのではないでしょうか。
+squidでは、接続先のドメインを制御に組み込むことが可能です。
+
+基本的には次のようにかけます。
+
+```
+acl whitelist_domain dstdomain blog.mosuke.tech
+http_access allow whitelist_domain
+```
+
+上では宛先ドメイン（`dstdomain`）が `blog.mosuke.tech` である通信を通すです。
+しかし、多くのケースでは、決められたネットワークのみがまずプロキシできて、そのなかでも決められたドメインのみが疎通できるというのがやりたいことになるのではないかと思います。
+
+その場合は、複数の条件でマッチさせる必要があります。  
+次の場合、送信元のIP(`src`)が `192.168.0.0/16` であり、かつ宛先ドメイン(`dstdomain`)が `blog.mosuke.tech`である場合に許可するということになります。
+
+```
+acl localnet src 192.168.0.0/16
+acl domain dstdomain blog.mosuke.tech
+
+http_access allow localnet domain
+http_access deny all
+```
+
+上の設定を追加して、`blog.mosuke.tech`と`www.google.com`の通信を確認してみましょう。
+ちなみに、`192.168.122.150`はsquidサーバで、接続元は `192.168.0.0/16` に属しています。
+
+```
+$ curl -I https://blog.mosuke.tech -x http://192.168.122.150:3128
+HTTP/1.1 200 Connection established
+
+HTTP/2 200
+date: Tue, 24 May 2022 06:31:32 GMT
+content-type: text/html; charset=utf-8
+last-modified: Wed, 18 May 2022 12:26:18 GMT
+access-control-allow-origin: *
+expires: Wed, 18 May 2022 12:36:51 GMT
+cache-control: max-age=691200
+x-proxy-cache: MISS
+x-github-request-id: C328:6720:2F3AE8:32A2C7:6284E60B
+via: 1.1 varnish
+age: 496181
+x-served-by: cache-tyo11932-TYO
+x-cache: HIT
+x-cache-hits: 1
+x-timer: S1652877711.175430,VS0,VE1
+vary: Accept-Encoding
+x-fastly-request-id: 5a5b5d4febe10479775cb2825ebed33c94c6f86d
+cf-cache-status: HIT
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=G4qZHQWiapgs714L7sXbrVReFHZGfIei1%2F8Zm%2FJ%2BWKoWSa4%2FJEkzsr0OzCq6i5D09w5rKVeGEaXDKxRUKyENXhmDYVOuajVpKyeSz98ykf83BpwCdI5vBuyt%2FoaFkNkQEdfS"}],"group":"cf-nel","max_age":604800}
+nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+x-content-type-options: nosniff
+server: cloudflare
+cf-ray: 7103fd2deab68a62-NRT
+alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+```
+
+```
+$ curl -I https://www.google.com -x http://192.168.122.150:3128
+HTTP/1.1 403 Forbidden
+Server: squid/5.2
+Mime-Version: 1.0
+Date: Tue, 24 May 2022 06:30:55 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 3516
+X-Squid-Error: ERR_ACCESS_DENIED 0
+Vary: Accept-Language
+Content-Language: en
+X-Cache: MISS from bastion.mosuke5.local
+X-Cache-Lookup: NONE from bastion.mosuke5.local:3128
+Via: 1.1 bastion.mosuke5.local (squid/5.2)
+Connection: keep-alive
+
+curl: (56) Received HTTP code 403 from proxy after CONNECT
+```
+
 ## まとめ
 簡単ですが、squidのインストール方法と簡単な設定方法を見てきました。いつも忘れてしまうため未来の自分および同じような境遇のひとの役に立てばと思います。プロキシ環境をさっと建てられるように準備しておくと、再現検証などに非常に役に立ちます。
 いちどは自分の手で構築して感覚を掴んでおくと良いでしょう。
