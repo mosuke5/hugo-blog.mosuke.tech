@@ -5,7 +5,7 @@ description = "「Admission Webhookを作って遊んで、その仕組みを理
 draft = false
 image = ""
 tags = ["Tech"]
-title = "Admission Webhookを作って遊んで、その仕組みを理解しよう（Gatekeepr編）"
+title = "Admission Webhookを作って遊んで、その仕組みを理解しよう（Gatekeeper編）"
 author = "mosuke5"
 archive = ["2022"]
 +++
@@ -155,7 +155,6 @@ webhooks:
 
 そして、Validationする対象ですが、`CREATE` と `UPDATE` されるすべてのリソースであるのは面白いです。
 つまり、Kubernetes内でおこるすべての `CREATE` と `UPDATE` イベントに対して、いちどGatekeeperが検査するということですね。
-`failurePolicy: Fail` となっているのもあり、gatekeeperが応答を返せなかった場合はFailするためなかなか重要な役割を果たすこともわかってきますね。
 
 ### 証明書
 Webhook serverは、`gatekeeper-controller-manage` Podが担っていることはわかりました。
@@ -231,13 +230,13 @@ Certificate:
 
 <div class="belg-link row">
   <div class="belg-left col-md-2 d-none d-md-block">
-    <a href="https://github.com/open-policy-agent/gatekeeper-library" target="_blank">
+    <a href="https://github.com/open-policy-agent/gatekeeper-library/tree/5ba4b4dad404c60655524cfc25adc2477c153c56/library/pod-security-policy/users" target="_blank">
       <img class="belg-site-image" src="https://repository-images.githubusercontent.com/191437603/f134af34-0986-4d94-add3-6fecc0b4f192" />
     </a>
   </div>
   <div class="belg-right col-md-10">
   <div class="belg-title">
-      <a href="https://github.com/open-policy-agent/gatekeeper-library" target="_blank">gatekeeper-library/library/pod-security-policy/users at 5ba4b4dad404c60655524cfc25adc2477c153c56 · open-policy-agent/gatekeeper-library</a>
+      <a href="https://github.com/open-policy-agent/gatekeeper-library/tree/5ba4b4dad404c60655524cfc25adc2477c153c56/library/pod-security-policy/users" target="_blank">gatekeeper-library/library/pod-security-policy/users at 5ba4b4dad404c60655524cfc25adc2477c153c56 · open-policy-agent/gatekeeper-library</a>
     </div>
     <div class="belg-description">The OPA Gatekeeper policy library. Contribute to open-policy-agent/gatekeeper-library development by creating an account on GitHub.</div>
     <div class="belg-site">
@@ -298,7 +297,7 @@ $ kubectl apply -f config.yaml
 $ kubectl apply -f constraint.yaml
 ```
 
-あとは検証するのみです。　　
+あとは検証するのみです。  
 `admin-foo`と`user-bar`に対してrunAsUser未指定（root）でPodを作成して確認します。
 
 ```

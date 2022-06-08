@@ -15,24 +15,7 @@ archive = ["2022"]
 前回にブログを書いた　"Admission Webhook" と似たような仕組みなのですが、調べた結果の意見を雑に書き残しておきます。
 
 おそらくより実践的で使えるのは Validating/Mulating Admission Webhookの方なので、気になる方は下記のブログも参考にしてください。
-
-<div class="belg-link row">
-  <div class="belg-left col-md-2 d-none d-md-block">
-    <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">
-      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
-    </a>
-  </div>
-  <div class="belg-right col-md-10">
-  <div class="belg-title">
-      <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編） · Goldstine研究所</a>
-    </div>
-    <div class="belg-description">Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は説明編で、動作編にも続きます。</div>
-    <div class="belg-site">
-      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
-      <span class="belg-site-name">Goldstine研究所</span>
-    </div>
-  </div>
-</div>
+{{< admission-webhook-series >}}
 <!--more-->
 
 ## ImagePolicyWebookとは？
