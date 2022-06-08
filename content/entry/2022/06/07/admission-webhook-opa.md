@@ -20,6 +20,9 @@ Gatekeeperというツールについてなのですが、本ブログでは<u>G
 {{< admission-webhook-series >}}
 <!--more-->
 
+## 解説動画
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ILMLiDluSGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Gatekeeperとは
 正直に、OPA,Gatekeeperについてはよくカンファレンスやミートアップ等でも話は聞いていて、なんとなくの概要はしっていました。しかし、あらためてAdmission Webhookの仕組みを理解すると、Gatekeeperのやっていることがクリアに理解できました。
 
