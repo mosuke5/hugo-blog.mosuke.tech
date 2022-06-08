@@ -12,29 +12,15 @@ archive = ["2022"]
 
 こんにちは、もーすけです。  
 前回は、Admission Webhookの説明編を書きました。今回は実際に動かしていくことをやっていきたいと思います。
+前回ブログおよび関連ブログは以下にもありますので、あわせて確認してみてください。
 
-<div class="belg-link row">
-  <div class="belg-left col-md-2 d-none d-md-block">
-    <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">
-      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
-    </a>
-  </div>
-  <div class="belg-right col-md-10">
-  <div class="belg-title">
-      <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編） · Goldstine研究所</a>
-    </div>
-    <div class="belg-description">Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は説明編で、動作編にも続きます。</div>
-    <div class="belg-site">
-      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
-      <span class="belg-site-name">Goldstine研究所</span>
-    </div>
-  </div>
-</div>
+{{< admission-webhook-series >}}
 <!--more-->
 
 ## 解説動画
 はじめての試みで、ブログ記事をみながら雑に解説していく動画をとってみました。
-こういうの良かったと思えば評価ボタンとかコメントでフィードバックもらえると嬉しいです。
+こういうの良かったと思えば評価ボタンとかコメントでフィードバックもらえると嬉しいです。  
+※こちらの動画は第1-2回分です。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E0XCDpUTR0I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

@@ -17,23 +17,7 @@ CKSの勉強をしていて、関連あるトピックがでてきたので紹�
 Gatekeeperというツールについてなのですが、本ブログでは<u>Gatekeeperの細かな使い方を説明するものではありません</u>。前回までにやってきた「Admission Webhookを作って遊んで、その仕組みを理解する」の延長上で、Gatekeeperの動きを見ていくものです。
 この仕組みがわかっていると、Gatekeeperの構成ややろうとしていることがすっと頭に入りそうだったので、この続編を書くことにしました。
 
-<div class="belg-link row">
-  <div class="belg-left col-md-2 d-none d-md-block">
-    <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">
-      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
-    </a>
-  </div>
-  <div class="belg-right col-md-10">
-  <div class="belg-title">
-      <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編） · Goldstine研究所</a>
-    </div>
-    <div class="belg-description">Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は説明編で、動作編にも続きます。</div>
-    <div class="belg-site">
-      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
-      <span class="belg-site-name">Goldstine研究所</span>
-    </div>
-  </div>
-</div>
+{{< admission-webhook-series >}}
 <!--more-->
 
 ## Gatekeeperとは
