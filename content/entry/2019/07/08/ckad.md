@@ -1,6 +1,7 @@
 +++
 categories = ["Kubernetes", "資格試験"]
 date = "2019-07-08T09:12:22+09:00"
+lastmod = "2022-06-19T09:12:22+09:00"
 description = "CKAD(Certified Kubernetes Application Developer)を受験してきて無事に合格しました。合格のために準備すべきことと、試験受験に関して不安だったことなどをまとめました。"
 draft = false
 image = ""
@@ -132,6 +133,6 @@ CKADの資格取得対策、という意味で役立つわけではないです�
 次はCKAを取るのかとも聞かれるのですが、個人的にはしばらくKubernetesの構築サイドよりは、それを使ったアプリケーション開発や運用に焦点をあてる予定なので、いまのところCKAの予定はありません。
 アプリケーション開発・運用の観点で今後も情報発信できればと思います。
 
-### 2021年2月追記 CKAD受験
+### 2021年2月追記 CKA受験
 この記事を書いた当初は、CKAの受験予定はありませんでしたが、1年半後ではありますが受験しました。
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2021/02/07/cka/" data-iframely-url="//cdn.iframe.ly/4BV8i7A"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
