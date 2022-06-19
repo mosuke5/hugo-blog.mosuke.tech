@@ -20,7 +20,7 @@ jobs:
         with:
           repository: mosuke5/mosuke-tech-hugo-theme
           path: themes/mosuke-tech-hugo-theme
-          ref: 9ba930d58173b6335688e330820785723b4e87f4
+          ref: 24c935ecc3d49b4f27745f3fa5eaeb9debf9c807
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
