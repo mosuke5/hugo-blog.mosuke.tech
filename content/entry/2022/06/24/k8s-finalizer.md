@@ -1,5 +1,5 @@
 +++
-categories = ["kubernetes"]
+categories = ["Kubernetes"]
 date = "2022-06-24T14:13:25+09:00"
 description = "Kubernetesを使っていて、Namespaceの削除ができずにTerminatingのままになってしまったことはありますか？なぜ消せないのか、finalizerについてかんたんに実験してみましょう。"
 draft = false
