@@ -1,22 +1,24 @@
 +++
 categories = ["Kubernetes", "資格試験"]
 date = "2019-07-08T09:12:22+09:00"
-lastmod = "2022-06-19T09:12:22+09:00"
+lastmod = "2022-07-08T16:12:22+09:00"
 description = "CKAD(Certified Kubernetes Application Developer)を受験してきて無事に合格しました。合格のために準備すべきことと、試験受験に関して不安だったことなどをまとめました。"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "CKADを取得の対策や試験当日の対応について"
+title = "新システム対応）CKADを取得の対策や試験当日の対応について"
 author = "mosuke5"
 archive = ["2019"]
 +++
+
+**※本記事は、もともと2019年7月に執筆されたものですが、当時の有効期限である2年が経過したので、2022年7月に認定を更新しました。2022年7月現在の状況に更新してお知らせします。**
 
 [@mosuke5](https://twitter.com/mosuke5)です。<a href="https://www.cncf.io/certification/ckad/" target="_blank">CKAD(Certified Kubernetes Application Developer)</a>を受けてきました。  
 すでに多くのCKA/CKADの合格レポートや体験記がでておりますが、
 それでも自分が実際に受けてみるまで不安な要素も多くあったので、
 そのあたりを払拭するべくこの記事を書きたいと思います。
 
-2019年7月5日にCKADを受験して無事に合格しました。  
+2019年7月5日にCKADを受験して無事に合格しました。（その後、2022年7月8日に認定を更新しました。）  
 スコアは89%と案外高く(66%で合格)、驚きでもあったのですが、その体験をこれから受験する人にもシェアできればと思います。
 
 ![ckad-certificate](/image/ckad-certificate.png)
@@ -34,7 +36,23 @@ archive = ["2019"]
 その中で、下記が一番役に立ったものでしたので紹介します。
 
 ### CKAD-exercises
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/dgkanatsios/CKAD-exercises" data-iframely-url="//cdn.iframe.ly/MAoLizS"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://github.com/dgkanatsios/CKAD-exercises" target="_blank">
+      <img class="belg-site-image" src="https://opengraph.githubassets.com/bc5a133d46242ec01c13bc8ca75399937820ddd5112fc5350cd200de8e103b50/dgkanatsios/CKAD-exercises" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://github.com/dgkanatsios/CKAD-exercises" target="_blank">GitHub - dgkanatsios/CKAD-exercises: A set of exercises to prepare for Certified Kubernetes Application Developer exam by Cloud Native Computing Foundation</a>
+    </div>
+    <div class="belg-description">A set of exercises to prepare for Certified Kubernetes Application Developer exam by Cloud Native Computing Foundation - GitHub - dgkanatsios/CKAD-exercises: A set of exercises to prepare for Certi...</div>
+    <div class="belg-site">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="belg-site-icon">
+      <span class="belg-site-name">GitHub</span>
+    </div>
+  </div>
+</div>
 
 こちらのサイトはGithubのページなのですが、CKADの資格試験の問題の中で行うであろう「操作」について効率的に学べるものです。
 ここにある問題のレベルがそのままでるわけではないのですが（一部そのレベルのものもある）、CKADでは問題を解くスピードも重要で、基本的な動作を「身体に染み込ませる」ために役立ちます。
@@ -44,11 +62,10 @@ archive = ["2019"]
 自分の場合は、自分で構築したKubernetesクラスターがあったのでそちらで練習しましたが、お持ちでない方も多いとお思います。
 もし今後、Kubernetesをガッツリ触っていく予定があるのであれば、自前で構築するないしはGKEやEKSなどを一時的に借りて触ってみることをおすすめします。
 自前構築は、CKAを受ける方はやることになるはずですが、それなりに大変なのも事実です。
-まずはアプリケーション寄りでCKADを取りたいというかたはパブリッククラウドのKubernetesサービスか、Katacodaなどをおすすめします。
-Katacoda自身も基本操作を学べるサイトですが、ここでは一時的にクラスタを借りれるのでその上でCKAD-exercisesに練習をすることも一部可能かなと思います。
+まずはアプリケーション寄りでCKADを取りたいというかたはパブリッククラウドのKubernetesサービスか、~~Katacodaなど~~をおすすめします。  
+~~Katacoda自身も基本操作を学べるサイトですが、ここでは一時的にクラスタを借りれるのでその上でCKAD-exercisesに練習をすることも一部可能かなと思います。~~  
+**→2022年5月にKatacodaはサービスを終了してしまいました。**
 
-
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.katacoda.com/" data-iframely-url="//cdn.iframe.ly/rhYCdmg?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 
 ### Linux Academy
 CKAD-exercisesで基本的な操作は体得できるとして、とはいえ実際にどんな問題がでるのだろうか、、と気になるのではないかと思います。
@@ -57,7 +74,7 @@ CKAD-exercisesで基本的な操作は体得できるとして、とはいえ実
 Linux AcademyとCloud Academyは実践問題だけではなく、1から学ぶコースも用意しています。基礎の部分からやっていきたいというかたはどちらかを選んでやってみてもいいと思います。  
 こちらの練習問題ですが、かなり本番のテストとにていますが、問題数が3つと多くないので、あくまで「こういう形式のテストね」と納得するものとして活用するといいです。
 
-[Course: Cloud Native Certified Kubernetes Administrator (CKA)](https://linuxacademy.com/cp/modules/view/id/327)
+{{< external_link title="Certified Kubernetes Application Developer (CKAD) | A Cloud Guru" url="https://acloudguru.com/course/certified-kubernetes-application-developer-ckad" >}}
 
 ##### 2020/12/15追記
 気がついたら、A Cloud GuruがLinux Academyを買収していいて少しコンテンツ体系などかわっているようでした。
@@ -68,6 +85,15 @@ Linux AcademyとCloud Academyは実践問題だけではなく、1から学ぶ�
 すべて受講したわけではないのですが、以前にAWSの資格試験を取得する際にこちらのサイトはお世話になり、それなりに内容は充実していました。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://cloudacademy.com/learning-paths/certified-kubernetes-application-developer-ckad-exam-preparation-451/" data-iframely-url="//cdn.iframe.ly/iq3FYij?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
+### 模擬試験
+2022年7月現在では、試験を申し込むと模擬試験がついてきます。
+
+模擬試験の種類はひとつで、2回まで受験できます。 模擬試験を起動すると、本番と同様に2時間のカウントダウンが行われますが、起動後36時間さわることができるので復習などできる仕組みとなっています。 自分は、試験受験の1週間前に1回目を、復習して試験の2日前に2回目を受験して活用しました。
+
+写真はCKSのものですが、CKA/CKADでも同様です。
+
+![cks-exam-contents](/image/cks-exam-contents.png)
 
 ### Kubernetes完全ガイド
 CKADの資格取得対策、という意味で役立つわけではないですが、Kubernetesを理解する上で圧倒的に役に立ったのがKubernetes完全ガイドです。これなくして、CKADは受からなかったと思います。みなさんはCKADを取得することが目的ではないはずです。
@@ -91,7 +117,7 @@ CKADの資格取得対策、という意味で役立つわけではないです�
 だれにも邪魔されない自分の部屋をもっているか、持っていない方は会議室などを抑える必要があります。ご注意ください。
 自分の場合は、会社の会議室を人があまりいない時間帯で抑えて利用しました。
 
-試験時間は、CKAで3時間、CKADで2時間なのですが、会議室は試験予定の前後30分程度多くとっておくといいです。
+試験時間は、CKA/CKADともに2時間なのですが、会議室は試験予定の前後30分程度多くとっておくといいです。
 というのも、後述しますが、実際の試験開始までの準備ややり取りで30分程時間もかかるためです。
 
 ## 試験について
@@ -115,16 +141,29 @@ CKADの資格取得対策、という意味で役立つわけではないです�
   - ブラウザのタブも余分なものは閉じる必要があります
   - kubernetesの公式ドキュメントはみてよい。公式ドキュメント内の検索ももちろん使ってよい
 
+### 新システム PSI Bridge Platform
+2022年6月から試験プラットフォームに変更がありました（{{< external_link title="https://training.linuxfoundation.org/ja/bridge-migration-2021/" url="https://training.linuxfoundation.org/ja/bridge-migration-2021/" >}}）。  
+あくまで試験プラットフォームなので試験問題が変わるわけではないのですが、いくつか受験者に影響がありそうだったので書き留めておきます。
+
+- 試験環境は、Linuxデスクトップにリモート接続した環境で行われるようになります。
+  - Linuxデスクトップにブラウザとターミナルが入っているのでそれで試験をこなします。
+  - これによって、自分のブラウザのブックマークは使えなくなります。とはいえ、試験問題にドキュメントURLが書いてあるので、URLを覚えておくなどの必要性はありません。
+  - リモートデスクトップなので、操作感がイマイチです。もっさり感があり操作は遅く、手元でなれているショートカットも使えないので問題を解くスピードは落ちることを覚悟しておいたほうがいいと思います。
+- いろいろトラブルがあって、試験開始までのやりとりで1時間位かかってしまいました。順調に行っても30分くらいはかかると思います。試験時間の2時間 + 30~60分くらいを見積もっておくとよいでしょう。
+- これは試験問題なのか、試験のバグなのか怪しいところなのですが、試験問題内に 「`curl http://xxxxxx` でアプリケーションにアクセスできます」と書いてあったにも関わらず、実行しても対象アプリケーションに到達できませんでした。時間に余裕があったので、`/etc/hosts` ファイルの改行が崩れていて、名前解決がうまくできていないことがわかりました。直してあげれば正常に動くので、もし試験中に名前解決がおかしいと思ったなら見てみるといいです。
+
 ### 試験問題について
 試験問題については、多く語れませんが下記だけは注意しておいたほうがいいです。
 自分もヒヤッとした場面がありました。
 
 - 問題ごとに利用するクラスタ環境が異なります。連続して同じクラスタ環境を使うこともあるのですが、必ず問題冒頭のクラスタ切り替えは年のため毎回実施しておいたほうが安心です。
 - かなりサクサク解いたつもりでも時間はギリギリなので、わからないものは飛ばしてもいいかもしれません。ただし、あとで戻れるように問題にフラグを立てたりはできなかったので注意です。
+  - 2022年7月に再認定で受験したときには、時間に余裕がありました。全部で16問あり、比較的かんたんな問題が10問ほどあったので、余裕がありました。これは、自分のスキルが上がったからなのかはよくわかりませんｗ
 - 調べ方をマスターしておきましょう。どういうことかというと、問題ごとにだいたいキーワードがあります。"ConfigMap"とか"PersistentVolume"とか。そのYAMLの書き方をすべて覚えておくのは不可能なので、どうやって自分のやりたいことが書いてあるドキュメントにたどり着けるかは練習しておいたほうがいいです。基本的には検索を使ってキーワードでたどり着けるとお思いますが、見慣れておきましょう。
 
 ### 合否について
-合否は試験後36時間以内にメールで通知がきます。
+~~合否は試験後36時間以内にメールで通知がきます。~~  
+いまは、合否は24時間以内にくると書かれています。
 
 ## さいごに
 自分がとくにきになったところを中心にCKAD受験について書きました。  
@@ -135,4 +174,40 @@ CKADの資格取得対策、という意味で役立つわけではないです�
 
 ### 2021年2月追記 CKA受験
 この記事を書いた当初は、CKAの受験予定はありませんでしたが、1年半後ではありますが受験しました。
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.mosuke.tech/entry/2021/02/07/cka/" data-iframely-url="//cdn.iframe.ly/4BV8i7A"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2021/02/07/cka/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2021/02/07/cka/" target="_blank">新形式のCKAを受験し合格しました。受験の教訓紹介。 · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">新形式のCKAを受験してきました。受験に際して学習したことや、受験時の失敗談などを中心にまとめました。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
+
+### 2022年6月追記 CKS受験
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2022/06/19/cks/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2022/06/19/cks/" target="_blank">CKS合格しました。学習方法や気になる疑問などまとめ · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">CKS(Certified Kubernetes Security)を取得しました。勉強方法や気になる疑問などをまとめておきました。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
