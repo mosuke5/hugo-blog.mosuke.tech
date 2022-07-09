@@ -130,6 +130,27 @@ Trivyを使って、コンテナイメージの脆弱性の検査や、Falcoの�
 試験を購入したときに、Language: Englishとなっていましたが、試験任意の言語で受けれます。  
 試験画面で言語切り替えできるのでご安心を。
 
+### 新システム PSI Bridge Platformって何か違うの？
+CKSを受けたときは、旧プラットフォームだったのですが、その後に再認定のために受けたCKADがPSI Bdirdge Platformだったので、以下ブログに追記しました。
+
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2019/07/08/ckad/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2019/07/08/ckad/" target="_blank">CKADを取得の対策や試験当日の対応について · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">CKAD(Certified Kubernetes Application Developer)を受験してきて無事に合格しました。合格のために準備すべきことと、試験受験に関して不安だったことなどをまとめました。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
+
 ## 調べてまとめたこと
 学習期間中にAdmission Webhookについてまとめたりしていたので、ぜひ学習材料に使ってください。
 解説動画も撮ってみたのでお時間あればぜひ。
