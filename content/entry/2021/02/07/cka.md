@@ -23,6 +23,27 @@ archive = ["2021"]
 いちおう前提知識として、2020年9月1日からCKAは出題範囲や試験時間に変更があり、[新形式としてスタート](https://training.linuxfoundation.org/ja/cka-program-changes-2020/)しました。
 これから受験される方は、いろいろとブログなど見ているかと思いますが、新形式に関しての情報を見ておくといいと思います。とくに勉強方法については若干スコープが狭まったようなので（CKADの差別化を意識したので）、注意が必要かと思います。
 
+## 新プラットフォーム（PSI Bdirdge Platform）について
+CKAを受けたときは、旧プラットフォームだったのですが、その後に再認定のために受けたCKADがPSI Bdirdge Platformだったので、以下ブログに追記しました。
+
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2019/07/08/ckad/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2019/07/08/ckad/" target="_blank">CKADを取得の対策や試験当日の対応について · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">CKAD(Certified Kubernetes Application Developer)を受験してきて無事に合格しました。合格のために準備すべきことと、試験受験に関して不安だったことなどをまとめました。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
+
 ## モチベーション
 上でリンクを貼ったとおり、2019年7月にCKADを受験して取得しました。
 それから約1年半経ってCKAを取ろうかなと思ったのは、モチベーションに少し変化があったからです。
