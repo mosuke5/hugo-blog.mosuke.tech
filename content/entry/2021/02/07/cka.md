@@ -1,6 +1,7 @@
 +++
 categories = ["Kubernetes", "資格試験"]
 date = "2021-02-07T11:57:42+09:00"
+lastmod = "2022-07-08T16:12:22+09:00"
 description = "新形式のCKAを受験してきました。受験に際して学習したことや、受験時の失敗談などを中心にまとめました。"
 draft = false
 image = ""

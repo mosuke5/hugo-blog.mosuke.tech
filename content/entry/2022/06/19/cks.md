@@ -1,6 +1,7 @@
 +++
 categories = ["Kubernetes", "資格試験"]
 date = "2022-06-19T15:52:32+09:00"
+lastmod = "2022-07-08T16:12:22+09:00"
 description = "CKS(Certified Kubernetes Security)を取得しました。勉強方法や気になる疑問などをまとめておきました。"
 draft = false
 image = ""
