@@ -1,6 +1,6 @@
 baseURL: 'https://blog.mosuke.tech'
 languageCode: ja
-title: Goldstine研究所
+defaultContentLanguage: ja
 theme: mosuke-tech-hugo-theme
 Paginate: 10
 hasCJKLanguage: true
@@ -45,3 +45,10 @@ markup:
     noClasses: true
     style: monokai
     tabWidth: 4
+languages:
+  ja:
+    title: Goldstine研究所
+    contentDir: content/ja/
+  en:
+    title: Goldstine lab
+    contentDir: content/en/
