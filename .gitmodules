@@ -1,0 +1,3 @@
+[submodule "themes/mosuke-tech-hugo-theme"]
+	path = themes/mosuke-tech-hugo-theme
+	url = git@github.com:mosuke5/mosuke-tech-hugo-theme.git

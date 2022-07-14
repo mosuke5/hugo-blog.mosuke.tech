@@ -14,9 +14,7 @@ related:
       weight: 100
 permalinks: {}
 params:
-  profileSite: 'https://mosuke.tech'
   hideShareOptions: true
-  subTitle: '@mosuke5''s Blog'
   description: '@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。'
   google_analytics: UA-99596316-1
   google_ad: ca-pub-2753210161325997
