@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - submodule
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -25,16 +24,16 @@ jobs:
       - name: Build
         run: hugo
 
-      #- name: Deploy
-      #  uses: peaceiris/actions-gh-pages@v3
-      #  if: ${{ github.ref == 'refs/heads/master' }}
-      #  with:
-      #    external_repository: mosuke5-lab/mosuke5-lab.github.io
-      #    publish_branch: main
-      #    publish_dir: ./public
-      #    personal_token: ${{ secrets.DEPLOY_TOKEN }}
-      #    cname: blog.mosuke.tech
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          external_repository: mosuke5-lab/mosuke5-lab.github.io
+          publish_branch: main
+          publish_dir: ./public
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          cname: blog.mosuke.tech
 
-      #- name: Purge cloudflare cache
-      #  run: |
-      #    bash ./scripts/delete_page_cache.sh ${{secrets.CF_ZONE_ID}} ${{secrets.CF_EMAIL}} ${{secrets.CF_KEY}}
+      - name: Purge cloudflare cache
+        run: |
+          bash ./scripts/delete_page_cache.sh ${{secrets.CF_ZONE_ID}} ${{secrets.CF_EMAIL}} ${{secrets.CF_KEY}}
