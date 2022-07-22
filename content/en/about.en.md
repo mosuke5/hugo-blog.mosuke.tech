@@ -1,5 +1,5 @@
 +++
-date = "2022-07-22T00:00:00+09:00"
+date = "2022-07-21T00:00:00+09:00"
 description = "About this site: owner, philosophy, Privacy policy"
 draft = false
 image = ""
