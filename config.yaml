@@ -1,5 +1,4 @@
 baseURL: 'https://blog.mosuke.tech'
-languageCode: ja
 defaultContentLanguage: ja
 theme: mosuke-tech-hugo-theme
 Paginate: 10
@@ -15,7 +14,6 @@ related:
 permalinks: {}
 params:
   hideShareOptions: true
-  description: '@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。'
   google_analytics: UA-99596316-1
   google_ad: ca-pub-2753210161325997
   contactUrl: >-
@@ -45,8 +43,14 @@ markup:
     tabWidth: 4
 languages:
   ja:
-    title: Goldstine研究所
+    languageName: Japanese
+    languageCode: ja
     contentDir: content/ja/
+    title: Goldstine研究所
+    description: '@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。'
   en:
-    title: Goldstine lab
+    languageName: English
+    languageCode: en-us
     contentDir: content/en/
+    title: "Goldstine lab"
+    description: "mosuke5's technology blog. Cloud Native, Kubernetes, Application development, etc..."
