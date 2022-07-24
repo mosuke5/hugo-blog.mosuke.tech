@@ -1,7 +1,6 @@
 +++
 categories = ["Kubernetes", "Certification"]
 date = "2022-07-24T11:52:32+09:00"
-lastmod = "2022-07-08T16:12:22+09:00"
 description = "CKS(Certified Kubernetes Security) passed. How to study?"
 draft = false
 image = ""
