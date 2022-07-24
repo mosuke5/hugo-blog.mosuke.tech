@@ -92,7 +92,7 @@ Questions such as using Trivy to check for vulnerabilities in container images a
 **Make sure to actually install and try the software, not just the concepts.**
 
 ### What is different about the new PSI Bridge Platform?
-There has been {{< external_link title="a change in the exam platform starting June 2022" url="https://training.linuxfoundation.org/ja/bridge-migration-2021/" >}}.
+There has been {{< external_link title="a change in the exam platform starting June 2022" url="https://training.linuxfoundation.org/bridge-migration-2021/" >}}.
 It is only an exam platform, so the exam questions will not change, but there were a few things that seemed to affect you, so I will write them down.
 
 - The exam environment will now take place remotely on a Linux desktop.
