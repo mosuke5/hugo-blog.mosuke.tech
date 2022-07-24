@@ -67,7 +67,7 @@ CKA,CKADの取得に関しては過去ブログを参照ください。
 
 ### Kubernetes Security Essentials (LFS260)
 Linux Foundationで提供している{{< external_link url="https://training.linuxfoundation.org/ja/training/kubernetes-security-essentials-lfs260/" title="Kubernetes Security Essentials（LFS260）" >}}も購入してみました。試験とバンドルして買うと安くなるので買ってみました。
-メインは、上の<a href="https://px.a8.net/svt/ejp?a8mat=3H3F8L+198YR6+3L4M+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fcertified-kubernetes-security-specialist%2F" rel="nofollow">Kubernetes CKS 2022 Complete Course - Theory - Practice</a>でやって、一部保管する形で利用しました。
+メインは、上の<a href="https://px.a8.net/svt/ejp?a8mat=3H3F8L+198YR6+3L4M+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fcertified-kubernetes-security-specialist%2F" rel="nofollow">Kubernetes CKS 2022 Complete Course - Theory - Practice</a>でやって、一部補完する形で利用しました。
 
 こちらも内容は盛り沢山です。  
 試験に必要な要素はほぼすべてみっちり入っていると言えるでしょう。多くのSaaSサービスと違い、実行環境は自分で用意する必要があります。AWSやGCPあるいは、手元の環境でいじれるKubernetesを用意して学習するものです。
