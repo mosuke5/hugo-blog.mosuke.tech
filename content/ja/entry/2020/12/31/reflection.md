@@ -41,12 +41,6 @@ Kubernetes上でのDevOpsの実装支援から、AIサービス向けのContaine
 例外的に2日間だけ顧客のオフィスに行きました。自社のオフィスは、社員証の入館権限すら剥奪されていて入ることができません（笑）また、在宅勤務は、最低でも2021年の6月末までは続きます。おそらく、アフターコロナ後も、多くは在宅勤務になるのではないかと予想しています。
 そんな状況だからこそ挑戦したことや変化したこともありました。
 
-### 自作家系ラーメン
-詳しくはブログを読んでいただきたいですが、自作家系ラーメンにも挑戦しました。
-非常に楽しかったし、料理の製法もいろいろ覚えて勉強になりました。
-
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://note.com/morisan_life/n/n2f855f8e5a46" data-iframely-url="//cdn.iframe.ly/ksd9plu?iframe=card-small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
-
 ### 珈琲
 お家でのハンドドリップコーヒーをはじめました。  
 今までもよくカフェで仕事をしてきました。しかし、珈琲を楽しむというよりは、仕事場の空間としてのカフェを楽しんでいました。在宅勤務でなかなかカフェにもいけないこともあり、おいしい珈琲をいれようと思い始めたのですが、おもったよりはまってしまいました。
