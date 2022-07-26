@@ -1,11 +1,11 @@
 +++
 categories = ["Kubernetes", "Certification"]
 date = "2022-07-24T11:52:32+09:00"
-description = "CKS(Certified Kubernetes Security) passed. How to study?"
+title = "CKS passed! How to study and what you need to know"
+description = "CKS passed! How to study and what you need to know"
 draft = false
 image = ""
 tags = ["Tech"]
-title = "CKS passed! How to study?"
 author = "mosuke5"
 archive = ["2022"]
 +++
@@ -65,7 +65,7 @@ I believe that **deepening your knowledge of Linux and the relationship between 
 This will answer any questions you may have had before taking the exam.
 
 ### More difficult than CKA or CKAD?
-CKSのホームページには次のように書いてあります。
+The CKS official website describes the following.
 
 > A Certified Kubernetes Security Specialist (CKS) is an accomplished Kubernetes practitioner (must be CKA certified) who has demonstrated competence on a broad range of best practices for securing container-based applications and Kubernetes platforms during build, deployment and runtime.
 
