@@ -12,14 +12,15 @@ Following are ci/cd steps.
 
 # How to use
 ```
-// set up. This site uses customized purehugo theme.
-$ git clone https://github.com/mosuke5/purehugo themes/purehugo
+// set up. This site uses original theme.
+$ git submodule update --init --recursive
 $ hugo server
 ```
 
 ```
 // resize image
-$ mogrify -resize 600 ./static/image/xxxxx.png
+// mogrify is included in ImageMagick package
+$ mogrify -resize 700 ./static/image/xxxxx.png
 ```
 
 # How to modify design

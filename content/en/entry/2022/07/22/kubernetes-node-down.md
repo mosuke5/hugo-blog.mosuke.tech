@@ -25,7 +25,7 @@ If Worker#1 shuts down, kubelet stops, network communication fails, etc., what h
 In my mind, it would be like, "Well, it will be moved to another node to maintain the number of replicas! But in reality, it is not that simple.
 We will see how it works in the case of Deployment and the case of StatefulSet.
 
-![node-down-overview](/image/kubernetes-node-down-overview.png)
+![node-down-overview](/image/kubernetes-node-down-overview-en.png)
 
 ## What happens when you shut down a node
 *This section describes the events. Explanations of the events are described later in this section.  
