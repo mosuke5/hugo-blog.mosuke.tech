@@ -17,6 +17,11 @@ archive = ["2022"]
 
 <u>仕事からも技術の勉強からも、離れることで見えてきたキャリア・自分の気持ち</u>について書き残していきます。
 これから結婚や子供を生むことを考えている人たちのひとつの参考になればと思っています。
+
+ちなみに下は、このブログに関する一人語り動画です。
+文章を読むのだるいよって人は動画の方をどうぞ。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EQ9oAdnoofY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <!--more-->
 
 ## 仕事は人生の全てではない
