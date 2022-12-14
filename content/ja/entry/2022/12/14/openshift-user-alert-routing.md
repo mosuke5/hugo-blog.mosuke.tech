@@ -12,7 +12,7 @@ archive = ["2022"]
 
 
 こんにちは、もーすけです。  
-OpenShiftアドベントカレンダー14日目のゆるネタ投稿です。  
+[OpenShiftアドベントカレンダー](https://qiita.com/advent-calendar/2022/openshift)14日目のゆるネタ投稿です。  
 2022年、OpenShiftネタで一番PVを稼いだ記事が「[OpenShiftの新機能、ユーザ定義プロジェクトの監視ってどこまでできる？](https://blog.mosuke.tech/entry/2021/04/24/openshift-monitoring-your-own-service/)」でした。
 OpenShiftをお使いのみなさんはだいぶ監視設定周りで困っているということがわかりますね笑
 ちなみに余談ですが、この記事だけで2500PVくらいあったらしいです。
