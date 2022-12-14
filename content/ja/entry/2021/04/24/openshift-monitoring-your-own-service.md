@@ -1,6 +1,7 @@
 +++
 categories = ["OpenShift"]
 date = "2021-04-24T14:05:54+09:00"
+lastmod = "2022-12-14T9:14:26+09:00"
 description = "OpenShift 4.6から正式に追加されたユーザ定義プロジェクトの監視機能について、どこまで使えるのか？実戦投入できそうかなどの観点で検証していきます。Prometheusを独自で構築することなく監視できる新機能を紹介します。"
 draft = false
 image = ""
@@ -33,7 +34,7 @@ OpenShiftは、インストール時点にデフォルトでCluster Monitoring�
 OpenShiftを触っている人は、「Cluster Monitoringでもユーザ定義プロジェクトの監視できるのでは！？」と思うはずなので、現時点の状況を説明します。
 従来のCluster Monitoringでも、たしかにユーザが作ったプロジェクト内のPodのメトリクスなどを確認することはできます。しかし、いくつかの課題がありました。
 
-ひとつめは、Cluster Monitoringに搭載のPrometheus/Grafanaには権限分離する機能がなく、Cluster Monitoringにアクセスできる人は、**すべてのNamespace**の状況が見えてしまいます。
+ひとつめは、Cluster Monitoringに搭載のPrometheus/Grafanaには権限分離する機能がなく、Cluster Monitoringにアクセスできる人は、**すべてのNamespace**の状況が見えてしまいます。
 ひとつのシステムのためだけにOpenShiftを利用していれば問題ないかもしれませんが、マルチテナントとして利用する場合は不適切です。
 
 ふたつめは、カスタマイズができないということです。OpenShiftのプリセットの設定が入っており、こちらを編集してカスタマイズすることができないということです。そのため、ユーザがデプロイしたアプリケーションの監視設定・アラート設定を追加することはできません。
@@ -381,7 +382,8 @@ deployment.apps/test-nginx scaled
 ひとつまえの項目ではアラート設定を行いましたが、とくに通知の設定は行っていませんでした。
 Prometheusでは `Alertmanager` というコンポーネントがアラートを管理します。
 このユーザ定義プロジェクトの監視では、アラート設定はユーザ側に権限はなく**クラスタ管理者側**となります。
-理由は、利用しているAlertManagerは、クラスタ管理用のものと併用しているためです。
+理由は、利用しているAlertManagerは、クラスタ管理用のものと併用しているためです。  
+（※OpenShift 4.11からアラート機能は改善され、開発者側もセルフで設定できるようになりました。詳しくは「[OpenShift、開発者向けの監視機能（アラート通知）が進化しました](https://blog.mosuke.tech/entry/2022/12/14/openshift-user-alert-routing/)」を確認してください！）
 
 OpenShiftのWebコンソールの"Administration" -> "Cluster Settings" -> "Global Configuration" -> "Alertmanager" -> "Create Receiver"から設定できます。公式ドキュメントの設定手順は[こちら](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.6/html/monitoring/sending-notifications-to-external-systems_managing-alerts#configuring-alert-receivers_managing-alerts)です。
 
@@ -431,7 +433,26 @@ Operator化されているので簡単ではあるのですが、それでもあ
 以下の点が制約として考えられるので注意して使っていきましょう。
 
 1. ダッシュボードは作れない。Grafanaダッシュボードは含まない。OpenShiftのWebコンソール内で完結。
-1. アラートの通知先管理がクラスタ管理側権限となる。
-1. 大量のユーザで利用したときのスケーラビリティ（ここは未確認で解消の余地あり）
+1. ~~アラートの通知先管理がクラスタ管理側権限となる。~~ （OpenShift 4.11で改善）
+1. 大量のユーザで利用したときのスケーラビリティ（OpenShift 4.11でクラスタ監視とアプリケーション監視のAlertmanagerを分離できるように改善）
 
 では、これからもOpenShift Lifeを楽しんでください！
+
+本編の続報です。
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2022/12/14/openshift-user-alert-routing/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2022/12/14/openshift-user-alert-routing/" target="_blank">OpenShift、開発者向けの監視機能（アラート通知）が進化しました · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">OpenShiftの開発者向けの監視機能がありました。しかし、アラート通知に欠点があり、使いづらい部分がありましたが改善されたので紹介します。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
