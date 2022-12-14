@@ -1,7 +1,7 @@
 +++
 categories = ["Kubernetes", "DevOps"]
 date = "2020-03-04T18:14:26+09:00"
-lastupdated = "2021-04-15T14:14:26+09:00"
+lastmod = "2021-04-15T14:14:26+09:00"
 description = "KubernetesにおけるCI/CDの実践の重要なポイントをまとめました。ブランチ戦略からマニフェストの管理、デプロイの考え方などご紹介します。Kubernetesでの運用をしている人、これから考えてい人の参考になればと思います。"
 draft = false
 image = ""
