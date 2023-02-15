@@ -67,8 +67,7 @@ CKAとCKADのどちらに挑戦するか、あるいは両方挑戦するかは�
 一方で、過去2年間の中でCKA取得に向けてやっておくと良さそうなことについては、総合的に言えるかなと思ってます。
 
 ### Udemy: Certified Kubernetes Administrator (CKA) with Practice Tests
-まず、試験対策という意味では、Udemyの<a href="https://px.a8.net/svt/ejp?a8mat=3H3F8L+198YR6+3L4M+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fcertified-kubernetes-administrator-with-practice-tests%2F" rel="nofollow">Certified Kubernetes Administrator (CKA) with Practice Tests</a>
-<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3H3F8L+198YR6+3L4M+BW8O2" alt="">というコースが一番良いと思っています。
+まず、試験対策という意味では、Udemyの<a href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/">Certified Kubernetes Administrator (CKA) with Practice Tests</a> というコースが一番良いと思っています。
 このコースですが、コンテンツボリュームが非常に多く、試験の内容をすべて網羅している点や、なんといってもハンズオン試験が非常に豊富にあります。実際の試験に似た形式のハンズオン試験がたくさんできるので、このコースでスラスラ解ければおそらく本番の試験も大丈夫でしょう。
 試験の難易度も、問題の形式もかなり類似しているので、合格の基準に使ってくれていいと思います。
 
