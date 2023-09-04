@@ -181,7 +181,7 @@ spec:
       command: ["echo"]
       args: ["hello world"]
 
-$ kubectl apply -f hellow-world-task.yaml
+$ kubectl apply -f hello-world-task.yaml
 task.tekton.dev/hello-world-task created
 
 $ kubectl get task
@@ -204,7 +204,7 @@ spec:
     name: hello-world-task
 
 // TaskRunのデプロイ
-$ kubectl apply -f hellow-world-task-run.yaml
+$ kubectl apply -f hello-world-task-run.yaml
 taskrun.tekton.dev/hello-world-task-run created
 
 // Podを確認するとなにやら動いているのが確認できる
