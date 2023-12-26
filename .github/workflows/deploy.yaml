@@ -4,6 +4,7 @@ on:
     branches:
       - master
 env:
+  TZ: 'Asia/Tokyo'
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
