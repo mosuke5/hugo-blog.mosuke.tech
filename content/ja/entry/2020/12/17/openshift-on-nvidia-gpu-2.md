@@ -51,7 +51,7 @@ OpenShiftをご利用であればサブスクリプションをお持ちかと�
 
 cluster-wide entitlementを設定すると（実態は`MachineConfig`）、Machine Config Operator（MCO）は各ノードに設定内容を反映しに行きます。ノードへの設定変更時は、ノードのスケジューリングを無効化した上で順次ローリングアップデートするため、でノード台数が多い場合は時間がかかります。MachineConfigPoolの設定で、Workerノードが同時に何台までアップデート作業を実行していいかも決めることができます。お使いのクラスタの状況に応じて、ノード更新のスピードを上げたい場合は`MachineConfigPool`の`spec.maxUnavailable`の値の変更を検討できます（[ドキュメント](https://docs.openshift.com/container-platform/4.6/scalability_and_performance/recommended-host-practices.html#create-a-kubeletconfig-crd-to-edit-kubelet-parameters_)）。
 
-```
+```text
 $ oc apply -f 0003-cluster-wide-machineconfigs.yaml
 machineconfig.machineconfiguration.openshift.io/50-rhsm-conf created
 machineconfig.machineconfiguration.openshift.io/50-entitlement-pem created
@@ -83,7 +83,7 @@ OpenShift 4.6でインストールできるnfdは、まだnfd-master, nfd-worker
 今回のケースで言うと`feature.node.kubernetes.io/pci-10de.present: "true"`のラベルが付いているノードがNVIDIAのGPU搭載の証となります。
 PCIではベンダーIDというのがふられており、`10de`が[NVIDIAのベンダーID](https://devicehunt.com/view/type/pci/vendor/10DE)となるようです。
 
-```
+```text
 $ oc get pod | grep nfd
 nfd-master-frnxf                           1/1     Running     0          26h
 nfd-master-hmzb6                           1/1     Running     0          26h
@@ -133,7 +133,7 @@ NVIDIA GPU Operatorのインストールは、cluster-wide entitlementのイン�
 また、NVIDIA GPU Operatorの起動後はGPU Feature DiscoveryがGPUのより詳細な情報をラベルとして付与します。
 次の例だと、`Tesla-T4`であることがわかります。
 
-```
+```text
 $ oc get pod | grep -e nvidia -e gpu
 gpu-feature-discovery-95vpr                1/1     Running     0          24h
 gpu-feature-discovery-wzz7r                1/1     Running     0          24h
@@ -168,7 +168,7 @@ $ oc get node xxxxx -o yaml | grep nvidia.com
 
 最終的に、ノードの`status.capacity`にて`nvidia.com/gpu`の状態が管理できるようになっていれば成功です。
 
-```
+```text
 $ oc get node ip-10-0-220-29.ap-southeast-1.compute.internal -o yaml | grep -A 8 capacity
   capacity:
     attachable-volumes-aws-ebs: "39"
@@ -197,7 +197,7 @@ GPUを利用したいアプリケーションのみが、GPUノードにスケ�
 そこででてくるのが、[TaintsとTolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)です。
 GPUノードにtaintを付与し、tolerationを持たない通常のPodはスケジュールできないようにできます。
 
-```
+```text
 $ oc adm taint node xxxxx nodetype=gpu:NoSchedule
 node/xxxxx tainted
 ```
@@ -238,7 +238,7 @@ spec:
 NVIDIA GPU Operatorの中には、nvidia-dcgm-exporter が含まれておりPrometheusにて簡単に監視が可能です。
 以下は、exporterのPodとServiceを出力したものですが、各GPUノード上`pod/nvidia-dcgm-exporter-xxxx`が展開され、ポート9400のServiceで待ち受けていることがわかります。
 
-```
+```text
 $ oc get pod,service | grep exporter
 pod/nvidia-dcgm-exporter-5rl4f                 1/1     Running     0          43h
 pod/nvidia-dcgm-exporter-kjvnh                 1/1     Running     0          43h
@@ -249,7 +249,7 @@ service/nvidia-dcgm-exporter   ClusterIP   172.30.79.53    <none>        9400/TC
 出力は一部省略しています。
 （Kubernetes内部のServiceの名前解決について知りたい方はこちらのブログ「[KubernetesのPod内からの名前解決を検証する](https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/)」を参照ください）
 
-```
+```text
 $ oc exec nvidia-dcgm-exporter-5rl4f -- curl nvidia-dcgm-exporter:9400/metrics
 ...
 DCGM_FI_DEV_SM_CLOCK{gpu="0", UUID="GPU-4063626d-f712-3d69-7469-1f17e7a1027d", device="nvidia0"} 300
