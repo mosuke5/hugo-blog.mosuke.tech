@@ -15,6 +15,9 @@ Following are ci/cd steps.
 // set up. This site uses original theme.
 $ git submodule update --init --recursive
 $ hugo server
+
+// update submodule
+$ git submodule update --remote
 ```
 
 ```
