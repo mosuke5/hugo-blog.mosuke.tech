@@ -101,7 +101,7 @@ alertmanager-user-workload-1           6/6     Running   0          8d
 thanos rulerは、`PrometheusRule`の設定内容をみて、アラート発報を担当しています。
 その通知先のAlertmanagerの向き先が `dnssrv+_web._tcp.alertmanager-operated.openshift-user-workload-monitoring.svc` となっていて、`openshift-user-workload-monitoring`内に新しく起動したAlertmanagerインスタンスであることがわかります。
 
-```
+```text
 % oc get -n openshift-user-workload-monitoring secret thanos-ruler-alertmanagers-config -o jsonpath="{.data.alertmanagers\.yaml}" | base64 -d
 alertmanagers:
 - scheme: https
@@ -117,7 +117,7 @@ alertmanagers:
 
 ちなみに、既存のCluster MonitoringのAlertmanagerを共有する方法を採用した場合、向き先は変わり `dnssrv+_web._tcp.alertmanager-operated.openshift-monitoring.svc` となっています。
 
-```
+```text
 % oc get -n openshift-user-workload-monitoring secret thanos-ruler-alertmanagers-config -o jsonpath="{.data.alertmanagers\.yaml}" | base64 -d
 alertmanagers:
 - scheme: https
@@ -191,7 +191,7 @@ spec:
 `namespace="mosuke5-monitoring"` にマッチするラベルのアラートを`mosuke5-monitoring/example-routing/default`に飛ばす設定が入ってますね。
 `mosuke5-monitoring/example-routing/default`の詳細設定には、SlackのURL等が書かれていました。
 
-```
+```text
 % oc get secret -n openshift-user-workload-monitoring alertmanager-user-workload-generated -o jsonpath="{.data.alertmanager\.yaml}" | base64 -d
 route:
   receiver: Default
