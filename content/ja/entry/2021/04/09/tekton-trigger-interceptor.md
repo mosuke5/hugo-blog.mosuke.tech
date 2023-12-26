@@ -55,7 +55,7 @@ GitHub interceptorを用いて、特定の認証キーを持たないリクエ�
 キーの値は任意に変更してください。
 GitHub interceptorにこのキーをもたせます。後ほど、この認証キーはGitHubのWebhookの設定にもいれるので覚えておきましょう。
 
-```
+```text
 $ kubectl create secret generic github-webhook --from-literal=secretkey=aiueokakikukeko
 secret/github-webhook created
 ```
@@ -66,7 +66,7 @@ EventListener PodのService Accountの権限が重要であることは前回に
 
 そのほか、`clustertriggerbindings`の参照権限もつけました。実装する上で必要ではないのですが、ログを見る際にエラーがでてきになるためです。
 以下が、該当のエラーメッセージです。
-```
+```text
 E0408 13:58:27.831618       1 reflector.go:127] k8s.io/client-go@v0.19.7/tools/cache/reflector.go:156: Failed to watch *v1alpha1.ClusterTriggerBinding: failed to list *v1alpha1.ClusterTriggerBinding: clustertriggerbindings.triggers.tekton.dev is forbidden: User "system:serviceaccount:goldstine-lab:trigger-sa" cannot list resource "clustertriggerbindings" in API group "triggers.tekton.dev" at the cluster scope
 ```
 
@@ -209,7 +209,7 @@ spec:
 ### 設定の反映
 上で修正した内容をKubernetesに反映させます。
 
-```
+```text
 $ kubectl apply -f trigger-sa.yaml
 serviceaccount/trigger-sa unchanged
 role.rbac.authorization.k8s.io/trigger-role configured
@@ -244,7 +244,7 @@ EventListenerの設定でEventTypeになにも指定しない場合、これだ�
 ですが、今回は、pushイベントのみ許可するようにしているため、EventListener Podのログ(`event type ping is not allowed`)をみると以下のように弾いていることを確認できます。
 一発ではうまく行かないこともあるので、ぜひ、いろいろ試してみてください。
 
-```
+```text
 {"level":"info","ts":"2021-04-08T14:15:28.695Z","logger":"eventlistener","caller":"sink/sink.go:213","msg":"interceptor stopped trigger processing: rpc error: code = FailedPrecondition desc = event type ping is not allowed","knative.dev/controller":"eventlistener","/triggers-eventid":"032d3da8-7a76-489c-99ff-316fb9b35ccc","/trigger":"github-trigger"}
 ```
 
@@ -256,7 +256,7 @@ EventListenerの設定でEventTypeになにも指定しない場合、これだ�
 ### curlで実行してみる
 ローカルの端末から認証キーを持たずにHTTPのリクエストを送ってみます。
 
-```
+```text
 $ curl -XPOST -H 'Content-Type: application/json' \
 http://34.84.159.22 \
 -d '{"head_commit":{"id": "master"},"repository":{"url": "https://github.com/ncskier/myapp"}}'
@@ -265,7 +265,7 @@ http://34.84.159.22 \
 
 リクエストは受け付けてくれたみたいですが、EventListener Podの方で、`no X-Hub-Signature header set` ということでしっかり弾いてくれています。
 
-```
+```text
 {"level":"info","ts":"2021-04-09T02:06:45.789Z","logger":"eventlistener","caller":"sink/sink.go:213","msg":"interceptor stopped trigger processing: rpc error: code = FailedPrecondition desc = no X-Hub-Signature header set","knative.dev/controller":"eventlistener","/triggers-eventid":"fd6b7fa8-2b1d-4e66-8319-9a1fe3caa6af","/trigger":"github-trigger"}
 ```
 

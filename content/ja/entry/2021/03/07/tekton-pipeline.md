@@ -135,7 +135,7 @@ spec:
 
 イメージで言うとこんなかんじです。
 
-```
+```text
                   (hello-my-name-task)
                 / 
 (Pipeline start) -(hello-my-friends-task) 
@@ -143,7 +143,7 @@ spec:
                   (multi-steps-task)
 ```
 
-```
+```text
 $ kubectl apply -f my-first-pipeline.yaml
 pipeline.tekton.dev/my-first-pipeline created
 
@@ -176,7 +176,7 @@ my-first-pipeline-run-multi-steps-swftw-pod-4b2hq        0/3     Completed      
 `hello-my-friends`は`hello-my-name`の終わったあとに実行する、ということとします。  
 イメージはこんな感じです。
 
-```
+```text
                   (hello-my-name-task) - (hello-my-friends-task)
                 / 
 (Pipeline start)  
@@ -222,7 +222,7 @@ spec:
 はじめにPodができたのは、`hello-my-name`と`multi-steps`のふたつです。
 `hello-my-name`が`Completed`になった後 `hello-my-friends`のPodが起動しているのがわかります。
 
-```
+```text
 $ kc apply -f my-second-pipeline.yaml
 pipeline.tekton.dev/my-second-pipeline created
 

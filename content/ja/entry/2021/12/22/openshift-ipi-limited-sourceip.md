@@ -40,7 +40,7 @@ IAMユーザに、次のドキュメントのように送信元IPアドレス（
 
 `openshift-install`コマンドを用いてクラスタ作成を実行すると、次のようにKubernetes APIの起動を待っているところで処理が終わらず失敗します。
 
-```
+```text
 $ openshift-install create cluster --dir=. --log-level=debug
 ...
 INFO Waiting up to 20m0s for the Kubernetes API at https://api.test.mosuke5.com:6443...
@@ -75,7 +75,7 @@ Bootstrap nodeの起動に失敗しています。
 EC2としての起動は成功しますが、OSのブート時の設定でこけています。AWSのコンソール画面から、「シリアルコンソール接続」して状態を確認してください。
 `journalctl`コマンドでログを確認します。
 
-```
+```text
 # journalctl
 ...
 Displaying logs from failed units: ignition-fetch.service

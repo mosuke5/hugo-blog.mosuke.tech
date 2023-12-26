@@ -43,7 +43,7 @@ Kubernetesの世界では、PodがWorkloadの最小単位ですが、Pod内に�
 試しにfedoraとbusyboxを同一のPod内に起動した`my-pod`があります。
 それぞれのコンテナで`ifconfig -a`をうってインターフェイス情報を確認してみます。同じIPアドレスのeth0を保有しているのがわかります。ぜひためしてみてください。
 
-```
+```text
 $ kubectl get pod
 NAME                         READY   STATUS    RESTARTS   AGE
 my-pod   2/2     Running   0          4m22s
@@ -91,7 +91,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 実例でわかりやすくするため、Nginxを起動しておき、Nginxコンテナにたいしてtcpdumpを実行したいとします。
 まずは、以下のNginxコンテナを起動しておきます。また、起動したNginxのイメージにはtcpdumpがインストールされておらず、実行しても当然エラーで弾かれます。
 
-```
+```text
 $ kubectl create deployment my-nginx --image=nginxinc/nginx-unprivileged:latest
 deployment.apps/my-nginx created
 
@@ -113,7 +113,7 @@ command terminated with exit code 1
 ネットワークデバッグに必要なコマンドがあらかじめインストールされています。
 のちほど後述しますが、自分たちの運用のしやすいよう自作しておくのもいいでしょう。
 
-```
+```text
 $ kubectl edit deploy my-nginx
 spec:
   template:
@@ -147,7 +147,7 @@ Ephemeral containersは、Kubernetes 1.20現在ではまだGAされていない�
 tcpdumpのような実行にroot権限が必要なコマンドを使いたい場合は、コンテナの起動ユーザ（`runAsUser`）にも注意しましょう。
 サイドカーでデバッグコンテナを起動しても、デバッグコンテナ自身のプロセスがrootで動いていない場合、以下のように実行に失敗します。
 
-```
+```text
 $ kubectl exec -it my-nginx-664cc58c8c-k4vjp -c debug -- tcpdump
 tcpdump: eth0: You don't have permission to capture on that device
 (socket: Operation not permitted)

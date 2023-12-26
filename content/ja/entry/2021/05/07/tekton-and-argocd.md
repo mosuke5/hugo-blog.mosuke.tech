@@ -58,7 +58,7 @@ TektonからArgo CDのSyncを実行するには、[argocd-task-sync-and-wait](ht
     - パラメータは `application-name`, `revision`, `flags`, `argocd-version`が指定できます。
     - 注意が必要なポイントは`argocd-version`でしょうか。デフォルト値が`v1.0.2`と古いので仕様が期待と異なることがあります。利用のバージョンと揃えましょう。
 
-```
+```text
 $ kubectl apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/argocd-task-sync-and-wait/0.1/argocd-task-sync-and-wait.yaml
 task.tekton.dev/argocd-task-sync-and-wait created
 

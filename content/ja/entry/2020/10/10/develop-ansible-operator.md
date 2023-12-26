@@ -36,7 +36,7 @@ macOSの環境だったため、`brew` でインストールしました。
 [公式ドキュメント](https://sdk.operatorframework.io/docs/installation/install-operator-sdk/)を見ながら各自の環境でインストールしてください。
 OperatorSDKは、v1.0を前提としています。それ以前のバージョンとは大きく仕様が変更になっているため気をつけてください。
 
-```
+```text
 $ brew install operator-sdk
 $ operator-sdk version
 operator-sdk version: "v1.0.1", commit: "4169b318b578156ed56530f373d328276d040a1b", kubernetes version: "v1.18.2", go version: "go1.15.2 darwin/amd64", GOOS: "darwin", GOARCH: "amd64"
@@ -47,7 +47,7 @@ Operator開発に必ずしもAnsibleは必要ありません。
 もし、Kubernetesクラスタ上でしか動作させないというのであれば開発端末へのAnsibleのインストールは不要ですが、やはり動作確認のために開発端末上で確認できたほうが当然よいです。
 開発端末にAnsibleをインストールしておくことを推奨します。自分は `pip` でインストールしました。
 
-```
+```text
 $ pip3 install --user ansible
 ...
 $ ansible --version
@@ -66,7 +66,7 @@ ansible 2.10.2
 - docker
 - make
 
-```
+```text
 $ pip3 install --user ansible-runner
 $ ansible-runner --version
 1.4.6
@@ -80,7 +80,7 @@ Operatorは最終的にコンテナとして動作させます。
 コンテナイメージのビルドや後述するOperatorのテストでDockerを使うのでインストールしておきます。
 mac環境ではDocker Desktopを入れておけばいいでしょう。
 
-```
+```text
 $ docker version
 Client: Docker Engine - Community
  Cloud integration  0.1.18
@@ -114,7 +114,7 @@ Server: Docker Engine - Community
 
 Operator開発時にはMakefileを用いた操作を多用します。`make` の有無も確認しておきましょう。
 
-```
+```text
 $ make --version
 GNU Make 3.81
 ...
@@ -132,7 +132,7 @@ GNU Make 3.81
 まず、`make docker-build` で作成するイメージは、プロジェクト内にあるDockerfileを用いてビルドされます。
 やっていることは非常に簡単で、`quay.io/operator-framework/ansible-operator:v1.0.1` に開発したplaybookやrole, watches.yamlをコピーしているのみです。
 
-```
+```text
 $ cat Dockerfile
 FROM quay.io/operator-framework/ansible-operator:v1.0.1
 
@@ -235,7 +235,7 @@ spec:
 
 このようにCRDを定義することで、CRを作成する際のバリデーションを実現できたり、`kubectl expain` で定義を確認することなどができるようになります。
 
-```
+```text
 $ kubectl explain memcached.spec
 KIND:     Memcached
 VERSION:  cache.example.com/v1
@@ -308,7 +308,7 @@ APIバージョンを新しく追加したい場合はどうすればいいか�
 playbookを書いていると、KubernetesのCRで定義した情報を変数として利用したいことがでてきます。その変数をどの様にとりだしたらいいかわからなくなることがあるので、変数をダンプするすべを覚えておくといいです。
 APIのグループとkind名で一定の命名規則で変数が格納されます。下の例だと `group = cache.example.com` で `kind = MyExternalDeployment` の場合、`_cache_example_com_myexternaldeployment` という名前で生成されます。
 
-```
+```text
 - name: "dump variables vars"
   debug: var=vars
 
@@ -348,7 +348,7 @@ Ansibleのテストツールで有名な[molecule](https://molecule.readthedocs.
 `molecule/verify.yml`内に`molecule/default/tasks/*_test.yml`のテストが実行されるように定義されています。
 独自のテストシナリオは、`molecule/default/tasks/*_test.yml`に書いていけば問題ありません。
 
-```
+```text
 molecule
 ├── default
 │   ├── converge.yml
@@ -380,7 +380,7 @@ OperatorSDKで実行されるプロセスには、Prometheus形式のメトリ�
 OperatorSDKを用いて起動したOperatorのメトリクスをPrometheusで取得することは非常に容易です。
 一番簡単に確認する方法としては、`make run` で起動したあとに、`localhost:8888/metrics` にブラウザから接続することです。下記のようなメトリクスが出力されていることが確認できるはずです。
 
-```
+```text
 # HELP aggregator_openapi_v2_regeneration_count [ALPHA] Counter of OpenAPI v2 spec regeneration count broken down by causing APIService name and reason.
 # TYPE aggregator_openapi_v2_regeneration_count counter
 aggregator_openapi_v2_regeneration_count{apiservice="*",reason="startup"} 0

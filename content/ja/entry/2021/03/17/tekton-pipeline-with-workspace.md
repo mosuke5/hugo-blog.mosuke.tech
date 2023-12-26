@@ -29,7 +29,7 @@ Tetonパイプラインにおいても同じようにTask間でデータを連�
 本環境はGCP上で動かしており、PersistentVolumeをDynamic Provisioningとして払い出せる環境になっていることを先に断っておきます。  
 イメージは以下のようなパイプラインです。
 
-```
+```text
 (Pipeline start) - (task A) - (task B)
                          \     /
                           \   /
@@ -145,7 +145,7 @@ spec:
 実行後Podの状態を確認すると、サイトへのcurlをするTaskが動き、その後にその結果を出力するPodが起動しています。
 PVの状態も一緒に見てみましょう。`workspace-test-pipeline-run-curl-site-2x8tt-pod-rvz9t`と`workspace-test-pipeline-run-data-output-57xb6-pod-f8srp`の両方ともにPVCがマウントされています。また、PVCが作成され、自動的にPVも作成されています。
 
-```
+```text
 $ kubectl apply -f workspace-test-task.yaml
 task.tekton.dev/workspace-test-task-curl created
 task.tekton.dev/workspace-test-task-output created
@@ -191,7 +191,7 @@ $ kubectl get pod workspace-test-pipeline-run-data-output-57xb6-pod-f8srp -o yam
 
 PVCの中身をみると`ownerReferences`に`PipelineRun`が紐付いており、`PipelineRun`を削除すれば同時にPVCも削除され、PVも削除されるという動きをします。
 
-```
+```text
 $ kubectl get pvc pvc-8673f66e55 -o yaml | less
 apiVersion: v1
 kind: PersistentVolumeClaim

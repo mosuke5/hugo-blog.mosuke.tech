@@ -99,7 +99,7 @@ QoS Classは以下の条件によって決定します。
 例えば、ノードのメモリー上限に達すると（コンテナのlimitsの上限ではなく）、KubernetesはPodを強制的に退去(Evict)しリソースを確保します。その際に、QoS Classを参照します。BestEffortから順にPodを停止する動きを取ります。  
 実際に設定されているQoS Classを確認するには稼働しているPodをdescribeで見てみるとわかります。
 
-```
+```text
 $ kubectl describe pod pod-name
 ...
 Volumes:
@@ -189,7 +189,7 @@ deploymentはできていますが、Podが起動してきません。
 この場合、deploymentではなく、replicasetのeventを見ると良いです。
 実際に見るとメモリーのrequestsとlimitsの比率が2までの制限がかかっているが実際には4ほどある、という旨のエラーメッセージを確認できました。
 
-```
+```text
 $ kubectl get deployment
 NAME          READY   UP-TO-DATE   AVAILABLE   AGE
 debug-nginx   0/1     0            0           2m11s

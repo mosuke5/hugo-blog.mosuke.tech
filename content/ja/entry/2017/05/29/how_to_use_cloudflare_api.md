@@ -33,7 +33,7 @@ https://api.cloudflare.com/#zone-purge-all-files
 `identifier`は下記APIで確認できる。  
 このAPIで返ってくるはじめの`id`が`idenitifer`だ。
 
-```
+```text
 curl -X GET "https://api.cloudflare.com/client/v4/zones \
     ?name=<your site> \
     &status=active \
@@ -47,7 +47,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones \
     -H "Content-Type: application/json" 
 ```
 
-```
+```text
 {
   "result": [
     {
@@ -73,7 +73,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones \
 うえで手に入れた`identifier`を使って、ドキュメント通り`purge_cache`を実行するだけだ。  
 このAPIをデプロイの過程に組み込み効率よく運用できている。
 
-```
+```text
 curl -X DELETE "https://api.cloudflare.com/client/v4/zones/<identifier>/purge_cache" \
      -H "X-Auth-Email: <your email>" \
      -H "X-Auth-Key: <your api key>" \

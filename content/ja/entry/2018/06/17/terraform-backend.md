@@ -28,7 +28,7 @@ backend機能を利用することで、stateファイルを実行環境のロ�
 backend機能を有効にする方法はとても簡単です。  
 Terraformの定義ファイルに下記のように設定を追加するだけで利用することができます。以下はAmazon S3に保存するのを例としています。
 
-```
+```text
 terraform {
   backend "s3" {
     bucket = "mosuke5"

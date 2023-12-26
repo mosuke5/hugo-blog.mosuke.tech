@@ -36,7 +36,7 @@ Kubernetesを利用していて、イメージのプル（ダウンロード）�
 コンテナイメージはレイヤー構造で構成されています。  
 簡単な例でいうと`docker pull`したときに表示されるハッシュ値のリストですが、これがレイヤーです。
 
-```
+```text
 % docker pull nginxinc/nginx-unprivileged:1.18
 1.18: Pulling from nginxinc/nginx-unprivileged
 54fec2fa59d0: Already exists
@@ -52,7 +52,7 @@ e575c5ee613a: Download complete
 以下はRailsを例にしていますが、アプリケーションを実行するために必要な依存関係のライブラリのインストール(`RUN bundle install部分`)をアプリケーションのコードを置く前に実施しています。
 アプリケーションの変更の多くはソースコードであるため、変わらない部分を前に持ってくることで、そこまでのイメージレイヤーを使い回すことができるためです。
 
-```
+```text
 # Dockerfile
 FROM ruby:2.6
 RUN gem install bundler -v "1.15.4"
@@ -113,7 +113,7 @@ ImagePullerを理解する上で重要なポイントは下記のとおりです
 #### 環境
 本環境ではWorkerノードが3台ある状態です。
 
-```
+```text
 $ oc get node | grep worker
 ip-10-0-129-134.ap-southeast-1.compute.internal   Ready    worker   75m   v1.16.2
 ip-10-0-158-129.ap-southeast-1.compute.internal   Ready    worker   75m   v1.16.2
@@ -125,7 +125,7 @@ OpenShift Templateを使ってデプロイします。OpenShift以外の環境�
 デプロイ方法は異なりますが、デプロイされるリソースや仕組み自体は変わりません。  
 今回、各ノードに`centos:8`と`nginxinc/nginx-unprivileged:1.18`の2つを事前にプルしておきたいと考えた想定とします。
 
-```
+```text
 $ oc process -f deploy/openshift/serviceaccount.yaml | oc apply -f -
 $ oc process -f deploy/openshift/configmap.yaml \
 -p IMAGES="centos=centos:8;nginx=nginxinc/nginx-unprivileged:1.18" \
@@ -146,7 +146,7 @@ $ oc process -f deploy/openshift/app.yaml | oc apply -f -
 - `pod/puller-94tfv`内では2つのコンテナが起動。
     - centosとnginxのイメージを使った2つのコンテナ
 
-```
+```text
 $ oc get ds,deployment,pod
 NAME                          DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
 daemonset.extensions/puller   3         3         3       3            3           <none>          35m

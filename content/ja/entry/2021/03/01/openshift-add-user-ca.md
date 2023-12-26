@@ -60,7 +60,7 @@ data:
 ではさっそく作成したConfigMapをapplyして、`proxy/cluster`の`spec.trustedCA.name`に`user-ca-bundle`の値を入れて保存します。
 ここまでは、プロキシサーバの設定はしていませんが、ドキュメント操作どうりです。
 
-```
+```text
 $ oc apply -f user-ca.yaml
 configmap/user-ca-bundle created
 
@@ -84,7 +84,7 @@ status: {}
 `openshift-config-managed`というnamespace内に`trusted-ca-bundle`というConfigMapがあります。`proxy/cluster`の設定を行ったあとこのConfigMap内の値が変更されています。中身をみてみると、上で追加した、`user-ca-bundle`の証明書の中身が入っていることがわかります。
 これは、[Cluster Network Operator](https://github.com/openshift/cluster-network-operator)が設定を行っています。該当のソースコードは[このへん](https://github.com/openshift/cluster-network-operator/blob/release-4.6/pkg/controller/proxyconfig/controller.go#L361-L398)でしょうか？
 
-```
+```text
 $ oc get cm trusted-ca-bundle -n openshift-config-managed
 NAME                DATA   AGE
 trusted-ca-bundle   1      31h
@@ -120,7 +120,7 @@ metadata:
 ConfigMapを作成して、中身を確認してみると、ひとつ前の章で追加した証明書がはいっているではないかー。そうです、このなかみは`openshift-config-managed`のnamespace内にあった`trusted-ca-bundle`のConfigMapの中身です。
 Cluster Network Operatorは、`trusted-ca-bundle`の内容を挿入してくれるというわけです。
 
-```
+```text
 $ oc apply -f inject-ca-to-cm.yaml
 configmap/inject-trusted-cm created
 
@@ -143,7 +143,7 @@ data:
 `/etc/pki/ca-trust/source/anchors/openshift-config-user-ca-bundle.crt`をみると追加した証明書が追加されています。
 ノード側に配布されることで、kubeletがイメージを取得する際にも証明書が利用できるということでしょうか。
 
-```
+```text
 $ oc debug node/worker-1
 # chroot /host
 # cat /etc/pki/ca-trust/source/anchors/openshift-config-user-ca-bundle.crt
@@ -156,7 +156,7 @@ $ oc debug node/worker-1
 つぎに、`openshift-apiserver`のnamespaceを見てみます。
 ConfigMapを確認すると`trusted-ca-bundle`と見覚えのある名前のものがあります。
 
-```
+```text
 $ oc get cm -n openshift-apiserver
 NAME                DATA   AGE
 config              1      31h
@@ -168,7 +168,7 @@ trusted-ca-bundle   1      31h
 中身を確認すると案の定ではあります。追加した証明書の中身もありますし、labelには`config.openshift.io/inject-trusted-cabundle: "true"`があります。
 これは、まさしく上で紹介したCluster Network Operatorによる証明書の挿入によって作られたものです。
 
-```
+```text
 apiVersion: v1
 data:
   ca-bundle.crt: |
@@ -188,7 +188,7 @@ metadata:
 apiserverのPodの定義を見てみると、`trusted-ca-bundle`をマウントして内部で利用していることがわかる。
 Pod内からCA証明書を利用する必要のあるコンポーネントについてはこのように読み込んでいることがわかる。
 
-```
+```text
 $ oc get pod -n openshift-apiserver
 NAME                         READY   STATUS    RESTARTS   AGE
 apiserver-58bbdff9b9-2c92j   1/1     Running   0          40m
@@ -216,7 +216,7 @@ BuildConfigを実行すると、ConfigMapがいくつか作成されます。
 （私の環境で実行が4回目なので4になっています。）  
 結果は予想通りですね。
 
-```
+```text
 $ oc start-build test-build
 build.build.openshift.io/test-build-4 started
 
@@ -240,7 +240,7 @@ data:
 また、当然ですが、Build Podは上のConfigMapをマウントします。
 Build Pod内で、コンテナイメージを取得する際に証明書を利用できることがわかります。
 
-```
+```text
 $ oc get pod test-build-4-build -o yaml
 ...
   - configMap:

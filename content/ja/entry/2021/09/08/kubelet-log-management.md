@@ -71,7 +71,7 @@ spec:
 デプロイし、Podがスケジュールされたノード名を確認します。
 `ip-10-0-166-31.ap-southeast-1.compute.internal`でPodが動作していることが確認できました。後ほどノードにアクセスしてログファイルを確認します。
 
-```
+```text
 % kubectl apply -f logtest.yaml
 deployment.apps/debug created
 
@@ -88,7 +88,7 @@ RandomStringRandomStringRandomStringRandomString...
 Podのログは`/var/log/pods/xxx`に配置されています。
 `ls -lh`を何度か打って、状況を確認しましょう。後ほど動画も掲載します。
 
-```
+```text
 以下ノード内
 sh-4.4# cd /var/log/pods/default_debug-5cf4c8b545-jxx65_eef7dd8e-5df1-4861-920c-90fd8788b8f9/debug
 sh-4.4# pwd

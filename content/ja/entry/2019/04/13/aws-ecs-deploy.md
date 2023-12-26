@@ -115,7 +115,7 @@ Fargateのタスクで利用するDockerイメージはプライベートレポ�
 設定自体は[こちらのドキュメント](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/private-auth.html)をみながらやっていたのですが、うまくいかない状況でした。  
 下記は出ていたエラーメッセージです。IAMのポリシーがおかしいというのは分かっていたのですが、はじめなにがおかしいかわかりませんでした。
 
-```
+```text
 Asm fetching secret from the service for arn:aws:secretsmanager:ap-northeast-1:xxxxxxxxxx:secret:gitlab-sample-registry-y54JnU: AccessDeniedException: User: arn:aws:sts::xxxxxxxxxx:assumed-role/ecsTaskExecutionRole/14edf050-3d47-4c90-8e13-cb4a6d0e67a1 is not authorized to perform: secretsmanager:GetSecretValue on resource: arn:aws:secretsmanager:ap-northeast-1:xxxxxxxxxx:secret:gitlab-sample-registry-y54JnU status code: 400, request id: 83b3a590-db73-43d8-a0cb-abf894994173
 ```
 

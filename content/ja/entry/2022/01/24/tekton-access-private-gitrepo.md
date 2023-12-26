@@ -146,7 +146,7 @@ stringData:
 Taskの実行にpipelineというService Accountを使います。
 次のように上で作ったシークレットをServiceAccountと紐付けておきます。
 
-```
+```text
 $ kubectl get sa pipeline -o yaml
 apiVersion: v1
 imagePullSecrets:
@@ -199,7 +199,7 @@ spec:
     name: sleep-task
 ```
 
-```
+```text
 $ kubectl apply -f sleep-task.yaml
 task.tekton.dev/sleep-task created
 

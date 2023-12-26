@@ -74,7 +74,7 @@ DandyDeveloper/charts のHelm ChartによるHA構成のRedisを検証したと�
 利用バージョンは4.12.9です。Githubでいうと[このコミット](https://github.com/DandyDeveloper/charts/tree/9575536d1c16558ea97f635090c605f193cba052)のものです。
 ちなみにKubernetesは1.17で検証しています。
 
-```
+```text
 $ cat Chart.yaml | grep version
 version: 4.12.9
 ```
@@ -97,7 +97,7 @@ exporter:
 ### デプロイ
 対象のディレクトリを確認して、HelmでRedisをデプロイしてみます。
 
-```
+```text
 $ ls -l
 ls -l
 total 152
@@ -135,7 +135,7 @@ To connect to your Redis server:
 
 ![redis-ha-overview](/image/redis-ha-overview.png)
 
-```
+```text
 ## ha-proxyがdeploymentで3台構成でデプロイ
 $ kubectl get deploy
 NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
@@ -175,7 +175,7 @@ Sentinelは、どのRedisがPrimary(Master)かを判断しフェイルオーバ�
 
 実際にha-proxyのconfigをみてみるとわかりやすいかもしれません。
 
-```
+```text
 $ kubectl exec <ha-proxy-pod> -- cat /usr/local/etc/haproxy/haproxy.cfg
 ...
 # Check all redis servers to see if they think they are master
@@ -203,7 +203,7 @@ backend bk_redis_master
 
 実際にデバッグ用のコンテナをデプロイして、コンテナ内からcurlを用いてmetricsにアクセスしてみます。
 
-```
+```text
 $ kubectl run debug --image registry.gitlab.com/mosuke5/debug-container:latest -it /bin/bash
 container # curl http://my-redis-redis-ha-haproxy:9101/metrics | head
 #TYPE haproxy_process_nbthread gauge

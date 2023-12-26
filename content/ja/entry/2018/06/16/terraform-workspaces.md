@@ -21,7 +21,7 @@ Terraformでは、実行結果をstateファイルに保存することで、イ
 まず、workspace機能は以下5つの機能しかなく、とてもシンプルです。
 基本的には、workspaceを作る、切り替える、消す。それが主なところです。
 
-```
+```text
 $ terraform workspace -h
 Usage: terraform workspace
 
@@ -38,7 +38,7 @@ Subcommands:
 はじめは`default`というworkspaceになっています。
 それでは、`development`というworkspaceを作ってみます。
 
-```
+```text
 $ terraform workspace list
 * default
 
@@ -53,7 +53,7 @@ $ terraform workspace list
 `development`のworkspaceが作られ、切り替わっていることがわかります。  
 また、この状態でディレクトリを表示すると`terraform.tfstate.d/`というディレクトリができていることが確認できます。その中に、`development/`があります。tfstateファイルがこの中に保存されるようにな、環境ごとにstateファイルの保実行状態を管理できるようになるというものです。
 
-```
+```text
 $ ls -l
 -rw-r--r-- 1 mosuke5 197609 1056 Jun 16 19:24 main.tf
 drwxr-xr-x 1 mosuke5 197609    0 Jun 16 19:24 terraform.tfstate.d/
@@ -74,7 +74,7 @@ drwxr-xr-x 1 mosuke5 197609 0 Jun 16 19:24 development/
 具体的には`terraform.tfvars.development`と`terraform.tfvars.production`にわけ、実行時に`-var-file`オプションを利用して、適切なファイルを選択するようにしました。
 
 development時の実行方法についてです。
-```
+```text
 $ ls -l ./terraform.tfvars.*
 terraform.tfvars.development
 terraform.tfvars.production
@@ -95,14 +95,14 @@ $ terraform apply -var-file=terraform.tfvars.development
 terraformでは、workspaceの名前を変数的に利用することも可能です。
 そちらの方法については次でご紹介します。
 
-```
+```text
 # terraform.tfvars.development
 project_name = "mosuke5-gillsearch-dev"
 region = "ap-northeast-1"
 ....
 ```
 
-```
+```text
 # terraform.tfvars.production
 project_name = "mosuke5-gillsearch-prod"
 region = "ap-northeast-1"

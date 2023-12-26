@@ -106,7 +106,7 @@ spec:
   retentionDays: 7
 ```
 
-```
+```text
 $ kubectl apply -f imagecache
 imagecache.eci.alibabacloud.com/imagecache-sample created
 
@@ -133,7 +133,7 @@ KubernetesのPodとして起動しているわけではないので、`kubectl g
 イメージキャッシュの処理が完了するまで待ちます。  
 PROGRESSが100%になり、処理が完了したらスナップショットを確認しましょう。
 
-```
+```text
 $ kubectl get imagecache -w
 NAME                AGE    CACHEID                    PHASE      PROGRESS
 imagecache-sample   13m    imc-6we5ooph73mvgk9hnfdp   Ready      100%
@@ -181,7 +181,7 @@ Podを作成するとイメージダウンロード速度の速さがわかり�
 `kubectl describe pod` で表示されるEvents内の `Successfully pulled image "busybox:latest" in 1.544009294s` このログメッセージをみればイメージキャッシュの効果がわかるはずです。
 当然ながら、ECIインスタンスの起動までの時間がかかりますが、イメージダウンロードの時間が圧倒的に速いことがわかります。
 
-```
+```text
 $ kubectl apply -f testpod.yaml
 deployment.apps/say-hello created
 

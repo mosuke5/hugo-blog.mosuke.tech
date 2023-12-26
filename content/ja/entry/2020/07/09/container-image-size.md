@@ -55,7 +55,7 @@ Dockerhubでイメージを見ていてよく遭遇するものをまとめま�
 試しに`2.7.1-buster`, `2.7.1-slim-buster`, `alipne3.12`をそれぞれダウンロードしてみました。
 イメージサイズに大きな違いがあります。Debianといえども軽量版でないものはイメージサイズが大きすぎますね。
 
-```
+```text
 $ docker images | grep ruby
 ruby    2.7.1-alpine3.12       b46ea0bc5984     2 weeks ago     52.3MB
 ruby    2.7.1-slim-buster      8ce8b58afe19     2 weeks ago     149MB
@@ -80,7 +80,7 @@ UBIは現状RHEL7or8がベースであり、minimalバージョンも用意し�
 やっていることはどちらも同じで、`debian:buster-slim`イメージに対して、git, vim, rubyをインストールし、
 以下2つのDockerfileで比較して確認します。
 
-```
+```text
 # Dockerfile-1
 FROM debian:buster-slim
 RUN apt-get update && \
@@ -88,7 +88,7 @@ RUN apt-get update && \
         rm -rf /var/lib/apt/lists/*
 ```
 
-```
+```text
 # Dockerfile-2
 FROM debian:buster-slim
 RUN apt-get update
@@ -101,7 +101,7 @@ RUN rm -rf /var/lib/apt/lists/*
 これは、`apt-get update` によって更新されたファイルを同じレイヤーで削除（`rm -rf /var/lib/apt/lists/*`）したかどうかによって差が出ています。
 もう少し平易にいえば、同じディレクトリの変更はひとつのレイヤーで行ってしまったほうが効率的ということでもあります。
 
-```
+```text
 $ docker build . -f Dockerfile-1 -t my-ruby:v1
 $ docker build . -f Dockerfile-2 -t my-ruby:v2
 
@@ -133,7 +133,7 @@ b5f389081e02        17 minutes ago      /bin/sh -c rm -rf /var/lib/apt/lists/*  
 次のDockerfileを使って検証します。  
 途中までは、上で使ったものと一緒ですが、ダミーですが50MBのファイルを生成し、その権限を変更するを行っています。
 
-```
+```text
 # Dockerfile_chmod
 FROM debian:buster-slim
 RUN apt-get update && \
@@ -150,7 +150,7 @@ RUN chmod -R 750 /usr/local/myapp
 これはまさにコンテナイメージがレイヤー構造となっているがゆえです。
 `be0adfccccf6` では権限が変更となったことで、権限が変更された `/usr/local/myapp` を保持していますし、`951c58f26d5f`では権限が変更される前の`/usr/local/myapp`のデータを持っているということです。
 
-```
+```text
 $ docker build . -f Dockerfile_chmod -t my-ruby:chmod
 $ docker images | grep ruby
 my-ruby    chmod       be0adfccccf6    18 seconds ago      329MB
@@ -197,7 +197,7 @@ be0adfccccf6        About a minute ago   /bin/sh -c chmod -R 750 /usr/local/myap
 以下はRubyでのGemの例ですが、環境毎に必要なライブラリを分けてインストールしておくことができます。
 コンテナとして動かす必要のあるもののみをインストールできるようにしておくといいです。
 
-```
+```text
 gem 'rails', '5.2.4.2'
 
 ## 略

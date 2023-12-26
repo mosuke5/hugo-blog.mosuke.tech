@@ -29,7 +29,7 @@ Worker#1がシャットダウンした、kubeletが停止した、ネットワ�
 ノードをシャットダウンしたり、kubeletを停止するとNodeのStatusは`NotReady`となります。
 現在、Master x3, Worker x3で稼働しているクラスタですが。本ブログではMasterノードは気にしなくていいので、`kubectl get node`実行時にはWorkerのみ取り出すこととします。
 
-```
+```text
 $ kubectl get node --selector='node-role.kubernetes.io/worker'
 NAME                                              STATUS   ROLES    AGE     VERSION
 ip-10-0-163-234.ap-southeast-1.compute.internal   Ready    worker   9m6s    v1.19.0+8d12420
@@ -39,7 +39,7 @@ ip-10-0-184-189.ap-southeast-1.compute.internal   Ready    worker   9m28s   v1.1
 
 また、Nginx DeploymentをReplicas=3で起動しておきます。Podが起動しているノードが重要です。よく確認しておきましょう。
 `ip-10-0-184-189.ap-southeast-1.compute.internal`（以後、`ip-10-0-184-189`と記載）にひとつのPodが、`ip-10-0-163-234.ap-southeast-1.compute.internal`（以後、`ip-10-0-163-234`と記載）にふたつのPodが起動しています。
-```
+```text
 $ kubectl create deployment nginx --image=nginxinc/nginx-unprivileged:1.19 --replicas=3
 deployment.apps/nginx created
 
@@ -57,7 +57,7 @@ nginx   3/3     3            3           73s
 それでは、Podがひとつ起動している`ip-10-0-184-189`のノードをシャットダウンします。
 その後に、NodeのステータスおよびPodの動きに注目です。
 
-```
+```text
 $ ssh ip-10-0-184-189.ap-southeast-1.compute.internal
 node# shutdown -h now
 
@@ -73,7 +73,7 @@ ip-10-0-184-189.ap-southeast-1.compute.internal   NotReady  worker   23m   v1.19
 実は、Pod（nginx-5998485d44-44bsh）は変わらず`Running`のままです。
 試しにこのPodへcurlでアクセスしてみますが当然応答は返しません。
 
-```
+```text
 $ kubectl get pod -o wide
 NAME                     READY   STATUS    RESTARTS   AGE   IP            NODE                                              NOMINATED NODE   READINESS GATES
 nginx-5998485d44-44bsh   1/1     Running   0          10m   10.131.0.7    ip-10-0-184-189.ap-southeast-1.compute.internal   <none>           <none>
@@ -102,7 +102,7 @@ Accept-Ranges: bytes
 5分経過後に変化がおきました。`ip-10-0-184-189`の上で動いていた`nginx-5998485d44-44bsh`が`Terminating`となり、あらたに`nginx-5998485d44-84zkg`が起動しました。  
 ちなみに、この`Terminating`のPod(nginx-5998485d44-44bsh) はこのままになってしまいました。
 
-```
+```text
 $ kubectl get node -o wide
 NAME                     READY   STATUS        RESTARTS   AGE   IP            NODE                                              NOMINATED NODE   READINESS GATES
 nginx-5998485d44-44bsh   1/1     Terminating   0          14m   10.131.0.7    ip-10-0-184-189.ap-southeast-1.compute.internal   <none>      <none>
@@ -118,7 +118,7 @@ nginx-5998485d44-xcxpl   1/1     Running       0          14m   10.128.2.13   ip
 ノードをシャットダウンした後、node_lifecycle_controller(Kubernetesのコントロールプレーンの機能のひとつ)は、KubeletがNode情報を更新しなくなったことを検知して、NodeのStatusを変更します。[node_licecycle_controller.go の monitorNodeHealth()](https://github.com/kubernetes/kubernetes/blob/release-1.19/pkg/controller/nodelifecycle/node_lifecycle_controller.go#L759) あたりが担当しています。
 このときに、ノードに対して同時に `key: node.kubernetes.io/unreachable` のTaintを付与します。
 
-```
+```text
 $ kubectl describe node ip-10-0-184-189.ap-southeast-1.compute.internal
 ...
 Taints:             node.kubernetes.io/unreachable:NoExecute
@@ -129,7 +129,7 @@ Taints:             node.kubernetes.io/unreachable:NoExecute
 Podは作成時に、自動的にあるtolerationsが付与されています。
 Kubernetesでは、[DefaultTolerationSeconds](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#defaulttolerationseconds)というAdmission Controllerがデフォルトで動作しています。Podの作成時に、下に紹介するtolerationsを付与します。
 
-```
+```text
 $ kubectl get pod -o yaml anypod
 ...
   tolerations:

@@ -74,7 +74,7 @@ CI/CDの世界では、基本的に環境ごとのデプロイの方法は同一
 Jenkinsを使う場合、テストを実行するJenkins SlaveのPodのサイドカーとしてMySQLなどのDBを起動することなどができます。
 テストを実行するPod内にMySQLなどのDBを起動することで、アプリケーションからはローカルホストへの接続でDBを利用できるようになります。(下記はJenkinsfileの例)
 
-```
+```text
 podTemplate(
   cloud: 'kubernetes',
   label: 'jenkins-slave-ruby',

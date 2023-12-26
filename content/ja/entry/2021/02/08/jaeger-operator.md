@@ -41,7 +41,7 @@ metadata:
 生成されたものを確認してみます。
 PodはAllInOneということだけあってひとつです。全部入り。
 
-```
+```text
 % oc get pod
 NAME                                         READY   STATUS      RESTARTS   AGE
 jaeger-all-in-one-inmemory-5b8dd55fc-lv4kh   2/2     Running     0          172m
@@ -51,7 +51,7 @@ Serviceは、大きくagent, collector, queryと作成されています。
 AllInOneは検証用に特化しているので、agentも含めています。アプリケーションサイドでclientだけ用意できればすぐに利用できるようになっています。後述するproductionのデプロイメント方式だとagentは作成されないので注目してみていきましょう。
 それぞれがどんな役割を担っているかは、Jaegerのアーキテクチャ図と照らし合わせてみてみましょう。
 
-```
+```text
 % oc get service
 NAME                                            TYPE           CLUSTER-IP       EXTERNAL-IP                            PORT(S)                                  AGE
 jaeger-all-in-one-inmemory-agent                ClusterIP      None             <none>                                 5775/UDP,5778/TCP,6831/UDP,6832/UDP      172m
@@ -65,7 +65,7 @@ Jaegerの全体像
 
 JaegerのUIにアクセスしてみます。OpenShiftではない環境の方はIngressなどからアクセスしてください。jaeger-queryのサービスにアクセスできればUI画面にたどり着けます。
 
-```
+```text
 oc get route -n default
 NAME                         HOST/PORT                                                                         PATH   SERVICES                           PORT    TERMINATION   WILDCARD
 jaeger-all-in-one-inmemory   jaeger-all-in-one-inmemory-default.apps.my-k8s-cluster.com          jaeger-all-in-one-inmemory-query   <all>   reencrypt     None
@@ -115,7 +115,7 @@ spec:
 Podをみてみると、AllInOneのときと違ってコンポーネント毎にPodがあることを確認できます。
 また、上にもすこし書きましたがJager agentは含まれていません。Jaeger agentの準備は別で書きます。
 
-```
+```text
 % oc get pod
 NAME                                                              READY   STATUS    RESTARTS   AGE
 elasticsearch-cdm-jaegerproductionjaegerproduction-1-75d6cwghmg   2/2     Running   0          9m34s
@@ -126,7 +126,7 @@ jaeger-production-query-5dcbb9b79f-kzqkb                          3/3     Runnin
 ```
 
 参考程度ですが、PVもできていると。
-```
+```text
 % oc get pvc
 NAME                                                                 STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 elasticsearch-elasticsearch-cdm-jaegerproductionjaegerproduction-1   Bound    pvc-b2e0b560-3b29-42a3-93a4-59adc6dca872   50Gi       RWO            gp2            15m
@@ -136,7 +136,7 @@ elasticsearch-elasticsearch-cdm-jaegerproductionjaegerproduction-3   Bound    pv
 
 Serviceも同様です。jaeger agentのserviceは同様にありません。
 
-```
+```text
 % oc get service
 NAME                                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                  AGE
 elasticsearch                          ClusterIP   172.30.141.84    <none>        9200/TCP                                 10m
@@ -186,7 +186,7 @@ Nginx podを確認するとコンテナがふたつ起動していることが�
 また、Deploymentも書き換わっています。
 あとは、アプリケーション側で、Jaeger angetに向けてデータを出力すればJaeger本体に記録されるわけです。
 
-```
+```text
 % oc get pod | grep nginx
 nginx-557fc655c-zhprq      2/2     Running   0      28m
 

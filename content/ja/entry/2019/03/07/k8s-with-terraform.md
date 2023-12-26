@@ -69,7 +69,7 @@ Terraformで管理するメリット/デメリットってどんなところに�
 認証に、`servicea ccount`のtokenを利用している場合などは、既定の設定をいれる必要があります。
 ここでは、`~/.kube/config`があるので以下だけのProvider設定で行きます。
 
-```
+```text
 provider "kubernetes" {}
 ```
 
@@ -141,7 +141,7 @@ resource "kubernetes_deployment" "test" {
 Terraform管理のいいところは、なんといっても、この`terraform plan`によるDry-runができることですね。
 やってみます。
 
-```
+```text
 $ terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
@@ -168,7 +168,7 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 
 差分を確認してapplyしてデプロイしていきます。
 
-```
+```text
 $ terraform apply
 (中略)
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
@@ -188,7 +188,7 @@ nginx-sample-deployment-6c668d7f76-t9lfp    1/1       Running   0          49s
 レプリカ数とコンテナ名を変更してみました。  
 変更の差分を確認できるのはやっぱりTerraformで管理する最大のメリットですね。
 
-```
+```text
 $ terraform plan
 kubernetes_deployment.test: Refreshing state... (ID: default/nginx-sample-deployment)
 

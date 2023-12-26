@@ -41,7 +41,7 @@ node_exporterはKubernetesのノードの監視などでよく用いられるソ
 node_exporter自身は、`openshift-monitoring`というnamespace内に`9100`ポートで公開しています。
 また、node_exporterの本体はDaemonSetを用いて各ノードで動作しています。
 
-```
+```text
 $ oc get service node-exporter -n openshift-monitoring
 NAME            TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
 node-exporter   ClusterIP   None         <none>        9100/TCP   6d19h
@@ -58,7 +58,7 @@ node-exporter-mzk8r                            2/2     Running   0          6d19
 
 同一クラスタ内のPodからcurlでメトリクスを取得できることを確認しておきます。
 
-```
+```text
 $ curl https://node-exporter.openshift-monitoring.svc.cluster.local:9100/metrics -k --header "Authorization: Bearer $TOKEN"
 # HELP go_gc_duration_seconds A summary of the GC invocation durations.
 # TYPE go_gc_duration_seconds summary
@@ -115,7 +115,7 @@ Prometheus exporterを利用する場合には保存前処理にPrometheusパタ
 
 まずは、通常通りcurlでAPI実行できるか確認します。ついでにJSONフォーマットも確認しておきます。
 
-```
+```text
 $ curl https://your-api-server-endpoint:6443/api/v1/namespaces/zabbix/pods/debug -k --header "Authorization: Bearer $TOKEN"
 {
   "kind": "Pod",

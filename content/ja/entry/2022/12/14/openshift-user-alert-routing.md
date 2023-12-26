@@ -90,7 +90,7 @@ data:
 設定するとなにが起こるか確認してみましょう。  
 まず、`openshift-user-workload-monitoring` プロジェクト内に新しくAlertmanagerのインスタンスが起動します。
 
-```
+```text
 % oc get pod -n openshift-user-workload-monitoring | grep alert
 alertmanager-user-workload-0           6/6     Running   0          8d
 alertmanager-user-workload-1           6/6     Running   0          8d
@@ -160,7 +160,7 @@ SlackへのWebhook URLにはシークレット情報が含まれるので、直�
 
 というわけで、Slack URLを格納したシークレットを作成します。
 
-```
+```text
 % oc create secret generic my-slack-secret --from-literal=url=https://hooks.slack.com/services/xxxxxxxxx
 ```
 

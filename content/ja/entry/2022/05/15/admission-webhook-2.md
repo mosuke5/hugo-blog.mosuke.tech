@@ -78,7 +78,7 @@ webhooks:
 ### TLS証明書の作成
 今回は、opensslを使って自己証明書を作って対応することにします。
 
-```
+```text
 ## webhook serverの秘密鍵作成
 $ openssl genrsa 2048 > server.key
 Generating RSA private key, 2048 bit long modulus
@@ -129,7 +129,7 @@ x509の証明書の中身を確認する方法はぱっとコマンドを打て�
 Kubernetes環境の運用でも、各種サービスの証明書を確認することも多いでしょう。
 ここでのポイントは `X509v3 Subject Alternative Name` がきちんと付与されているかです。
 
-```
+```text
 ## 証明書の中身確認
 $ openssl x509 -text -noout -in server.crt
 Certificate:
@@ -170,7 +170,7 @@ Certificate:
 Goの古いバージョンでは、`GODEBUG=x509ignoreCN=0` を与えることで回避できましたが、Go1.17移行を使っているKubernetesのバージョンでは正式にSANを使った証明書を用意しましょう。
 Go 1.17で `The temporary GODEBUG=x509ignoreCN=0 flag has been removed.` と無視するオプションが削除されています（{{< external_link url="https://go.dev/doc/go1.17#crypto/x509" title="リリースノート" >}}）。
 
-```
+```text
 Error from server (InternalError): Internal error occurred: failed calling webhook "sample-validating-webhook.hoge.fuga.local": failed to call webhook: Post "https://mywebhook.mynamespace.svc:443/runasuser-validation?timeout=5s": x509: certificate relies on legacy Common Name field, use SANs instead
 ```
 
@@ -178,7 +178,7 @@ Error from server (InternalError): Internal error occurred: failed calling webho
 作成した証明書を使って動作するかローカルで確認しておきます。
 起動オプションに証明書と鍵を指定できるようにしました。
 
-```
+```text
 $ go run server.go -server-cert=./tmp/server.crt -server-key=./tmp/server.key -body-dump
 ...
 ```
@@ -187,7 +187,7 @@ $ go run server.go -server-cert=./tmp/server.crt -server-key=./tmp/server.key -b
 `testdata`ディレクトリにサンプルのJSONリクエストを用意しておきました。
 レスポンスの形式が、公式ドキュメントであることをしっかり確認しておきましょう。
 
-```
+```text
 $ curl -s -k -H 'Content-Type: application/json' -XPOST https://localhost:8443/runasuser-validation -d @testdata/noRunAsUserRequestTemplate.json | jq .
 {
   "response": {
@@ -206,7 +206,7 @@ $ curl -s -k -H 'Content-Type: application/json' -XPOST https://localhost:8443/r
 作成した証明書と鍵は、Kubernetes上で動作するPodも読み込む必要があります。
 証明書等の機密情報はSecretに格納してマウントするのが常套手段ですね。
 
-```
+```text
 $ kubectl create ns mynamespace
 $ kubectl create secret tls mywebhook-secret --key server.key --cert server.crt -n mynamespace
 secret/mywebhook-secret created
@@ -261,7 +261,7 @@ spec:
           secretName: mywebhook-secret
 ```
 
-```
+```text
 $ kubectl apply -f manifests/deploy.yaml -n mynamespace
 $ kubectl get pod,service -n mynamespace
 NAME                             READY   STATUS    RESTARTS   AGE
@@ -276,7 +276,7 @@ service/mywebhook   ClusterIP   172.30.26.80   <none>        443/TCP   2m6s
 Webhook Serverとしてはデプロイできましたので、AdmissionWebhookの設定を行って実際に動作するようにします。
 今回は自己証明書をつかっているので、`caBundle`の記載を忘れずに行いましょう。
 
-```
+```text
 $ sed  "s/BASE64_ENCODED_PEM_FILE/$(base64 server.crt)/g" manifests/validatingwebhookconfiguration.yaml.template | kubectl apply -f -
 validatingwebhookconfiguration.admissionregistration.k8s.io/sample-validating-webhook created
 ```
@@ -285,7 +285,7 @@ validatingwebhookconfiguration.admissionregistration.k8s.io/sample-validating-we
 期待通り動くのでしょうか？
 `user-foo`と`admin-bar`というnamespaceに対してPodを作成して挙動を確認してみます。
 
-```
+```text
 $ kubectl create ns user-foo
 $ kubectl create ns admin-bar
 

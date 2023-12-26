@@ -91,7 +91,7 @@ manifestファイルをそのまま利用するのであればAnsibleを使う�
 AnsibleではJinja2を使ったテンプレートの機能があるのでこれを活用しない手はありません。
 例えば、Nginxのデプロイメントのレプリカ数を変数にしてmanifestファイルをテンプレート化して使ってみます。
 
-```
+```text
 - name: Create nginx deployment
   k8s:
     namespace: gillsearch-development
@@ -145,7 +145,7 @@ Ansibleにはシークレット情報を暗号化できる<a href="https://docs.
 例えば、credential情報をvar_fileとして記述しansible-vaultで暗号化して保存しておくとします。
 そうするとKubernetesのSecretを作る際に下記のように展開して作成することも可能です。
 
-```
+```text
 apiVersion: v1
 data:
   password: {{ password | b64encode }}

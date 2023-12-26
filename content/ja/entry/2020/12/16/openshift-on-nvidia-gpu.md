@@ -78,7 +78,7 @@ Masterノードにはラベルは付与されません。
 
 実際にノード情報を確認してみます。`feature.node.kubernetes.io/xxxxx` がnfdによって付与されたラベルです。
 
-```
+```text
 $ oc get node xxxxxxx -o yaml
 ...
   labels:

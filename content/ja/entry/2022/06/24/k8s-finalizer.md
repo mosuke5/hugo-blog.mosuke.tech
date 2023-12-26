@@ -21,7 +21,7 @@ Kubernetesを使っている方であれば、リソースを削除したのにT
 ## NamespaceがTerminatingのまま止まってしまう
 正確には、この事象はNamespaceだけに起こるわけではないですが（後述します）、よくあるケースとしてNamespaceを削除したが、Statusが `Terminating` のまま止まってしまうことです。
 
-```
+```text
 % kubectl get ns finalizer-test
 NAME             STATUS        AGE
 finalizer-test   Terminating   67m
@@ -30,7 +30,7 @@ finalizer-test   Terminating   67m
 ## finalizer
 デフォルトで、Namespaceを作成したときにKubernetesは、`.spec.finalizers`に`kubernetes`を書き込みます。（{{< external_link url="https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/namespaces.md#finalizers" title="関連リンク">}}）
 
-```
+```text
 $ kubectl get ns finalizer-test -o yaml
 apiVersion: v1
 kind: Namespace
@@ -47,7 +47,7 @@ Kubernetesは、対象のNamespace内に `metadata.finalizers` フィールド�
 
 Namespaceの `status` を確認すると、なにを待っているか確認できるはずです。
 
-```
+```text
 $ kubectl get ns finalizer-test -o yaml
 ...
 status:
@@ -112,7 +112,7 @@ NamespaceがTerminatingのまま消せなくなってしまうケースについ
 では、かんたんに手元で実験してみましょう。  
 まず、`finalizer-test`というnamespaceを作成し、`.spec.finalizers`を確認します。
 
-```
+```text
 $ kubectl create ns finalizer-test
 namespace/finalizer-test created
 
@@ -124,7 +124,7 @@ $ kubectl get ns finalizer-test -o jsonpath="{.spec}"
 `hoge`というServiceAccountを作成し、`.metadata.finalizers`に`mosuke5/finalizer`を書き込みます。
 これで、`hoge` ServiceAccountは、`mosuke5/finalizer`が処理する対象のものとなりました。存在しないんですけど。
 
-```
+```text
 $ kubectk create sa hoge
 serviceaccount/hoge created
 
@@ -138,7 +138,7 @@ $ kubectl get sa hoge -o yaml -o jsonpath="{.metadata.finalizers}"
 作ったServiceAccountを消してみましょう。
 結果は消えないです。ただし、Kubernetesは消そうとして`deletionTimestamp`は書き込みました。
 
-```
+```text
 $ kubectl delete sa hoge --force
 warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
 serviceaccount "hoge" force deleted
@@ -155,7 +155,7 @@ $ kubectl get sa hoge -o yaml | grep deletion
 ServiceAccountが消えないので、Namespaceごと消してやろうとします。
 こちらも結果は消えないです。Namespace内の `.status.conditions`を確認すると、`Some content in the namespace has finalizers remaining: mosuke5/finalizer in 1 resource instances`と理由がわかります。
 
-```
+```text
 $ kubectl delete ns finalizer-test --force
 warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
 namespace "finalizer-test" force deleted
@@ -208,7 +208,7 @@ kubectl get ns finalizer-test -o jsonpath="{.status.conditions}" | jq .
 最後に、手動でServiceAccountの `.metadata.finalizers`を消してあげましょう。
 Namespaceも一緒に消えたはずです。
 
-```
+```text
 $ kubectl patch sa hoge -p '{"metadata":{"finalizers": []}}' --type='merge'
 serviceaccount/hoge patched
 

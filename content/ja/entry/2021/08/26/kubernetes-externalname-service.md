@@ -70,7 +70,7 @@ spec:
 
 次のように設定されていることを確認します。
 
-```
+```text
 $ kubectl apply -f external-service.yaml
 service/my-blog created
 
@@ -106,7 +106,7 @@ spec:
   dnsPolicy: ClusterFirst
 ```
 
-```
+```text
 $ kubectl apply -f debug-pod.yaml
 $ kubectl get pod
 NAME    READY   STATUS    RESTARTS   AGE
@@ -123,7 +123,7 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 
 別のターミナルからデバッグコンテナに接続し、digなどを実行します。
 
-```
+```text
 $ kubectl exec -it debug -- bash
 [root@debug /]# 
 [root@debug /]# dig +search my-blog
@@ -157,7 +157,7 @@ blog.mosuke.tech.	5	IN	A	104.21.57.182
 `dig +search my-blog` を実行したときのtcpdumpの出力が以下です。  
 'my-blog.test.svc.cluster.local' へ名前解決しに行き、結果として `CNAME blog.mosuke.tech., A 172.67.165.72, A 104.21.57.182` が返ってきていることがわかります。予想通りですね。
 
-```
+```text
 ## tcpdumpの出力
 08:24:54.761076 IP debug.43126 > dns-default.openshift-dns.svc.cluster.local.domain: 6985+ [1au] A? my-blog.test.svc.cluster.local. (71)
 08:24:54.798904 IP dns-default.openshift-dns.svc.cluster.local.domain > debug.43126: 6985*- 3/0/1 CNAME blog.mosuke.tech., A 172.67.165.72, A 104.21.57.182 (195)
@@ -165,7 +165,7 @@ blog.mosuke.tech.	5	IN	A	104.21.57.182
 
 ちなみに`blog.mosuke.tech`を直接名前解決したとき（`dig +search blog.mosuke.tech`）のtcpdumpの出力結果です。なんどもリクエストしていることがわかります。
 
-```
+```text
 08:25:51.192858 IP debug.38890 > dns-default.openshift-dns.svc.cluster.local.domain: 46897+ [1au] A? blog.mosuke.tech.test.svc.cluster.local. (80)
 08:25:51.193849 IP dns-default.openshift-dns.svc.cluster.local.domain > debug.38890: 46897 NXDomain*- 0/1/1 (173)
 08:25:51.194182 IP debug.52319 > dns-default.openshift-dns.svc.cluster.local.domain: 21491+ [1au] A? blog.mosuke.tech.svc.cluster.local. (75)
@@ -183,7 +183,7 @@ ExternalName Serviceを使うときには一部の用途で注意が必要です
 `$ curl my-blog` したときのホスト名に注目しましょう。
 `Host: my-blog` となっており、`blog.mosuke.tech` がホスト名ではありません。それにより、TLSの暗号化やプロキシに問題がおこる可能性もあります。十分に仕組みを理解して使いましょう。
 
-```
+```text
 $ curl my-blog -v
 *   Trying 172.67.165.72:80...
 * Connected to my-blog (172.67.165.72) port 80 (#0)

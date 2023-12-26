@@ -62,7 +62,7 @@ Dockerは、Docker Hubへのイメージのダウンロード（Pull）に対し
 Dockerを利用している多くの方は問題ないかと思いますが、`docker`コマンドを使ってDocker Hubへ認証を素振りしておきましょう。
 今までは、自分のレポジトリにコンテナイメージをアップロードしたり、プライベートレジストリを利用するときくらいしか認証しませんでしたが、Pullのみでも認証する必要がでてきます。
 
-```
+```text
 % docker login
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
 Username: mosuke5
@@ -82,7 +82,7 @@ Kubernetesを利用した場合の、Docker Hubへの認証方法もきちんと
 上で `docker login` を行いましたが、こちらに成功すると `~/.docker/config.json` にトークンが記述されます。（他のレジストリにログインしたことあれば、他のレジストリへのトークンも保存されているでしょう。）
 このトークンをKubernetesのSecretとして保存する必要があります。
 
-```
+```text
 % cat ~/.docker/config.json
 {
     "auths": {
@@ -95,7 +95,7 @@ Kubernetesを利用した場合の、Docker Hubへの認証方法もきちんと
 
 下記のように登録し、状態を確認しておきます。
 
-```
+```text
 % kubectl create secret generic regcred \
     --from-file=.dockerconfigjson=/Users/mosuke5/.docker/config.json \
     --type=kubernetes.io/dockerconfigjson

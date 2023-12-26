@@ -22,7 +22,7 @@ cgroupとは、
 
 実際にDockerを動かしてみると、下記のように`open /sys/fs/cgroup/docker/cpuset.cpus.effective: no such file or directory`とエラーが発生して起動できません。
 
-```
+```text
 $ sudo docker run nginx --image=nginx
 docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused "process_linux.go:297: applying cgroup configuration for process caused \"open /sys/fs/cgroup/docker/cpuset.cpus.effective: no such file or directory\"": unknown.
 ERRO[0000] error waiting for container: context canceled
@@ -40,7 +40,7 @@ ERRO[0000] error waiting for container: context canceled
 linkがない。いろいろない。
 
 ## How to use
-```
+```text
 $ podman run --name mynginx -p 8888:80 -d nginx
 $ podman ps -a
 CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS            PORTS                   NAMES

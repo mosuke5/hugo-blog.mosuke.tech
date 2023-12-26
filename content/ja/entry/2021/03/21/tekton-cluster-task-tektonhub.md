@@ -33,7 +33,7 @@ ClusterTaskとTaskは、マニフェストの書き方自体は一緒なので�
 カタログではTaskとして登録されています。
 しかし、ClusterTaskに書き換えてすぐに利用できるということです。
 
-```
+```text
 $ git clone https://github.com/tektoncd/catalog
 $ cd catalog/task/git-clone/0.2/
 $ ls -l 
@@ -60,7 +60,7 @@ spec:
 
 `kind: Task`から`kind: ClusterTask`に切り替えて、クラスタに登録します。
 
-```
+```text
 $ vim git-clone.yaml
 apiVersion: tekton.dev/v1beta1
 #kind: Task

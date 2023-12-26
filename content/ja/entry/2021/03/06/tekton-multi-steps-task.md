@@ -75,7 +75,7 @@ spec:
     name: multi-steps-task
 ```
 
-```
+```text
 $ kubectl apply -f multi-steps-task.yaml
 task.tekton.dev/multi-steps-task created
 
@@ -97,7 +97,7 @@ multi-steps-task-run-pod-92s4v   0/3     Completed         0          15s
 ## Stepの実行順序の確認
 どのように順番制御をしているのか気になったので確認してみます。TaskRunで作成されたTask Podの中身をのぞいてみます。そうすると、Pod内のコンテナが、前のコンテナの修了を待っていることがわかります。`-wait_file /tekton/tools/0` が`/tekton/tools/0`が作成されるのをまち、`-post_file /tekton/tools/1`はStepの処理終了後に`/tekton/tools/1`のファイルを作成するということを意味します。
 
-```
+```text
 ## 2番目のStepのコンテナは、/tekton/tools/0ができるまでまっている（前のStepが終わるのを待つ）
 $ kubectl get pod multi-steps-task-run-pod-92s4v -o yaml | less
 ...
@@ -126,7 +126,7 @@ $ kubectl get pod multi-steps-task-run-pod-92s4v -o yaml | less
 この `/tekton/tools/0`の実態を確認するべく、Taskを以下のように変更しました。
 3番目のStepをSleepに変更して、Task実行中とすることでその間にコンテナ内部を確認してみます。
 
-```
+```text
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -150,7 +150,7 @@ spec:
 では、もう一度multi-steps-task-runを実行します。同じ名前のTaskRunは作れないため、TaskRunの名前を変更してapplyするか、tknコマンド・ダッシュボードから実行してください。
 実行中のTask Podに対して`kubectl exec`でコンテナ内を確認します。`/tekton/tools/0`, `tekton/tools/1`という空ファイルが作成されています。
 
-```
+```text
 $ kubectl get pod
 NAME                                           READY   STATUS      RESTARTS   AGE
 multi-steps-task-run-1615020642552-pod-rldm6   1/3     Running     0          10s
@@ -167,7 +167,7 @@ total 39452
 ちなみに、TaskないのStepはEmptyDirを用いて`/tekton/tools`を共有しています。
 これによってStepの終了を別のコンテナに通知している形となります。
 
-```
+```text
 $ kubectl get pod multi-steps-task-run-1615020642552-pod-rldm6 -o yaml | less
 spec:
   containers:

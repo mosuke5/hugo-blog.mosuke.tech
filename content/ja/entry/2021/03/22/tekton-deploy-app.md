@@ -23,7 +23,7 @@ archive = ["2021"]
 前回は、`git-clone`と`buildah`のTaskをカタログからインストールしました。
 今回はさらに、`kubernetes-actions`というTaskをインストールします（Tekton Hub: [kubernetes-actions](https://hub.tekton.dev/tekton/task/kubernetes-actions)）。目的は、`kubectl apply -f manifests`を実行するためです。
 
-```
+```text
 $ kubectl apply -f catalog/task/kubernetes-actions/0.1/kubernetes-actions.yaml
 task.tekton.dev/kubernetes-actions created
 
@@ -102,7 +102,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-```
+```text
 $ kubectl apply -f my-tekton-pipeline-sa.yaml
 serviceaccount/my-tekton-pipeline configured
 role.rbac.authorization.k8s.io/my-tekton-pipeline-role created
@@ -111,7 +111,7 @@ rolebinding.rbac.authorization.k8s.io/my-tekton-pipeline-rolebinding created
 
 この権限付与がないと以下のようなエラーになります。
 
-```
+```text
 Error from server (Forbidden): error when retrieving current configuration of:
 Resource: "apps/v1, Resource=deployments", GroupVersionKind: "apps/v1, Kind=Deployment"
 Name: "myapp", Namespace: "goldstine-lab"
@@ -241,7 +241,7 @@ spec:
       emptyDir: {}
 ```
 
-```
+```text
 $ kubectl apply -f build-deploy-pipeline.yaml
 pipeline.tekton.dev/build-deploy-pipeline created
 

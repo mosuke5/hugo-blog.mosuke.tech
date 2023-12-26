@@ -60,7 +60,7 @@ gitlabは、Gitレポジトリでありながらプライベートのコンテ�
 認証するには、コマンドのオプションでレジストリのユーザIDとパスワードを指定するか、認証のファイルを指定するなどで可能です。
 
 以下は、`--dest-creds` オプションでコマンドにIDとパスワードを引数にした場合です。
-```
+```text
 $ skopeo copy --dest-creds="mosuke5:xxxxxx" docker://centos:8 docker://registry.gitlab.com/mosuke5/skopeo-test:v1
 ```
 
@@ -70,7 +70,7 @@ dockerを利用している人は`docker login`
 フォーマットについてあまり情報がなかったのですが、`user:password`をbase64でエンコードした文字列が必要です。
 以下はサンプルです。
 
-```
+```text
 $ echo -n "user:password" | base64
 dXNlcjpwYXNzd29yZA==
 
@@ -88,7 +88,7 @@ $ vim gitlab-auth.json
 認証方法がわかったところで実際にコピーをしてみます。
 以下は、`--dest-authfile`で上で作成した`gitlab-auth.json`を指定しています。
 
-```
+```text
 $ skopeo copy --dest-authfile="./gitlab-auth.json" docker://centos:8 docker://registry.gitlab.com/mosuke5/skopeo-test:v1
 Getting image source signatures
 Copying blob 8a29a15cefae done  
@@ -104,7 +104,7 @@ gitlab側を確認すると期待通りイメージがアップロードされ�
 skopeoでは、１つ１つのイメージをコピーするだけでなく、すべてのタグをまとめて他のレジストリに同期することも可能です。
 centosの場合、39のタグがあり、時間かかりますが以下のように同期できます。
 
-```
+```text
 $ skopeo sync --dest-authfile="./gitlab-auth.json" --src docker --dest docker docker.io/centos registry.gitlab.com/mosuke5/skopeo-test
 INFO[0000] Tag presence check                            imagename=docker.io/centos tagged=false
 INFO[0000] Getting tags                                  image=docker.io/library/centos

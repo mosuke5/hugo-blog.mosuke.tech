@@ -48,7 +48,7 @@ Sock Shopではデータベースを持つサービスが4つあります。
 MySQLを利用しており、非常にわかりやすいデータ構造となっています。
 `sock`テーブルでは靴下の情報を`tag`テーブルでは靴下のタグ情報を管理しており、それらは1対nの関係性なので、`sock_tag`テーブルで中間テーブルとして機能させています。
 
-```
+```text
 mysql> desc sock;
 +-------------+--------------+------+-----+---------+-------+
 | Field       | Type         | Null | Key | Default | Extra |
@@ -100,7 +100,7 @@ mysql> select * from tag;
 続いて、ユーザを管理するサービスです。
 mongodbのcollectionは3つ存在します。
 
-```
+```text
 > show collections;
 addresses
 cards
@@ -141,7 +141,7 @@ customers
 ### cart
 次は、ショッピングカートです。
 
-```
+```text
 > show collections
 cart
 item
@@ -172,7 +172,7 @@ item
 orderサービスの中では、注文した商品のIDのみ保有し、そのデータは持っていないことは少し頭の片隅に覚えておいてください。
 後ほど、サービスをまたいだデータの取得に関して考えていきます。
 
-```
+```text
 > show collections;
 customerOrder
 
@@ -283,7 +283,7 @@ customerOrder
 認証はクッキーを使います。  
 試しに、ログインセッションを持たないまま、オーダーAPIを実行してみるとログインしてくれとエラーが返ってきます。
 
-```
+```text
 $ curl -XGET $FRONTEND_ADDRESS/orders
 {"message":"User not logged in.","error":{}}
 ```
@@ -291,7 +291,7 @@ $ curl -XGET $FRONTEND_ADDRESS/orders
 ログインには"username:password"をbase64でエンコードしたものが必要です([該当コード](https://github.com/microservices-demo/front-end/blob/5d9a4272fec3983250364917d8ea7a210cdbf58c/public/js/client.js#L23))。  
 コマンドラインで生成するか、こちらのような[Base64エンコードをしてくれるWebサービス](https://uic.jp/base64encode/)で生成しましょう。
 
-```
+```text
 $ echo -n "user:password" | base64
 dXNlcjpwYXNzd29yZA==
 
@@ -307,7 +307,7 @@ xxxxxxx
 
 ログインができているか確認します。オーダー情報が返ってきていれば成功です。
 
-```
+```text
 $ curl -XGET -b cookie.txt $FRONTEND_ADDRESS/orders
 [
     {
@@ -366,7 +366,7 @@ APIは[こちらを参考](https://microservices-demo.github.io/api/index.html)�
 マイクロサービスの回復性について考えてみます。  
 cartsサービスを落としてみて、どんな影響があるか確認してみます。
 
-```
+```text
 $ kubectl scale --replicas=0 deployment/carts
 ```
 
@@ -393,7 +393,7 @@ cartsサービスを落とした状態で、ブラウザのデバッグツール
 
 ためしにフロントエンドサービスをスケールさせてみてみましょう。
 
-```
+```text
 $ kubectl scale --replicas=3 deployment/front-end 
 ```
 

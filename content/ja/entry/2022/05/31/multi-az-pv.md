@@ -39,7 +39,7 @@ Kubernetesにジョインしているノードに、リージョンやゾーン�
 
 `failure-domain.beta.kubernetes.io/region` と `failure-domain.beta.kubernetes.io/zone`は、Kubernetes 1.17以降でDeprecatedになっているので注意です({{< external_link title="公式ドキュメント" url="https://kubernetes.io/docs/reference/labels-annotations-taints/#failure-domainbetakubernetesioregion" >}})。
 
-```
+```text
 $ kubectl get node worker1 -o yaml | grep -e "zone" -e "region"
     failure-domain.beta.kubernetes.io/region: ap-northeast-1
     failure-domain.beta.kubernetes.io/zone: ap-northeast-1a

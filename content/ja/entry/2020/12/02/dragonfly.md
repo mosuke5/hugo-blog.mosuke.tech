@@ -47,7 +47,7 @@ Kubernetes環境だと、dfclientはDaemonSetとして各ノードに配置さ�
 というわけで、さっそくKubernetesクラスタにインストールして使ってみたいと思います。  
 KubernetesクラスタへのインストールはHelmが利用できます。ほとんどドキュメントがなくて困りますが[こちらのレポジトリ](https://github.com/dragonflyoss/helm-chart)からHelm Chartをダウンロードできます。
 
-```
+```text
 $ git clone https://github.com/dragonflyoss/helm-chart
 $ cd helm-chart
 $ helm install dragonfly .
@@ -58,7 +58,7 @@ dragonfly	dragonfly	1       	2020-11-30 23:15:29.031824 +0900 JST	deployed	drago
 
 Kubernetesクラスタ内で以下のように起動していれば問題ないです。
 
-```
+```text
 $ kubectl get pod,daemonset,deployment,service
 NAME                                      READY   STATUS    RESTARTS   AGE
 pod/dragonfly-dfclient-2rpc4              1/1     Running   0          15h
@@ -82,7 +82,7 @@ service/dragonfly-supernode   ClusterIP   172.30.112.149   <none>        8002/TC
 HostNetworkが許可されたServiceAccountを用いて起動する必要があります。  
 また、Kubernetesの各ノードでKubeletがイメージをぷるするときに `localhost:65001` 経由でイメージを取得できるようにする必要があります。
 
-```
+```text
 $ kubectl get daemonset dragonfly-dfclient -o yaml
 ...
     spec:
@@ -103,7 +103,7 @@ $ kubectl get daemonset dragonfly-dfclient -o yaml
           protocol: TCP
 ```
 
-```
+```text
 worker $ cat /etc/containers/registries.conf
 unqualified-search-registries = ["registry.access.redhat.com", "docker.io"]
 
@@ -120,7 +120,7 @@ unqualified-search-registries = ["registry.access.redhat.com", "docker.io"]
 KubernetesのランタイムにDockerを利用している人はDockerで代用してください。
 スピードが上がっていることはわかりましたが、おそらく規模が大きくならないと恩恵は受けなさそう。
 
-```
+```text
 worker # time crictl pull ruby@sha256:ba90dbc14a0407
 Image is up to date for docker.io/library/ruby@sha256:ba90dbc14a04073f6aa75951ce9c6bcf7715372d7b2e1d69e48593496951fd14
 
@@ -144,7 +144,7 @@ sys	0m5.823s
 Rubyのイメージのレイヤーごとにキャッシュされていることが確認できました。
 おそらくコンテナイメージの場合はレイヤーごとに分散配信できるように実装されています。
 
-```
+```text
 df-supernode $ ls -l /home/admin/supernode/repo/download
 total 0
 drwxr-xr-x    2 root     root           231 Dec  1 08:54 1c1

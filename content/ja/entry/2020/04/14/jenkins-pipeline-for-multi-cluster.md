@@ -44,7 +44,7 @@ ServiceAccountを削除すれば認証のTokenも削除できるので比較的�
 ServiceAccountは作成されると、Secret(Tokenなど)が自動的に作成されます。（生成されるトークンに関する<a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.3/html/authentication/understanding-and-creating-service-accounts" target="_blank">公式ドキュメント</a>）
 そのTokenを使って認証することができます。
 
-```
+```text
 $ oc create serviceaccount jenkins-deploy
 serviceaccount/jenkins-deploy created
 
@@ -59,7 +59,7 @@ jenkins-deploy-token-c5fhl       kubernetes.io/service-account-token   4      3m
 自動で作成されたSecretの中には、Tokenの他に証明書、Namespaceの情報が保存されています。  
 次のステップでこのTokenと証明書を利用していきます。
 
-```
+```text
 $ oc describe secrets jenkins-deploy-token-bvf8p
 Name:         jenkins-deploy-token-bvf8p
 Namespace:    mosuke5
@@ -83,7 +83,7 @@ token:           xxxxxxxxxxxxxxxxxxxxxx
 この権限設定は十分に注意しましょう。強い権限を与えすぎると、Jenkins Pipelineから必要以上の操作ができてしまいます。  
 下はeditのcluster roleを与えますが、プロジェクトに合わせて適切なロールを作成して割り当てるようにしてください。
 
-```
+```text
 $ oc policy add-role-to-user edit system:serviceaccount:production:jenkins-deploy -n production
 clusterrole.rbac.authorization.k8s.io/edit added: "system:serviceaccount:mosuke5:jenkins-deploy"
 ```
@@ -110,7 +110,7 @@ TokenはJenkinsのCredential Providerに保存して利用できます。
 `openshift.withCluster()`で利用するクラスタを切り替えることができます。
 `openshift.withCluster('your-cluster')`の `'your-cluster'`には、一つ前のJenkins側の設定で記述した`Cluster Name`がはいります。
 
-```
+```text
 pipeline {
   agent {
     kubernetes {
@@ -155,7 +155,7 @@ pipeline {
 イメージレジストリへの認証もServiceAccountを用いて行うことが実はできるのでお伝えします。
 上で、ServiceAccountを作成後にSecretが自動生成されると書きましたが、その中に`jenkins-deploy-dockercfg-pjwrj`という名前のSecretがありました。このSecretにはイメージレジストリの認証に利用できる情報が入っています。
 
-```
+```text
 $ oc get secret
 NAME                             TYPE                                  DATA   AGE
 ...
@@ -166,7 +166,7 @@ jenkins-deploy-token-c5fhl       kubernetes.io/service-account-token   4      3m
 
 中身はこんな具合です。
 
-```
+```text
 {
   "172.30.203.233:5000": {
     "username": "serviceaccount",
@@ -182,7 +182,7 @@ jenkins-deploy-token-c5fhl       kubernetes.io/service-account-token   4      3m
 `~/.docker/config.json`を下記のように書いてログインができることを確認できます。
 下はDockerでのログインをしましたが、skopeoや`oc image mirror`コマンドで同様に認証が利用できます。
 
-```
+```text
 $ cat ~/.docker/config.json
 {
 	"auths": {

@@ -33,7 +33,7 @@ We will see how it works in the case of Deployment and the case of StatefulSet.
 When I shutdown a node or stop kubelet, the status of Node becomes `NotReady`.
 We currently have a cluster running with 3 Master nodes and 3 Worker nodes. In this blog, we don't need to care about the Master node, so we will only retrieve the Worker when we run `kubectl get node`.
 
-```
+```text
 $ kubectl get node --selector='node-role.kubernetes.io/worker'
 NAME                                              STATUS   ROLES    AGE     VERSION
 ip-10-0-163-234.ap-southeast-1.compute.internal   Ready    worker   9m6s    v1.19.0+8d12420
@@ -45,7 +45,7 @@ Also, start Nginx Deployment with Replicas=3. The node where the pod is running 
 One Pod on `ip-10-0-184-189.ap-southeast-1.compute.internal` (henceforth `ip-10-0-184-189`).  
 The other two pod are running on `ip-10-0-163-234.ap-southeast-1.compute.internal` (henceforth `ip-10-0-163-234`).
 
-```
+```text
 $ kubectl create deployment nginx --image=nginxinc/nginx-unprivileged:1.19 --replicas=3
 deployment.apps/nginx created
 
@@ -62,7 +62,7 @@ nginx   3/3     3            3           73s
 
 Now we will shut down the node ip-10-0-184-189, which has one Pod running. After that, note the status of the Node and the movement of the Pod.
 
-```
+```text
 $ ssh ip-10-0-184-189.ap-southeast-1.compute.internal
 node# shutdown -h now
 
@@ -77,7 +77,7 @@ ip-10-0-184-189.ap-southeast-1.compute.internal   NotReady  worker   23m   v1.19
 Let's check the state of the Pod at this time.  
 The node is shut down, but the pod (nginx-5998485d44-44bsh) is still running. I try to access this pod with curl, but of course it does not return any response.
 
-```
+```text
 $ kubectl get pod -o wide
 NAME                     READY   STATUS    RESTARTS   AGE   IP            NODE                                              NOMINATED NODE   READINESS GATES
 nginx-5998485d44-44bsh   1/1     Running   0          10m   10.131.0.7    ip-10-0-184-189.ap-southeast-1.compute.internal   <none>           <none>
@@ -107,7 +107,7 @@ I'll give a detailed explanation later, but let's move on.
 After 5 minutes, a change occurred. The `nginx-5998485d44-44bsh` running on shutdown node became `Terminating` and a new `nginx-5998485d44-84zkg` was created on other node.  
 `nginx-5998485d44-44bsh` continues to remain `Terminating` status.
 
-```
+```text
 $ kubectl get node -o wide
 NAME                     READY   STATUS        RESTARTS   AGE   IP            NODE                                              NOMINATED NODE   READINESS GATES
 nginx-5998485d44-44bsh   1/1     Terminating   0          14m   10.131.0.7    ip-10-0-184-189.ap-southeast-1.compute.internal   <none>      <none>
@@ -125,7 +125,7 @@ At this time, a Taint of `key: node.kubernetes.io/unreachable` is given to the n
 
 [monitorNodeHealth() in node_licecycle_controller.go](https://github.com/kubernetes/kubernetes/blob/release-1.19/pkg/controller/nodelifecycle/node_lifecycle_controller.go#L759) is responsible for this process.
 
-```
+```text
 $ kubectl describe node ip-10-0-184-189.ap-southeast-1.compute.internal
 ...
 Taints:             node.kubernetes.io/unreachable:NoExecute
@@ -135,7 +135,7 @@ Taints:             node.kubernetes.io/unreachable:NoExecute
 
 In Kubernetes, the [DefaultTolerationSeconds](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#defaulttolerationseconds) Admission Controller works by default, so when a pod is created, it is assigned the following tolerations.
 
-```
+```text
 $ kubectl get pod -o yaml anypod
 ...
   tolerations:

@@ -65,7 +65,7 @@ spec:
 
 上記のマニフェストを適応して、作成されたリソースを確認します。
 
-```
+```text
 $ kubectl apply -f argocd.yaml
 argocd.argoproj.io/my-argocd created
 
@@ -138,7 +138,7 @@ Argo CDをインストールすると、以下の6種類のPodが起動してい
 ## Web UIへの接続
 管理者の初期パスワードは、Secret内に保存されているのでとりだしましょう。
 
-```
+```text
 $ kubectl -n my-argocd-operator get secret my-argocd-cluster -o jsonpath='{.data.admin\.password}' | base64 -d
 <your-admin-password>
 ```
@@ -187,7 +187,7 @@ Argo CDで[サンプルのレポジトリ](https://github.com/argoproj/argocd-ex
 こちらのアプリケーションの登録をすると、そのデータはKubernetesのリソースとして登録されています。
 つまり、Argo CD自身は、**永続的なボリュームをもっておらず、永続ボリュームとしてKubernetesのetcdを使っている**ということです。まさに、Kubernetes Nativeなアプリケーションを代表していますね。
 
-```
+```text
 $ kubectl get application -n my-argocd-operator
 NAME          AGE
 hello-world   44s

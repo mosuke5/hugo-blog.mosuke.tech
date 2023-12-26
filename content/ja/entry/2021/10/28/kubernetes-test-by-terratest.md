@@ -25,7 +25,7 @@ Terratestがこの悩みを解消するのにイケてそうなので調査し�
 ## 環境
 本検証を行ったGoとKubernetesのバージョンは下記のとおりです。
 
-```
+```text
 % go version
 go version go1.17.2 darwin/amd64
 
@@ -39,7 +39,7 @@ Server Version: v1.22.0-rc.0+894a78b
 参考にしたのは公式ドキュメントの{{< external_link url="https://terratest.gruntwork.io/docs/getting-started/quick-start/#example-4-kubernetes" title="Example #4: Kubernetes" >}}です。
 最終的に以下のようなファイル構成で進めました。
 
-```
+```text
 % tree .
 .
 ├── hello-world-deployment.yaml
@@ -95,7 +95,7 @@ spec:
 
 試した環境は、AWS上に構築したKubernetesクラスタであり、Type: LoadBalancerのServiceリソースを作成するとELBが作成されてエンドポイントとなります。
 
-```
+```text
 % kubectl apply -f hello-world-deployment.yaml
 deployment.apps/hello-world-deployment created
 service/hello-world-service created
@@ -215,7 +215,7 @@ func TestKubernetesHelloWorldExampleNoApply(t *testing.T) {
 `go test`で実行するとわかりますが、1.973秒でテストが完了しています。
 開発中においては、テストの都度にリソースの作成をする必要はないことが多いかなと思います。
 
-```
+```text
 % go test -v
 === RUN   TestKubernetesHelloWorldExample
 === PAUSE TestKubernetesHelloWorldExample

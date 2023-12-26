@@ -86,7 +86,7 @@ spec:
 Resource Hooksで利用したリソースの削除のタイミングは、Annotationに`argocd.argoproj.io/hook-delete-policy`をつけることで設定可能です。
 もし、なにも設定しなかった場合、以下のように実行したJobがPodとして残りますが（`presync-job-gj4bd`が処理に利用したJobのPod）、任意のタイミングで削除できるというわけです。
 
-```
+```text
 $ oc get pod
 NAME                                READY   STATUS      RESTARTS   AGE
 nginx-deployment-64b6fc996b-94ttg   1/1     Running     0          4m33s

@@ -40,7 +40,7 @@ Gatekeeperは、OPAをベースとして、KubernetesのAdmission Webhookの仕�
 ## インストールして構成確認
 ここではさくっとドキュメント通りにインストールします。
 
-```
+```text
 $ kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.8/deploy/gatekeeper.yaml
 namespace/gatekeeper-system unchanged
 resourcequota/gatekeeper-critical-pods configured
@@ -75,7 +75,7 @@ validatingwebhookconfiguration.admissionregistration.k8s.io/gatekeeper-validatin
 まずは、Validating Webhook Configurationをみてみます。
 もうこのConfigurationの設定の意味は簡単にわかるかもしれません。
 
-```
+```text
 $ kubectl get validatingwebhookconfiguration.admissionregistration.k8s.io/gatekeeper-validating-webhook-configuration -o yaml
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -187,7 +187,7 @@ Webhook serverは、`gatekeeper-controller-manage` Podが担っていること�
 実際に中身をのぞいてみましょう。  
 10年期限であり、`DNS:gatekeeper-webhook-service.gatekeeper-system.svc`のSANが設定されています。
 
-```
+```text
 $ kubectl get secret gatekeeper-webhook-server-cert -o jsonpath="{.data.tls\.crt}" | base64 -d | openssl x509 -noout -text
 Certificate:
     Data:
@@ -249,7 +249,7 @@ Certificate:
   </div>
 </div>
 
-```
+```text
 $ kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/5ba4b4dad404c60655524cfc25adc2477c153c56/library/pod-security-policy/users/template.yaml
 constrainttemplate.templates.gatekeeper.sh/k8spspallowedusers created
 ```
@@ -257,7 +257,7 @@ constrainttemplate.templates.gatekeeper.sh/k8spspallowedusers created
 `ConstraintTemplate`を作成すると、GatekeeperはCRDを作成します。  
 `Constraint`を作成できるようになり、Constraintに対応したPolicyがConstraintTemplateに記載しています。
 
-```
+```text
 $ kubectl get crd | grep constraints.gatekeeper
 k8spspallowedusers.constraints.gatekeeper.sh                      2022-06-07T09:39:20Z
 ```
@@ -295,7 +295,7 @@ spec:
       rule: MustRunAsNonRoot
 ```
 
-```
+```text
 $ kubectl apply -f config.yaml
 $ kubectl apply -f constraint.yaml
 ```
@@ -303,7 +303,7 @@ $ kubectl apply -f constraint.yaml
 あとは検証するのみです。  
 `admin-foo`と`user-bar`に対してrunAsUser未指定（root）でPodを作成して確認します。
 
-```
+```text
 $ kubectl run -n user-bar nginx --image=nginxinc/nginx-unprivileged:latest
 Error from server (Forbidden): admission webhook "validation.gatekeeper.sh" denied the request: [psp-pods-allowed-user-ranges] Container nginx is attempting to run without a required securityContext/runAsNonRoot or securityContext/runAsUser != 0
 

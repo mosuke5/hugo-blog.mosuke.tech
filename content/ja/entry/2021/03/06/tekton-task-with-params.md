@@ -80,7 +80,7 @@ spec:
     name: hello-my-name-task
 ```
 
-```
+```text
 $ kubectl apply -f hello-my-name-task.yaml
 task.tekton.dev/hello-my-name-task created
 
@@ -99,7 +99,7 @@ hello momosuke5
 ちなみに、実行されたPodのマニフェストを確認すると、Pod作成時点では変数は展開されており、以下のように`args`内で`hello momosuke5`となっています。
 Tektonが、Podを作成するときにパラメータは処理されています。
 
-```
+```text
 $ kubectl get pod hello-my-name-task-run-pod-lgfbg -o yaml | less
 ...
 spec:
@@ -163,7 +163,7 @@ spec:
 
 実行結果は以下のとおり、予想通りです。
 
-```
+```text
 $ kubectl apply -f hello-my-friends-task.yaml
 task.tekton.dev/hello-my-friends-task created
 

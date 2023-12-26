@@ -65,7 +65,7 @@ func main() {
 
 まず普通に動きをみます。
 
-```
+```text
 $ go build main.go
 $ ./main
 HTTP/1.1 301 Moved Permanently
@@ -88,7 +88,7 @@ alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
 次にstraceでmainを観察します。  
 writeシステムコールを用いて、HTTPリクエストを送っていることをちゃんと確認できました。
 
-```
+```text
 $ strace -f -e write=all -o output ./main
 $ cat output
 ...
@@ -106,7 +106,7 @@ $ cat output
 ということは、curlも同じように実装しているのかとstraceで観察してみました。
 結果からいうと、原理は一緒ですがwriteシステムコールは使っておらず、sendtoシステムコールを使っていることを確認できました。
 
-```
+```text
 $ strace -f -e write=all curl http://blog.mosuke.tech
 ...
 716742 sendto(3, "GET / HTTP/1.1\r\nHost: blog.mosuk"..., 80, MSG_NOSIGNAL, NULL, 0) = 80
@@ -218,7 +218,7 @@ func main() {
 動作を確認するにはcurlのいくつかのオプションを知っておくと便利です。  
 Request/Response headerを確認できるように `-v`オプションを、gzipで圧縮されたなかみを確認するために`--compressed`オプションを使います。
 
-```
+```text
 $ curl -v --compressed localhost:8080
 *   Trying 127.0.0.1:8080...
 * Connected to localhost (127.0.0.1) port 8080 (#0)
@@ -240,7 +240,7 @@ $ curl -v --compressed localhost:8080
 ```
 
 圧縮されたデータを解凍して確認する。
-```
+```text
 $ curl -s -v --compressed --raw -o result.gz localhost:8080
 *   Trying 127.0.0.1:8080...
 * Connected to localhost (127.0.0.1) port 8080 (#0)

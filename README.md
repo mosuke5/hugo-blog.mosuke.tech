@@ -11,7 +11,7 @@ Following are ci/cd steps.
 3. After Deploy: clear cache in cloudflare and update gillsearch(search engine) database.
 
 # How to use
-```
+```text
 // set up. This site uses original theme.
 $ git submodule update --init --recursive
 $ hugo server
@@ -20,7 +20,7 @@ $ hugo server
 $ git submodule update --remote
 ```
 
-```
+```text
 // resize image
 // mogrify is included in ImageMagick package
 $ mogrify -resize 700 ./static/image/xxxxx.png

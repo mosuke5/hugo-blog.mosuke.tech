@@ -63,7 +63,7 @@ func main() {
 
 環境は、RHEL8.5です。
 
-```
+```text
 $ uname -a
 Linux mosuke5-station 4.18.0-348.7.1.el8_5.x86_64 #1 SMP Wed Dec 8 21:51:17 EST 2021 x86_64 x86_64 x86_64 GNU/Linux
 
@@ -79,7 +79,7 @@ straceには `-y`, `-f`, `-e openat,read,write,clone,close`, `-o output` のオ�
 - `-e` は、表示するシステムコールを絞り込みます。これは、全システムコールだと表示がながくなりわかりづらくなるので、説明用に絞っているだけです。
 - `-o` は、ファイルに結果をアウトプットしています。
 
-```
+```text
 $ go build main.go
 $ ls -l main
 -rwxrwxr-x. 1 mosuke5 mosuke5 1789722  4月 14 20:17 main

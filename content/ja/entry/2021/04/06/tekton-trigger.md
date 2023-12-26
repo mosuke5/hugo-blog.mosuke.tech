@@ -24,7 +24,7 @@ archive = ["2021"]
 インストール方法は、[公式ドキュメント](https://tekton.dev/docs/triggers/install/)どおりに行います。
 今回使用したバージョンは、Tekton Triggers v0.12.1　となります。
 
-```
+```text
 $ kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
 podsecuritypolicy.policy/tekton-triggers created
 clusterrole.rbac.authorization.k8s.io/tekton-triggers-admin created
@@ -238,7 +238,7 @@ spec:
 
 マニフェストをapplyし、EventListener Podを確認しておきます。
 
-```
+```text
 $ kubectl apply -f trigger-sa.yaml
 serviceaccount/trigger-sa created
 role.rbac.authorization.k8s.io/trigger-role created
@@ -263,7 +263,7 @@ EventListener Podへのネットワークは外部公開していないので、
 Trigger Bindingsは、curlの`-d`で送信しているJSONデータをTektonのパラメータに変換しているというわけです。
 Webhookを利用する場合はどのようなデータでWebhookを飛ばしているか確認できれば設定が容易です。
 
-```
+```text
 $ kubectl port-forward service/el-build-deploy-pipeline-listener 8080:8080
 Forwarding from 127.0.0.1:8080 -> 8000
 Forwarding from [::1]:8080 -> 8000
@@ -279,7 +279,7 @@ http://localhost:8080 \
 
 podを確認すればパイプライン実行されたことがわかるのではないかとおもいます。
 
-```
+```text
 $ kubectl get pod -w
 build-deploy-pipeline-run-7hn8p-fetch-repository-szbzr-po-kn8bt   0/1     Init:1/2    0          14s
 build-deploy-pipeline-run-7hn8p-fetch-repository-szbzr-po-kn8bt   0/1     PodInitializing   0          15s

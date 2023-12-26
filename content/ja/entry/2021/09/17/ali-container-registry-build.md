@@ -48,7 +48,7 @@ Alibaba Cloudを中国リージョン外で利用する人には正直関係が�
 
 利用したDockerfileは非常にシンプルで、それほど多くのパッケージをダウンロードしていませんが、それでもこれだけの差がでるので、実運用システムだとその差はもっと広がりそうです。
 
-```
+```text
 # 利用したDockerfile
 FROM redhat/ubi8:8.4
 RUN dnf install -y https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
@@ -61,7 +61,7 @@ ADD . /app/
 CMD ["flask", "run"]
 ```
 
-```
+```text
 # Dockerfile内で利用しているrequirements.txt
 Flask==1.1.2
 mysql-connector-python==8.0.21

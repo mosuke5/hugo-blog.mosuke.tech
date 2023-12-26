@@ -44,7 +44,7 @@ https://www.fluentd.org/download
 
 今回はUbuntu16.04環境で行いました。レポジトリからのインストールをします。
 インストールしたら起動と、起動できたかの確認を行ってみます。
-```
+```text
 $ curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh | sh
 $ sudo systemctl start td-agent
 $ sudo systemctl status td-agent
@@ -67,7 +67,7 @@ $ sudo systemctl status td-agent
 デフォルトだとポート8888にてHTTP経由でログをPostできるようになっています。
 確認を兼ねて見てみます。
 
-```
+```text
 $ sudo lsof -i:8888
 COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 fluentd 3503 td-agent   15u  IPv4  27930      0t0  TCP *:ddi-tcp-1 (LISTEN)
@@ -86,7 +86,7 @@ NignxのログをFluetndを使って別のファイルに書き出してみま�
 まずはNginxのインストールをします。  
 fluetndからNginxのログファイルが閲覧できるように権限の変更は忘れずに行ってください。
 
-```
+```text
 $ sudo apt-get install nginx
 $ sudo systemctl start nginx
 $ curl localhost
@@ -108,7 +108,7 @@ http://qiita.com/liubin/items/92a4e7e3917143ae4aaf
 
 アウトプットは`file`タイプを選択し、`/tmp`以下にファイルとして出力するようにします。
 
-```
+```text
 $ sudo vim /etc/td-agent/td-agent.conf
 <source>
   type tail
@@ -127,7 +127,7 @@ $ sudo vim /etc/td-agent/td-agent.conf
 
 設定が完了したらfluetndを再起動して、curlでNginxにアクセスします。  
 何回かアクセスするといいと思います。
-```
+```text
 $ sudo systemctl restart td-agent
 $ curl localhost
 ```
@@ -135,7 +135,7 @@ $ curl localhost
 さて、`/tmp`以下に出力できているか確認します。  
 ついでに中身をのぞいてみると、Nginxのログの内容がJsonになって出力されていることが確認できます。
 
-```
+```text
 $ ls -l /tmp/
 -rw-r--r--  1 td-agent td-agent  552 Sep  3 06:14 output_nignx_access_log.20170903.b55842e6a17fff571
 
@@ -160,7 +160,7 @@ https://github.com/gonsuke/fluent-plugin-dynamodb
 
 インプットは先程と変えずに、アウトプットをDynamoDBに変更し使っていきます。  
 設定は以下のとおりです。
-```
+```text
 $ sudo td-agent-gem install fluent-dynamodb-plugin
 $ sudo vim /etc/td-agent/td-agent.conf
 <match nginx.access>

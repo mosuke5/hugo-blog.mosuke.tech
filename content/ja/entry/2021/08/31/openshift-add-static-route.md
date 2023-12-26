@@ -99,7 +99,7 @@ spec:
 OpenShiftには、MachineConfigPool（以下、mcp）というリソースがあり、WorkerノードやMasterノードが読み込むべきMachineConfigの設定が管理されます。
 以下はworkerノードのmcpですが、Machine Config Selectorで `machineconfiguration.openshift.io/role:  worker` のラベルが付いたMachineConfigを読み込むように記述されています。前項で作ってたMachineConfigに付与したラベルと一致させることで読み込ませることができます。
 
-```
+```text
 $ oc describe mcp worker
 ...
 Spec:
@@ -117,7 +117,7 @@ Spec:
 該当のMachineConfigの中身を見ると、作成したスタティックルート追加の設定なども含まれていることが確認できます。
 そのほか、Kubeletの設定やレジストリの設定などさまざまな設定が書かれます。
 
-```
+```text
 $ oc get machineconfig rendered-worker-d09292d26d2a2e82ca510904af053627 -o yaml
 ...
     - contents: |
@@ -144,7 +144,7 @@ MachineConfigを作成・編集した後に `oc get node -w` でノードの状�
 設定の反映が完了後、ノードに入って設定を確認してみてください。  
 systemdのserviceファイルの確認と動作状況、およびルーティング設定を確認しましょう。
 
-```
+```text
 # cat /etc/systemd/system/nmcli-dev-modify.service
 [Unit]
 Description=nmcli-dev-modify

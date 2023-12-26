@@ -37,7 +37,7 @@ Werckerを使って自動で最適化させることにした。
 処理自体はいたってシンプル。  
 次のシェル(`optimize_image.sh`)を用意した。
 
-```
+```text
 #!/bin/sh
 find ./static/image/ -name "*.png" | xargs optipng -o5
 find ./static/image/ -name "*.jpg" -type f -exec jpegtran -copy none -optimize -outfile {} {} \;
@@ -49,7 +49,7 @@ find ./static/image/ -name "*.jpg" -type f -exec jpegtran -copy none -optimize -
 定期的にローカルで圧縮してgitに更新しておいたほうがいいだろう。  
 あくまで、忘れてしまった時のためにCIでまかなってくれるというスタンスで利用している。
 
-```
+```text
 - script:
   name: optimize image size
   code: |

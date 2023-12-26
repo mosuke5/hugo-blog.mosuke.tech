@@ -33,8 +33,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    codeFences: true
-    guessSyntax: true
+    guessSyntax: false
     hl_Lines: ''
     lineNoStart: 1
     lineNos: false

@@ -45,7 +45,7 @@ OpenShiftでは、クラスタの外部からのアクセスにRouteを使うこ
 ノードの状態を確認します。
 Workerノードは4台ですが、IPの末尾が`123`と`130`となっているものが管理者用ノードだと思ってください。
 
-```
+```text
 $ oc get node -l node-role.kubernetes.io/worker
 NAME                                               STATUS   ROLES    AGE    VERSION
 ip-192-168-1-222.ap-northeast-1.compute.internal   Ready    worker   5d4h   v1.22.2+5e38c72
@@ -57,7 +57,7 @@ ip-192-168-3-130.ap-northeast-1.compute.internal   Ready    worker   5d     v1.2
 管理者用ノードには、専用のラベル(`mosuke5.com/type=admin`とします)を付与しておきます。
 また、一般用のアプリケーションがスケジューリングされないようにTaintsもつけておきます。
 
-```
+```text
 $ oc get node -l mosuke5.com/type=admin
 NAME                                               STATUS   ROLES    AGE   VERSION
 ip-192-168-3-123.ap-northeast-1.compute.internal   Ready    worker   5d    v1.22.2+5e38c72
@@ -99,7 +99,7 @@ spec:
       type: admin
 ```
 
-```
+```text
 $ oc apply -f admin-ingress.yaml
 $ oc get pod -n openshift-ingress
 NAME                               READY   STATUS    RESTARTS   AGE
@@ -122,7 +122,7 @@ router-admin-65f4f9799f-mc6fj      1/1     Running   0          4h3m   10.130.4.
 
 オンプレミス環境などで行っている方は、追加したIngress Controller向けにL4 LBを用意すること、およびDNS設定を追加で行うことを忘れずに行ってください。
 
-```
+```text
 $ oc get service -n openshift-ingress
 NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                              PORT(S)                      AGE
 router-default             LoadBalancer   172.30.146.16    xxxxx.ap-northeast-1.elb.amazonaws.com   80:30262/TCP,443:30761/TCP   5d6h
@@ -131,7 +131,7 @@ router-internal-admin      ClusterIP      172.30.58.18     <none>               
 router-admin               LoadBalancer   172.30.195.215   yyyyy.ap-northeast-1.elb.amazonaws.com   80:32226/TCP,443:32305/TCP   6h3m
 ```
 
-```
+```text
 $ dig a.admin-apps.cluster-domain
 
 ; <<>> DiG 9.10.6 <<>> a.admin-apps.cluster-domain
@@ -212,7 +212,7 @@ spec:
   wildcardPolicy: None
 ```
 
-```
+```text
 $ oc new-project admin
 $ oc apply -f admin-app.yaml
 deployment.apps/admin-nginx unchanged
@@ -224,7 +224,7 @@ route.route.openshift.io/admin-nginx created
 この結果は仕組みがわかれば当然であることがすぐに理解できる。それはデフォルトのIngress Controllerは、すべてのNamespaceのすべてのRouteの設定を反映するからです。
 もし管理者用のIngress Controllerにのみ反映させたい場合は、デフォルトのIngress Controller側になんらかの除外設定を入れる必要があります。
 
-```
+```text
 $ oc describe route admin-nginx
 Name:			admin-nginx
 Namespace:		admin
@@ -273,7 +273,7 @@ status:
 `openshift-ingress`内のRouterの`haproxy.config`をのぞいてみましょう。
 バックエンドの設定に`10.129.4.4:8080`が記述されていますが、これはPodの直接のIPアドレスです。
 
-```
+```text
 $ oc exec -n openshift-ingress router-admin-65f4f9799f-jlc59 -- cat haproxy.config
 ...
 backend be_http:admin:admin-nginx
@@ -299,7 +299,7 @@ Routeを作成すると、デフォルトのIngress Controllerと新しく追加
 
 たとえば、namespaceラベルで`type=admin`を含まないもののみをデフォルトのIngress Controllerで処理するようにするなどです。`namespaceSelector`の`matchExpressions`でいくらかコントロール可能です。
 
-```
+```text
 $ oc edit ingresscontroller default -n openshift-ingress-operator
 ...
 spec:

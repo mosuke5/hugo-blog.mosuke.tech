@@ -98,7 +98,7 @@ spec:
 
 準備ができたら、実行して中身を確認します。
 
-```
+```text
 $ kubectl apply -f my-git-resource.yaml
 pipelineresource.tekton.dev/my-git-resource created
 
@@ -120,7 +120,7 @@ my-task-with-pipelineresource-run-pod-jfkrl         2/2     Running           0 
 こちらは、Tektonが追加したコンテナで、PipelineResourceで指定したリソースをGitレポジトリからダウンロードしてくる処理（`/workspace/src`にダウンロード）を行っています。
 Step間は、EmptyDirで共有されているので、後続の処理で同じソースコードを活用していくことができます。
 
-```
+```text
 $ kubectl get pod my-task-with-pipelineresource-run-pod-jfkrl -o yaml | less
 ...
 spec:
@@ -154,7 +154,7 @@ spec:
 コンテナ内部を軽く確認してみましょう。  
 PipelineResourceで指定したGitレポジトリ（今回の場合は本ブログのGitレポジトリ）がダウンロードされていることが確認できます。
 
-```
+```text
 % kc exec -it my-task-with-pipelineresource-run-pod-jfkrl -c step-wait -- /bin/bash
 root@my-task-with-pipelineresource-run-pod-jfkrl:/workspace# ls -l
 total 4

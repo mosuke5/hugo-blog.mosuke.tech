@@ -37,7 +37,7 @@ HTTP Headerへの記載する用途として使うのが一番ふさわしいと
 試しに、とあるオブジェクトに対して`x-amz-meta-mosuke`というのを追加してみてHTTPのレスポンスHeaderをみてみました。
 レスポンスに追加したメタデータが追加されていることがわかります。
 
-```
+```text
 $ curl -I https://s3-ap-northeast-1.amazonaws.com/mosuke5-bucket/some-object
 HTTP/1.1 200 OK
 x-amz-id-2: juKYB/CT2Y6tKwZtCzx+ekySq3urohsF2tJGume+mvSmwd/oYw4AMue5rLPp4D9L8q7M3Z8x/T0=

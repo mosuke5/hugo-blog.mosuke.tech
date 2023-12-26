@@ -50,7 +50,7 @@ OpenShiftのプロジェクトスコープのノードセレクターに関す�
 ## 確認した環境
 検証した環境はOpenShift 4.8です。
 
-```
+```text
 % oc version
 Client Version: 4.9.0-202109302317.p0.git.96e95ce.assembly.stream-96e95ce
 Server Version: 4.8.26
@@ -61,7 +61,7 @@ Kubernetes Version: v1.21.6+bb8d50a
 ### Workerノード
 事前準備として、Workerノードを4台準備しました。2台は通常用途のノードを想定し、もう2台は特定プロジェクトのみで利用したい特殊なノードという前提です。通常ノードには `type=normal` ラベルを、特殊ノードには `type=special` ラベルを付与しました。
 
-```
+```text
 % oc get node -l node-role.kubernetes.io/worker=
 NAME                                              STATUS   ROLES    AGE   VERSION
 ip-10-0-161-140.ap-southeast-1.compute.internal   Ready    worker   20m   v1.21.6+bb8d50a
@@ -87,7 +87,7 @@ ip-10-0-223-185.ap-southeast-1.compute.internal   Ready    worker   26m   v1.21.
 
 プロジェクトへの設定については、ドキュメントのとおりです。
 
-```
+```text
 % oc projects | grep my-
     my-normal-pj
   * my-special-pj
@@ -129,7 +129,7 @@ Podがどこのノードにスケジューリングされるか見てみます�
 
 デプロイしたPodはどうやら、期待通りに特殊ノード上で動いていそうです。
 
-```
+```text
 % oc create deployment nginx --image=nginxinc/nginx-unprivileged:latest --replicas=3
 deployment.apps/nginx created
 
@@ -142,7 +142,7 @@ nginx-79979db8cb-hc8mz   1/1     Running   0          18s   10.130.2.24   ip-10-
 
 PodのNodeSelectorを確認すると、`Node-Selectors: type=special` が付与されています。
 
-```
+```text
 % oc describe pod nginx-79979db8cb-2q585
 Name:         nginx-79979db8cb-2q585
 Namespace:    my-special-pj
@@ -159,7 +159,7 @@ Tolerations:                 node.kubernetes.io/memory-pressure:NoSchedule op=Ex
 
 ちなみにDeploymentの設定をみても、nodeSelectorの設定はないため、Podを生成するタイミングで、nodeSelectorを付与していると考えられます。また、利用されるスケジューラーもデフォルトのものが利用されています。
 
-```
+```text
 % oc get deploy nginx -o yaml | grep nodeSelector
 <結果なし>
 
@@ -198,7 +198,7 @@ spec:
 nodeSelectorで、`type: normal`を意図的に選択した場合、Podの生成に失敗しました。
 Podに、NodeSelectorを付与しようとしたタイミングで、競合してしまいエラーと見受けられます。
 
-```
+```text
 % oc apply -f nginx-on-noraml-node.yaml
 % oc get deploy
 NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
@@ -222,7 +222,7 @@ Events:
 通常プロジェクトにPodをデプロイしたときに、特殊ノードへPodはスケジューリングされるんでしょうか？
 やってみるとわかりますが、特殊ノードへもPodが展開されます。
 
-```
+```text
 % oc project my-normal-project
 % oc create deployment nginx --image=nginxinc/nginx-unprivileged:latest --replicas=5
 % oc get pod -o wide

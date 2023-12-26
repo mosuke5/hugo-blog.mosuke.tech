@@ -88,7 +88,7 @@ KubernetesからVirtual KubeletのノードにPodの配置を行うと、Virtual
 ECIは非常にシンプルなサービスです。
 CLIから実行できるAPIリストをみても、現在６つだけです。
 
-```
+```text
 $ aliyun eci help
 Available Api List:
   CreateContainerGroup
@@ -193,7 +193,7 @@ spec:
 ノードでは実在はしないが仮想ノードとして"virtual-kubelet"というのが追加されています。
 このノードを登録し、司令塔をだすのがpodで表示される"alicloud-virtual-kubelet-xxxxx"になります。
 
-```
+```text
 $ kubectl apply -f virtual-kubelet.yaml
 $ kubectl get node
 NAME                                    STATUS    ROLES     AGE       VERSION
@@ -235,7 +235,7 @@ spec:
     effect: NoSchedule
 ```
 
-```
+```text
 $ kubectl apply -f vk_pod.yaml
 $ kubectl get pods
 NAME                                        READY     STATUS           RESTARTS   AGE

@@ -45,7 +45,7 @@ OpenShiftを触っている人は、「Cluster Monitoringでもユーザ定義�
 ## 設定と検証
 本ブログの検証で利用しているOpenShiftは`version 4.6.20`となります
 
-```
+```text
 $ oc version
 Client Version: 4.6.18
 Server Version: 4.6.20
@@ -61,14 +61,14 @@ Kubernetes Version: v1.19.0+2f3101c
 
 公式ドキュメントの手順にしたがって行うのですが、デフォルトの設定のままだとしょっぱなからつまづきます。`cluster-monitoring-config` というConfigMapはデフォルトで存在しないため、ない人は作成する必要があります。
 
-```
+```text
 $ oc -n openshift-monitoring edit configmap cluster-monitoring-config
 Error from server (NotFound): configmaps "cluster-monitoring-config" not found
 ```
 
 気を取り直して設定を追加します。
 
-```
+```text
 $ oc -n openshift-monitoring create configmap cluster-monitoring-config
 configmap/cluster-monitoring-config created
 
@@ -81,7 +81,7 @@ data:
 
 `openshift-user-workload-monitoring` namespaceにて、ユーザ定義プロジェクトの監視向けのPrometheusが作成されていることを確認できます。
 
-```
+```text
 $ oc get pod -n openshift-user-workload-monitoring
 NAME                                   READY   STATUS    RESTARTS   AGE
 prometheus-operator-6957669954-qq82t   2/2     Running   0          100s
@@ -103,7 +103,7 @@ user-workload   v2.20.0   2          2m22s
 本ブログでは`user1`をユーザ（開発サイド）とみなして権限付与をしてみます。
 `my-app`は、user1が利用しているnamespace名です。
 
-```
+```text
 $ oc policy add-role-to-user monitoring-edit user1 -n my-app
 clusterrole.rbac.authorization.k8s.io/monitoring-edit added: "user1"
 ```
@@ -222,7 +222,7 @@ data:
 Nginxを起動します。  
 ポイントとしては、Pod内に2つのコンテナが存在していること、そしてexporter用のService(`nginx-exporter-service`)をあわせて作成したことです。
 
-```
+```text
 % oc apply -f nginx.yaml
 deployment.apps/test-nginx created
 service/nginx-service created
@@ -248,7 +248,7 @@ configmap/nginx-conf   1      6s
 `fedora:33`イメージでデバッグ用のコンテナを起動します。
 コンテナ内から、`service/nginx-exporter-service`に接続してメトリクス情報を肉眼でも確認しておきましょう。
 
-```
+```text
 // デバッグ用コンテナの起動
 % oc run debug -it --image=fedora:33 -- /bin/bash
 If you don't see a command prompt, try pressing enter.
@@ -308,7 +308,7 @@ spec:
 
 ServiceMonitorをデプロイ後に、OpenShiftのWebコンソールから、"Monitoring" -> "Metrics" -> "Custom Query"にて、`nginx`などと入力するとNginx exporterから取得したメトリクスを確認できます。
 
-```
+```text
 % oc apply -f servicemonitor.yaml
 servicemonitor.monitoring.coreos.com/nginx-monitor created
 
@@ -356,7 +356,7 @@ spec:
 
 アラート設定をデプロイし、Webコンソールにアラートが反映したことを確認。
 
-```
+```text
 % oc apply -f alert.yaml
 prometheusrule.monitoring.coreos.com/nginx-alert created
 
@@ -370,7 +370,7 @@ nginx-alert   6h12m
 Nginxのレプリカ数を2にして、わざとアラート発報させてみます。
 Webコンソール上でもアラートが`Firing`になっていることを確認しましょう。
 
-```
+```text
 % oc scale deploy test-nginx --replicas=2
 deployment.apps/test-nginx scaled
 ```

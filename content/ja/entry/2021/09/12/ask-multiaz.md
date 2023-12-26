@@ -69,7 +69,7 @@ resource "alicloud_cs_serverless_kubernetes" "default" {
 マルチAZで作成できたかどうかは、ノードを確認するのがよいでしょう。  
 Serverless Kubernetesは、virtual kubeletを使ってPodをECIで起動しますが、AZ毎にノードリソースが作成されます。
 
-```
+```text
 $ kubectl get node
 NAME                              STATUS   ROLES   AGE     VERSION
 virtual-kubelet-ap-northeast-1a   Ready    agent   3h17m   v1.20.4-aliyun.1
