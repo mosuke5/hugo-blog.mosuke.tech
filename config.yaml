@@ -48,10 +48,12 @@ languages:
     languageCode: ja
     contentDir: content/ja/
     title: Goldstine研究所
-    description: '@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。'
+    params:
+      description: '@mosuke5のブログサイト。クラウド技術やアプリ開発、インフラ系ツールなどを主に情報発信しています。'
   en:
     languageName: English
     languageCode: en
     contentDir: content/en/
     title: "Goldstine lab"
-    description: "mosuke5's technology blog. Cloud Native, Kubernetes, Application development, etc..."
+    params:
+      description: "mosuke5's technology blog. Cloud Native, Kubernetes, Application development, etc..."
