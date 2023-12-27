@@ -2,7 +2,7 @@
 categories = ["キャリア"]
 date = "2023-12-31T16:18:46+09:00"
 description = "2023年を振り返ります。今年は全くブログを書かなかったですが、何に向き合っていたのか自分を整理してみます。"
-draft = true
+draft = false
 image = "/image/2023-reflection.png"
 tags = ["Tech"]
 title = "2023年振り返り。心の戦いの終わり。"
