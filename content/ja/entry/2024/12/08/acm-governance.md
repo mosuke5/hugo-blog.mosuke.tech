@@ -20,18 +20,18 @@ OpenShiftのコンサルタントとして日々いろんなお客さんに接�
 Platform Engineeringといえば、2023年頃から少しずつ話題に上がっていましたが、いよいよトライしていく企業さんが増えてきたなあと。
 もちろんそれ以前もDevOpsとかいろんな別の言葉を使って語られてはきたんですが、丁度いい言葉ができたからなのか話題にあがることが増えてきています。
 
-今日は、そんなPlatform Engineeringを実践していく上での「開発チームへの権限委譲」のテクニックをひとつ紹介します。
+今日は、そんなPlatform Engineeringを実践していく上での「アプリケーションチームへの権限委譲」のテクニックをひとつ紹介します。
 
 ちなみに、こちらの記事は "{{< external_link url="https://qiita.com/advent-calendar/2024/openshift" title="OpenShift Advent Calendar 2024" >}}" の9日目の記事となります。
 
 <!--more-->
 
 ## OpenShiftクラスタが増えていくとどうなるのか？
-組織の作り方次第ではありますが、OpenShiftクラスタ自身を管理・運用するチーム（ここではプラットフォームチームと呼びます）と、そのOpenShiftの上のアプリケーションの開発・運用するチーム（ここではアプリケーションチームと呼びます）で分かれることはよくあります。
+組織の作り方次第ではありますが、OpenShiftクラスタ自身を管理・運用するチーム（ここではプラットフォームチームと呼びます）と、そのOpenShift上のアプリケーションの開発・運用するチーム（ここではアプリケーションチームと呼びます）で分かれることはよくあります。
 
 その場合の多くは、アプリケーションチームはNamespaceに閉じた権限を持っており、OpenShiftクラスタ全体の権限は付与されません。よって、アプリケーションチームからクラスタに関わる要求がある場合には、プラットフォームチームに作業依頼することになります。
 
-この関係性は、ひとつのプラットフォームチームあたりの担当するアプリケーションチームが少ない場合はそれほど大きく問題になりません。
+この関係性は、ひとつのプラットフォームチームが担当するアプリケーションチームが少ない場合はそれほど大きく問題になりません。
 
 しかし、その数が変わると問題はでてきます。  
 たとえば、ひとつのプラットフォームチームが10のアプリケーションチームを担当する場合を想像してみましょう。アプリケーションが扱うクラスタが3クラスタあった場合、プラットフォームは30のクラスタを管理する必要がでてきます。
@@ -57,9 +57,9 @@ Platform Engineeringといえば、2023年頃から少しずつ話題に上が�
 **「アプリケーションチームに好き勝手に設定されると困るんですが？」** というものです。
 
 そのとおりだと思います。  
-アプリケーションチームとプラットフォームチームで別れていた理由も、おそらく触っていい設定がことなっていたり、責任分界点があったからでしょう。
+アプリケーションチームとプラットフォームチームで別れていた理由も、おそらく触っていい設定が異なっていたり、責任分界点があったからでしょう。
 
-組織的にクリアしなければいけない問題もあるかと思いますが、OpenShiftの関連製品である{{< external_link url="https://www.redhat.com/en/technologies/management/advanced-cluster-management" title="Red Hat Advanced Cluster Management for Kubernetes（略称 ACM）" >}}の「ポリシーベースのガバナンス機能」で解消できる部分も多いです！
+組織的にクリアしなければいけない問題もあるかと思いますが、OpenShiftの関連製品である {{< external_link url="https://www.redhat.com/en/technologies/management/advanced-cluster-management" title="Red Hat Advanced Cluster Management for Kubernetes（略称 ACM）" >}}の「ポリシーベースのガバナンス機能」で解消できる部分も多いです！
 
 ## ACMのポリシーベースのガバナンス機能ってなんですか？
 ### ACMの超概要
@@ -116,7 +116,7 @@ spec:
                 type: Opaque
 ```
 
-大事なことは、Kubernetesクラスタが満たすべきポリシーを「マニフェストファイルで表現できる」ということですね。
+大事なことは、Kubernetesクラスタが満たすべきポリシーを「マニフェストファイルで表現できる」「ポリシー通りにクラスタが設定される」ということですね。
 
 ### ポリシーの自由度の高さとGatekeeperがポイント
 まず、ACMのポリシーの定義は自由度が高いので、実現したいことに対する表現力はかなりあると思います。
@@ -146,6 +146,26 @@ Gatekeeperというのは、Kubernetesのためのポリシーコントローラ
 
 ポリシー言語であるRegoを使って、任意のポリシーを作成し、APIを経由してリクエストの妥当性を検査することができます。Kubernetesの環境においては、Admission Webhook を用いてユーザが発行するAPIに対してバリデーションをかけることができのです。
 
+もしAdmission Webhookについて知りたい方はこちらもどうぞ。
+
+<div class="belg-link row">
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">
+      <img class="belg-site-image" src="https://blog.mosuke.tech/image/logo.png" />
+    </a>
+  </div>
+  <div class="belg-right col-md-10">
+  <div class="belg-title">
+      <a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/" target="_blank">Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編） · Goldstine研究所</a>
+    </div>
+    <div class="belg-description">Kubernetesの運用には欠かせなくなってくる拡張。そのひとつであるAdmission Webhookを作って遊んでみるというものです。本記事は説明編で、動作編にも続きます。</div>
+    <div class="belg-site">
+      <img src="https://blog.mosuke.tech/image/favicon.ico" class="belg-site-icon">
+      <span class="belg-site-name">Goldstine研究所</span>
+    </div>
+  </div>
+</div>
+
 ACMは、**このGatekeeperのポリシー設定をACMのポリシーとして設定できます。**  
 なにをいっているのか意味不明ですね（笑）
 
@@ -168,7 +188,7 @@ ACMのポリシーで、「Gatekeeperのポリシーが有効になっている�
     - 決められたIdPのみ設定する
     - 監査ログの設定をする
     - kubeadmin アカウントを削除する
-    - NodePortサービスを禁止する（所定のRouter経由でのみ外部アクセスを許可）
+    - NodePortサービスを禁止する（所定のRouter経由でのみ外部アクセスを許可したい）
 - 上記ポリシーに違反があった場合に検知できる or 勝手に修復される
 
 
