@@ -1,7 +1,8 @@
 baseURL: 'https://blog.mosuke.tech'
 defaultContentLanguage: ja
 theme: mosuke-tech-hugo-theme
-Paginate: 10
+pagenation:
+  pagerSize: 10
 hasCJKLanguage: true
 enableEmoji: true
 disqusShortname: mosuke5-techblog
