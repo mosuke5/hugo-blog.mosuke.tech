@@ -2,7 +2,7 @@
 categories = ["OpenShift", "kubernetes", "devops"]
 date = "2024-12-09T00:00:00+09:00"
 description = "OpenShiftクラスタが増えるといろんな弊害が生まれます。OpenShiftを効率的に管理する方法のひとつとしてアプリケーションチームへの権限委譲がありますが、それをACM(Advanced Cluster Management for Kubernetes)で実践します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "OpenShift、ACMを使って利用者への権限委譲しつつ無法地帯を避ける方法を考えよう"
@@ -51,6 +51,10 @@ Platform Engineeringといえば、2023年頃から少しずつ話題に上が�
 アプリケーションチームが、「自分たちでできることは自分たちでやれるようになる」というのはひとつの筋のいい案になりそうです。このような状態を目指せるとよさそうです。
 
 ![acm-governance-structure-after](/image/acm-governance-structure-after.png)
+
+また、大変有名な書籍ではありますが、「チームトポロジー」という本は、このようなプラットフォームチームの作り方のヒントになりますのでぜひ参考にしてみてください。
+
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%88%E3%83%9D%E3%83%AD%E3%82%B8%E3%83%BC-%E4%BE%A1%E5%80%A4%E3%81%82%E3%82%8B%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%82%92%E3%81%99%E3%81%B0%E3%82%84%E3%81%8F%E5%B1%8A%E3%81%91%E3%82%8B%E9%81%A9%E5%BF%9C%E5%9E%8B%E7%B5%84%E7%B9%94%E8%A8%AD%E8%A8%88-%E3%83%9E%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%BB%E3%82%B9%E3%82%B1%E3%83%AB%E3%83%88%E3%83%B3/dp/4820729632" data-iframely-url="//iframely.net/Y0Knp5T?card=small"></a></div></div><script async src="//iframely.net/embed.js"></script>
 
 ## 好き勝手やられると困るんですが？
 一方で、こんな声がプラットフォームチームなどからも出てきそうですね。  
@@ -191,11 +195,13 @@ ACMのポリシーで、「Gatekeeperのポリシーが有効になっている�
     - NodePortサービスを禁止する（所定のRouter経由でのみ外部アクセスを許可したい）
 - 上記ポリシーに違反があった場合に検知できる or 勝手に修復される
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DGczPyS3Ygw?si=bhzmawfW1VUnhgoW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## まとめ
 なんだかんだ長くなってしまいましたが、、やりたかったことは「アプリケーションチームに自由度をもたせつつも、無法地帯にならないクラスタ運用ってできるのか？」ということに対するひとつの見解でした。  
 少ないプラットフォームチームで多くのアプリケーションチームを支えられるプラットフォーム作りにぜひ挑戦してみてください。
 
-また、大変有名な書籍ではありますが、「チームトポロジー」という本は、このようなプラットフォームチームの作り方のヒントになりますのでぜひ参考にしてみてください。
+文中でも紹介しましたが、「チームトポロジー」という本は、このようなプラットフォームチームの作り方やアプリケーションチームとの関わり方のヒントになりますのでぜひ参考にしてみてください。
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.amazon.co.jp/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%88%E3%83%9D%E3%83%AD%E3%82%B8%E3%83%BC-%E4%BE%A1%E5%80%A4%E3%81%82%E3%82%8B%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%82%92%E3%81%99%E3%81%B0%E3%82%84%E3%81%8F%E5%B1%8A%E3%81%91%E3%82%8B%E9%81%A9%E5%BF%9C%E5%9E%8B%E7%B5%84%E7%B9%94%E8%A8%AD%E8%A8%88-%E3%83%9E%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%BB%E3%82%B9%E3%82%B1%E3%83%AB%E3%83%88%E3%83%B3/dp/4820729632" data-iframely-url="//iframely.net/Y0Knp5T?card=small"></a></div></div><script async src="//iframely.net/embed.js"></script>
