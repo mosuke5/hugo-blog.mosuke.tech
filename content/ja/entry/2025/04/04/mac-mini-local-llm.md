@@ -1,8 +1,8 @@
 +++
 categories = ["AI"]
 date = "2025-04-04T11:23:27+09:00"
-description = ""
-draft = true
+description = "Mac mini M2 Pro(64GB)でローカルLLMはどこまで動く？実機でモデルサイズ・速度・メモリを徹底検証。MLX形式の優位性やAIエージェント連携の現実も解説。"
+draft = false
 image = "/image/mac-mini-with-ai.png"
 tags = ["Tech"]
 title = "Mac mini M4 Pro (64GB) はローカルLLMの夢を見るか？ パフォーマンス検証とAIエージェント連携の現実 "
