@@ -21,6 +21,13 @@ $ git submodule update --remote
 ```
 
 ```text
+// create new article
+$ scripts/hugo_new.sh <filename>
+// example: bash scripts/hugo_new.sh my-article
+// creates: content/ja/entry/YYYY/MM/DD/my-article.md
+```
+
+```text
 // resize image
 // mogrify is included in ImageMagick package
 $ mogrify -resize 700 ./static/image/xxxxx.png
