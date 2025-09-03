@@ -2,7 +2,7 @@ name: deploy
 on:
   push:
     branches:
-      - master
+      - main
 env:
   TZ: 'Asia/Tokyo'
   REGISTRY: ghcr.io
@@ -27,7 +27,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           external_repository: mosuke5-lab/mosuke5-lab.github.io
           publish_branch: main
