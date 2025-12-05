@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 23 * * *' # 8:00 JST
 env:
   TZ: 'Asia/Tokyo'
   REGISTRY: ghcr.io
