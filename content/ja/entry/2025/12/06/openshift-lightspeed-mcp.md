@@ -1,8 +1,8 @@
 +++
 categories = ["OpenShift", "AI"]
-date = "2025-12-05T00:09:50+09:00"
+date = "2025-12-06T00:00:50+09:00"
 description = "OpenShift LightspeedにMCP (Model Context Protocol) サーバーを追加して、AIエージェント機能を拡張する方法を解説します。Claude Codeでのローカル実行からOpenShift Lightspeedへの統合まで。"
-draft = true
+draft = false
 image = "/image/openshift-lightspeed-and-mcp.png"
 tags = ["Tech"]
 title = "OpenShift LightspeedにMCPサーバーを追加して、AIエージェント機能を強化する"
