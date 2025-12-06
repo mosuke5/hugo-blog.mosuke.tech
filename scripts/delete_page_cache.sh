@@ -30,7 +30,7 @@ function purge_every_cache () {
 
 ## Add array to uris to purge contents uri
 # default uris
-uris=("/" "/en" "/sitemap.xml" "/index.xml")
+uris=("/" "/en/" "/sitemap.xml" "/index.xml")
 
 # changed files
 files=`git diff --name-only HEAD^`
