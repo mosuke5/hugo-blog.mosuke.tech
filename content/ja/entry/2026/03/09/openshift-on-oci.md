@@ -96,7 +96,7 @@ OCIのコンソールで「開発者サービス」→「Red Hat OpenShift」と
 実際の企業のユースケースだと、OpenShiftをプライベートクラスタにしたい、既存のVCN（AWSでいうところのVPC）上に作りたいといったことが起きるでしょう。
 こういったクラスタの設定は、1.5でできます。Terraformに渡すパラメータで調整が可能です。
 
-また、OpenShiftのノードに利用できるインスタンスシェイプ（AWSでいうインスタンスタイプ）のサポート状況は以下に記載があります。現時点では、そんなに多くのシェイプには対応していないです。
+また、OpenShiftのノードに利用できるインスタンスシェイプ（AWSでいうインスタンスタイプ）のサポート状況は以下に記載があります。現時点では、そんなに多くのシェイプには対応していないですが、OCIの場合はシェイプと実際のCPUやメモリの搭載量は関係ありません。自分で調整可能なので、少なく見えるだけとも言えるかも。
 
 {{< external_link url="https://docs.oracle.com/en-us/iaas/Content/openshift-on-oci/overview.htm#supported-shapes" title="Supported Shapes" >}}
 
@@ -269,11 +269,11 @@ LoadBalancerサービスではなく、`HostNetwork` タイプで公開されて
 
 ![Load Balancer](/image/openshift-on-oci-lbs.png)
 
-公式ドキュメントはこちら。
-{{< external_link url="https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/installing_on_oracle_distributed_cloud/installing-oci-assisted-installer#installing-troubleshooting-load-balancer_installing-oci-assisted-installer" title="Troubleshooting Load Balancer issues" >}}
+上の画像でLBのステータスが赤くなってUnhealthy状態ですが、こちらについては公式ドキュメントに言及があります。  
+{{< external_link url="https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/installing_on_oracle_distributed_cloud/installing-oci-assisted-installer#installing-troubleshooting-load-balancer_installing-oci-assisted-installer" title="1.9.1. The Ingress Load Balancer in Oracle Distributed Cloud is not at a healthy status" >}}
 
 ### DNS
-DNSレコードの設定もこのようになっていました。ここらはいつもどおりですね。
+DNSレコードの設定もこのようになっていました。ここらへんはいつもどおりですね。
 
 ![DNS Records](/image/openshift-on-oci-dns-records.png)
 
