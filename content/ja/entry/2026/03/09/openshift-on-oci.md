@@ -1,11 +1,11 @@
 +++
-categories = ["OpenShift", "OCI"]
+categories = ["OpenShift", "Oracle Cloud Infrastructure"]
 date = "2026-03-09T10:01:05+09:00"
 description = "Oracle Cloud Infrastructure (OCI) 上にAssisted Installerを利用してOpenShiftをインストールする手順やハマりどころを解説します。Terraformを使ったインフラ構築から各種設定まで。"
-draft = true
+draft = false
 image = "/image/openshift-on-oci-header.png"
 tags = ["Tech"]
-title = "OCI (Oracle Cloud Infrastructure) 上にOpenShift 4.21を構築してみた備忘録"
+title = "OCI (Oracle Cloud Infrastructure) 上にOpenShift 4.21 を構築してみた備忘録"
 author = "mosuke5"
 archive = ["2026"]
 +++
