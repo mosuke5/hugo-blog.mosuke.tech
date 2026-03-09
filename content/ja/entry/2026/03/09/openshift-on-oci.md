@@ -1,94 +1,110 @@
 +++
-categories = ["", ""]
+categories = ["OpenShift", "OCI"]
 date = "2026-03-09T10:01:05+09:00"
-description = ""
+description = "Oracle Cloud Infrastructure (OCI) 上にAssisted Installerを利用してOpenShiftをインストールする手順やハマりどころを解説します。Terraformを使ったインフラ構築から各種設定まで。"
 draft = true
 image = ""
 tags = ["Tech"]
-title = ""
+title = "OCI (Oracle Cloud Infrastructure) 上にOpenShift 4.21を構築してみた備忘録"
 author = "mosuke5"
 archive = ["2026"]
 +++
 
-OpenShift on OCIをやってみたので備忘録。
-あまり実績をインターネットに公開している人が少いので助けになればと。
+こんにちは、もーすけです。
 
-長らくOpenShiftに携わっているが、マネージドサービス以外の初期構築をするのはだいぶ久々。数年ぶり。
-Assisted Installerも実は初めて。。。OCIも初めて。。。
-ですが、一応もろもろで1日くらいでできた。
+今回は、OCI（Oracle Cloud Infrastructure）上にOpenShiftを構築してみたので、その備忘録として記事を書きました。
+あまりインターネット上に実績を公開している人が少ないようなので、これから構築に挑戦する方の助けになれば嬉しいです。
+
+私自身、長らくOpenShiftに携わっていますが、マネージドサービス以外の初期構築（自作）をするのは数年ぶりでした。
+そして実は、Assisted Installerを使うのも初めてですし、OCIを触るのも初めてでした。。。
+初めて尽くしでしたが、いろいろと調べながら1日くらいで構築することができました！
+
+<!--more-->
 
 ## 環境
-OCI（個人アカウント）
-OpenShift 4.21
-Assisted Installerを使用
+- **クラウドアカウント**: OCI（個人アカウント）
+  - 無料枠だといろいろ制限あって完結しないです。
+- **OpenShiftバージョン**: 4.21
+- **インストール方法**: Assisted Installerを使用
 
-## AWS との差分
-・ADとFD
-・
+## 構築の流れとポイント
 
-## 構築
-### ドキュメント
-ドキュメントはこれを見ながら行った。
-まず、4.19までは「Installing on OCI」となっているが、4.20からは「Installing on Oracle Distributed Cloud」になっているので注意。まずどこにドキュメントがあるかわからん。
-https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/installing_on_oracle_distributed_cloud/installing-oci-assisted-installer
+### ドキュメントについて
+基本的には以下の公式ドキュメントを見ながら進めました。
+注意点として、OpenShift 4.19まではドキュメントのタイトルが「Installing on OCI」だったのですが、4.20からは「Installing on Oracle Distributed Cloud」に変更されています。最初はどこにドキュメントがあるのか迷ってしまいました。  
+{{< external_link url="https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/installing_on_oracle_distributed_cloud/installing-oci-assisted-installer" title="Installing a cluster on Oracle Distributed Cloud by using the Assisted Installer" >}}
 
 
-Oracle側のこれも見る。
-https://docs.oracle.com/en-us/iaas/Content/openshift-on-oci/overview.htm
+また、Oracle側が提供しているドキュメントも併せて確認することをおすすめします。  
+{{< external_link url="https://docs.oracle.com/en-us/iaas/Content/openshift-on-oci/overview.htm" title="Red Hat OpenShift on Oracle Cloud Infrastructure" >}}
 
+ここから先はドキュメントの各セクションごとにポイントを記載していきます。
 
 ### 1.1. Supported Oracle Distributed Cloud infrastructures
-Oracle Distributed Cloud というのは、通常のパブリックなクラウドとGovermentクラウドなど特殊なものと統合した総称をいいのでしょうか。Oracleに精通していないのでわかりませんでしたが、いまのところそういう解釈でいます。
+「Oracle Distributed Cloud」という名前ですが、これは通常のパブリックなクラウドとGovernmentクラウドなどの特殊なものを統合した総称なのでしょうか？Oracleにあまり精通していないため正確なところはわかりませんでしたが、今のところそのような解釈をしています。
 
 ### 1.2. About the Assisted Installer and Oracle Distributed Cloud integration
-ワークフローが記載されている。これはとても重要。
-Red Hat側で行う作業とOracle側で行う作業の境界が示されているので要確認すること。
+ワークフローが記載されている非常に重要な部分です。  
+Red Hat側で行う作業と、Oracle側で行う作業の境界が明確に示されているので、作業前に必ず確認しておきましょう。
 
-図を貼る。
+![](/image/openshift-on-oci-workflow.png)
 
 ### 1.3. Preparing the Oracle Distributed Cloud environment
-作業する前の事前準備。
-OCIを触ったことがない人だといくつかわからないことがある。
-まずは、compartment。一言で言えば「クラウド上のリソースを整理・隔離するための論理的なフォルダ」のこと。同一アカウント内に、プロジェクト別、環境別（開発・検証・本番）、部署別などでリソースを分けて管理でるようになる。
-AWSには似たような概念はないかな。Azureではリソースグループが近いだろうか。
+こちらは作業を始める前の事前準備になります。
+OCIを初めて触る人にとっては、いくつか見慣れない概念が出てきます。
 
-create-cluster-vX.X.X.zipをGithubからダウンロードしろと書いてある。中身はTerraformなどのスクリプトが入っている。
-なぜこれが必要か、はじめはわからない。
-端的に言うと、OCIではリソース管理サービス（CloudFormation的なサービス）がTerraformベースで実装されている。OpenShiftを構築するのに必要なインフラリソースを構築するTerraformをダウンロードしろということである。
+まずは「コンパートメント（Compartment）」です。一言で言えば「クラウド上のリソースを整理・隔離するための論理的なフォルダ」のことです。同一アカウント内で、プロジェクト別や環境別（開発・検証・本番）、部署別などにリソースを分けて管理できるようになります。AWSにはあまり似たような概念がないかもしれませんが、Azureの「リソースグループ」に近いかもしれませんね。
+
+ドキュメントを読むと `create-cluster-vX.X.X.zip` をGitHubからダウンロードするように書かれていますが、中身はTerraformなどのスクリプトが入っています。
+「なぜこれが必要なの？」と最初は戸惑いましたが、端的に言うと、OCIではリソース管理サービス（CloudFormation的なサービス）がTerraformベースで実装されているためです。つまり、OpenShiftを構築するのに必要なインフラリソースを作るためのTerraformスクリプトをダウンロードせよ、ということなんですね。
 
 ### 1.4. Using the Assisted Installer to generate a discovery ISO image
-ここはRed Hat側での作業。Assisted Installerで使うISOイメージを作成する。
-迷うことはそんなにない。ドキュメント通りやれば平気。
-ポイントはいか2つ
+ここからはRed Hat側での作業になり、Assisted Installerで使うISOイメージを作成していきます。
+ここはドキュメント通りに進めればそれほど迷うことはありません。ポイントは以下の2点です。
 
-・Cluster name：メモして覚えておく。後ほどの作業で必要
-・Base domain：今回は mosuke5.com を使い、OCIのDNS管理ツールで利用できるよにネームサーバーを変更しておいた。OCIで管理するとTerraformの中でドメインのレコード登録までしてくれるが、別で管理していても大丈夫。
+- **Cluster name**: この後の作業で必要になるのでメモしておきます。
+- **Base domain**: 今回は `mosuke5.com` を使い、OCIのDNS管理ツールで利用できるようにネームサーバーを変更しておきました。OCIで管理すると、なんとTerraformの中でドメインのレコード登録まで自動でやってくれます。もちろん、別のDNSサービスで管理していても大丈夫です。
+
+### 1.5の前) リソース属性タグ
+残念ながらRed Hat側のドキュメントに記載がないのですが、Terraform stackをApplyする前にリソース属性タグを設定しておく必要があります。次のドキュメントを見て確実に対応しましょう。
+エラーログを取り忘れましたが、TerraformのApplyが失敗します。
+
+https://docs.oracle.com/ja-jp/iaas/Content/openshift-on-oci/install-prereq.htm#resource_attribution_tags
 
 ### 1.5. Provisioning OCI infrastructure for your cluster
-このあたりからOCIの作業になりわからないところも増えてくる。
-まずは、1.4 でダウンロードしたISOイメージをオブジェクトストレージにアップロードする。理由は、Terraformで作成したインスタンスがイメージを参照できるようにするため。
+このあたりから再びOCIの作業になり、見慣れない設定も増えてきます。
 
-Public公開はできないので、Pre-Authenticated Request (PAR)を使って外部から取得できるようにする。
-これは、名前のとおりであるが、期間限定でURLを知っている人だけがダウンロードできるようにする設定。AWSのS3でいう 「署名付きURL (Presigned URL)」に該当する。
+まずは、1.4でダウンロードしたISOイメージをオブジェクトストレージにアップロードします。これは、Terraformで作成したインスタンスがこのイメージを読み込めるようにするためです。
 
-ついにTerraform stackを apply するタイミングなのだが、少なくとも26年3月9日時点では、OpenShift側のドキュメントが古いようす。Terraform stackをオブジェクトストレージにアップロードするように書いてあるが必要はない。
-Oracle側のドキュメントを見ることを推奨する。
-「開発者サービス」、「Red Hat OpenShift」を選択すれば、はじめから最新版のStackが利用できるようになっている。
-もし、古いバージョンのStackを使いたい場合、Resouce Managementのサービスにいって新規にStackを作れば、任意のファイルをアップロードできるようになっている。
+バケットをPublic公開することはできないので、**Pre-Authenticated Request (PAR)** を使って外部から取得できるように設定します。名前の通りですが、期間限定でURLを知っている人だけがダウンロードできるようにする仕組みですね。AWSのS3でいう「署名付きURL (Presigned URL)」に該当するものです。
 
-![](/image/openshift-on-oci-docs-bug.png)
+そして、いよいよTerraform stackを `apply` するタイミングです。  
+しかし、いろいろと戸惑います。
 
+ひとつめは、どこからTerraform stackをApplyするのか？です。結論としては、OCIのResource Managerのサービスからおこないます。OCIのコンソールで「開発者サービス」→「Red Hat OpenShift」を選択すればそこからできます。
+
+そしてもうひとつ、少なくとも2026年3月9日時点では、OpenShift側のドキュメントが少し古いようです。  
+ドキュメントには「Terraform stackをオブジェクトストレージにアップロードする」と書かれていますが、その必要はありませんでした。Oracle側のドキュメントを参照することを強く推奨します。
+
+OCIのコンソールで「開発者サービス」→「Red Hat OpenShift」と選択すれば、初めから最新版のStackが利用できるようになっています。
+もし古いバージョンのStackを使いたい場合は、Resource Managementのサービスに行って新規にStackを作れば、任意のファイルをアップロードすることが可能です。
+
+![Stackのドキュメントのバグ？](/image/openshift-on-oci-docs-bug.png)
 
 ### 1.6. Completing the remaining Assisted Installer steps
-ここから、またRed Hat側の作業にもどる。
-そんなにはまるところはない。
-インストールには1時間くらいかかる。気長に待ちます。
+ここから、またRed Hat側の作業に戻ります。  
+特にハマるポイントはありません。インストール自体には1時間くらいかかるので、気長に待ちましょう。
+
+![](/image/openshift-on-oci-installation-progress.png)
 
 ## 確認観点
-Kubeadmin アカウントが払い出されているので、それでログイン。
-まずはバージョン確認
 
-### バージョン
+無事にインストールが完了すると、`kubeadmin` アカウントが払い出されるので、それでログインして各項目の確認をしていきます。
+
+### バージョン情報
+まずはバージョンの確認です。  
+期待通り4.21がインストールされています。
+
 ```shell
 $ oc version          
 Client Version: 4.20.1
@@ -98,8 +114,8 @@ Kubernetes Version: v1.34.2
 ```
 
 ### Cluster Operator
-Cluster Operator が正常に動いていることを確認。
-特別、OCI固有のOperatorが動いている気配はない。
+Cluster Operatorが正常に動いているか確認します。
+特別、OCI固有のOperatorが動いているような気配はありませんでした。
 
 ```shell
 $ oc get co
@@ -141,9 +157,10 @@ storage                                    4.21.3    True        False         F
 ```
 
 ### NodeとMachine管理
-ノードはMachineSetで管理はされていない。
-このドキュメントに記載されている通り、ノードを追加するときには、初期構築と同じようにサーバをISOからブートして、OpenShift側でCSRを承認する必要がある。オンプレのときと同じ手順である。
-https://docs.oracle.com/ja-jp/iaas/Content/openshift-on-oci/adding-nodes.htm
+ノードはMachineSetで管理されているわけではありませんでした。
+以下のドキュメントに記載されている通り、ノードを追加する際には、初期構築と同じようにサーバーをISOからブートして、OpenShift側でCSRを承認する必要があります。オンプレミス環境に構築する時と同じ手順ですね。
+
+{{< external_link url="https://docs.oracle.com/ja-jp/iaas/Content/openshift-on-oci/adding-nodes.htm" title="Adding Nodes to a Red Hat OpenShift Cluster" >}}
 
 ```shell
 $ oc get node
@@ -158,14 +175,13 @@ $ oc get machineset -A
 No resources found
 ```
 
-実際に払い出された仮想マシンを見てみる。
-Availability domainとFault domainに着目する。マシンはきちんとFD1-3で分散されている。
-ノードを追加するときにもFault domain を気にしながらスケールする。
+実際にOCI側で払い出された仮想マシンも確認してみます。
+Availability domainとFault domainに着目すると、マシンがきちんとFD1-3に分散されて配置されていることがわかります。ノードを追加する際も、このFault domainを意識しながらスケールさせる必要がありますね。
 
-![](/image/openshift-on-oci-servers.png)
-
+![OCIのサーバ一覧](/image/openshift-on-oci-servers.png)
 
 ### ストレージ
+ストレージについての確認です。デフォルトで `oci-bv` (Block Volume) が設定されています。
 
 ```shell
 $ oc get sc
@@ -189,6 +205,7 @@ reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 ```
 
+実際にPostgreSQLのPodを立ててPVCを要求してみたところ、正常にBoundされました。
 
 ```shell
 $ oc get pod
@@ -205,17 +222,18 @@ NAME                                       CAPACITY   ACCESS MODES   RECLAIM POL
 csi-d45e4d9e-96b5-462f-a2be-f8407e4bfbcf   50Gi       RWO            Delete           Bound    test/postgresql   oci-bv         <unset>                          2m22s
 ```
 
-![](/image/openshift-on-oci-blockstorage.png)
+OCIのコンソールからも作成されたブロックボリュームが確認できます。
 
-VPUが10で作成されている。
-VPUは、OCIの概念で、ボリューム・パフォーマンス・ユニットの略。ディスクの性能を表す単位。
-AWSのEBSとかだと、ボリュームのサイズによって性能値が変わることが多いが、サイズとは別に性能の調整ができる。
+![オブジェクトストレージ](/image/openshift-on-oci-blockstorage.png)
 
-VPUの変更はSCの設定で
-https://docs.oracle.com/ja-jp/iaas/Content/ContEng/Tasks/contengcreatingpersistentvolumeclaim_topic-Provisioning_PVCs_on_BV.htm#contengcreatingpersistentvolumeclaim_topic_Provisioning_PVCs_on_BV_PV_Volume_performance_Lower-Balanced-Higher
+ここで面白いのが、**VPU (Volume Performance Units)** が「10」で作成されている点です。
+VPUはディスクの性能を表すOCI独自の単位です。AWSのEBSなどではボリュームのサイズによって性能値（IOPSなど）が変わることが多いですが、OCIではサイズとは独立して性能の調整ができるようになっています。
+VPUを変更したい場合は、StorageClassの設定で変更できるようです。
 
-### ネットワーク
-まずは、Ingressがどうやって公開されているか確認する。
+{{< external_link url="https://docs.oracle.com/ja-jp/iaas/Content/ContEng/Tasks/contengcreatingpersistentvolumeclaim_topic-Provisioning_PVCs_on_BV.htm#contengcreatingpersistentvolumeclaim_topic_Provisioning_PVCs_on_BV_PV_Volume_performance_Lower-Balanced-Higher" title="ブロック・ボリュームにPVCをプロビジョニングする場合" >}}
+
+### ネットワーク（Ingress）
+Ingressがどのように公開されているかも確認しておきます。
 
 ```shell
 $ oc get pod -n openshift-ingress
@@ -237,33 +255,36 @@ $ oc get ingresscontrollers.operator.openshift.io default -n openshift-ingress-o
     type: HostNetwork
 ```
 
-![](/image/openshift-on-oci-lbs.png)
+LoadBalancerサービスではなく、`HostNetwork` タイプで公開されていました。
+ルーター（Ingress Controller）のPodが動作しているワーカーノードのポートを直接公開し、OCIのロードバランサーがそのワーカーノードにトラフィックを振り分ける構成になっているようです。
 
-https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/installing_on_oracle_distributed_cloud/installing-oci-assisted-installer#installing-troubleshooting-load-balancer_installing-oci-assisted-installer
+![Load Balancer](/image/openshift-on-oci-lbs.png)
 
-![](/image/openshift-on-oci-dns-records.png)
+公式ドキュメントはこちら。
+{{< external_link url="https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/installing_on_oracle_distributed_cloud/installing-oci-assisted-installer#installing-troubleshooting-load-balancer_installing-oci-assisted-installer" title="Troubleshooting Load Balancer issues" >}}
 
-### イメージレジストリとオブジェクトストレージ連携
-初期段階ではイメージレジストリが有効になっていないので、オブジェクトストレージをバックエンドにして設定してみます。
-そもそも、OpenShiftのイメージレジストリのバックエンドにOCIのオブジェクトストレージはありません。
-しかし、OCIのオブジェクトストレージはS3互換APIを持っているため、S3として設定していきます。
+### DNS
+DNSレコードの設定もこのようになっていました。いつもどおりです。
 
-https://docs.oracle.com/ja-jp/iaas/Content/Object/Tasks/s3compatibleapi_topic-Amazon_S3_Compatibility_API_Support.htm
+![DNS Records](/image/openshift-on-oci-dns-records.png)
 
-イメージレジストリ用のオブジェクトストレージを払い出したあと、エンドポイントを作成する必要があります。
-https://docs.oracle.com/ja-jp/iaas/Content/Object/Tasks/private-endpoints.htm
+### イメージレジストリとオブジェクトストレージの連携
+初期段階ではイメージレジストリが有効になっていないため、OCIのオブジェクトストレージをバックエンドにして設定してみます。
 
+そもそも、OpenShiftのイメージレジストリのバックエンドとして「OCIオブジェクトストレージ」という選択肢はネイティブには存在しません。しかし、OCIのオブジェクトストレージは**S3互換API**を備えているため、AWS S3として設定していけばOKです。
 
-![](/image/openshift-on-oci-s3-endpoint.png)
+{{< external_link url="https://docs.oracle.com/ja-jp/iaas/Content/Object/Tasks/s3compatibleapi_topic-Amazon_S3_Compatibility_API_Support.htm" title="Amazon S3互換APIのサポート" >}}
 
+まずはイメージレジストリ用のオブジェクトストレージを払い出し、次にプライベートエンドポイントを作成します。
 
-このドキュメントがイメージレジストリの設定方法を説明しています。S3のパートを確認します。
-ドキュメントのサンプルコードで足りない箇所は、`regionEndpoint`です。
-ここに、上で払い出したS3互換エンドポイントを記載します。
+{{< external_link url="https://docs.oracle.com/ja-jp/iaas/Content/Object/Tasks/private-endpoints.htm" title="プライベート・エンドポイント" >}}
 
-https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/registry/setting-up-and-configuring-the-registry#configuring-registry-storage-aws-user-infrastructure
+![S3 Endpoint](/image/openshift-on-oci-s3-endpoint.png)
 
-以下が実際に設定した内容です。
+以下のドキュメントの「S3」のパートを参考に設定を進めます。
+{{< external_link url="https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/registry/setting-up-and-configuring-the-registry#configuring-registry-storage-aws-user-infrastructure" title="Configuring the registry for Amazon S3" >}}
+
+ドキュメントのサンプルコードにはない項目として、`regionEndpoint` を指定する必要があります。ここに先ほど払い出したS3互換エンドポイントのURLを記載します。
 
 ```shell
 $ oc get configs.imageregistry.operator.openshift.io/cluster -o yaml
@@ -271,51 +292,40 @@ apiVersion: imageregistry.operator.openshift.io/v1
 kind: Config
 metadata:
   name: cluster
-  ...
+  # ...
 spec:
-  httpSecret: c728254edbaad696ca446564bab29920280c97891f11846061ba20034223bfbd8e639929506595f55490f413d4a59918f948c83ab9ea64527c63ff5e335f666c
-  logLevel: Normal
-  managementState: Managed
-  observedConfig: null
-  operatorLogLevel: Normal
-  proxy: {}
-  replicas: 1
-  requests:
-    read:
-      maxWaitInQueue: 0s
-    write:
-      maxWaitInQueue: 0s
-  rolloutStrategy: RollingUpdate
+  # ...
   storage:
     managementState: Unmanaged
     s3:
       bucket: mosuke5-oci-cluster-image-registry
       region: ap-tokyo-1
       regionEndpoint: https://openshift-registry-nrqieepzoal0.private.compat.objectstorage.ap-tokyo-1.oci.customer-oci.com
+      virtualHostedStyle: false
       trustedCA:
         name: ""
-      virtualHostedStyle: false
-  unsupportedConfigOverrides: null
-status:
-  ...
-  storage:
-    managementState: Unmanaged
-    s3:
-      bucket: mosuke5-oci-cluster-image-registry
-      region: ap-tokyo-1
-      regionEndpoint: https://openshift-registry-nrqieepzoal0.private.compat.objectstorage.ap-tokyo-1.oci.customer-oci.com
-      trustedCA:
-        name: ""
-      virtualHostedStyle: false
-  storageManaged: false
 ```
 
-レジストリ設定後、BuildConfigを実行し、実際にイメージのオブジェクトが作成されていることを確認しました。
+レジストリの設定後、`BuildConfig`を実行し、実際にイメージがオブジェクトストレージにプッシュされていることを確認できました。
 
-![](/image/openshift-on-oci-registry-objects.png)
+![Registry Objects](/image/openshift-on-oci-registry-objects.png)
 
+## 課題
+今回時間の都合で確認したかったができていない点がひとつ。  
+それはOpenShift Loggingを使ったときのLokiのバックエンドにレジストリと同じくオブジェクトストレージを使えるかどうか。構造上は問題ないと思っていますが、本格的に利用する場合はチェックしておきましょう。
 
-## クリーンアップ
-作った環境は最後に削除します。
-基本的には、Resouce ManagerのStackを削除（Destroy）すればいいです。
-が、Terraformが作っていないリソース、たとえばオブジェクトストレージのエンドポイントやDynamic Provisioningで払い出したブロックストレージは手動で削除する必要があります。削除しないとTerraformの削除が通らないので注意が必要です。
+## 費用
+どれだけOpenShiftを起動していたかに依存しますが、今回の確認をするのにかかったお金は841円でした。
+
+![Costs](/image/openshift-on-oci-costs.png)
+
+## まとめとクリーンアップの注意点
+検証が終わったら環境を削除します。
+基本的には、Resource ManagerのStackを削除（Destroy）すればインフラリソースは消えてくれます。
+
+ただし、**Terraform管理外のリソースは手動で削除する必要がある**ので注意してください。
+例えば、上記で手動作成したオブジェクトストレージのエンドポイントや、OpenShift上からDynamic Provisioningで払い出したブロックストレージ（PVC）などです。これらを先に削除しておかないと、TerraformのDestroyが失敗してしまいます。
+
+OCI上でのOpenShift構築、初めてのことだらけでしたが意外とすんなりいきました。
+on OCI独自の実装も少なく、今までOpenShiftを構築・運用してきた人なら、すぐに理解できる構成になっていると思います。
+ぜひ皆さんも試してみてください。それでは！
