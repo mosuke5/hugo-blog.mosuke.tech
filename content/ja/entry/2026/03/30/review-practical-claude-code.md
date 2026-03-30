@@ -2,7 +2,7 @@
 categories = ["AI"]
 date = "2026-03-30T13:29:36+09:00"
 description = "「実践Claude Code入門」の書評。AIエディタを本格活用するために必要なスペック駆動開発やコンテキストエンジニアリングの考え方を学べる一冊を紹介します。"
-draft = true
+draft = false
 image = ""
 tags = ["Tech"]
 title = "「実践Claude Code入門」書評 ── AIエディタ時代に必要なスペック駆動開発とコンテキストエンジニアリングを学ぶ"
@@ -70,3 +70,5 @@ AIエージェントは曖昧な指示でもそれっぽいコードを生成し
 「実践Claude Code入門」は、タイトルこそClaude Code向けですが、その本質は**AIエージェント時代の開発手法**を体系的に学べる一冊です。スペック駆動開発やコンテキストエンジニアリングといった考え方は、どのAIエディタを使っていても役立ちます。
 
 AIエディタを「なんとなく便利だから使っている」段階から一歩先に進みたい方には、ぜひ手にとってみてください。
+
+{{< link-card url="https://amzn.to/4ddyT0N" title="実践Claude Code入門" description="Claude Codeを軸に、AIエージェントを活用した開発手法を体系的に解説した書籍。" site="Amazon" image="https://m.media-amazon.com/images/I/81kh9LnNRIL._SY385_.jpg">}}
