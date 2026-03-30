@@ -15,20 +15,29 @@ hugo
 
 ### Create new blog post
 ```bash
-# Create a new blog post with current date
+# Create a new Japanese blog post with current date (default)
 bash scripts/hugo_new.sh <filename>
 # Example: bash scripts/hugo_new.sh my-article
 # Creates: content/ja/entry/YYYY/MM/DD/my-article.md
+
+# Create an English blog post
+bash scripts/hugo_new.sh -l en <filename>
+# Creates: content/en/entry/YYYY/MM/DD/<filename>.md
 ```
 
 ### Image optimization
 ```bash
-# Resize images (using ImageMagick)
+# Resize images to 700px width (using ImageMagick)
 mogrify -resize 700 ./static/image/xxxxx.png
 
-# Optimize images in git diff
-bash scripts/optimize_image.sh
+# Compress PNG
+optipng -o7 ./static/image/xxxxx.png
+
+# Compress JPEG
+jpegtran -copy none -optimize -outfile ./static/image/xxxxx.jpg ./static/image/xxxxx.jpg
 ```
+
+Image optimization is also handled by the review skill (`.cursor/skills/review-blog-post/`) during pre-publish review.
 
 ### Deployment
 Deployment is automated via GitHub Actions when pushing to the main branch. The workflow:
@@ -79,7 +88,7 @@ archive = ["2026"]
 ### Content guidelines
 
 - Primary language is **Japanese** (`content/ja/`)
-- Create new posts with `bash scripts/hugo_new.sh <slug>` (uses `archetypes/default.md` as template)
+- Create new posts with `bash scripts/hugo_new.sh <slug>` (default: Japanese) or `bash scripts/hugo_new.sh -l en <slug>` (English). Uses `archetypes/default.md` as template
 - Place the `<!--more-->` tag after the introductory paragraph to define the summary shown in article lists
 - Header images go in `static/image/` and should be resized to 700px width (`mogrify -resize 700`)
 

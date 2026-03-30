@@ -22,7 +22,6 @@ This is the blog.mosuke.tech's hugo repository.
 ├── scripts ... Utility scripts for maintenance and deployment
 │   ├── delete_page_cache.sh
 │   ├── hugo_new.sh
-│   ├── optimize_image.sh
 │   ├── setup.sh
 │   └── test_page_url.sh
 ├── static ... Static assets (images, etc.)
@@ -69,10 +68,14 @@ $ git submodule update --remote
 ```
 
 ```text
-// create new article
-$ scripts/hugo_new.sh <filename>
+// create new article (Japanese by default)
+$ bash scripts/hugo_new.sh <filename>
 // example: bash scripts/hugo_new.sh my-article
 // creates: content/ja/entry/YYYY/MM/DD/my-article.md
+
+// create English article
+$ bash scripts/hugo_new.sh -l en <filename>
+// creates: content/en/entry/YYYY/MM/DD/<filename>.md
 ```
 
 ```text

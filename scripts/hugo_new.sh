@@ -1,6 +1,24 @@
-#/bin/bash
-if [ -z $1 ]; then
-    echo "No an argument. Please input file name."
+#!/bin/bash
+
+lang="ja"
+while getopts "l:" opt; do
+    case $opt in
+        l) lang="$OPTARG" ;;
+        *) echo "Usage: $0 [-l lang] <filename>"; exit 1 ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [ "$lang" != "ja" ] && [ "$lang" != "en" ]; then
+    echo "Error: Unsupported language '$lang'. Use 'ja' or 'en'."
     exit 1
 fi
-hugo new `date +entry/%Y/%m/%d/$1.md` 
+
+if [ -z "$1" ]; then
+    echo "No argument. Please input file name."
+    echo "Usage: $0 [-l lang] <filename>"
+    echo "  -l lang  Language code (default: ja). e.g. ja, en"
+    exit 1
+fi
+
+hugo new "$lang/$(date +entry/%Y/%m/%d/$1.md)"
