@@ -1,0 +1,32 @@
+{{- $url := .Get "url" -}}
+{{- if not $url -}}
+  {{ errorf "missing value for param 'url': %s" .Position }}
+{{- end -}}
+{{- $title := .Get "title" -}}
+{{- if not $title -}}
+  {{ errorf "missing value for param 'title': %s" .Position }}
+{{- end -}}
+{{- $description := .Get "description" -}}
+{{- $image := .Get "image" -}}
+{{- $site := .Get "site" | default (urls.Parse $url).Host -}}
+
+<div class="belg-link row">
+  {{- with $image }}
+  <div class="belg-left col-md-2 d-none d-md-block">
+    <a href="{{ $url }}" target="_blank">
+      <img class="belg-site-image" src="{{ . }}" />
+    </a>
+  </div>
+  {{- end }}
+  <div class="belg-right {{ if $image }}col-md-10{{ else }}col-md-12{{ end }}">
+    <div class="belg-title">
+      <a href="{{ $url }}" target="_blank">{{ $title }}</a>
+    </div>
+    {{- with $description }}
+    <div class="belg-description">{{ . }}</div>
+    {{- end }}
+    <div class="belg-site">
+      <span class="belg-site-name">{{ $site }}</span>
+    </div>
+  </div>
+</div>

@@ -87,6 +87,10 @@ archive = ["2026"]
 
 Custom shortcodes in `layouts/shortcodes/`:
 
+- `link-card` - Display an external link as a rich card with title, description, and optional image. Parameters: `url` (required), `title` (required), `description`, `image`, `site`
+  ```
+  {{< link-card url="https://amzn.to/xxx" title="Book Title" description="Summary..." image="https://..." site="Amazon.co.jp" >}}
+  ```
 - `admission-webhook-series` - Admission Webhook series navigation
 - `argocd-series` - Argo CD series navigation
 - `go-system-programming-series` - Go system programming series navigation

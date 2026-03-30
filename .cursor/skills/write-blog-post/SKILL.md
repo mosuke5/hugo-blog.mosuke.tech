@@ -141,7 +141,7 @@ archive = ["YYYY"]
 ```markdown
 挨拶 + この本を読んだきっかけ
 
-（belg-link で本の情報カードを挿入）
+（link-card ショートコードで本の情報カードを挿入）
 
 <!--more-->
 
@@ -175,30 +175,48 @@ archive = ["YYYY"]
 （抱負・展望）
 ```
 
-#### 使用可能な HTML / ショートコード
+#### 外部リンクの規約
 
-**外部リンクカード (belg-link):**
+外部サイトへのリンクは必ず **別タブで開く**（`target="_blank"`）。リンクの重要度に応じて形式を使い分ける:
 
-```html
-<div class="belg-link row">
-  <div class="belg-left col-md-2 d-none d-md-block">
-    <a href="URL" target="_blank">
-      <img class="belg-site-image" src="IMAGE_URL" />
-    </a>
-  </div>
-  <div class="belg-right col-md-10">
-    <div class="belg-title">
-      <a href="URL" target="_blank">タイトル</a>
-    </div>
-    <div class="belg-description">説明文</div>
-    <div class="belg-site">
-      <span class="belg-site-name">サイト名</span>
-    </div>
-  </div>
-</div>
+| 用途 | 形式 | 使うもの |
+|------|------|----------|
+| 書評の書籍リンク、記事の主題に関わる重要リンク | カード形式 | `link-card` ショートコード |
+| 補足・参考レベルのリンク | 通常リンク | `external_link` ショートコード or `<a target="_blank">` |
+
+Markdown の `[text](url)` は `target="_blank"` が付かないため、外部サイトには使わない。
+
+#### 使用可能なショートコード
+
+**リンクカード (`link-card`):**
+
+書籍や重要な外部リンクをカード形式で表示する。
+
+```
+{{< link-card url="https://amzn.to/3XO8X2V" title="変革の軌跡" description="4500万ドルの開発費用の削減..." image="https://m.media-amazon.com/images/I/71IbZx3psVL._SY522_.jpg" site="Amazon.co.jp" >}}
 ```
 
-**外部リンク (ショートコード):**
+パラメータ:
+- `url` (必須): リンク先URL
+- `title` (必須): タイトル
+- `description` (任意): 説明文
+- `image` (任意): サムネイル画像URL（指定時のみ左カラムに画像表示）
+- `site` (任意): サイト名（省略時はURLのホスト名を自動抽出）
+
+**リンクカード生成ワークフロー:**
+
+URLからメタデータを自動取得してショートコードを生成する:
+
+1. URLが渡されたら `WebFetch` でページ内容を取得する
+2. 取得した内容からタイトル・説明文・OGP画像URL（`og:title`, `og:description`, `og:image`）を抽出する
+3. 取得できなかった場合（Amazonなどボット対策があるサイト）:
+   - 書籍名やISBNからAIの知識でタイトル・説明文を補完する
+   - 画像URLはユーザーに確認を依頼する
+4. 抽出した情報で `link-card` ショートコードを生成する
+
+**外部リンク (`external_link`):**
+
+補足・参考程度の外部リンクに使う。
 
 ```
 {{< external_link url="https://example.com" title="リンクテキスト" >}}

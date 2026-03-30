@@ -18,17 +18,7 @@ archive = ["2026"]
 
 ## 本の概要
 
-<div class="belg-link row">
-  <div class="belg-right col-md-10">
-    <div class="belg-title">
-      <a href="https://amzn.to/4ddyT0N" target="_blank">実践Claude Code入門</a>
-    </div>
-    <div class="belg-description">Claude Codeを軸に、AIエージェントを活用した開発手法を体系的に解説した書籍。</div>
-    <div class="belg-site">
-      <span class="belg-site-name">Amazon</span>
-    </div>
-  </div>
-</div>
+{{< link-card url="https://amzn.to/4ddyT0N" title="実践Claude Code入門" description="Claude Codeを軸に、AIエージェントを活用した開発手法を体系的に解説した書籍。" site="Amazon" image="https://m.media-amazon.com/images/I/81kh9LnNRIL._SY385_.jpg">}}
 
 本書は、Claude CodeというコマンドラインベースのAIエージェントを題材に、**AIを活用した開発のベストプラクティス**を体系的にまとめた本です。
 ただし、ツールの操作マニュアルにとどまらず、AIエージェントがどういう原理で動いているのか、どうすれば意図した結果を引き出せるのかという**根本的な考え方**まで踏み込んでいるのが特徴です。
@@ -59,7 +49,9 @@ AIエージェントは曖昧な指示でもそれっぽいコードを生成し
 
 こうした知識はClaude Codeに限らずあらゆるAIエディタで応用できます。
 
-コンテキストエンジニアリングについてさらに深く学びたい方には、「<a href="https://amzn.to/4tB2O8b" target="_blank">コンテキストエンジニアリング</a>」という書籍もあわせておすすめします。
+コンテキストエンジニアリングについてさらに深く学びたい方には、以下の書籍もあわせておすすめします。
+
+{{< link-card url="https://amzn.to/4tB2O8b" title="コンテキストエンジニアリング" description="LLMに適切な文脈情報を与えるための設計・管理手法を体系的に解説した書籍。" site="Amazon" image="https://m.media-amazon.com/images/I/81I7imCgNnL._SY522_.jpg" >}}
 
 ### AIの動作原理の理解
 
