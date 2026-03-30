@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ "/" | relLangURL }}">{{ i18n "home" }} <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ "/about" | relLangURL }}">{{ i18n "about" }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ "/entry" | relLangURL }}">{{ i18n "entry" }}</a>
+        </li>
+        {{ if eq .Site.Language.LanguageName "Japanese" }}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ "/kubernetes" | relLangURL }}">{{ i18n "learn-kubernetes" }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ "/work" | relLangURL }}">{{ i18n "contact" }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </nav>
+</header>

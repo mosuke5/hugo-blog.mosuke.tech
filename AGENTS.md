@@ -49,7 +49,7 @@ Deployment is automated via GitHub Actions when pushing to the main branch. The 
 
 This is a multilingual Hugo blog with Japanese (ja) and English (en) content:
 
-- **Theme**: Custom theme at `themes/mosuke-tech-hugo-theme` (git submodule from mosuke5/purehugo)
+- **Theme**: Custom theme at `themes/mosuke-tech-hugo-theme`
 - **Content structure**: 
   - `content/ja/`: Japanese content (default language)
   - `content/en/`: English content
@@ -107,16 +107,10 @@ Custom shortcodes in `layouts/shortcodes/`:
 
 ## Theme Customization
 
-To modify the design, changes must be made to the theme repository at https://github.com/mosuke5/purehugo and then update the submodule:
-
-```bash
-# Update theme submodule
-git submodule update --remote
-```
+The theme lives directly in `themes/mosuke-tech-hugo-theme/` and can be edited in place.
 
 ## Important Warnings
 
-- **Do not edit files under `themes/mosuke-tech-hugo-theme/`** - This is a git submodule. Design changes must be made in the [theme repository](https://github.com/mosuke5/purehugo).
 - **Do not change the front matter format** - Always use TOML (`+++`) delimiters. Do not convert to YAML (`---`) or JSON.
 - **Do not change `date` or URL paths of published articles** - This breaks existing external links and bookmarks.
 - **Do not modify secrets in `config.yaml`** - Fields like `google_analytics`, `disqusShortname`, and verification codes should not be changed.

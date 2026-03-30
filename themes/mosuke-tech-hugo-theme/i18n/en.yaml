@@ -1,0 +1,32 @@
+home:
+  other: "Home"
+about:
+  other: "About this site"
+entry:
+  other: "Articles"
+learn-kubernetes:
+  other: "Learn Kubernetes"
+contact:
+  other: "Contact"
+read-more:
+  other: "Read more"
+archive:
+  other: "Arcive"
+latest-entry:
+  other: "Latest entries"
+related-entry:
+  other: "Related entries"
+category:
+  other: "Categories"
+entry-search:
+  other: "Search entries"
+published-date:
+  other: "Published"
+updated-date:
+  other: "Updated"
+feedback-title:
+  other: "Feedback"
+feedback-description:
+  other: "If you have any feedback on this article, please fill out this form."
+feedback-link:
+  other: "Feedback form"

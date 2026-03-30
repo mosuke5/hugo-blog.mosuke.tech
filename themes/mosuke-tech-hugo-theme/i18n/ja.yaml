@@ -1,0 +1,32 @@
+home:
+  other: "ホーム"
+about:
+  other: "このサイトについて"
+entry:
+  other: "ブログ記事"
+learn-kubernetes:
+  other: "Kubernetesを学ぶ"
+contact:
+  other: "お問い合わせ"
+read-more:
+  other: "続きを読む"
+archive:
+  other: "アーカイブ"
+latest-entry:
+  other: "最新の記事"
+related-entry:
+  other: "関連する記事"
+category:
+  other: "カテゴリー"
+entry-search:
+  other: "サイト内検索"
+published-date:
+  other: "執筆日"
+updated-date:
+  other: "更新日"
+feedback-title:
+  other: "フィードバック"
+feedback-description:
+  other: "本記事に対して、フィードバックあればこちらのフォームからご記入ください。"
+feedback-link:
+  other: "記事の内容にフィードバックしてみる"

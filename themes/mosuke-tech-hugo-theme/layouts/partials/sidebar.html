@@ -1,0 +1,81 @@
+<div class="col-md-4 col-xs-12">
+  <div class="sidebar-content related-post">
+    <h3>{{ i18n "latest-entry" }}</h3>
+    <ul class="list-group">
+      {{ range first 5 .Site.RegularPages -}}
+      <li class="list-group-item"><a href="{{ .Permalink }}" onClick="gtag('event', 'link', {'event_category': 'recent-posts','event_label': '{{ .Title }}'});">{{ .Title }}</a></li>
+      {{ end -}}
+    </ul>
+  </div>
+  <div class="sidebar-content campaign-ad">
+    {{ with .Site.Params.google_ad }}
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-2753210161325997"
+    data-ad-slot="4759840302"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    {{ end }}
+  </div>
+  <div class="sidebar-content openshift-ad">
+    {{ with .Site.Params.openshift_ad }}
+    <div class="openshift-tettei-nyumon">
+      <p>「OpenShift徹底入門」執筆しました！</p>
+      <a href="https://amzn.to/325lCFr" target="_blank" onclick="gtag('event', 'link', {'event_category': 'sidebar_ad','event_label': 'OpenShift徹底入門'});"><img src="/image/openshift-tettei-nyumon.jpg" class="img-fluid" alt="Responsive image" style="max-width: 200px;"></a>
+    </div>
+    {{ end }}
+  </div>
+  <div class="sidebar-content related-post">
+    <h3>{{ i18n "category" }}</h3>
+    <ul class="list-group">
+      {{ range $key, $value := .Site.Taxonomies.categories -}}
+      <li class="list-group-item">
+        <a href="{{ "/categories/" | relLangURL }}{{ $key }}" onClick="gtag('event', 'link', {'event_category': 'categories','event_label': '{{ $key }}'});">{{ $key }} ({{$value.Count}})</a>
+      </li>
+      {{ end -}}
+    </ul>
+  </div>
+  <div class="sidebar-content related-post">
+    <h3>{{ i18n "archive" }}</h3>
+    <ul class="list-group">
+      {{ range $key, $value := .Site.Taxonomies.archive -}}
+      <li class="list-group-item">
+        <a href="{{ "/archive/" | relLangURL }}{{ $key }}" onClick="gtag('event', 'link', {'event_category': 'archives','event_label': '{{ $key }}'});">{{ $key }} Archive ({{$value.Count}})</a>
+      </li>
+      {{ end -}}
+    </ul>
+  </div>
+  <div class="sidebar-content custom-search">
+    <h3>{{ i18n "entry-search" }}</h3>
+    <div class="gcse-search"></div>
+  </div>
+
+  <div class="fixed-contents position-sticky">
+    {{ $related := .Site.RegularPages.Related . | first 4 }}
+    {{ with $related }}
+    <div class="sidebar-content related-post">
+      <h3>{{ i18n "related-entry" }}</h3>
+      <ul class="list-group">
+        {{ range . }}
+        <li class="list-group-item"><a href="{{ .Permalink }}" onClick="gtag('event', 'link', {'event_category': 'related-posts','event_label': '{{ .Title }}'});">{{ .Title }}</a> ({{ .Date.Format "2006/01/02" }})</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{ with .Site.Params.google_ad }}
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-2753210161325997"
+    data-ad-slot="4759840302"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    {{ end }}
+  </div>
+</div>

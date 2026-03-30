@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="entry col-md-8 col-xs-12">
+  {{ range .Paginator.Pages -}}
+  <h1><a href="{{ .Permalink }}" class="entry-title">{{ .Title }}</a></h1>
+  <div class="entry-sub-title">
+      <span class="">{{ .Date.Format "2006-01-02" }}</span>
+      {{ if isset .Params "categories" -}}
+          {{ range .Params.categories -}}
+              <a class="badge badge-inf post-category post-category-{{ . }}" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end -}}
+      {{ end -}}
+  </div>
+  <div class="entry-content">
+      {{ .Summary }}
+      <a href="{{ .Permalink }}">{{ i18n "read-more" }}</a>
+  </div>
+  {{ end -}}
+  {{- partial "pagenation.html" . -}}
+</div> 
+{{- partial "sidebar.html" . -}}
+{{ end }}

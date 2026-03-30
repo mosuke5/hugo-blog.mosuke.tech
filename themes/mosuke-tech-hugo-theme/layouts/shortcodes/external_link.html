@@ -1,0 +1,5 @@
+{{- $url := .Get "url" -}}
+{{- if not $url -}}
+  {{ errorf "missing value for param 'url': ％s" .Position }}
+{{- end -}}
+<a href="{{ $url }}" target="_blank">{{ .Get "title" }}</a>
