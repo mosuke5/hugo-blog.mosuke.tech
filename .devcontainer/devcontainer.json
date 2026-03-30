@@ -1,0 +1,27 @@
+{
+  "name": "Hugo Blog",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [1313, 1314],
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo Server",
+      "onAutoForward": "notify"
+    },
+    "1314": {
+      "label": "Playwright Test Server",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "hugo version && cd e2e-test && npm install && npx playwright install --with-deps chromium",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "budparr.language-hugo-vscode",
+        "davidanson.vscode-markdownlint",
+        "ms-playwright.playwright"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:build": "cd .. && hugo && cd e2e-test && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "serve": "^14.2.4"
+  }
+}

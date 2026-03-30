@@ -1,8 +1,11 @@
 name: deploy
 on:
-  push:
+  workflow_run:
+    workflows: ["test"]
     branches:
       - main
+    types:
+      - completed
   schedule:
     - cron: '0 23 * * *' # 8:00 JST
 env:
@@ -12,6 +15,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     steps:
       - name: Git clone blog contentes
         uses: actions/checkout@v3
@@ -28,7 +34,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'schedule' }}
         with:
           external_repository: mosuke5-lab/mosuke5-lab.github.io
           publish_branch: main
