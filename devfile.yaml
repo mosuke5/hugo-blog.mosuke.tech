@@ -27,7 +27,7 @@ commands:
   - id: hugo-serve
     exec:
       component: runtime
-      commandLine: "hugo server -D --bind 0.0.0.0"
+      commandLine: "/tmp/hugo server -D --bind 0.0.0.0"
       group:
         kind: run
         isDefault: true
