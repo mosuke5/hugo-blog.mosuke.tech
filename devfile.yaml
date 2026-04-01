@@ -5,7 +5,10 @@ components:
   - name: runtime
     container:
       image: registry.redhat.io/devspaces/udi-base-rhel10:3.27
-      memoryLimit: 4Gi
+      cpuLimit: "1000m"
+      cpuRequest: "500m"
+      memoryLimit: "3Gi"
+      memoryRequest: "2Gi"
       mountSources: true
       endpoints:
         - name: hugo-server
