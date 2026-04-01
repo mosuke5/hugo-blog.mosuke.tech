@@ -4,7 +4,7 @@ metadata:
 components:
   - name: runtime
     container:
-      image: registry.access.redhat.com/devspaces/udi-base-rhel10:3.27
+      image: registry.redhat.io/devspaces/udi-base-rhel10:3.27
       memoryLimit: 4Gi
       mountSources: true
       endpoints:
