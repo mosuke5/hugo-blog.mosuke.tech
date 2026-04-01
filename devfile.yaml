@@ -37,8 +37,4 @@ commands:
 events:
   postStart:
     - install-hugo
-attributes:
-  vscode-extensions:
-    - redhat.vscode-openshift-connector
-    - redhat.vscode-yaml
     
