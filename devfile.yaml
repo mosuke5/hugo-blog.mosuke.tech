@@ -1,0 +1,39 @@
+schemaVersion: 2.2.0
+metadata:
+  name: hugo-blog-dev
+components:
+  - name: runtime
+    container:
+      image: registry.redhat.io/devspaces/udi-base-rhel10:3.27
+      memoryLimit: 4Gi
+      mountSources: true
+      endpoints:
+        - name: hugo-server
+          targetPort: 1313
+      env:
+        - name: HUGO_VERSION
+          value: "0.152.2" # 必要なHugoのバージョン
+commands:
+  - id: install-hugo
+    exec:
+      component: runtime
+      commandLine: |
+        curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz | tar -xz -C /tmp
+        #sudo mv /tmp/hugo /usr/local/bin/hugo
+        #hugo version
+  - id: hugo-serve
+    exec:
+      component: runtime
+      commandLine: "hugo server -D --bind 0.0.0.0"
+      group:
+        kind: run
+        isDefault: true
+  - id: e2e-test
+    exec:
+      component: runtime
+      commandLine: "npm install && npm test"
+      group:
+        kind: test
+events:
+  postStart:
+    - install-hugo
