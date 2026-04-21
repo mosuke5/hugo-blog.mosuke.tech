@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="entry col-md-8 col-xs-12">
   {{ range .Paginator.Pages -}}
-  <h1><a href="{{ .Permalink }}" class="entry-title">{{ .Title }}</a></h1>
+  <h1><a href="{{ .RelPermalink }}" class="entry-title">{{ .Title }}</a></h1>
   <div class="entry-sub-title">
       <span class="">{{ .Date.Format "2006-01-02" }}</span>
       {{ if isset .Params "categories" -}}
@@ -12,7 +12,7 @@
   </div>
   <div class="entry-content">
       {{ .Summary }}
-      <a href="{{ .Permalink }}">{{ i18n "read-more" }}</a>
+      <a href="{{ .RelPermalink }}">{{ i18n "read-more" }}</a>
   </div>
   {{ end -}}
   {{- partial "pagenation.html" . -}}

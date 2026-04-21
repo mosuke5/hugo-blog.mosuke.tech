@@ -3,7 +3,7 @@
     <h3>{{ i18n "latest-entry" }}</h3>
     <ul class="list-group">
       {{ range first 5 .Site.RegularPages -}}
-      <li class="list-group-item"><a href="{{ .Permalink }}" onClick="gtag('event', 'link', {'event_category': 'recent-posts','event_label': '{{ .Title }}'});">{{ .Title }}</a></li>
+      <li class="list-group-item"><a href="{{ .RelPermalink }}" onClick="gtag('event', 'link', {'event_category': 'recent-posts','event_label': '{{ .Title }}'});">{{ .Title }}</a></li>
       {{ end -}}
     </ul>
   </div>
@@ -60,7 +60,7 @@
       <h3>{{ i18n "related-entry" }}</h3>
       <ul class="list-group">
         {{ range . }}
-        <li class="list-group-item"><a href="{{ .Permalink }}" onClick="gtag('event', 'link', {'event_category': 'related-posts','event_label': '{{ .Title }}'});">{{ .Title }}</a> ({{ .Date.Format "2006/01/02" }})</li>
+        <li class="list-group-item"><a href="{{ .RelPermalink }}" onClick="gtag('event', 'link', {'event_category': 'related-posts','event_label': '{{ .Title }}'});">{{ .Title }}</a> ({{ .Date.Format "2006/01/02" }})</li>
         {{ end }}
       </ul>
     </div>
