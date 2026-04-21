@@ -79,6 +79,9 @@ jobs:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           cname: blog.mosuke.tech
 
+      - name: Wait for GitHub Pages deploy
+        run: bash ./scripts/wait_for_pages_deploy.sh "${{ secrets.DEPLOY_TOKEN }}"
+
       - name: Purge cloudflare cache
         run: |
           bash ./scripts/delete_page_cache.sh ${{secrets.CF_ZONE_ID}} ${{secrets.CF_EMAIL}} ${{secrets.CF_KEY}}
