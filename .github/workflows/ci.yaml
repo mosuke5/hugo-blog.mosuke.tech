@@ -1,7 +1,9 @@
-name: test
+name: ci
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '0 23 * * *' # 8:00 JST
 
 env:
   TZ: "Asia/Tokyo"
@@ -49,3 +51,34 @@ jobs:
           name: playwright-report
           path: e2e-test/playwright-report/
           retention-days: 7
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.152.2"
+の
+      - name: Build
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          external_repository: mosuke5-lab/mosuke5-lab.github.io
+          publish_branch: main
+          publish_dir: ./public
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          cname: blog.mosuke.tech
+
+      - name: Purge cloudflare cache
+        run: |
+          bash ./scripts/delete_page_cache.sh ${{secrets.CF_ZONE_ID}} ${{secrets.CF_EMAIL}} ${{secrets.CF_KEY}}
