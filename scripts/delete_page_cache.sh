@@ -35,8 +35,11 @@ files=`git diff --name-only HEAD^`
 
 for i in $files
 do
-    if [[ ${i} =~ ^(content/).*(.md) ]]; then
-        # convert: "content/xxxx/aiueo.md" => "/xxxx/aiueo/"
+    if [[ ${i} =~ ^content/ja/.*\.md$ ]]; then
+        # convert: "content/ja/entry/foo.md" => "/entry/foo/" (ja is default language, not in URL)
+        uris+=("${i:10:-3}/")
+    elif [[ ${i} =~ ^content/en/.*\.md$ ]]; then
+        # convert: "content/en/entry/foo.md" => "/en/entry/foo/"
         uris+=("${i:7:-3}/")
     elif [[ ${i} =~ ^(static/) ]]; then
         # convert: "static/image/aiueo.png" => "/image/aiueo.png"
