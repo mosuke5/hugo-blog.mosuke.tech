@@ -1,6 +1,5 @@
 baseURL: 'https://blog.mosuke.tech'
 defaultContentLanguage: ja
-buildFuture: true
 theme: mosuke-tech-hugo-theme
 pagenation:
   pagerSize: 10
