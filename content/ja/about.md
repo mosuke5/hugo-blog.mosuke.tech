@@ -43,8 +43,6 @@ author = "mosuke5"
 以前はブログサイトを使って運用していましたが、2017年5月にHugo+Github Pagesを使った運用に変更しました。（[変更に関するブログ記事](/entry/2017/05/28/blog_migration/)）
 ブログは[Github(mosuke5/hugo-blog.mosuke.tech)](https://github.com/mosuke5/hugo-blog.mosuke.tech)で記述しているため、内容に問題などあればPullRequestsを送っていただいても構いません。
 
-本サイトの動作環境については[こちら](https://docs.google.com/presentation/d/1MJ8c7QkdYl5BIp9eS3Li2viq-V-CgdpnJKWylYa_dW0/edit#slide=id.g24396a60f1_1_0)で公開、随時更新しています。  
-
 ## プライバシーポリシー
 ### 個人情報について
 本サイトでは、お問い合わせなどの際に、名前やメールアドレス等の個人情報をご記入いただいています。  
