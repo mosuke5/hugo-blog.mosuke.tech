@@ -21,4 +21,10 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-hugo new "$lang/$(date +entry/%Y/%m/%d/$1.md)"
+# contentDir が content/ja/ 等のとき、先頭に lang を付けると content/ja/ja/entry のように二重になるため付けない
+path="$(date +entry/%Y/%m/%d/$1.md)"
+if [ "$lang" = "en" ]; then
+    hugo new --contentDir content/en/ "$path"
+else
+    hugo new "$path"
+fi
