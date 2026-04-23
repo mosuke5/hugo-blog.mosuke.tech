@@ -16,9 +16,6 @@ components:
       env:
         - name: HUGO_VERSION
           value: "0.152.2" # 必要なHugoのバージョン
-  - name: githistory
-    plugin:
-      id: donjayamanne.githistory
 commands:
   - id: install-hugo
     exec:
@@ -49,6 +46,7 @@ attributes:
       "recommendations": [
         "redhat.vscode-openshift-connector",
         "redhat.vscode-yaml",
+        "redhat.vscode-xml",
         "anthropic.claude-code"
       ]
     }
