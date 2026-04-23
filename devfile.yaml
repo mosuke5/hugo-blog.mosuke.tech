@@ -46,6 +46,6 @@ attributes:
       "recommendations": [
         "redhat.vscode-openshift-connector",
         "redhat.vscode-yaml",
-        "Anthropic.claude-code"
+        "anthropic.claude-code"
       ]
     }
