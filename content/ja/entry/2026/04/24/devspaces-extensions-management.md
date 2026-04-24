@@ -64,6 +64,8 @@ data:
 
 このConfigMapをApplyすると、各WorkspaceがあるNamespaceに自動でコピーされ、Workspaceにマウントされます。具体的には `/projects/.code-workspace` に配置され、Extensionが自動インストールされる仕組みです。
 
+なお、**ConfigMapを更新すると稼働中のWorkspaceへ再マウントが行われ、Workspaceが一時的に中断します**。開発者が多く利用している時間帯に変更すると影響範囲が大きくなるため、更新タイミングには十分注意しましょう。
+
 ### 方法3: devfileのattributesに記述する（非推奨）
 アプリケーションのソースコードにExtension設定を入れなくても済む方法として、devfileの `attributes` に `.vscode/extensions.json` を記述する方法がありますが、**こちらは機能しませんでした**。
 
