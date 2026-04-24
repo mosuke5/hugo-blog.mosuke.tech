@@ -140,6 +140,35 @@ pre {
   max-width: 100%;
 }
 
+.entry-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.entry-content thead {
+  background-color: #f0f4f8;
+}
+
+.entry-content th,
+.entry-content td {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #d1d5db;
+  text-align: left;
+}
+
+.entry-content th {
+  font-weight: 600;
+  color: #333;
+}
+
+.entry-content tbody tr:hover {
+  background-color: #f8fafc;
+}
+
 .fixed-contents {
   top: 75px;
 }
