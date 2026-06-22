@@ -138,7 +138,7 @@ test.describe("画像チェック", () => {
     });
 
     await page.goto("/");
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
 
     expect(failures, `読み込めない画像: ${failures.join(", ")}`).toEqual([]);
   });
@@ -166,7 +166,7 @@ test.describe("画像チェック", () => {
     });
 
     await page.goto(href!);
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
 
     expect(failures, `読み込めない画像: ${failures.join(", ")}`).toEqual([]);
   });
